@@ -1,0 +1,338 @@
+[
+  {
+    "id": "vsumm",
+    "title": "VSUMM: A mechanism designed to produce static video summaries and a novel evaluation method",
+    "venue": "Pattern Recognition Letters 32(1), 56–68; online publication 2010",
+    "paper_url": "https://ic.unicamp.br/~sandra/pdf/papers/avila_PRL11.pdf",
+    "project_url": "https://github.com/sandraavila/vsumm",
+    "encoders": "Handcrafted 16-bin HSV hue histograms; no pretrained neural encoder",
+    "sampling": "One frame per second; remove near-monochromatic frames using feature variation",
+    "architecture": "Cluster sampled frames; VSUMM1 uses all clusters; VSUMM2 retains clusters larger than half the average cluster size.",
+    "fusion": "Visual-only histogram representation",
+    "objective": "Section 3: per-video Euclidean k-means clustering with sequential initialization; no learned human-importance objective.",
+    "training_data": "No separate labelled training corpus",
+    "test_data": "50 Open Video videos and 50 web videos in the original release",
+    "split": "No supervised train/test split",
+    "budget": "Variable keyframe count; no native 15% temporal budget",
+    "postprocessing": "Choose centroid-nearest frames, remove similar keyframes and restore chronological order.",
+    "code_url": "https://github.com/sandraavila/vsumm",
+    "code_status": "Official data and CUS evaluation repository verified; complete summarizer source not independently verified",
+    "framework": "CUS evaluator: Java with jai_core and jai_codec dependencies; summarizer framework Not reported",
+    "weights": "Not applicable to handcrafted selector",
+    "features": "Histogram features computed by the method; dataset release supplies media and user summaries.",
+    "reproducibility": "Paper and official repository read; linked archives and Java evaluator were not downloaded or executed.",
+    "limitations": "Static color-based matching can miss semantic equivalence. Extending selected frames into shots changes both the output and evaluation.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Sandra Eliza Fontes de Avila",
+      "Ana Paula Brandão Lopes",
+      "Antonio da Luz Jr.",
+      "Arnaldo de Albuquerque Araújo"
+    ],
+    "year": 2011,
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "Generic static video summarization"
+    ],
+    "outputs": [
+      "Selected keyframe set"
+    ],
+    "mechanisms": [
+      "Color histograms",
+      "Modified k-means",
+      "Redundancy removal"
+    ],
+    "metrics": [
+      "CUS content matching",
+      "CUSA",
+      "CUSE"
+    ],
+    "sources": [
+      "https://ic.unicamp.br/~sandra/pdf/papers/avila_PRL11.pdf",
+      "https://github.com/sandraavila/vsumm"
+    ]
+  },
+  {
+    "id": "seqdpp",
+    "title": "Diverse Sequential Subset Selection for Supervised Video Summarization",
+    "venue": "Advances in Neural Information Processing Systems 27 (NIPS 2014)",
+    "paper_url": "https://www.cs.utexas.edu/~grauman/papers/nips14_seqdpp.pdf",
+    "project_url": "https://github.com/pujols/Video-summarization",
+    "encoders": "8192-D SIFT Fisher vectors, saliency and local context-correlation features",
+    "sampling": "1 fps, followed by candidate pruning",
+    "architecture": "A conditional DPP selects within each temporal segment given the preceding selected subset; linear or tanh embeddings parameterize the kernel.",
+    "fusion": "Handcrafted visual, saliency and context descriptors",
+    "objective": "Maximum likelihood of oracle keyframe subsets under the sequential DPP factorization (Section 3, Eq. 8). Oracles are derived from human references.",
+    "training_data": "OVP, 39-video non-cartoon YouTube subset, and Kodak; dataset-specific training subsets",
+    "test_data": "OVP 50, YouTube 39, Kodak 18",
+    "split": "100 random 80/20 training/test trials per dataset",
+    "budget": "Variable subset size; no universal 15% temporal budget",
+    "postprocessing": "Approximate sequential MAP selection; no claim of exact global DPP MAP.",
+    "code_url": "https://github.com/pujols/Video-summarization",
+    "code_status": "Official MATLAB implementation and feature/oracle download advertised; source README inspected",
+    "framework": "MATLAB; minFunc_2012 optimization; Java CUS evaluation dependencies",
+    "weights": "Not independently verified",
+    "features": "Author Dropbox package advertises Fisher features, saliency, context features, histograms, oracle and ground sets: https://www.dropbox.com/s/bpy41o2zglk4ka4/video_summarization.zip?dl=0",
+    "reproducibility": "Primary paper and official seqDPP README read; Dropbox bytes, feature integrity and MATLAB execution not independently verified.",
+    "limitations": "Local temporal conditioning does not enforce arbitrary long-range diversity. Human-reference oracle construction is part of training.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Boqing Gong",
+      "Wei-Lun Chao",
+      "Kristen Grauman",
+      "Fei Sha"
+    ],
+    "year": 2014,
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "Generic static video summarization"
+    ],
+    "outputs": [
+      "Selected keyframe set"
+    ],
+    "mechanisms": [
+      "Sequential determinantal point process",
+      "Learned diversity kernel"
+    ],
+    "metrics": [
+      "Content-matched keyframe precision",
+      "Content-matched keyframe recall",
+      "Content-matched keyframe F1"
+    ],
+    "sources": [
+      "https://www.cs.utexas.edu/~grauman/papers/nips14_seqdpp.pdf",
+      "https://github.com/pujols/Video-summarization/blob/master/seqDPP/Readme_seqDPP.txt"
+    ]
+  },
+  {
+    "id": "submodular-mixtures",
+    "title": "Video Summarization by Learning Submodular Mixtures of Objectives",
+    "venue": "CVPR 2015, 3090–3098",
+    "paper_url": "https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Gygli_Video_Summarization_by_2015_CVPR_paper.pdf",
+    "project_url": "https://openaccess.thecvf.com/content_cvpr_2015/html/Gygli_Video_Summarization_by_2015_CVPR_paper.html",
+    "encoders": "DeCAF visual descriptors and dataset-specific learned interestingness scores",
+    "sampling": "UTE: 5-second segments; SumMe: superframes. Frame-sampling rate Not reported.",
+    "architecture": "Nonnegative mixture of interestingness, representativeness and temporal-uniformity set functions.",
+    "fusion": "Segment-level visual descriptors and interestingness",
+    "objective": "Regularized large-margin learning of nonnegative mixture weights; projected subgradient optimization (Section 3, Eqs. 3–5).",
+    "training_data": "Annotated SumMe and UTE/VideoSET-derived references",
+    "test_data": "SumMe 25 and four UTE videos",
+    "split": "Cross-testing; paper describes 100 randomized training/inference repetitions. Exact reusable split IDs Not reported.",
+    "budget": "UTE: approximately 80 or 120 seconds. SumMe cap Not independently verified.",
+    "postprocessing": "Compare lazy greedy selection by raw marginal gain and by gain/cost; return the better feasible set (Algorithm 1).",
+    "code_url": "Not independently verified",
+    "code_status": "No official implementation repository verified",
+    "framework": "Not reported",
+    "weights": "Not independently verified",
+    "features": "Mean visual descriptors per candidate segment; downloadable tensors Not independently verified",
+    "reproducibility": "Primary paper inspected; no code execution or score reproduction.",
+    "limitations": "Learning uses labelled references. Budgeted greedy inference is approximate; text-based evaluation does not directly measure visual quality.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Michael Gygli",
+      "Helmut Grabner",
+      "Luc Van Gool"
+    ],
+    "year": 2015,
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "Generic extractive video summarization"
+    ],
+    "outputs": [
+      "Selected temporal segments"
+    ],
+    "mechanisms": [
+      "Submodular mixtures",
+      "Large-margin learning",
+      "Budgeted greedy inference"
+    ],
+    "metrics": [
+      "Nearest-reference temporal F1 on SumMe",
+      "Text-mapped ROUGE on UTE"
+    ],
+    "sources": [
+      "https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Gygli_Video_Summarization_by_2015_CVPR_paper.pdf"
+    ]
+  },
+  {
+    "id": "lstm-dpp",
+    "title": "Video Summarization with Long Short-term Memory",
+    "venue": "ECCV 2016",
+    "paper_url": "https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ.pdf",
+    "project_url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM",
+    "encoders": "ImageNet-pretrained GoogLeNet pool5, 1024-D",
+    "sampling": "2 fps",
+    "architecture": "Bidirectional LSTM plus input-feature/hidden-state MLP predicts importance; dppLSTM adds a learned similarity embedding.",
+    "fusion": "Concatenation of visual features and bidirectional recurrent states",
+    "objective": "vsLSTM: squared-error importance regression. dppLSTM: regression pretraining followed by DPP maximum likelihood with quality-diversity kernel L_ij = y_i y_j phi_i^T phi_j (Section 3).",
+    "training_data": "Canonical: target 80% train/validation; augmented: add the other benchmark, OVP 50 and YouTube 39; transfer: other three datasets only.",
+    "test_data": "SumMe and TVSum",
+    "split": "Random 80/20 canonical splits; augmentation/transfer as Table 3. Supplement Section 5.2: five runs per setting and test fold.",
+    "budget": "15% machine-summary duration; released TVSum reference evaluator uses 18%",
+    "postprocessing": "KTS segments and budgeted keyshot decoding. The described DPP keyframe-density route differs from released diagonal-score reweighting followed by mean-shot knapsack.",
+    "code_url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM",
+    "code_status": "Official source pinned at 0ee0a0948872544567ecede76868287042470f75; no reproduction",
+    "framework": "Python 2.7+, Theano 0.7+, MATLAB",
+    "weights": "SumMe and TVSum trained model files listed in official tree; binaries not loaded",
+    "features": "Advertised 2-fps GoogLeNet HDF5; original idx/fea_i schema. README data-download anchor lacks a file URL.",
+    "reproducibility": "Paper, supplement and pinned evaluation source read; no model training, inference or archive integrity check.",
+    "limitations": "Small benchmarks; fold hashes unavailable in paper. TVSum reference budget and dppLSTM decoder need explicit versioning for fair comparison.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Ke Zhang",
+      "Wei-Lun Chao",
+      "Fei Sha",
+      "Kristen Grauman"
+    ],
+    "year": 2016,
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "Generic extractive video summarization"
+    ],
+    "outputs": [
+      "Frame importance scores",
+      "Selected keyshots"
+    ],
+    "mechanisms": [
+      "Bidirectional LSTM",
+      "Determinantal point process"
+    ],
+    "metrics": [
+      "Temporal-overlap F1; SumMe maximum across users",
+      "Temporal-overlap F1; TVSum mean across users"
+    ],
+    "sources": [
+      "https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ.pdf",
+      "https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf",
+      "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/0ee0a0948872544567ecede76868287042470f75/README.md",
+      "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/0ee0a0948872544567ecede76868287042470f75/codes/dppLSTM_eval.m",
+      "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/0ee0a0948872544567ecede76868287042470f75/codes/evalTVSum/evaluate_TVSum.m"
+    ]
+  },
+  {
+    "id": "dr-dsn",
+    "title": "Deep Reinforcement Learning for Unsupervised Video Summarization with Diversity-Representativeness Reward",
+    "venue": "AAAI 2018",
+    "paper_url": "https://cdn.aaai.org/ojs/12255/12255-13-15783-1-2-20201228.pdf",
+    "project_url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce",
+    "encoders": "Frozen ImageNet GoogLeNet pool5, 1024-D",
+    "sampling": "2 fps",
+    "architecture": "Bidirectional LSTM with Bernoulli frame-selection policy",
+    "fusion": "Visual-only recurrent policy",
+    "objective": "REINFORCE maximizes diversity plus representativeness rewards; mean-selection-probability and weight regularization. Section 3 separately adds a human-supervised extension; reward-only results are not that extension.",
+    "training_data": "Canonical target training videos; augmentation with OVP and YouTube; transfer trains on the other three datasets.",
+    "test_data": "SumMe and TVSum",
+    "split": "Paper: five-fold 80/20 evaluation; exact fold IDs and repeated-seed variance Not reported",
+    "budget": "Final summary at most 15% of original frames; training selection regularizer targets probability 0.5, a distinct constraint",
+    "postprocessing": "KTS, mean predicted score per shot and 0/1 knapsack.",
+    "code_url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce",
+    "code_status": "Official PyTorch port pinned at 041606fec8e2ba7f4c4900064a76d965a473e53c; original paper used Theano",
+    "framework": "Audited port: Python 2.7 / PyTorch 0.4.0",
+    "weights": "No pretrained weights advertised in audited README",
+    "features": "Author port links replacement Google Drive data for inaccessible QMUL server; HDF5 features and frame/segment metadata advertised, not downloaded.",
+    "reproducibility": "Paper and pinned source inspected; later port saves final max-epoch checkpoint. No training or benchmark reproduction.",
+    "limitations": "Reward design encodes visual similarity rather than human semantics. Paper reward-based early stopping differs from final-epoch port; augmented data differs from Zhang Table 3.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Kaiyang Zhou",
+      "Yu Qiao",
+      "Tao Xiang"
+    ],
+    "year": 2018,
+    "supervision": [
+      "unsupervised",
+      "supervised"
+    ],
+    "tasks": [
+      "Generic extractive video summarization"
+    ],
+    "outputs": [
+      "Frame selection probabilities",
+      "Selected keyshots"
+    ],
+    "mechanisms": [
+      "Bidirectional LSTM",
+      "REINFORCE",
+      "Diversity reward",
+      "Representativeness reward"
+    ],
+    "metrics": [
+      "Temporal-overlap F1; SumMe maximum across users",
+      "Temporal-overlap F1; TVSum mean across users"
+    ],
+    "sources": [
+      "https://cdn.aaai.org/ojs/12255/12255-13-15783-1-2-20201228.pdf",
+      "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/041606fec8e2ba7f4c4900064a76d965a473e53c/README.md",
+      "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/041606fec8e2ba7f4c4900064a76d965a473e53c/main.py",
+      "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/041606fec8e2ba7f4c4900064a76d965a473e53c/rewards.py",
+      "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/041606fec8e2ba7f4c4900064a76d965a473e53c/vsum_tools.py"
+    ]
+  },
+  {
+    "id": "vasnet",
+    "title": "Summarizing Videos with Attention",
+    "venue": "ACCV 2018 AIU workshop; revised LNCS proceedings published 2019, 39–54",
+    "paper_url": "https://arxiv.org/pdf/1812.01969",
+    "project_url": "https://github.com/ok1zjf/VASNet",
+    "encoders": "ImageNet GoogLeNet pool5, 1024-D",
+    "sampling": "2 fps using reused HDF5 features",
+    "architecture": "Learned dot-product self-attention, projected values, residual connection, dropout, layer normalization and fully connected importance head.",
+    "fusion": "Visual-only attention context and input residual",
+    "objective": "Mean squared error against human-derived importance scores; official main.py uses nn.MSELoss.",
+    "training_data": "Canonical target dataset; augmented setting adds other benchmark plus OVP and YouTube",
+    "test_data": "SumMe and TVSum",
+    "split": "Five random 80/20 splits; canonical and augmented settings",
+    "budget": "At most 15% of original-frame duration",
+    "postprocessing": "KTS metadata; mean score per shot and 0/1 knapsack.",
+    "code_url": "https://github.com/ok1zjf/VASNet",
+    "code_status": "Official source pinned at c3787531486f74789dc5e92758edf51e24f56e6d; no reproduction",
+    "framework": "Python 3.5.2; PyTorch 0.4.1; OR-Tools 6.9.5824",
+    "weights": "Box model ZIP advertised in datasets_models_urls.txt; not downloaded or loaded",
+    "features": "Box dataset ZIP advertised; 2-fps GoogLeNet HDF5 plus labels, original-frame indices and KTS metadata",
+    "reproducibility": "Paper and pinned source read. Official main.py selects its best epoch by test_keys F1; a validation-only checkpoint protocol must be specified for independent evaluation.",
+    "limitations": "Checkpoint selection uses labelled test performance in the inspected release. Old framework versions and attention memory growth limit direct modern use.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Jiri Fajtl",
+      "Hajar Sadeghi Sokeh",
+      "Vasileios Argyriou",
+      "Dorothy Monekosso",
+      "Paolo Remagnino"
+    ],
+    "year": 2018,
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "Generic extractive video summarization"
+    ],
+    "outputs": [
+      "Frame importance scores",
+      "Selected keyshots"
+    ],
+    "mechanisms": [
+      "Self-attention",
+      "Importance regression"
+    ],
+    "metrics": [
+      "Temporal-overlap F1; SumMe maximum across users",
+      "Temporal-overlap F1; TVSum mean across users"
+    ],
+    "sources": [
+      "https://arxiv.org/pdf/1812.01969",
+      "https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/README.md",
+      "https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/main.py",
+      "https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/vasnet_model.py",
+      "https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/datasets_models_urls.txt",
+      "https://researchinnovation.kingston.ac.uk/en/publications/summarizing-videos-with-attention-4/"
+    ]
+  }
+]

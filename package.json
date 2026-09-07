@@ -1,0 +1,12 @@
+{
+  "name": "awesome-video-summarization-checks",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Local Markdown mathematics and Mermaid validation",
+  "scripts": {"check:render": "node scripts/check_render.mjs"},
+  "devDependencies": {
+    "jsdom": "26.1.0",
+    "katex": "0.16.22",
+    "mermaid": "11.12.0"
+  }
+}

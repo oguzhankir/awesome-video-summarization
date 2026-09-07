@@ -1,0 +1,269 @@
+[
+  {
+    "id": "pgl-sum",
+    "title": "Combining Global and Local Attention with Positional Encoding for Video Summarization",
+    "venue": "IEEE ISM",
+    "paper_url": "https://doi.org/10.1109/ISM52913.2021.00045",
+    "project_url": "Not reported",
+    "encoders": "GoogLeNet pool5, 1024-D; no audio or text branch",
+    "sampling": "2-fps feature package; exact picks retained in HDF5",
+    "architecture": "Global/local multi-head attention with positional encoding and score regressor",
+    "fusion": "Global and local branch combination; default add in released configuration",
+    "objective": "Supervised importance regression; exact objective in primary paper Section III and model/solver.py",
+    "training_data": "SumMe or TVSum training partitions",
+    "test_data": "SumMe; TVSum",
+    "split": "Five released random 80/20 splits; not disjoint five-fold CV",
+    "budget": "15% of original timeline",
+    "postprocessing": "Score expansion, mean shot values, released KTS boundaries and knapsack; max SumMe / mean TVSum",
+    "code_url": "https://github.com/e-apostolidis/PGL-SUM",
+    "code_status": "Official; authors and paper linked in README",
+    "framework": "Python 3.8.8; PyTorch 1.7.1 (author environment)",
+    "weights": "https://doi.org/10.5281/zenodo.5635735; advertised author checkpoint archive, not executed",
+    "features": "Author-repackaged HDF5 .rar archives in repository data/",
+    "reproducibility": "Source inspected; upstream environment and checkpoints not run",
+    "limitations": "Legacy dependencies and hard-coded evaluation paths; do not conflate test evaluation each epoch with a held-out validation protocol.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Evlampios Apostolidis",
+      "Georgios Balaouras",
+      "Vasileios Mezaris",
+      "Ioannis Patras"
+    ],
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "attention"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://doi.org/10.1109/ISM52913.2021.00045",
+      "https://www.iti.gr/~bmezaris/publications/ism2021a_preprint.pdf",
+      "https://github.com/e-apostolidis/PGL-SUM"
+    ],
+    "year": 2021
+  },
+  {
+    "id": "dsnet",
+    "title": "DSNet: A Flexible Detect-to-Summarize Network for Video Summarization",
+    "venue": "IEEE TIP 30:948–962 (online 2020)",
+    "paper_url": "https://doi.org/10.1109/TIP.2020.3039886",
+    "project_url": "Not reported",
+    "encoders": "GoogLeNet pool5, 1024-D standard feature packages",
+    "sampling": "Released picks; custom extraction README uses --sample-rate 15 (frame stride, not 15 fps)",
+    "architecture": "Anchor-based and anchor-free importance and interval heads",
+    "fusion": "Visual temporal features; no audio/text fusion",
+    "objective": "Supervised interest classification and interval localization; variant-specific objective in TIP method sections",
+    "training_data": "SumMe, TVSum; OVP/YouTube in augmented/transfer regimes",
+    "test_data": "SumMe; TVSum",
+    "split": "Author YAML split files; canonical, augmented and transfer kept separate",
+    "budget": "15% in standard benchmark pipeline",
+    "postprocessing": "Proposal decoding, NMS; released summary conversion and budget routine",
+    "code_url": "https://github.com/li-plus/DSNet",
+    "code_status": "Official; Jiahao Li and paper backlink",
+    "framework": "Python 3.6, PyTorch; Ubuntu 16.04/CUDA 9.0 author environment",
+    "weights": "Author-linked pretrain_ab_basic.zip and pretrain_af_basic.zip on Dropbox; download/reproduction not verified",
+    "features": "Author-linked dsnet_datasets.zip and alternative mirrors; HDF5 plus change points",
+    "reproducibility": "README and selected source inspected; no environment rebuild or model execution",
+    "limitations": "NMS settings and custom frame stride change outputs; repository BibTeX says 2020 while volume publication is 2021.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Wencheng Zhu",
+      "Jiwen Lu",
+      "Jiahao Li",
+      "Jie Zhou"
+    ],
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "temporal detection",
+      "attention",
+      "sequence modeling"
+    ],
+    "metrics": [
+      "temporal F1",
+      "summary diversity"
+    ],
+    "sources": [
+      "https://doi.org/10.1109/TIP.2020.3039886",
+      "https://github.com/li-plus/DSNet"
+    ],
+    "year": 2021
+  },
+  {
+    "id": "csta",
+    "title": "CSTA: CNN-based Spatiotemporal Attention for Video Summarization",
+    "venue": "CVPR",
+    "paper_url": "https://arxiv.org/abs/2405.11905",
+    "project_url": "Not reported",
+    "encoders": "GoogLeNet frame features; inspect backbone variants in primary paper",
+    "sampling": "Standard pre-extracted feature timeline; full-frame expansion corrected in author repository",
+    "architecture": "2D CNN over frame-feature matrices for spatiotemporal attention",
+    "fusion": "Visual feature and attention paths; no required audio/text branch",
+    "objective": "Supervised frame-importance regression; primary paper method section",
+    "training_data": "SumMe; TVSum",
+    "test_data": "SumMe; TVSum",
+    "split": "Not independently verified",
+    "budget": "Not independently verified",
+    "postprocessing": "Not independently verified",
+    "code_url": "https://github.com/thswodnjs3/CSTA",
+    "code_status": "Official; linked by CVPR paper",
+    "framework": "PyTorch; version-specific dependency audit not completed",
+    "weights": "Not independently verified",
+    "features": "Not independently verified",
+    "reproducibility": "Paper/source release verified; no model execution",
+    "limitations": "Record evaluation-code revision: downsampled-only versus full-timeline summary generation changes the reported protocol.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Jaewon Son",
+      "Jaehun Park",
+      "Kwangsu Kim"
+    ],
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "convolution",
+      "attention"
+    ],
+    "metrics": [
+      "temporal F1",
+      "Kendall tau",
+      "Spearman rho"
+    ],
+    "sources": [
+      "https://arxiv.org/abs/2405.11905",
+      "https://openaccess.thecvf.com/content/CVPR2024/papers/Son_CSTA_CNN-based_Spatiotemporal_Attention_for_Video_Summarization_CVPR_2024_paper.pdf",
+      "https://github.com/thswodnjs3/CSTA"
+    ],
+    "year": 2024
+  },
+  {
+    "id": "csum",
+    "title": "Learning to Summarize Videos by Contrasting Clips",
+    "venue": "arXiv preprint (v3)",
+    "paper_url": "https://arxiv.org/abs/2301.05213",
+    "project_url": "Not reported",
+    "encoders": "Not independently verified",
+    "sampling": "Not independently verified",
+    "architecture": "Selects and contrasts top-k features rather than a whole-video mean",
+    "fusion": "Not independently verified",
+    "objective": "Contrastive objective over selected clips; differentiable top-k in primary method section, optional labeled personalization evaluated separately",
+    "training_data": "Not independently verified",
+    "test_data": "Not independently verified",
+    "split": "Not independently verified",
+    "budget": "Not independently verified",
+    "postprocessing": "Not independently verified",
+    "code_url": "Not independently verified",
+    "code_status": "Not independently verified",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "Not independently verified",
+    "reproducibility": "Primary paper identity and method verified; code/environment not independently audited",
+    "limitations": "Optional personal labels must not be mixed into unsupervised comparison. Few-shot tag refers to the labeled personalization variant. No publication venue beyond arXiv verified.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Ivan Sosnovik",
+      "Artem Moskalev",
+      "Cees Kaandorp",
+      "Arnold Smeulders"
+    ],
+    "supervision": [
+      "unsupervised",
+      "self-supervised",
+      "few-shot"
+    ],
+    "tasks": [
+      "generic single-video",
+      "personalized"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "contrastive learning",
+      "differentiable top-k"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://arxiv.org/abs/2301.05213"
+    ],
+    "year": 2023
+  },
+  {
+    "id": "self-vs",
+    "title": "SELF-VS: Self-supervised Encoding Learning For Video Summarization",
+    "venue": "arXiv preprint",
+    "paper_url": "https://arxiv.org/abs/2303.15993",
+    "project_url": "Not reported",
+    "encoders": "CNN video-classification teacher and Transformer student; upstream teacher supervision must be recorded",
+    "sampling": "Not independently verified",
+    "architecture": "Importance-weighted semantic representation matching for pretraining; downstream summarization stage separate",
+    "fusion": "Not independently verified",
+    "objective": "Self-supervised representation distillation followed by downstream fine-tuning; primary paper Sections 3 and 4",
+    "training_data": "Not independently verified",
+    "test_data": "Not independently verified",
+    "split": "Not independently verified",
+    "budget": "Not independently verified",
+    "postprocessing": "Not independently verified",
+    "code_url": "Not independently verified",
+    "code_status": "Not independently verified",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "Not independently verified",
+    "reproducibility": "Primary paper inspected; no code or weights execution",
+    "limitations": "Self-supervised encoder pretraining is not evidence of label-free downstream selection; checkpoint and downstream-label usage need an implementation audit.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Hojjat Mokhtarabadi",
+      "Kave Bahraman",
+      "Mehrdad HosseinZadeh",
+      "Mahdi Eftekhari"
+    ],
+    "supervision": [
+      "self-supervised",
+      "supervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "knowledge distillation",
+      "transformer"
+    ],
+    "metrics": [
+      "Kendall tau",
+      "Spearman rho"
+    ],
+    "sources": [
+      "https://arxiv.org/abs/2303.15993"
+    ],
+    "year": 2023
+  }
+]

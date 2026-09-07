@@ -1,0 +1,1534 @@
+[
+  {
+    "url": "https://aclanthology.org/2022.acl-long.589.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://aclanthology.org/2022.acl-long.589/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://aclanthology.org/2023.emnlp-main.457/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://aclanthology.org/2023.findings-eacl.96.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://aclanthology.org/2023.findings-eacl.96/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://aclanthology.org/2025.findings-emnlp.1340/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://activity-net.org/",
+    "status": "retry",
+    "detail": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'activity-net.org'. (_ssl.c:1010)>"
+  },
+  {
+    "url": "https://ai.stanford.edu/~syyeung/resources/videoset_data.zip",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://ai.stanford.edu/~syyeung/videoset.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1207.6083",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1409.4842",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1605.08110",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1801.00054",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1805.10538",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1805.12174",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1807.03748",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1811.09791",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1812.01969",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1903.11328",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/1904.08265",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2001.09099",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2007.14560",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2105.11131",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2301.05213",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2303.07284",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2303.12060",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2303.15993",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2311.03745",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2404.03398",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2404.12353",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2405.11905",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2504.11199",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2505.03319",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2506.03171",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2506.10807",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2510.08458",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2510.17501",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2603.01169",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/abs/2603.06213",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/1903.11328v2",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2303.07284v3",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2303.12060v3",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2404.03398v1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2404.12353v3",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2504.11199v2",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2505.03319v2",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2506.03171v1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2506.10807v3",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2510.08458v1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2510.17501v3",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2603.01169v1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/html/2603.06213v1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/pdf/1406.5824",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/pdf/1707.04960",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/pdf/1812.01969",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/pdf/1906.07901",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/pdf/2303.12060v3",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://arxiv.org/pdf/2603.01169v1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://boheumd.github.io/A2Summ/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://cdn.aaai.org/ojs/12255/12255-13-15783-1-2-20201228.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://cove.thecvf.com/datasets/615",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://cs.stanford.edu/people/ranjaykrishna/densevid/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://data.vision.ee.ethz.ch/cvl/SumMe/SumMe.zip",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://dl.acm.org/doi/10.1145/3343031.3351056",
+    "status": "restricted",
+    "code": 403
+  },
+  {
+    "url": "https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://docs.h5py.org/en/stable/quick.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://docs.pytorch.org/tutorials/beginner/basics/intro.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://docs.pytorch.org/tutorials/beginner/introyt/introyt1_tutorial.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://doi.org/10.1007/978-3-030-01258-8_22",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://doi.org/10.1007/978-3-030-37731-1_40",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://doi.org/10.1007/978-3-030-58595-2_11",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://doi.org/10.1007/978-3-319-10584-0_33",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://doi.org/10.1007/978-981-96-0966-6_16",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://doi.org/10.1016/j.patcog.2022.108840",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://doi.org/10.1109/CVPR.2017.318",
+    "status": "ok",
+    "code": 202
+  },
+  {
+    "url": "https://doi.org/10.1109/ISM52913.2021.00045",
+    "status": "ok",
+    "code": 202
+  },
+  {
+    "url": "https://doi.org/10.1109/TIP.2020.3039886",
+    "status": "ok",
+    "code": 202
+  },
+  {
+    "url": "https://doi.org/10.1109/TPAMI.2021.3118077",
+    "status": "ok",
+    "code": 202
+  },
+  {
+    "url": "https://doi.org/10.1145/3343031.3351056",
+    "status": "restricted",
+    "code": 403
+  },
+  {
+    "url": "https://doi.org/10.1145/3347449.3357482",
+    "status": "restricted",
+    "code": 403
+  },
+  {
+    "url": "https://doi.org/10.1145/3746027.3755821",
+    "status": "restricted",
+    "code": 403
+  },
+  {
+    "url": "https://doi.org/10.1609/aaai.v33i01.33018537",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://doi.org/10.1609/aaai.v33i01.33019143",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://doi.org/10.5281/zenodo.5635735",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://dppy.readthedocs.io/en/latest/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://drive.google.com/drive/folders/18RpOVDrroY2gZ82ISObjAwWZz-i84XhD",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://drive.google.com/drive/folders/1PjFWGw35j6cePLuMdN30BP64dsxQm3sQ",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://drive.google.com/open?id=1Bf0beMN_ieiM3JpprghaoOwQe9QJIyAN",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://ego4d-data.org/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://ego4d-data.org/docs/start-here/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://ffmpeg.org/ffmpeg-filters.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/BerserkerMother/SUM-FCN",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/HopLee6/SSPVS-PyTorch",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/IDT-ITI/SD-VSum",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/041606fec8e2ba7f4c4900064a76d965a473e53c/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/041606fec8e2ba7f4c4900064a76d965a473e53c/create_split.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/041606fec8e2ba7f4c4900064a76d965a473e53c/main.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/041606fec8e2ba7f4c4900064a76d965a473e53c/rewards.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/041606fec8e2ba7f4c4900064a76d965a473e53c/vsum_tools.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/master/knapsack.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/master/main.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/blob/master/vsum_tools.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/KaiyangZhou/pytorch-vsumm-reinforce/tree/041606fec8e2ba7f4c4900064a76d965a473e53c",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/Kwanseok-K/SummDiff",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/MILVLG/activitynet-qa",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/TIBHannover/MSVA",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/TIBHannover/UnsupervisedVideoSummarization",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/activitynet/ActivityNet/tree/master/Crawler",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/aliensunmin/DomainSpecificHighlight",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/aliensunmin/DomainSpecificHighlight/blob/master/code/downloadVideo.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/boheumd/A2Summ",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/AC-SUM-GAN",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/PGL-SUM",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/PGL-SUM/blob/81d0d6d0ee0470775ad759087deebbce1ceffec3/LICENSE.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/PGL-SUM/blob/81d0d6d0ee0470775ad759087deebbce1ceffec3/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/PGL-SUM/blob/81d0d6d0ee0470775ad759087deebbce1ceffec3/evaluation/choose_best_epoch.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/PGL-SUM/blob/81d0d6d0ee0470775ad759087deebbce1ceffec3/inference/inference.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/PGL-SUM/blob/81d0d6d0ee0470775ad759087deebbce1ceffec3/model/solver.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/PGL-SUM/tree/81d0d6d0ee0470775ad759087deebbce1ceffec3",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/PGL-SUM/tree/81d0d6d0ee0470775ad759087deebbce1ceffec3/data",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/SUM-GAN-AAE",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/SUM-GAN-AAE/blob/3bced18d30f04e74e2189601b30ad5d170758250/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/SUM-GAN-AAE/blob/3bced18d30f04e74e2189601b30ad5d170758250/evaluation/check_fscores_summe.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/SUM-GAN-AAE/blob/3bced18d30f04e74e2189601b30ad5d170758250/evaluation/check_fscores_summe_with_gts.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/SUM-GAN-AAE/blob/3bced18d30f04e74e2189601b30ad5d170758250/evaluation/generate_summary.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/SUM-GAN-AAE/blob/3bced18d30f04e74e2189601b30ad5d170758250/model/data_loader.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/SUM-GAN-AAE/tree/3bced18d30f04e74e2189601b30ad5d170758250",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/SUM-GAN-AAE/tree/3bced18d30f04e74e2189601b30ad5d170758250/data",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/e-apostolidis/SUM-GAN-sl",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/facebookresearch/Ego4d",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/hanghuacs/V2Xum-LLM",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/hanklee97121/SUM-SR-5iter",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/j-min/Adversarial_Video_Summary",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/configs.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/feature_extraction.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/solver.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/j-min/Adversarial_Video_Summary/tree/fb6d5bf70479373f96f2d944c672af8286c9bc89",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/jylins/videoxum",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/configs/vtsum_blip_tt.yaml",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/data/activitynet_dataset.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/eval_v2vt_sum.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/requirements.txt",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/utils.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/jylins/videoxum/tree/11bd4fe3fb51b7dc804dd1519a4914f67bff60df",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/0ee0a0948872544567ecede76868287042470f75/LICENSE.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/0ee0a0948872544567ecede76868287042470f75/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/0ee0a0948872544567ecede76868287042470f75/codes/dppLSTM_eval.m",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/0ee0a0948872544567ecede76868287042470f75/codes/dppLSTM_main.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/0ee0a0948872544567ecede76868287042470f75/codes/evalTVSum/evaluate_TVSum.m",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/0ee0a0948872544567ecede76868287042470f75/codes/tools/data_loader.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/0ee0a0948872544567ecede76868287042470f75/data/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/evalSumMe/summe_evaluateSummary.m",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/evalTVSum/evaluate_TVSum.m",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/kezhang-cs/Video-Summarization-with-LSTM/tree/0ee0a0948872544567ecede76868287042470f75",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/l2ior/cosum",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/l2ior/cosum/tree/master/annotation",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/li-plus/DSNet",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/li-plus/DSNet/blob/1804176e2e8b57846beb063667448982273fca89/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/li-plus/DSNet/blob/1804176e2e8b57846beb063667448982273fca89/requirements.txt",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/li-plus/DSNet/blob/1804176e2e8b57846beb063667448982273fca89/src/anchor_based/train.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/li-plus/DSNet/blob/1804176e2e8b57846beb063667448982273fca89/src/helpers/video_helper.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/li-plus/DSNet/blob/1804176e2e8b57846beb063667448982273fca89/src/helpers/vsumm_helper.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/li-plus/DSNet/blob/1804176e2e8b57846beb063667448982273fca89/src/make_dataset.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/li-plus/DSNet/tree/1804176e2e8b57846beb063667448982273fca89",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/mario998-hash/ZeroShotVideoSummary",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/mayu-ot/rethinking-evs",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/mayu-ot/rethinking-evs/blob/7a3b05e63ba531c89ac022e3a98bfd37d22d60a2/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/mayu-ot/rethinking-evs/blob/7a3b05e63ba531c89ac022e3a98bfd37d22d60a2/environment.yml",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/mayu-ot/rethinking-evs/blob/7a3b05e63ba531c89ac022e3a98bfd37d22d60a2/src/summe_eval.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/mayu-ot/rethinking-evs/blob/master/notebooks/rank%20order%20statistics.ipynb",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/mayu-ot/rethinking-evs/tree/7a3b05e63ba531c89ac022e3a98bfd37d22d60a2",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/mingdachen/SummScreen",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/mlee47/LLMVS",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/ok1zjf/VASNet",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/create_split.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/datasets_models_urls.txt",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/main.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/vasnet_model.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/vsum_tools.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/ok1zjf/VASNet/tree/c3787531486f74789dc5e92758edf51e24f56e6d",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/openai/CLIP",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/pcshih/pytorch-VSLUD",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/ppapalampidi/long_video_summarization",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/ppapalampidi/long_video_summarization/blob/main/scripts/download.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/pujols/Video-summarization",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/pujols/Video-summarization/blob/master/seqDPP/Readme_seqDPP.txt",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/sandraavila/vsumm",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/showlab/UniVTG",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/eval/qfvs.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/install.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/main/inference_qfvs.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/model.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/requirements.txt",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/showlab/UniVTG/tree/32659ac7aeba21742a63274f30eba785fc57e247",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/smkim37/TripleSumm",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/srkds/Query-Focused-Long-Video-Summarization",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/srkds/Query-Focused-Long-Video-Summarization/blob/3832ec786e59a2bd2e9da997a63b03bc1447988e/FCSNA-QFVS.ipynb",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/srkds/Query-Focused-Long-Video-Summarization/blob/3832ec786e59a2bd2e9da997a63b03bc1447988e/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/srkds/Query-Focused-Long-Video-Summarization/tree/3832ec786e59a2bd2e9da997a63b03bc1447988e",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/thswodnjs3/CSTA",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/wuyuanli60-svg/Context-Aware-Pseudo-Label-Scoring-for-Zero-Shot-Video-Summarization",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/yalesong/tvsum",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/yalesong/tvsum/blob/7bf3fb8ca032f5f4b42e22ba41f5e2490b819f96/README.md",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/yalesong/tvsum/blob/7bf3fb8ca032f5f4b42e22ba41f5e2490b819f96/matlab/script_evaluate_result.m",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/yalesong/tvsum/blob/master/matlab/script_evaluate_result.m",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/yalesong/tvsum/blob/master/matlab/solve_knapsack.m",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/yalesong/tvsum/tree/7bf3fb8ca032f5f4b42e22ba41f5e2490b819f96",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://github.com/youxiaoxing/CoE",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://gmujtaba.com/assets/pdf/cvpr25_poster_EdgeVidSum.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://grail.cs.washington.edu/wp-content/uploads/2015/08/sun2014rdh.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://hanghuacs.github.io/v2xum/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu/tree/main",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://huggingface.co/datasets/jylins/videoxum",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://huggingface.co/datasets/jylins/videoxum/resolve/main/blip_feat.zip?download=true",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://huggingface.co/datasets/jylins/videoxum/resolve/main/vt_clip_feat.zip?download=true",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://huggingface.co/datasets/jylins/videoxum/tree/main",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://huggingface.co/jylins/vtsum_blip/tree/main",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://huggingface.co/smkim37/TripleSumm",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://ic.unicamp.br/~sandra/pdf/papers/avila_PRL11.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://ieeexplore.ieee.org/document/9259058",
+    "status": "ok",
+    "code": 202
+  },
+  {
+    "url": "https://inria.hal.science/hal-01022967",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://jaehoon-hahm.github.io/summdiff-page/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://kingston.box.com/shared/static/2u2nqelxsptzefp1mno4z28kimmbljw2.zip",
+    "status": "known-missing",
+    "code": 404,
+    "note": "Historical VASNet checkpoint archive advertised by the author README. Retained as provenance; no replacement checkpoint verified. Recheck on every audit."
+  },
+  {
+    "url": "https://kingston.box.com/shared/static/zefb0i17mx3uvspgx70hovt9rr2qnv7y.zip",
+    "status": "known-missing",
+    "code": 404,
+    "note": "Historical VASNet data archive advertised by the author README. Retained as provenance; consult the alternative method-author feature packages. Recheck on every audit."
+  },
+  {
+    "url": "https://link.springer.com/chapter/10.1007/978-3-319-10584-0_33",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://link.springer.com/content/pdf/10.1007/978-3-319-10584-0_33.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://link.springer.com/content/pdf/10.1007/978-3-319-10599-4_35.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://media.eventhosts.cc/Conferences/CVPR2025/CVPR_main_conf_2025.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/download/32374/34529",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/4872",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/4946",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/4948",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/ACCV2024/papers/Li_Unsupervised_Video_Summarization_via_Iterative_Training_and_Simplified_GAN_ACCV_2024_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2023/html/He_Align_and_Attend_Multimodal_Summarization_With_Dual_Contrastive_Losses_CVPR_2023_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Son_CSTA_CNN-based_Spatiotemporal_Attention_for_Video_Summarization_CVPR_2024_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Argaw_Scaling_Up_Video_Summarization_Pretraining_with_Large_Language_Models_CVPR_2024_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Son_CSTA_CNN-based_Spatiotemporal_Attention_for_Video_Summarization_CVPR_2024_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2024W/SG2RL/papers/Chaves_VideoSAGE_Video_Summarization_with_Graph_Representation_Learning_CVPRW_2024_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Video_Summarization_with_Large_Language_Models_CVPR_2025_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2026/supplemental/You_Cut_to_the_CVPR_2026_supplemental.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/WACV2023/html/Li_Progressive_Video_Summarization_via_Multimodal_Self-Supervised_Learning_WACV_2023_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Otani_Rethinking_the_Evaluation_of_Video_Summaries_CVPR_2019_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Rochan_Video_Summarization_by_Learning_From_Unpaired_Data_CVPR_2019_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Otani_Rethinking_the_Evaluation_of_Video_Summaries_CVPR_2019_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_ECCV_2018/html/Mrigank_Rochan_Video_Summarization_Using_ECCV_2018_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_cvpr_2013/html/Khosla_Large-Scale_Video_Summarization_2013_CVPR_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_cvpr_2015/html/Gygli_Video_Summarization_by_2015_CVPR_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_cvpr_2015/papers/Gygli_Video_Summarization_by_2015_CVPR_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_cvpr_2017/html/Carreira_Quo_Vadis_Action_CVPR_2017_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_cvpr_2017/html/Mahasseni_Unsupervised_Video_Summarization_CVPR_2017_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_cvpr_2017/html/Sharghi_Query-Focused_Video_Summarization_CVPR_2017_paper.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_cvpr_2017/papers/Mahasseni_Unsupervised_Video_Summarization_CVPR_2017_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content_cvpr_2017/papers/Sharghi_Query-Focused_Video_Summarization_CVPR_2017_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://openreview.net/pdf?id=x74NsHGywD",
+    "status": "restricted",
+    "code": 403
+  },
+  {
+    "url": "https://pages.cs.wisc.edu/~jiaxu/projects/ego-video-sum/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://pages.cs.wisc.edu/~jiaxu/projects/ego-video-sum/ego-video-sum-cvpr2015.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://people.csail.mit.edu/yalesong/publications/ChuSJ2015CVPR.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://people.csail.mit.edu/yalesong/publications/SongVSJ2015CVPR.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://people.csail.mit.edu/yalesong/tvsum/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://people.csail.mit.edu/yalesong/tvsum/tvsum50_ver_1_1.tgz",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://proceedings.mlr.press/v139/radford21a.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/416f9cb3276121c42eebb86352a4354a-Abstract-Conference.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://pureadmin.qub.ac.uk/ws/files/192986287/ACMMM2019_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://qmro.qmul.ac.uk/xmlui/bitstream/123456789/62042/15/Apostolidis%20A%20Stepwise,%20Label%202019%20Accepted.pdf",
+    "status": "retry",
+    "detail": "Remote end closed connection without response"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/KaiyangZhou/pytorch-vsumm-reinforce/master/vsum_tools.py",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://researchinnovation.kingston.ac.uk/en/publications/summarizing-videos-with-attention-4/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://slazebni.cs.illinois.edu/publications/cvpr17_summarization.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://sumin-kim.com/TripleSumm-page/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://tvr.cs.unc.edu/",
+    "status": "retry",
+    "detail": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+  },
+  {
+    "url": "https://videoxum.github.io/",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://vigir.missouri.edu/~gdesouza/Research/Conference_CDs/ECCV_2014/html/8695/86950505/esm2.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://vision.cs.utexas.edu/projects/egocentric/download_register.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://vision.cs.utexas.edu/projects/egocentric_data/UT_Egocentric_Dataset.html",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://vision.cs.utexas.edu/projects/egocentric_data/egocentric_GT.zip",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://web.engr.oregonstate.edu/~sinisa/research/publications/cvpr17_summarization.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.cs.utexas.edu/~grauman/papers/nips14_seqdpp.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Gygli_Video_Summarization_by_2015_CVPR_paper.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.dropbox.com/s/0jwn4c1ccjjysrz/pretrain_ab_basic.zip",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.dropbox.com/s/2hjngmb0f97nxj0/pretrain_af_basic.zip",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.dropbox.com/s/7rtbyeo64hk8ot7/newUserSummary.zip?dl=1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.dropbox.com/s/bpy41o2zglk4ka4/video_summarization.zip?dl=0",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.dropbox.com/s/bpy41o2zglk4ka4/video_summarization.zip?dl=1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.dropbox.com/s/g0e64b4qfnuual1/database.zip?dl=1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.dropbox.com/s/ilt1jpclzs2o18v/UserSummary.zip?dl=1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.dropbox.com/s/tdknvkpz1jp6iuz/dsnet_datasets.zip",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.dropbox.com/s/wxpj91cm9m3ikn0/newDatabase.zip?dl=1",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123700171.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.iti.gr/~bmezaris/publications/ism2021a_preprint.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.iti.gr/~bmezaris/publications/mmm2020_lncs11961_1_preprint.pdf",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S0031320314002933",
+    "status": "restricted",
+    "code": 403
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S0031320322003211",
+    "status": "restricted",
+    "code": 403
+  },
+  {
+    "url": "https://zenodo.org/api/records/4682137/files/msva_video_summarization.tar/content",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://zenodo.org/api/records/4884870/files/datasets.tar/content",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://zenodo.org/records/4682137",
+    "status": "ok",
+    "code": 200
+  },
+  {
+    "url": "https://zenodo.org/records/4884870",
+    "status": "ok",
+    "code": 200
+  }
+]

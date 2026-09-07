@@ -1,0 +1,222 @@
+[
+  {
+    "id": "qfvs",
+    "title": "Query-Focused Video Summarization: Dataset, Evaluation, and A Memory Network Based Approach",
+    "venue": "CVPR 2017",
+    "paper_url": "https://arxiv.org/pdf/1707.04960",
+    "project_url": "https://openaccess.thecvf.com/content_cvpr_2017/html/Sharghi_Query-Focused_Video_Summarization_CVPR_2017_paper.html",
+    "encoders": "70 SentiBank detector scores plus six contextual correlation features",
+    "sampling": "Eight frames per 5-second shot; ten shots per sequential segment",
+    "architecture": "Query attends to frames through a memory network; resulting shot embeddings parameterize the sequential DPP.",
+    "fusion": "Query/frame attention",
+    "objective": "Section 4.3: maximize training-summary log likelihood; SGD learns embeddings, validation selects epochs and learning rate.",
+    "training_data": "QFVS query-summary annotation layer on UTE",
+    "test_data": "Four UTE source videos with QFVS references",
+    "split": "Four rounds: two training, one validation and one test video",
+    "budget": "Main experiment unconstrained; separate 10/20-shot annotations reserved for future work",
+    "postprocessing": "Sequential shot-subset selection using learned DPP",
+    "code_url": "Not independently verified",
+    "code_status": "Paper links dataset/evaluation release at www.aidean-sharghi.com/cvpr2017; endpoint failed fetch",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "Feature definition in paper; released tensors Not independently verified",
+    "reproducibility": "Primary paper read; no artifact download or execution.",
+    "limitations": "Only four source videos; concept-based F1 has a different meaning from temporal-overlap F1.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Aidean Sharghi",
+      "Jacob S. Laurel",
+      "Boqing Gong"
+    ],
+    "year": 2017,
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "Query-focused video summarization"
+    ],
+    "outputs": [
+      "Query-conditioned shot subset"
+    ],
+    "mechanisms": [
+      "Memory network",
+      "Sequential determinantal point process"
+    ],
+    "metrics": [
+      "Concept-IoU bipartite-matching precision",
+      "Concept-IoU bipartite-matching recall",
+      "Concept-IoU bipartite-matching F1"
+    ],
+    "sources": [
+      "https://arxiv.org/pdf/1707.04960"
+    ]
+  },
+  {
+    "id": "cosum",
+    "title": "Video Co-summarization: Video Summarization by Visual Co-occurrence",
+    "venue": "CVPR 2015",
+    "paper_url": "https://people.csail.mit.edu/yalesong/publications/ChuSJ2015CVPR.pdf",
+    "project_url": "https://github.com/l2ior/cosum",
+    "encoders": "CENTRIST, Dense-SIFT and HSV moments; concatenate and PCA-reduce to 400-D",
+    "sampling": "Provided shot boundaries; exact frame sampling Not independently verified",
+    "architecture": "Find mutually similar shot groups across topic-related videos using a bipartite graph.",
+    "fusion": "Visual descriptors from multiple videos",
+    "objective": "Section 3.4, Eq. 4: maximize weighted co-occurrence minus L1 sparsity penalties under pairwise similarity constraints; relaxed alternating updates.",
+    "training_data": "No human-summary training labels; joint optimization on the input video group",
+    "test_data": "CoSum: 51 video instances in ten groups; additional CMU-Mocap experiment",
+    "split": "Collection-level unsupervised setting; no canonical training/test partition",
+    "budget": "Evaluate top five and top fifteen shots",
+    "postprocessing": "Rank shots by co-occurrence quality; select highest-ranked shots",
+    "code_url": "https://github.com/l2ior/cosum",
+    "code_status": "Official dataset/annotation and shot-index release; full algorithm implementation not independently verified",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "Paper describes handcrafted descriptors; ready-made tensor release not found in inspected repository",
+    "reproducibility": "Paper and official data README inspected; video URLs were not downloaded.",
+    "limitations": "Repeated visual content is a relevance proxy; source groups influence the summary. Input-group access must be recorded.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Wen-Sheng Chu",
+      "Yale Song",
+      "Alejandro Jaimes"
+    ],
+    "year": 2015,
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "Multi-video co-summarization",
+      "Query-specific video summarization"
+    ],
+    "outputs": [
+      "Ranked shots per video"
+    ],
+    "mechanisms": [
+      "Cross-video visual co-occurrence",
+      "Maximal biclique finding",
+      "Sparse graph selection"
+    ],
+    "metrics": [
+      "mAP@5 shots",
+      "mAP@15 shots",
+      "Human concept-visualization ratings"
+    ],
+    "sources": [
+      "https://people.csail.mit.edu/yalesong/publications/ChuSJ2015CVPR.pdf",
+      "https://github.com/l2ior/cosum"
+    ]
+  },
+  {
+    "id": "summscreen",
+    "title": "SummScreen: A Dataset for Abstractive Screenplay Summarization",
+    "venue": "ACL 2022, Volume 1: Long Papers, 8602–8615",
+    "paper_url": "https://aclanthology.org/2022.acl-long.589/",
+    "project_url": "https://github.com/mingdachen/SummScreen",
+    "encoders": "Longformer encoder for neural baseline; text only",
+    "sampling": "Transcript lines terminated by special EOS tokens; no video frames",
+    "architecture": "Decoder attends to line-ending encoder vectors; paper also benchmarks nearest-neighbor and hybrid variants.",
+    "fusion": "No audiovisual fusion",
+    "objective": "Supervised transcript-to-recap learning; precise loss formula Not independently verified",
+    "training_data": "SummScreen-FD and SummScreen-TMS training transcripts/recaps",
+    "test_data": "Separate FD and TMS test sets",
+    "split": "FD train/dev/test 3673/338/337; TMS 18915/1795/1793",
+    "budget": "Text output, no temporal duration budget",
+    "postprocessing": "Author repository supplies beam-search generation script; record selected beam size",
+    "code_url": "https://github.com/mingdachen/SummScreen",
+    "code_status": "Official training/generation scripts and tokenized/untokenized data links inspected",
+    "framework": "Python 3.7; PyTorch 1.11.0; Transformers 4.16.2",
+    "weights": "Not independently verified",
+    "features": "Tokenized text with BPE files; no raw video or visual feature archive",
+    "reproducibility": "Paper and README read; scripts not run, checkpoints not verified. Untokenized extra instances require split filename matching.",
+    "limitations": "Transcript dataset, not native video-summary supervision. Community recaps require factuality checks beyond lexical overlap.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Mingda Chen",
+      "Zewei Chu",
+      "Sam Wiseman",
+      "Kevin Gimpel"
+    ],
+    "year": 2022,
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "Abstractive transcript summarization; adjacent to video summarization"
+    ],
+    "outputs": [
+      "Textual episode recap"
+    ],
+    "mechanisms": [
+      "Longformer encoder",
+      "Transformer decoder",
+      "Nearest-neighbor baselines"
+    ],
+    "metrics": [
+      "ROUGE",
+      "BLEU",
+      "Entity-centric character and relation metrics",
+      "Human faithfulness evaluation"
+    ],
+    "sources": [
+      "https://aclanthology.org/2022.acl-long.589/",
+      "https://aclanthology.org/2022.acl-long.589.pdf",
+      "https://github.com/mingdachen/SummScreen"
+    ]
+  },
+  {
+    "id": "hierarchical3d",
+    "title": "Hierarchical3D Adapters for Long Video-to-text Summarization",
+    "venue": "Findings of EACL 2023, 1297–1320",
+    "paper_url": "https://aclanthology.org/2023.findings-eacl.96/",
+    "project_url": "https://github.com/ppapalampidi/long_video_summarization",
+    "encoders": "BART; Sentence-BERT; CLIP; SlowFast; YAMNet",
+    "sampling": "Modalities aligned and mean-pooled to utterances; 60 selected utterances at inference",
+    "architecture": "Frozen textual summarizer augmented with trainable multimodal projection and hierarchical adapters.",
+    "fusion": "Utterance-level multimodal tokens and textual token representations",
+    "objective": "Summary-token negative log likelihood plus encoder MLM during first 1500 steps (Section 4.3, Eqs. 2–3). Optional learned selector uses BCE.",
+    "training_data": "SummScreen3D training episode/recap pairs; pretrained textual summarizer",
+    "test_data": "SummScreen3D multimodal extension of SummScreen-TMS",
+    "split": "3983 training episodes (calculated), 296 validation, 296 test; 5199 training episode-summary pairs",
+    "budget": "BART input context: 60 utterances; no 15% visual-summary budget",
+    "postprocessing": "Original utterance order; beam size 5 and trigram blocking",
+    "code_url": "https://github.com/ppapalampidi/long_video_summarization",
+    "code_status": "Official transcripts, captions, summaries, split IDs and downloader inspected; complete adapter training implementation not independently verified",
+    "framework": "Python downloader; training framework/version Not independently verified",
+    "weights": "Not independently verified",
+    "features": "Paper specifies CLIP/SlowFast/Sentence-BERT/YAMNet; no ready-made feature archive verified",
+    "reproducibility": "Primary paper and author repository read; no video download, feature extraction or model run.",
+    "limitations": "Shared episodes with SummScreen-TMS; content selection discards context before decoding. Lexical overlap alone does not establish factuality.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Pinelopi Papalampidi",
+      "Mirella Lapata"
+    ],
+    "year": 2023,
+    "supervision": [
+      "supervised",
+      "self-supervised"
+    ],
+    "tasks": [
+      "Long video-to-text summarization"
+    ],
+    "outputs": [
+      "Multi-sentence episode recap"
+    ],
+    "mechanisms": [
+      "Hierarchical adapters",
+      "Multimodal fusion",
+      "Content selection",
+      "Auxiliary masked-language modeling"
+    ],
+    "metrics": [
+      "ROUGE F1",
+      "Named-entity QA accuracy",
+      "Noun QA accuracy"
+    ],
+    "sources": [
+      "https://aclanthology.org/2023.findings-eacl.96/",
+      "https://aclanthology.org/2023.findings-eacl.96.pdf",
+      "https://github.com/ppapalampidi/long_video_summarization"
+    ]
+  }
+]
