@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Results registry",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "paper_id",
+      "method",
+      "dataset_id",
+      "dataset",
+      "split",
+      "training_regime",
+      "setting",
+      "features",
+      "sampling",
+      "segmentation",
+      "shot_aggregation",
+      "budget",
+      "solver",
+      "reference_aggregation",
+      "metric",
+      "unit",
+      "runs",
+      "variance",
+      "source_url",
+      "source_location",
+      "reproduction",
+      "comparability_notes",
+      "verified_on",
+      "value",
+      "split_identity"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "paper_id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "method": {
+        "type": "string",
+        "minLength": 1
+      },
+      "dataset_id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "dataset": {
+        "type": "string",
+        "minLength": 1
+      },
+      "split": {
+        "type": "string",
+        "minLength": 1
+      },
+      "training_regime": {
+        "type": "string",
+        "minLength": 1
+      },
+      "setting": {
+        "type": "string",
+        "minLength": 1
+      },
+      "features": {
+        "type": "string",
+        "minLength": 1
+      },
+      "sampling": {
+        "type": "string",
+        "minLength": 1
+      },
+      "segmentation": {
+        "type": "string",
+        "minLength": 1
+      },
+      "shot_aggregation": {
+        "type": "string",
+        "minLength": 1
+      },
+      "budget": {
+        "type": "string",
+        "minLength": 1
+      },
+      "solver": {
+        "type": "string",
+        "minLength": 1
+      },
+      "reference_aggregation": {
+        "type": "string",
+        "minLength": 1
+      },
+      "metric": {
+        "type": "string",
+        "minLength": 1
+      },
+      "unit": {
+        "type": "string",
+        "minLength": 1
+      },
+      "runs": {
+        "type": "string",
+        "minLength": 1
+      },
+      "variance": {
+        "type": "string",
+        "minLength": 1
+      },
+      "source_url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "source_location": {
+        "type": "string",
+        "minLength": 1
+      },
+      "reproduction": {
+        "enum": [
+          "author-reported",
+          "independently-reproduced"
+        ]
+      },
+      "comparability_notes": {
+        "type": "string",
+        "minLength": 1
+      },
+      "verified_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "value": {
+        "type": "number"
+      },
+      "split_identity": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

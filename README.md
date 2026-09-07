@@ -1,184 +1,55 @@
-# Awesome Unsupervised Video Summarization
+# Awesome Video Summarization
 
-An evidence-audited handbook, implementation guide, and protocol-aware benchmark survey for **extractive video summarization without human summary labels as selector targets**.
+A research handbook and practical learning guide to video summarization: classical and supervised methods, weak/semi/self-supervision, unsupervised and reinforcement learning, training-free selection, multimodal foundation models, and query or user-conditioned systems. It covers keyframes, keyshots, textual and multimodal summaries, with source-linked code, datasets and protocol-aware benchmarks.
 
-**Research and link-audit cut:** 2026-09-06 UTC.
+**Last literature audit: 2026-09-08.** Coverage is selective and dated; [the ledger](docs/15-coverage.md) distinguishes newly verified entries from inherited technical audits. Source availability does not imply successful reproduction.
 
-This repository treats a reported score as a tuple—not as a standalone number:
+**Start learning:** [Learning path](docs/16-learning-path.md) · **Find a paper:** [Catalog](docs/generated/papers.md) · **Find code:** [Implementations](docs/13-implementations.md) · **Compare results:** [Benchmarks](docs/12-benchmarks.md)
 
-$$
-(\text{data},\ \text{split},\ \text{features},\ \text{sampling},\ \text{segmentation},\ \text{budget solver},\ \text{reference aggregation},\ \text{metric}).
-$$
+## Read the handbook
 
-Two values are placed in the same leaderboard row only when that tuple is compatible. This is essential on SumMe and TVSum: segmentation, shot-value pooling, summary construction, and user-reference aggregation can move F1 substantially without changing a learned selector.
+| Foundation | Method families | Practice and research |
+|---|---|---|
+| [History and field overview](docs/00-overview.md) | [Classical and supervised](docs/06-classical-supervised.md) | [Task-specific settings](docs/11-task-settings.md) |
+| [Taxonomy and formulations](docs/05-taxonomy.md) | [Reconstruction and generative](docs/04-reconstruction-generative.md) | [Protocol-separated benchmarks](docs/12-benchmarks.md) |
+| [Mathematical foundations](docs/01-foundations.md) | [RL and heuristic selection](docs/07-reinforcement-heuristics.md) | [Code, features and weights](docs/13-implementations.md) |
+| [Evaluation and failure modes](docs/02-evaluation.md) | [Contrastive and self-supervised](docs/08-contrastive-self-supervised.md) | [Open problems](docs/14-open-problems.md) |
+| [Datasets and annotations](docs/03-datasets.md) | [Graphs, attention and Transformers](docs/09-graphs-attention.md) | [Coverage and research gaps](docs/15-coverage.md) |
+| [Hands-on learning path](docs/16-learning-path.md) | [Multimodal, VLM and Video-LLM](docs/10-foundation-models.md) | [Changelog](CHANGELOG.md) |
 
-## Handbook
+## Choose a task, then a protocol
 
-| Chapter | What it answers |
+| Axis | Examples |
 |---|---|
-| [Foundations and architecture blueprints](docs/01-foundations.md) | What is being optimized? What counts as unsupervised, self-supervised, training-free, or zero-shot? How do the four principal system families differ? |
-| [Evaluation protocols and failure modes](docs/02-evaluation.md) | How are binary summaries constructed and scored? Why can random-score summaries or simple temporal baselines look competitive? Which protocol details make results incomparable? |
-| [Dataset and feature registry](docs/03-datasets.md) | What do SumMe, TVSum, OVP/YouTube, VideoXum, ActivityNet-QA, UT Egocentric, and CoSum actually contain? Where are the authoritative raw data, annotations, and verified feature artifacts? |
-| [Reconstruction and generative methods](docs/04-reconstruction-generative.md) | How do SUM-GAN, Cycle-SUM, CSNet, SUM-GAN-AAE, and later reconstruction systems work mathematically, and what is reproducible today? |
+| Supervision | Supervised, weak/semi/self-supervised, unsupervised, training-free, zero/few-shot |
+| Output | Storyboard, keyshot skim, highlight, text, multimodal, timestamp/event summary |
+| Setting | Generic, query-focused, personalized, multi-video, egocentric, long-form, online |
+| Mechanism | Clustering, sparse/submodular/DPP, recurrent, reconstruction/GAN, RL, graph/attention, contrastive, VLM/LLM, diffusion |
 
-The current milestone deliberately goes deep on the shared foundation and the first paradigm. Later paper-ledger expansions will retain the same evidence and protocol requirements.
+These axes are independent. The four original unsupervised families remain a [sub-taxonomy](docs/01-foundations.md#3-four-useful-unsupervised-system-families). Supervised methods are core reading, including methods whose frozen encoders or auxiliary contrastive losses can obscure their human-label dependence.
 
-## Four-paradigm map
+## Datasets and results
 
-Methods are assigned by the **dominant learning signal applied to the selector**. Secondary tags such as `GAN`, `graph`, `audio`, `CLIP`, and `LLM` do not override that rule.
+SumMe and TVSum support classic importance-to-skim studies; VideoXum supports visual and textual summaries; query and egocentric resources have their own annotations and metrics. MoSu adds behavior-derived multimodal importance targets. QA and grounding resources remain explicitly adjacent. See [dataset cards](docs/generated/datasets.md) for licensing, availability, features and unresolved fields.
 
-| # | Paradigm | Dominant learning signal | Typical machinery |
-|---:|---|---|---|
-| 1 | **Reconstruction & Generative** | Preserve enough information to reconstruct the input or match its distribution | AE/VAE, adversarial learning, cycle consistency |
-| 2 | **DRL & Heuristic Scoring** | Maximize an explicit subset reward | REINFORCE, actor–critic, clustering, diversity/coverage rewards |
-| 3 | **Contrastive & Self-Supervised** | Solve supervision constructed from the video itself | Temporal contrast, masked prediction, mutual-information proxies |
-| 4 | **Multimodal Foundation Models & Zero-Shot** | Reuse pretrained semantic alignment or prompted reasoning | CLIP-style scoring, audio/text fusion, Video-LLM proposals |
+A score is meaningful only with its split, training data, features, sampling, segmentation, shot values, budget solver, reference aggregation and metric. The [generated benchmark catalog](docs/12-benchmarks.md) isolates unknown/incompatible protocols and distinguishes author-reported values from reproduced ones. It does not assert a field-wide winner.
 
-## Canonical system interfaces
+Recent starting points include **TripleSumm** (ICLR 2026), **SummDiff**, **LLMVS**, **V2Xum-LLM**, **SD-VSum** and **CoE**. The [modern-method audit](docs/10-foundation-models.md) explains their actual training signals and output differences, including TripleSumm's source-pretraining, fine-tuning and direct-transfer distinction.
 
-These schematics define reusable interfaces, not a claim that every paper implements every block.
+## Run a first experiment
 
-<details open>
-<summary><strong>Cycle-consistent adversarial reconstruction</strong></summary>
+No model or dataset download is needed for the synthetic decoder example:
 
-```mermaid
-flowchart TD
-    A["Original features O"] --> B["Temporal selector"]
-    B --> C["Gated summary S"]
-    C --> D1["Forward generator G_f"]
-    D1 --> E1["Reconstructed O-hat"]
-    E1 --> F1["Backward generator G_b"]
-    F1 --> G1["Summary cycle S-cycle"]
-    A --> F2["Backward generator G_b"]
-    F2 --> E2["Reconstructed S-hat"]
-    E2 --> D2["Forward generator G_f"]
-    D2 --> G2["Video cycle O-cycle"]
-    A --> H["Video-domain critic"]
-    E1 --> H
-    C --> I["Summary-domain critic"]
-    E2 --> I
-    B --> J["KTS + shot scores + knapsack"]
+```bash
+python3 examples/summary_baselines.py --demo
 ```
 
-</details>
+Change shot lengths, scores and budget to see how knapsack and user-reference aggregation affect the output. Continue with the [learning path](docs/16-learning-path.md) and [source-audited resources](docs/generated/resources.md), including official implementations, author presentations, tutorials, feature archives and checkpoints.
 
-<details>
-<summary><strong>DRL diversity–representativeness loop</strong></summary>
+## Contribute and maintain
 
-```mermaid
-flowchart TD
-    A["Video features"] --> B["Policy or actor"]
-    B --> C["Frame actions"]
-    C --> D["Selected subset"]
-    A --> E["Diversity + representativeness + budget reward"]
-    D --> E
-    E --> F["Policy-gradient or critic update"]
-    F --> B
-```
+[CONTRIBUTING.md](CONTRIBUTING.md) defines evidence, schemas and validation. Edit registries under [data/](data/), then run `python3 scripts/generate_catalog.py`. The [documentation workflow](.github/workflows/validate.yml) checks schemas, generated files, Markdown, mathematics, Mermaid and tests. The [weekly external-link workflow](.github/workflows/link-audit.yml) reports restricted access separately from missing links.
 
-</details>
+## Citation and license
 
-<details>
-<summary><strong>CLIP-style cross-modal scoring</strong></summary>
-
-```mermaid
-flowchart TD
-    A["Frames or clips"] --> B["Visual encoder"]
-    C["Prompt, ASR, or metadata"] --> D["Text encoder"]
-    B --> E["Normalized temporal embeddings"]
-    D --> F["Normalized semantic embeddings"]
-    E --> G["Calibrated similarity + temporal fusion"]
-    F --> G
-    G --> H["Budgeted keyshots"]
-```
-
-</details>
-
-<details>
-<summary><strong>Video-LLM prompt-guided selection</strong></summary>
-
-```mermaid
-flowchart TD
-    A["Candidate clips"] --> B["Video-LLM + selection prompt"]
-    B --> C["Structured timestamp proposals"]
-    C --> D["Schema and timeline validator"]
-    D --> E["Deduplication + budget optimizer"]
-    E --> F["Keyframes or keyshots"]
-```
-
-</details>
-
-## Evidence policy
-
-Every paper entry must include:
-
-- full citation and venue;
-- supervision category and backbone;
-- selector, temporal/fusion module, and objective terms;
-- dataset split, feature artifact, summary budget, post-processing, reference aggregation, and metric;
-- official/community/unavailable code status, framework, tested commit or release, and weight availability;
-- reported scores copied from the primary paper, with protocol caveats beside the number.
-
-Artifact labels are strict:
-
-| Label | Meaning |
-|---|---|
-| **Official** | Released by the dataset or method authors through a paper-linked project/repository. |
-| **Author archive** | Released by authors in a durable research archive, but not part of the canonical dataset distribution. |
-| **Community** | Third-party conversion, mirror, or reimplementation; useful but not provenance-equivalent. |
-| **Not verified** | A claim or link appears in secondary material but could not be tied to a working primary artifact. |
-| **Not released** | The primary source does not advertise a public artifact. |
-
-Absence is reported honestly. In particular, there is no single official bundle containing interchangeable GoogLeNet pool5, ResNet-101, I3D, CLIP-ViT, and VideoMAE tensors for all benchmark datasets.
-
-## Minimal reproducibility record
-
-```yaml
-dataset: SumMe
-split_ids: path-or-hash
-raw_video_hashes: path-or-manifest
-sampling:
-  fps: 2
-  index_rule: explicit
-features:
-  backbone: GoogLeNet
-  checkpoint: ImageNet
-  layer: pool5
-  dimension: 1024
-  preprocessing: documented
-segmentation:
-  algorithm: KTS
-  input_timeline: sampled-or-full
-  parameters: documented
-selection:
-  shot_value: mean-or-duration-weighted
-  solver: exact-01-knapsack
-  budget_fraction: 0.15
-evaluation:
-  reference_aggregation: max-or-mean
-  metrics: [f1, kendall_tau, spearman_rho]
-training:
-  seeds: []
-  checkpoint_rule: documented
-```
-
-## Benchmark reading rule
-
-Do **not** interpret the largest F1 in a paper table as the best summarizer until the following are identical: split regime, transferred/augmented data, feature backbone and sampling rate, KTS boundaries, shot-value definition, 15% capacity rounding, exact versus greedy selection, and reference aggregation. The [evaluation chapter](docs/02-evaluation.md) gives the equations and concrete failure cases.
-
-## Contributing
-
-Contributions should improve evidence quality, reproducibility, or coverage—not merely append a URL. See [CONTRIBUTING.md](CONTRIBUTING.md) for the paper-entry schema and audit checklist.
-
-A pinned [weekly link-audit workflow](.github/workflows/link-audit.yml) also runs on documentation pull requests and changes to `main`; HTTP 403/429 responses are tolerated because several publisher pages reject automated clients, while genuine missing links still fail the check.
-
-## Scope and non-claims
-
-- This is a survey and reproducibility reference, not an endorsement of the licenses or continued availability of hosted videos.
-- ActivityNet-QA is catalogued as an **auxiliary video-language resource**, not as a drop-in SumMe/TVSum summarization benchmark.
-- Zero-shot use of a foundation model does not prove that its upstream pretraining data excluded public benchmark videos; contamination status is **unknown** unless audited.
-- “C-F1” is not treated as a universal metric name. Any paper using it must supply its exact matching rule and equation; see the evaluation chapter.
-
-## License
-
-Released under the [MIT License](LICENSE).
+Use [CITATION.cff](CITATION.cff) to cite this handbook with the revision you used, and cite original papers/datasets for their methods and results. The repository is [MIT licensed](LICENSE); linked code, datasets, media and model weights retain their own licenses.

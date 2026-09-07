@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Handbook validation dependencies and transient audit output
+node_modules/
+link-report.json

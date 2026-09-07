@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://kingston.box.com/shared/static/2u2nqelxsptzefp1mno4z28kimmbljw2.zip",
+    "status_code": 404,
+    "verified_on": "2026-09-08",
+    "reason": "Historical VASNet checkpoint archive advertised by the author README. Retained as provenance; no replacement checkpoint verified. Recheck on every audit."
+  },
+  {
+    "url": "https://kingston.box.com/shared/static/zefb0i17mx3uvspgx70hovt9rr2qnv7y.zip",
+    "status_code": 404,
+    "verified_on": "2026-09-08",
+    "reason": "Historical VASNet data archive advertised by the author README. Retained as provenance; consult the alternative method-author feature packages. Recheck on every audit."
+  }
+]

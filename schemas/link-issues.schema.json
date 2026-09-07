@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Exact known missing external links",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["url", "status_code", "verified_on", "reason"],
+    "properties": {
+      "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+      "status_code": {"enum": [404, 410]},
+      "verified_on": {"type": "string", "format": "date"},
+      "reason": {"type": "string", "minLength": 30}
+    }
+  }
+}

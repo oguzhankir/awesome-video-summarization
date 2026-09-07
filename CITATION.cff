@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Please cite the handbook revision you used and the original research sources."
+title: "Awesome Video Summarization"
+type: software
+authors:
+  - family-names: "KIR"
+    given-names: "Oğuzhan"
+repository-code: "https://github.com/oguzhankir/awesome-video-summarization"
+license: MIT

@@ -1,0 +1,673 @@
+[
+  {
+    "id": "triplesumm",
+    "title": "TripleSumm: Adaptive Triple-Modality Fusion for Video Summarization",
+    "authors": [
+      "Sumin Kim",
+      "Hyemin Jeong",
+      "Mingu Kang",
+      "Yejin Kim",
+      "Yoori Oh",
+      "Joonseok Lee"
+    ],
+    "venue": "ICLR",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2603.01169",
+    "project_url": "https://sumin-kim.com/TripleSumm-page/",
+    "supervision": [
+      "supervised",
+      "weakly-supervised",
+      "zero-shot"
+    ],
+    "tasks": [
+      "generic video summarization",
+      "multimodal video summarization",
+      "long-form transfer"
+    ],
+    "outputs": [
+      "frame importance",
+      "keyshots"
+    ],
+    "mechanisms": [
+      "supervised importance regression",
+      "multiscale temporal attention",
+      "adaptive trimodal fusion"
+    ],
+    "encoders": "MoSu: CLIP ViT-L/14, RoBERTa-base, AST; external datasets use existing visual features plus generated captions/audio.",
+    "sampling": "MoSu: 1 visual/text/audio feature per second; audio uses centered 10-second windows.",
+    "architecture": "Alternating temporal and cross-modal blocks; D=128; sigmoid score head (Appendix A.1).",
+    "fusion": "Per-frame fusion tokens combine visual, text and audio; temporal windows grow 5,15,45,N.",
+    "objective": "Section 3.3 Eq. (7): L = ||S - S_hat||_2^2 against importance targets; no reconstruction objective.",
+    "training_data": "MoSu replay-derived targets; separately target-dataset supervision or MoSu pretraining then target fine-tuning.",
+    "test_data": "MoSu; Mr. HiSum; SumMe; TVSum; separate 50-video long-form set.",
+    "split": "MoSu: 42,152 train / 5,263 validation / 5,263 test. SumMe/TVSum: TV 5-fold (4 train,1 evaluation) versus TVT (3 train,1 validation,1 test), Appendix B.5.",
+    "budget": "15% duration for keyshots (Appendix A.2); mAP uses a distinct segment-ranking protocol.",
+    "postprocessing": "KTS, mean shot score, 0/1 knapsack; not applied to raw-score rank correlations.",
+    "metrics": [
+      "Kendall tau",
+      "Spearman rho",
+      "mAP@50",
+      "mAP@15"
+    ],
+    "code_url": "https://github.com/smkim37/TripleSumm",
+    "code_status": "Official",
+    "framework": "PyTorch 2.5.1; Python 3.10; CUDA 12.1 (repository).",
+    "weights": "Official MoSu and Mr. HiSum checkpoints at https://huggingface.co/smkim37/TripleSumm (MIT); not executed.",
+    "features": "MoSu card: https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu; three (N,768) feature arrays per video, metadata, GT and split files; CC-BY-4.0.",
+    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
+    "limitations": "Supervised/weak target regression; zero-shot denotes MoSu-to-long-video transfer only. Main Table 2 and Appendix Table XI agree, but Appendix D prose gives different MoSu rank values. External-dataset captioner is Qwen2.5-VL-7B-Instruct in Section 5.1 versus the Qwen/Qwen2-VL-7B-Instruct link in Appendix B.4; resolve model/cache provenance. Missing-modality and feature-extraction costs must be tracked.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2603.01169v1",
+      "https://openreview.net/pdf?id=x74NsHGywD",
+      "https://github.com/smkim37/TripleSumm",
+      "https://sumin-kim.com/TripleSumm-page/",
+      "https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu",
+      "https://huggingface.co/smkim37/TripleSumm"
+    ]
+  },
+  {
+    "id": "videoxum",
+    "title": "VideoXum: Cross-modal Visual and Textural Summarization of Videos",
+    "authors": [
+      "Jingyang Lin",
+      "Hang Hua",
+      "Ming Chen",
+      "Yikang Li",
+      "Jenhao Hsiao",
+      "Chiuman Ho",
+      "Jiebo Luo"
+    ],
+    "venue": "IEEE Transactions on Multimedia 26:5548-5560 (2024); accepted 2023",
+    "year": 2024,
+    "paper_url": "https://arxiv.org/abs/2303.12060",
+    "project_url": "https://videoxum.github.io/",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "video-to-video",
+      "video-to-text",
+      "joint visual-text summarization"
+    ],
+    "outputs": [
+      "selected frames",
+      "text summary"
+    ],
+    "mechanisms": [
+      "multitask supervised learning",
+      "vision-language encoder-decoder"
+    ],
+    "encoders": "BLIP visual encoder and pretrained text decoder; VTSUM-BLIP baseline.",
+    "sampling": "1 frame per second in VideoXum representation.",
+    "architecture": "Shared video representation feeds frame-importance and text-generation decoders.",
+    "fusion": "Shared visual encoding supports jointly aligned visual and text outputs.",
+    "objective": "Section IV-B Eqs. (6)-(7): frame binary cross-entropy plus autoregressive text negative log likelihood; overall multitask objective Section IV-C.",
+    "training_data": "VideoXum human summary annotations derived from ActivityNet Captions.",
+    "test_data": "VideoXum.",
+    "split": "8,000 train / 2,001 validation / 4,000 test videos (Section III-A).",
+    "budget": "Paper: intended top 15% of frames. Inspected F1 helper keeps scores >= the zero-based threshold at floor(0.15*N), selecting floor(0.15*N)+1 frames with distinct scores and possibly more with ties.",
+    "postprocessing": "Frame threshold selection, not KTS keyshots. F1 is computed for each human mask and aggregated; the rank-metric path compares scores with the mean of ten masks. VT-CLIPScore uses a separate top-k path.",
+    "metrics": [
+      "F1",
+      "Kendall tau",
+      "Spearman rho",
+      "BLEU",
+      "METEOR",
+      "ROUGE-L",
+      "CIDEr",
+      "VT-CLIPScore"
+    ],
+    "code_url": "https://github.com/jylins/videoxum",
+    "code_status": "Official",
+    "framework": "PyTorch; repository documents Python 3.8 / PyTorch 1.10.1.",
+    "weights": "Official model zoo on Hugging Face linked by repository.",
+    "features": "Author-provided annotations and model/feature preparation instructions.",
+    "reproducibility": "Primary paper and selected source inspected at commit 11bd4fe3fb51b7dc804dd1519a4914f67bff60df; no model execution or independent result reproduction.",
+    "limitations": "Repository badge uses TMM 2023; archival volume is 2024. Released F1 threshold can exceed the intended 15% frame budget. F1 reference averaging and correlation against the mean reference are distinct; neither is the classic KTS keyshot protocol.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2303.12060v3",
+      "https://videoxum.github.io/",
+      "https://github.com/jylins/videoxum",
+      "https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/utils.py#L255-L281",
+      "https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/eval_v2vt_sum.py#L53-L107"
+    ]
+  },
+  {
+    "id": "a2summ",
+    "title": "Align and Attend: Multimodal Summarization with Dual Contrastive Losses",
+    "authors": [
+      "Bo He",
+      "Jun Wang",
+      "Jielin Qiu",
+      "Trung Bui",
+      "Abhinav Shrivastava",
+      "Zhaowen Wang"
+    ],
+    "venue": "CVPR",
+    "year": 2023,
+    "paper_url": "https://arxiv.org/abs/2303.07284",
+    "project_url": "https://boheumd.github.io/A2Summ/",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "multimodal summarization",
+      "generic video summarization",
+      "livestream summarization"
+    ],
+    "outputs": [
+      "selected video frames",
+      "selected sentences"
+    ],
+    "mechanisms": [
+      "supervised multimodal selection",
+      "contrastive regularization",
+      "alignment-guided self-attention"
+    ],
+    "encoders": "GoogLeNet visual features on SumMe/TVSum; RoBERTa text features; dataset-specific encoders detailed in Appendix B.",
+    "sampling": "Time-stamped video frames and transcript sentences; dataset-dependent sampling.",
+    "architecture": "Multimodal Transformer, modality experts and two importance heads.",
+    "fusion": "Shared segment positional embeddings and alignment-guided self-attention exploit transcript/frame timing.",
+    "objective": "Section 3.4: modality focal classification losses plus inter-sample and intra-sample contrastive terms. Intra-sample positives use ground-truth summaries.",
+    "training_data": "Annotated SumMe/TVSum, Daily Mail/CNN, BLiSS in separate experiments.",
+    "test_data": "SumMe; TVSum; Daily Mail; CNN; BLiSS.",
+    "split": "Dataset-specific splits and standard-video splits in Appendix B; exact split artifacts not independently verified.",
+    "budget": "Dataset-dependent; exact configuration not independently verified.",
+    "postprocessing": "Dataset-dependent visual/text subset selection.",
+    "metrics": [
+      "F1",
+      "Kendall tau",
+      "Spearman rho",
+      "ROUGE-1",
+      "ROUGE-2",
+      "ROUGE-L",
+      "cosine image similarity"
+    ],
+    "code_url": "https://github.com/boheumd/A2Summ",
+    "code_status": "Official",
+    "framework": "PyTorch 1.12.0; Python 3.8.13; CUDA 11.3 (official README).",
+    "weights": "Official README links checkpoint archive on Google Drive; archive contents not downloaded.",
+    "features": "Author feature archive; BLiSS raw-video URLs require contacting authors per README.",
+    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
+    "limitations": "Contrastive losses do not make this label-free: classification and within-example contrast require annotated summaries. BLiSS livestream source does not establish causal online processing.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2303.07284v3",
+      "https://openaccess.thecvf.com/content/CVPR2023/html/He_Align_and_Attend_Multimodal_Summarization_With_Dual_Contrastive_Losses_CVPR_2023_paper.html",
+      "https://boheumd.github.io/A2Summ/",
+      "https://github.com/boheumd/A2Summ"
+    ]
+  },
+  {
+    "id": "lfvs",
+    "title": "Scaling Up Video Summarization Pretraining with Large Language Models",
+    "authors": [
+      "Dawit Mureja Argaw",
+      "Seunghyun Yoon",
+      "Fabian Caba Heilbron",
+      "Hanieh Deilamsalehy",
+      "Trung Bui",
+      "Zhaowen Wang",
+      "Franck Dernoncourt",
+      "Joon Son Chung"
+    ],
+    "venue": "CVPR",
+    "year": 2024,
+    "paper_url": "https://arxiv.org/abs/2404.03398",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "weakly-supervised",
+      "supervised"
+    ],
+    "tasks": [
+      "long-form video summarization",
+      "multimodal video summarization"
+    ],
+    "outputs": [
+      "retrieved summary moments"
+    ],
+    "mechanisms": [
+      "pseudo-summary feature prediction",
+      "autoregressive decoding",
+      "LLM pseudo-label generation"
+    ],
+    "encoders": "CLIP ViT-L/14; SRoBERTa-NLI-large; Whisper for source transcripts.",
+    "sampling": "1 fps.",
+    "architecture": "6-layer visual encoder, 3-layer text encoder, cross-attention and 6-layer summary decoder.",
+    "fusion": "Visual queries attend to transcript keys/values; text masking permits visual-only inference.",
+    "objective": "Section 4.1 Eq. (10): sum_i ||y_hat_i-y_i||^2 including EOS; target is an LLM-derived pseudo-summary, not reconstruction of the full input.",
+    "training_data": "LfVS-P from filtered HowTo100M; timestamp-preserving LLM summaries; target fine-tuning treated separately.",
+    "test_data": "LfVS-T (1,200 professionally annotated videos); SumMe; TVSum.",
+    "split": "LfVS-P pretraining and separate LfVS-T test; classical target-data settings must remain separate.",
+    "budget": "Autoregressive EOS termination; exact external benchmark budget not independently verified.",
+    "postprocessing": "Nearest-neighbor matching of decoded features to input CLIP features, then temporal aggregation.",
+    "metrics": [
+      "F1",
+      "Kendall tau",
+      "Spearman rho"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "Not independently verified",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "Not independently verified",
+    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
+    "limitations": "Depends on speech/visual alignment and teacher-summary quality; pseudo labels constitute external supervision. Public official release not located in inspected primary sources.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2404.03398v1",
+      "https://openaccess.thecvf.com/content/CVPR2024/papers/Argaw_Scaling_Up_Video_Summarization_Pretraining_with_Large_Language_Models_CVPR_2024_paper.pdf"
+    ]
+  },
+  {
+    "id": "v2xum-llm",
+    "title": "V2Xum-LLM: Cross-Modal Video Summarization with Temporal Prompt Instruction Tuning",
+    "authors": [
+      "Hang Hua",
+      "Yunlong Tang",
+      "Chenliang Xu",
+      "Jiebo Luo"
+    ],
+    "venue": "AAAI",
+    "year": 2025,
+    "paper_url": "https://arxiv.org/abs/2404.12353",
+    "project_url": "https://hanghuacs.github.io/v2xum/",
+    "supervision": [
+      "supervised",
+      "weakly-supervised"
+    ],
+    "tasks": [
+      "video-to-video",
+      "video-to-text",
+      "joint visual-text summarization"
+    ],
+    "outputs": [
+      "frame-index tokens",
+      "text summary"
+    ],
+    "mechanisms": [
+      "instruction tuning",
+      "temporally grounded autoregressive decoding"
+    ],
+    "encoders": "CLIP ViT-L/14@336; Vicuna-v1.5-7B/13B.",
+    "sampling": "Downsample input to 100 temporal positions.",
+    "architecture": "Frozen visual encoder, trainable adapter and language decoder.",
+    "fusion": "Interleave visual tokens with textual frame-index prompts; task instruction controls output modality.",
+    "objective": "Training Eq. (4): autoregressive negative log likelihood over output visual-index/text tokens; adapter and language decoder updated.",
+    "training_data": "LCS-558K adapter pretraining; VideoXum/Instruct-V2Xum summarization training; 30,000-video Instruct-V2Xum uses machine-assisted annotation.",
+    "test_data": "VideoXum; Instruct-V2Xum; SumMe; TVSum.",
+    "split": "Dataset-specific task splits; exact split-file identities not independently verified.",
+    "budget": "Task-dependent generated frame indices; exact decoding/budget configuration not independently verified.",
+    "postprocessing": "Temporal-index parsing; Appendix derives importance from language-model logits.",
+    "metrics": [
+      "F1",
+      "Kendall tau",
+      "Spearman rho",
+      "BLEU-4",
+      "METEOR",
+      "ROUGE-L",
+      "CIDEr",
+      "F_CLIP",
+      "Cross-F_CLIP"
+    ],
+    "code_url": "https://github.com/hanghuacs/V2Xum-LLM",
+    "code_status": "Official",
+    "framework": "PyTorch; Python 3.9.",
+    "weights": "Repository links Hugging Face model.",
+    "features": "Dataset and model links available through official project.",
+    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
+    "limitations": "Fine-tuned summarizer, not zero-shot; semantic CLIP metrics are not temporal-overlap F1. Initial arXiv 2024; AAAI publication 2025; inspected v3 updated October 2025.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2404.12353v3",
+      "https://ojs.aaai.org/index.php/AAAI/article/download/32374/34529",
+      "https://github.com/hanghuacs/V2Xum-LLM"
+    ]
+  },
+  {
+    "id": "llmvs",
+    "title": "Video Summarization with Large Language Models",
+    "authors": [
+      "Min Jung Lee",
+      "Dayoung Gong",
+      "Minsu Cho"
+    ],
+    "venue": "CVPR",
+    "year": 2025,
+    "paper_url": "https://arxiv.org/abs/2504.11199",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "generic video summarization"
+    ],
+    "outputs": [
+      "frame importance",
+      "keyshots"
+    ],
+    "mechanisms": [
+      "supervised global importance regression",
+      "LLM local scoring",
+      "caption representations"
+    ],
+    "encoders": "LLaVA-1.5-7B captioner; Llama-2-13B-chat local scorer.",
+    "sampling": "Caption/frame timeline; exact frame-sampling configuration not independently verified.",
+    "architecture": "LLM query/answer embeddings feed dimension reduction and 3 self-attention blocks.",
+    "fusion": "Language bottleneck: frame captions to local windows, then global self-attention.",
+    "objective": "Section 3.5 Eq. (6): mean_t (s_t-s_hat_t)^2 against human frame-importance targets.",
+    "training_data": "SumMe/TVSum; example captions sampled from SumMe training set for in-context prompts.",
+    "test_data": "SumMe; TVSum; separate Mr. HiSum zero-shot ablation.",
+    "split": "Five dataset splits; validation/test independence not established by this audit.",
+    "budget": "Standard short-video budget configuration not independently verified.",
+    "postprocessing": "KTS and shot aggregation (Section 4.2); primary results emphasize rank metrics.",
+    "metrics": [
+      "Kendall tau",
+      "Spearman rho"
+    ],
+    "code_url": "https://github.com/mlee47/LLMVS",
+    "code_status": "Official",
+    "framework": "PyTorch; Python 3.8.",
+    "weights": "Official README links model checkpoints for dataset splits.",
+    "features": "Repository documents captions/LLM embeddings and data download.",
+    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
+    "limitations": "Frozen LLM components do not make the global aggregator training-free. Paper reports 5 A100 GPUs; caption errors and context-window choices affect results.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2504.11199v2",
+      "https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Video_Summarization_with_Large_Language_Models_CVPR_2025_paper.pdf",
+      "https://github.com/mlee47/LLMVS"
+    ]
+  },
+  {
+    "id": "prompts-to-summaries",
+    "title": "Prompts to Summaries: Zero-Shot Language-Guided Video Summarization with Large Language and Video Models",
+    "authors": [
+      "Mario Barbara",
+      "Alaa Maalouf"
+    ],
+    "venue": "arXiv preprint; initial 2025, inspected revision 2026-02-17",
+    "year": 2025,
+    "paper_url": "https://arxiv.org/abs/2506.10807",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "training-free",
+      "zero-shot"
+    ],
+    "tasks": [
+      "generic video summarization",
+      "query-focused summarization",
+      "fine-grained reasoning-guided summarization"
+    ],
+    "outputs": [
+      "scene importance",
+      "frame importance",
+      "video skim"
+    ],
+    "mechanisms": [
+      "prompted semantic scoring",
+      "scene captioning",
+      "heuristic temporal score refinement"
+    ],
+    "encoders": "CLIP ViT-L/14 embeddings; LLaVA/Qwen video captioner; GPT-family scene judge (model ablations).",
+    "sampling": "Appendix A.5: 1 fps full video, 2 fps scenes, batches of 80; Section 3.2 also describes 1 fps scene processing, requiring implementation check.",
+    "architecture": "Scene detection, scene/global captioning, LLM scene judgment and frame score propagation.",
+    "fusion": "Prompt combines scene, global description and optional user query.",
+    "objective": "No gradient objective; Sections 3.3-3.4 define prompted scene scoring, normalization, temporal smoothing and consistency/uniqueness frame weighting.",
+    "training_data": "No selector training; pretrained models. Normalization selected with dataset experiments.",
+    "test_data": "SumMe; TVSum; QFVS; VidSum-Reason.",
+    "split": "No learned selector splits; independence of calibration experiments not established.",
+    "budget": "15% for SumMe/TVSum; 36% for VidSum-Reason, with 3% fragments.",
+    "postprocessing": "Scene/frame weighting and temporal-overlap evaluation; exact subset solver not independently verified.",
+    "metrics": [
+      "F1",
+      "precision",
+      "recall",
+      "Precision-over-Random"
+    ],
+    "code_url": "https://github.com/mario998-hash/ZeroShotVideoSummary",
+    "code_status": "Official",
+    "framework": "Python/PyTorch, LLaVA-NeXT and OpenAI API.",
+    "weights": "Off-the-shelf foundation checkpoints; no task-trained selector checkpoint.",
+    "features": "Repository includes benchmark directories and VidSum-Reason resources.",
+    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
+    "limitations": "Dataset-dependent Min-Max/Exponential normalization; held-out calibration unresolved. README clone command names an older repository. API/model versions and caption-cache provenance required.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2506.10807v3",
+      "https://github.com/mario998-hash/ZeroShotVideoSummary"
+    ]
+  },
+  {
+    "id": "sd-vsum",
+    "title": "SD-VSum: A Method and Dataset for Script-Driven Video Summarization",
+    "authors": [
+      "Manolis Mylonas",
+      "Evlampios Apostolidis",
+      "Vasileios Mezaris"
+    ],
+    "venue": "ACM Multimedia",
+    "year": 2025,
+    "paper_url": "https://arxiv.org/abs/2505.03319",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "script-driven video summarization",
+      "generic multimodal summarization"
+    ],
+    "outputs": [
+      "selected frames",
+      "script-conditioned importance"
+    ],
+    "mechanisms": [
+      "supervised script-conditioned scoring",
+      "cross-modal attention"
+    ],
+    "encoders": "Frozen VideoXum-finetuned CLIP visual/text encoders; 512-dimensional features.",
+    "sampling": "1 fps.",
+    "architecture": "8-head cross-modal attention, Transformer frame scorer and sigmoid head.",
+    "fusion": "Video frames align with sentence embeddings from the desired-summary script.",
+    "objective": "Section 4.2: BCE against the matching annotator summary for script-driven task; MSE against average annotator scores for generic variant.",
+    "training_data": "S-VideoXum: 10 human summaries/video paired with LLaVA-NeXT-Video-generated scripts.",
+    "test_data": "S-VideoXum; S-NewsVSum; generic VideoXum.",
+    "split": "VideoXum train/validation/test partition; each script pairs with its own reference. S-NewsVSum uses 5-fold CV.",
+    "budget": "Top 15% of frames.",
+    "postprocessing": "Frame ranking; average F1 across script-reference pairs, then videos; not best-reference matching.",
+    "metrics": [
+      "F1",
+      "Kendall tau",
+      "Spearman rho"
+    ],
+    "code_url": "https://github.com/IDT-ITI/SD-VSum",
+    "code_status": "Official",
+    "framework": "PyTorch.",
+    "weights": "Official README links pretrained SD-VSum checkpoint.",
+    "features": "Zenodo S-VideoXum release includes CLIP H5 features, labels, split JSON and scripts.",
+    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
+    "limitations": "Machine-generated scripts may encode target-summary artifacts. Generic and script-conditioned losses/references differ; keep results separate.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2505.03319v2",
+      "https://doi.org/10.1145/3746027.3755821",
+      "https://github.com/IDT-ITI/SD-VSum"
+    ]
+  },
+  {
+    "id": "context-pseudo-label",
+    "title": "Context-Aware Pseudo-Label Scoring for Zero-Shot Video Summarization",
+    "authors": [
+      "Yuanli Wu",
+      "Long Zhang",
+      "Yue Du",
+      "Bin Li"
+    ],
+    "venue": "arXiv preprint; venue unverified",
+    "year": 2025,
+    "paper_url": "https://arxiv.org/abs/2510.17501",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "few-shot",
+      "training-free"
+    ],
+    "tasks": [
+      "generic video summarization",
+      "query-focused summarization"
+    ],
+    "outputs": [
+      "scene importance",
+      "frame importance"
+    ],
+    "mechanisms": [
+      "label-assisted rubric construction",
+      "prompted contextual scene scoring"
+    ],
+    "encoders": "Video-language captioner and GPT-5 judge; exact pinned captioner not independently verified.",
+    "sampling": "Scene detector and temporally sampled caption inputs; exact rate not independently verified.",
+    "architecture": "Scene division, captioning, labeled reason/rubric construction, prompted scoring, temporal smoothing.",
+    "fusion": "Scene captions plus neighboring/global captions condition a dataset-specific rubric.",
+    "objective": "No gradient objective; Section 3 uses human-annotated examples to create pseudo scores and rubrics; Section 3.4 defines rubric scoring.",
+    "training_data": "Small human-annotated subset for rubric construction; no gradient training claimed.",
+    "test_data": "SumMe; TVSum; QFVS.",
+    "split": "Disjointness of rubric-construction examples from evaluation videos not independently verified.",
+    "budget": "Exact configuration not independently verified.",
+    "postprocessing": "Scene-to-frame temporal smoothing and dataset-specific evaluation scripts.",
+    "metrics": [
+      "F1",
+      "precision",
+      "recall"
+    ],
+    "code_url": "https://github.com/wuyuanli60-svg/Context-Aware-Pseudo-Label-Scoring-for-Zero-Shot-Video-Summarization",
+    "code_status": "Official",
+    "framework": "Python/PyTorch and OpenAI API.",
+    "weights": "No task-trained selector; off-the-shelf models.",
+    "features": "Scripts and prompt/rubric files released; data paths require preparation.",
+    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
+    "limitations": "The title says zero-shot but rubric construction uses labels; classify as label-assisted calibration. Draft contains placeholder conference/DOI metadata and inaccurate baseline attributions; exclude numerical comparisons pending protocol audit.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2510.17501v3",
+      "https://github.com/wuyuanli60-svg/Context-Aware-Pseudo-Label-Scoring-for-Zero-Shot-Video-Summarization"
+    ]
+  },
+  {
+    "id": "coe",
+    "title": "Cut to the Chase: Training-free Multimodal Summarization via Chain-of-Events",
+    "authors": [
+      "Xiaoxing You",
+      "Qiang Huang",
+      "Lingyu Li",
+      "Xiaojun Chang",
+      "Jun Yu"
+    ],
+    "venue": "CVPR",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2603.06213",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "training-free",
+      "few-shot"
+    ],
+    "tasks": [
+      "multimodal textual video summarization",
+      "cross-domain summarization"
+    ],
+    "outputs": [
+      "text summary"
+    ],
+    "mechanisms": [
+      "structured event reasoning",
+      "hierarchical event graph",
+      "cross-modal grounding"
+    ],
+    "encoders": "Qwen2.5-VL-7B-Instruct default; Whisper for missing transcripts; proprietary LLM calls where configured.",
+    "sampling": "Up to 72 uniformly sampled frames, initially 12 clips; up to 30 frames per merged clip.",
+    "architecture": "Hierarchical Event Graph, spatial grounding, event-evolution reasoning, domain-adaptive summary generation.",
+    "fusion": "Explicit alignment of textual events/entities to visual evidence and temporal transitions.",
+    "objective": "No gradient loss; Section 3 builds and reasons over event graphs; Section 3.5 uses example-guided style adaptation.",
+    "training_data": "No gradient training; Section 4.1 samples five training-set summaries as style references.",
+    "test_data": "VIEWS; MM-AVS; XMSMO-News; TIB; VISTA; BLiSS; SoccerNet-Caption; SummScreen3D.",
+    "split": "Dataset test sets with training-set style exemplars; exemplar identity not independently verified.",
+    "budget": "Text-generation length/configuration; no 15% extractive duration budget.",
+    "postprocessing": "Event-centric generation and style adaptation, then text metrics.",
+    "metrics": [
+      "BLEU-4",
+      "ROUGE",
+      "CIDEr",
+      "METEOR",
+      "BERTScore",
+      "entity F1",
+      "G-Eval"
+    ],
+    "code_url": "https://github.com/youxiaoxing/CoE",
+    "code_status": "Official",
+    "framework": "Python 3.12, PyTorch, vLLM; MongoDB-backed data preparation.",
+    "weights": "Off-the-shelf Qwen model; no task-trained checkpoint.",
+    "features": "Graph construction and evaluation scripts; underlying dataset access/preparation required.",
+    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
+    "limitations": "Text-only output cannot be ranked with keyshot F1. Training-free does not mean no labeled examples: five reference summaries supply style. Judge versions and paid API components affect reproducibility.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2603.06213v1",
+      "https://github.com/youxiaoxing/CoE",
+      "https://openaccess.thecvf.com/content/CVPR2026/supplemental/You_Cut_to_the_CVPR_2026_supplemental.pdf"
+    ]
+  },
+  {
+    "id": "edgevidsum",
+    "title": "EdgeVidSum: Real-Time Personalized Video Summarization at the Edge",
+    "authors": [
+      "Ghulam Mujtaba",
+      "Eun-Seok Ryu"
+    ],
+    "venue": "CVPR 2025 Demo; arXiv report (not a main-track benchmark paper)",
+    "year": 2025,
+    "paper_url": "https://arxiv.org/abs/2506.03171",
+    "project_url": "https://gmujtaba.com/assets/pdf/cvpr25_poster_EdgeVidSum.pdf",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "personalized video fast-forwarding",
+      "edge-device summarization"
+    ],
+    "outputs": [
+      "timestamps",
+      "variable-speed playback"
+    ],
+    "mechanisms": [
+      "supervised activity classification",
+      "thumbnail analysis",
+      "preference-conditioned playback"
+    ],
+    "encoders": "ImageNet-pretrained EfficientNetV2 backbone; exact base/S variant inconsistent between report and poster.",
+    "sampling": "Pre-generated thumbnail containers representing the whole video; density not reported.",
+    "architecture": "EfficientNetV2, triplet attention, dense layers and softmax activity classifier.",
+    "fusion": "Visual thumbnail activity predictions intersect with user preferences.",
+    "objective": "Section 3.2.2: end-to-end cross-entropy for activity classification.",
+    "training_data": "Not reported",
+    "test_data": "Demo movies, sports and documentaries; benchmark manifest not reported.",
+    "split": "Not reported",
+    "budget": "Variable playback rates; no fixed keyshot compression budget reported.",
+    "postprocessing": "Preferred-content timestamps guide adaptive fast-forward playback.",
+    "metrics": [
+      "reported interaction latency"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "Not independently verified",
+    "framework": "Jetson Nano deployment; software framework not reported.",
+    "weights": "Not independently verified",
+    "features": "Requires service-provider thumbnail containers; public feature archive not verified.",
+    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
+    "limitations": "Fast interaction on precomputed thumbnails is not causal online summarization; preprocessing/network costs and training protocol are incompletely reported. No public author code located.",
+    "verified_on": "2026-09-08",
+    "sources": [
+      "https://arxiv.org/html/2506.03171v1",
+      "https://media.eventhosts.cc/Conferences/CVPR2025/CVPR_main_conf_2025.pdf",
+      "https://gmujtaba.com/assets/pdf/cvpr25_poster_EdgeVidSum.pdf"
+    ]
+  }
+]

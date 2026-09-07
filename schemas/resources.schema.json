@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Resources registry",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name",
+      "kind",
+      "url",
+      "provenance",
+      "attribution_evidence",
+      "framework",
+      "version_or_commit",
+      "license",
+      "artifacts",
+      "feature_schema",
+      "evaluation_notes",
+      "reproducibility",
+      "limitations",
+      "verified_on",
+      "paper_ids",
+      "sources"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "kind": {
+        "enum": [
+          "implementation",
+          "tutorial",
+          "tool",
+          "feature",
+          "weights"
+        ]
+      },
+      "url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "provenance": {
+        "enum": [
+          "official",
+          "author-affiliated",
+          "community"
+        ]
+      },
+      "attribution_evidence": {
+        "type": "string",
+        "minLength": 1
+      },
+      "framework": {
+        "type": "string",
+        "minLength": 1
+      },
+      "version_or_commit": {
+        "type": "string",
+        "minLength": 1
+      },
+      "license": {
+        "type": "string",
+        "minLength": 1
+      },
+      "artifacts": {
+        "type": "string",
+        "minLength": 1
+      },
+      "feature_schema": {
+        "type": "string",
+        "minLength": 1
+      },
+      "evaluation_notes": {
+        "type": "string",
+        "minLength": 1
+      },
+      "reproducibility": {
+        "type": "string",
+        "minLength": 1
+      },
+      "limitations": {
+        "type": "string",
+        "minLength": 1
+      },
+      "verified_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "paper_ids": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uniqueItems": true
+      },
+      "sources": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    }
+  }
+}

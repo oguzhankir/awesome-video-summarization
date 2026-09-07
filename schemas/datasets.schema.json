@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Datasets registry",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name",
+      "role",
+      "task",
+      "domain",
+      "duration",
+      "annotations",
+      "annotators",
+      "granularity",
+      "summary_format",
+      "split",
+      "license",
+      "availability",
+      "official_url",
+      "download_url",
+      "annotation_url",
+      "mirrors",
+      "preprocessing",
+      "features",
+      "checksums",
+      "leakage_risks",
+      "limitations",
+      "verified_on",
+      "metrics",
+      "sources",
+      "videos"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "role": {
+        "enum": [
+          "core",
+          "adjacent",
+          "annotation-layer"
+        ]
+      },
+      "task": {
+        "type": "string",
+        "minLength": 1
+      },
+      "domain": {
+        "type": "string",
+        "minLength": 1
+      },
+      "duration": {
+        "type": "string",
+        "minLength": 1
+      },
+      "annotations": {
+        "type": "string",
+        "minLength": 1
+      },
+      "annotators": {
+        "type": "string",
+        "minLength": 1
+      },
+      "granularity": {
+        "type": "string",
+        "minLength": 1
+      },
+      "summary_format": {
+        "type": "string",
+        "minLength": 1
+      },
+      "split": {
+        "type": "string",
+        "minLength": 1
+      },
+      "license": {
+        "type": "string",
+        "minLength": 1
+      },
+      "availability": {
+        "type": "string",
+        "minLength": 1
+      },
+      "official_url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "download_url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "annotation_url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "mirrors": {
+        "type": "string",
+        "minLength": 1
+      },
+      "preprocessing": {
+        "type": "string",
+        "minLength": 1
+      },
+      "features": {
+        "type": "string",
+        "minLength": 1
+      },
+      "checksums": {
+        "type": "string",
+        "minLength": 1
+      },
+      "leakage_risks": {
+        "type": "string",
+        "minLength": 1
+      },
+      "limitations": {
+        "type": "string",
+        "minLength": 1
+      },
+      "verified_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "metrics": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "sources": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "videos": {
+        "oneOf": [
+          {
+            "type": "integer",
+            "minimum": 1
+          },
+          {
+            "type": "string",
+            "minLength": 1
+          }
+        ]
+      }
+    }
+  }
+}

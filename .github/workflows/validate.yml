@@ -1,0 +1,80 @@
+name: Handbook validation
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: python -m pip install -r requirements-dev.txt
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: python scripts/validate.py
+      - run: npm run check:render
+      - run: python -m unittest discover -s tests -v
+      - name: Check whitespace in the event's changes
+        shell: bash
+        env:
+          CHECK_EVENT: ${{ github.event_name }}
+          CHECK_PR_BASE: ${{ github.event.pull_request.base.sha }}
+          CHECK_PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          CHECK_PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          ensure_commit() {
+            local check_revision="$1"
+            if [[ ! "$check_revision" =~ ^[0-9a-f]{40}$ ]]; then
+              echo "Invalid commit identifier" >&2
+              exit 1
+            fi
+            if ! git cat-file -e "${check_revision}^{commit}" 2>/dev/null; then
+              git fetch --no-tags --depth=1 origin "$check_revision"
+            fi
+            git cat-file -e "${check_revision}^{commit}"
+          }
+          check_head="$GITHUB_SHA"
+          check_base_is_tree=false
+          case "$CHECK_EVENT" in
+            pull_request)
+              check_base="$CHECK_PR_BASE"
+              check_head="$CHECK_PR_HEAD"
+              ;;
+            push)
+              if [[ "$CHECK_PUSH_BEFORE" == "0000000000000000000000000000000000000000" ]]; then
+                check_base="$(git hash-object -w -t tree /dev/null)"
+                check_base_is_tree=true
+              else
+                check_base="$CHECK_PUSH_BEFORE"
+              fi
+              ;;
+            *)
+              # Manual runs check the selected commit; root commits use an empty tree.
+              ensure_commit "$check_head"
+              if git rev-parse --verify "${check_head}^" >/dev/null 2>&1; then
+                check_base="$(git rev-parse "${check_head}^")"
+              else
+                check_base="$(git hash-object -w -t tree /dev/null)"
+                check_base_is_tree=true
+              fi
+              ;;
+          esac
+          ensure_commit "$check_head"
+          if [[ "$check_base_is_tree" == false ]]; then
+            ensure_commit "$check_base"
+          fi
+          git diff --check "$check_base" "$check_head"

@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Papers registry",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "title",
+      "venue",
+      "paper_url",
+      "project_url",
+      "encoders",
+      "sampling",
+      "architecture",
+      "fusion",
+      "objective",
+      "training_data",
+      "test_data",
+      "split",
+      "budget",
+      "postprocessing",
+      "code_url",
+      "code_status",
+      "framework",
+      "weights",
+      "features",
+      "reproducibility",
+      "limitations",
+      "verified_on",
+      "authors",
+      "supervision",
+      "tasks",
+      "outputs",
+      "mechanisms",
+      "metrics",
+      "sources",
+      "year"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "venue": {
+        "type": "string",
+        "minLength": 1
+      },
+      "paper_url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "project_url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "encoders": {
+        "type": "string",
+        "minLength": 1
+      },
+      "sampling": {
+        "type": "string",
+        "minLength": 1
+      },
+      "architecture": {
+        "type": "string",
+        "minLength": 1
+      },
+      "fusion": {
+        "type": "string",
+        "minLength": 1
+      },
+      "objective": {
+        "type": "string",
+        "minLength": 1
+      },
+      "training_data": {
+        "type": "string",
+        "minLength": 1
+      },
+      "test_data": {
+        "type": "string",
+        "minLength": 1
+      },
+      "split": {
+        "type": "string",
+        "minLength": 1
+      },
+      "budget": {
+        "type": "string",
+        "minLength": 1
+      },
+      "postprocessing": {
+        "type": "string",
+        "minLength": 1
+      },
+      "code_url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "code_status": {
+        "type": "string",
+        "minLength": 1
+      },
+      "framework": {
+        "type": "string",
+        "minLength": 1
+      },
+      "weights": {
+        "type": "string",
+        "minLength": 1
+      },
+      "features": {
+        "type": "string",
+        "minLength": 1
+      },
+      "reproducibility": {
+        "type": "string",
+        "minLength": 1
+      },
+      "limitations": {
+        "type": "string",
+        "minLength": 1
+      },
+      "verified_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "authors": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "supervision": {
+        "type": "array",
+        "items": {
+          "enum": [
+            "supervised",
+            "weakly-supervised",
+            "semi-supervised",
+            "unsupervised",
+            "self-supervised",
+            "training-free",
+            "zero-shot",
+            "few-shot"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "tasks": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "outputs": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "mechanisms": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "metrics": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "sources": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "year": {
+        "type": "integer",
+        "minimum": 1900,
+        "maximum": 2100
+      }
+    }
+  }
+}

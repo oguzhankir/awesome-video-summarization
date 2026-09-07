@@ -1,0 +1,691 @@
+[
+  {
+    "id": "sum-gan",
+    "title": "Unsupervised Video Summarization with Adversarial LSTM Networks",
+    "venue": "CVPR",
+    "paper_url": "https://openaccess.thecvf.com/content_cvpr_2017/html/Mahasseni_Unsupervised_Video_Summarization_CVPR_2017_paper.html",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "Not independently verified; encoder is GoogLeNet pool5",
+    "architecture": "2-layer BiLSTM selector; VAE-LSTM encoder/reverse decoder and LSTM discriminator",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 3. SUM-GAN",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Five random splits; synthesized reference results; augmented pool in separate experiment",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "KTS, pooled shot ranking under 15%; exact knapsack not established by paper",
+    "code_url": "https://github.com/j-min/Adversarial_Video_Summary",
+    "code_status": "Community; changes backbone and training",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Behrooz Mahasseni",
+      "Michael Lam",
+      "Sinisa Todorovic"
+    ],
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "reconstruction",
+      "adversarial learning"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://openaccess.thecvf.com/content_cvpr_2017/html/Mahasseni_Unsupervised_Video_Summarization_CVPR_2017_paper.html",
+      "https://github.com/j-min/Adversarial_Video_Summary"
+    ],
+    "year": 2017
+  },
+  {
+    "id": "cycle-sum",
+    "title": "Cycle-SUM: Cycle-Consistent Adversarial LSTM Networks for Unsupervised Video Summarization",
+    "venue": "AAAI",
+    "paper_url": "https://arxiv.org/abs/1904.08265",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "Not independently verified; encoder is GoogLeNet pool5",
+    "architecture": "3-layer 300-unit BiLSTM selector; two VAE-LSTM generators and two Wasserstein critics",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 4. Cycle-SUM",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Five random runs; synthesized-reference protocol",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "KTS and source-specific budgeted shot selection",
+    "code_url": "Not independently verified",
+    "code_status": "No official release found in inherited audit",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Li Yuan",
+      "Francis E. H. Tay",
+      "Ping Li",
+      "Li Zhou",
+      "Jiashi Feng"
+    ],
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "reconstruction",
+      "adversarial learning"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://arxiv.org/abs/1904.08265"
+    ],
+    "year": 2019
+  },
+  {
+    "id": "acgan",
+    "title": "Unsupervised Video Summarization with Attentive Conditional Generative Adversarial Networks",
+    "venue": "ACM Multimedia",
+    "paper_url": "https://doi.org/10.1145/3343031.3351056",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "Not reported",
+    "architecture": "Self-attention, BiLSTM and score layers; conditional discriminator receives hard top-k features",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Conditional adversarial objective; nonsaturating generator loss. No separate reconstruction, diversity or soft sparsity loss; see chapter Section 5.",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Five-fold CV; augmented and transfer experiments separately described",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "KTS and budgeted selection; exact implementation not independently verified",
+    "code_url": "Not independently verified",
+    "code_status": "No official source found in inherited audit",
+    "framework": "TensorFlow stated in primary paper",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Xufeng He",
+      "Yang Hua",
+      "Tao Song",
+      "Zongpu Zhang",
+      "Zhengui Xue",
+      "Ruhui Ma",
+      "Neil Robertson",
+      "Haibing Guan"
+    ],
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "conditional adversarial learning",
+      "self-attention",
+      "hard top-k conditioning"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://doi.org/10.1145/3343031.3351056"
+    ],
+    "year": 2019
+  },
+  {
+    "id": "sum-gan-sl",
+    "title": "A Stepwise, Label-based Approach for Improving the Adversarial Training in Unsupervised Video Summarization",
+    "venue": "AI4TV at ACM Multimedia",
+    "paper_url": "https://doi.org/10.1145/3347449.3357482",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "2-fps standard features; exact source-specific configuration in reconstruction chapter",
+    "architecture": "1024-to-500 compression, BiLSTM selector, VAE-LSTMs, stepwise least-squares discriminator updates",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 6.1 SUM-GAN-sl",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Paper says 5-fold CV; released overlapping random 80/20 JSON splits conflict",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "KTS, mean shot scores, exact knapsack",
+    "code_url": "https://github.com/e-apostolidis/SUM-GAN-sl",
+    "code_status": "Official",
+    "framework": "Python 3.6 / PyTorch 1.0.1 (author release)",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Evlampios Apostolidis",
+      "Alexandros I. Metsai",
+      "Eleni Adamantidou",
+      "Vasileios Mezaris",
+      "Ioannis Patras"
+    ],
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "reconstruction",
+      "adversarial learning"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://doi.org/10.1145/3347449.3357482",
+      "https://github.com/e-apostolidis/SUM-GAN-sl"
+    ],
+    "year": 2019
+  },
+  {
+    "id": "sum-gan-aae",
+    "title": "Unsupervised Video Summarization via Attention-Driven Adversarial Learning",
+    "venue": "MMM",
+    "paper_url": "https://doi.org/10.1007/978-3-030-37731-1_40",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "2-fps standard features; exact source-specific configuration in reconstruction chapter",
+    "architecture": "Attention-driven encoder/decoder; VAAE retains latent prior; AAE removes it",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 6.2 SUM-GAN-VAAE",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Five released random 80/20 splits; multi-user and synthesized-reference evaluation separate",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "KTS, mean shot scores, exact knapsack",
+    "code_url": "https://github.com/e-apostolidis/SUM-GAN-AAE",
+    "code_status": "Official; VAAE and AAE variants",
+    "framework": "Python 3.6 / PyTorch 1.0.1 (author release)",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Evlampios Apostolidis",
+      "Eleni Adamantidou",
+      "Alexandros I. Metsai",
+      "Vasileios Mezaris",
+      "Ioannis Patras"
+    ],
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "reconstruction",
+      "adversarial learning"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://doi.org/10.1007/978-3-030-37731-1_40",
+      "https://github.com/e-apostolidis/SUM-GAN-AAE"
+    ],
+    "year": 2020
+  },
+  {
+    "id": "csnet",
+    "title": "Discriminative Feature Learning for Unsupervised Video Summarization",
+    "venue": "AAAI",
+    "paper_url": "https://arxiv.org/abs/1811.09791",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "2-fps standard features; exact source-specific configuration in reconstruction chapter",
+    "architecture": "Chunk and stride BiLSTM streams; multi-scale difference attention; VAE-GAN backbone",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 7. CSNet",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Five non-overlapping 80/20 folds; augmented/transfer separate",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "KTS and budgeted keyshot selection",
+    "code_url": "https://github.com/TIBHannover/UnsupervisedVideoSummarization",
+    "code_status": "Community for CSNet; official for later MCSF",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Yunjae Jung",
+      "Donghyeon Cho",
+      "Dahun Kim",
+      "Sanghyun Woo",
+      "In So Kweon"
+    ],
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "reconstruction",
+      "adversarial learning"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://arxiv.org/abs/1811.09791",
+      "https://github.com/TIBHannover/UnsupervisedVideoSummarization"
+    ],
+    "year": 2019
+  },
+  {
+    "id": "gl-rpe",
+    "title": "Global-and-Local Relative Position Embedding for Unsupervised Video Summarization",
+    "venue": "ECCV",
+    "paper_url": "https://doi.org/10.1007/978-3-030-58595-2_11",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "2-fps standard features; exact source-specific configuration in reconstruction chapter",
+    "architecture": "Global/local input decomposition and relative position attention inserted in GAN or CSNet backbones",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 8. GL-RPE",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Canonical split construction not restated; later table labels 5FCV",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "Backbone-dependent decoding; exact artifact not independently verified",
+    "code_url": "Not independently verified",
+    "code_status": "No official source found in inherited audit",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Yunjae Jung",
+      "Donghyeon Cho",
+      "Sanghyun Woo",
+      "In So Kweon"
+    ],
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "reconstruction",
+      "relative-position attention"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://doi.org/10.1007/978-3-030-58595-2_11"
+    ],
+    "year": 2020
+  },
+  {
+    "id": "sum-fcn",
+    "title": "Video Summarization Using Fully Convolutional Sequence Networks",
+    "venue": "ECCV",
+    "paper_url": "https://arxiv.org/abs/1805.10538",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "2-fps standard features; exact source-specific configuration in reconstruction chapter",
+    "architecture": "Temporal convolution/max-pooling encoder, deconvolution decoder and skip connection; supervised and reconstruction variants",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 9.1 SUM-FCN",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Multiple random 80/20 splits; count not stated",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "KTS, selected-keyframe-density shot values, knapsack",
+    "code_url": "https://github.com/BerserkerMother/SUM-FCN",
+    "code_status": "Community; supervised variant only",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Mrigank Rochan",
+      "Linwei Ye",
+      "Yang Wang"
+    ],
+    "supervision": [
+      "supervised",
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "temporal convolution",
+      "reconstruction"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://arxiv.org/abs/1805.10538",
+      "https://github.com/BerserkerMother/SUM-FCN"
+    ],
+    "year": 2018
+  },
+  {
+    "id": "caan",
+    "title": "Video Summarization with a Convolutional Attentive Adversarial Network",
+    "venue": "Pattern Recognition",
+    "paper_url": "https://arxiv.org/abs/2105.11131",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "2-fps standard features; exact source-specific configuration in reconstruction chapter",
+    "architecture": "Fully convolutional U-Net-like selector; cross-attention over original/refined features; LSTM discriminator",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 9.2 CAAN",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Canonical/augmented five-fold CV; transfer evaluates entire held-out target dataset",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "KTS and exact knapsack at 15%",
+    "code_url": "Not independently verified",
+    "code_status": "No official source found in inherited audit",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Guoqiang Liang",
+      "Yanbing Lv",
+      "Shucheng Li",
+      "Shizhou Zhang",
+      "Yanning Zhang"
+    ],
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "reconstruction",
+      "adversarial learning"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://arxiv.org/abs/2105.11131"
+    ],
+    "year": 2022
+  },
+  {
+    "id": "unpaired-vsn",
+    "title": "Video Summarization by Learning from Unpaired Data",
+    "venue": "CVPR",
+    "paper_url": "https://arxiv.org/abs/1805.12174",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "2-fps standard features; exact source-specific configuration in reconstruction chapter",
+    "architecture": "Fully convolutional selector trained with unpaired edited summary examples and adversarial loss",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 10. UnpairedVSN",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Augmented unpaired pool; optional 10% paired variant and separate transfer experiment",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "Source-specific keyframe/shot conversion and budgeted selection",
+    "code_url": "https://github.com/pcshih/pytorch-VSLUD",
+    "code_status": "Community; reports reproduction problems",
+    "framework": "Not independently verified",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Mrigank Rochan",
+      "Yang Wang"
+    ],
+    "supervision": [
+      "weakly-supervised",
+      "semi-supervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "adversarial learning",
+      "reconstruction"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://arxiv.org/abs/1805.12174",
+      "https://github.com/pcshih/pytorch-VSLUD"
+    ],
+    "year": 2019
+  },
+  {
+    "id": "ac-sum-gan",
+    "title": "AC-SUM-GAN: Connecting Actor-Critic and Generative Adversarial Networks for Unsupervised Video Summarization",
+    "venue": "IEEE TCSVT (online 2020)",
+    "paper_url": "https://ieeexplore.ieee.org/document/9259058",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "2-fps standard features; exact source-specific configuration in reconstruction chapter",
+    "architecture": "BiLSTM states, actor/critic fragment choices and VAE-GAN reconstruction reward",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 11. AC-SUM-GAN",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Five random 80/20 splits; multi-user and synthesized references separate",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "KTS and final budgeted decoding separate from training fragment count",
+    "code_url": "https://github.com/e-apostolidis/AC-SUM-GAN",
+    "code_status": "Official",
+    "framework": "Python 3.6 / PyTorch 1.0.1 (author release)",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Evlampios Apostolidis",
+      "Eleni Adamantidou",
+      "Alexandros I. Metsai",
+      "Vasileios Mezaris",
+      "Ioannis Patras"
+    ],
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "reinforcement learning",
+      "actor-critic",
+      "adversarial reconstruction"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://ieeexplore.ieee.org/document/9259058",
+      "https://github.com/e-apostolidis/AC-SUM-GAN"
+    ],
+    "year": 2021
+  },
+  {
+    "id": "sum-sr",
+    "title": "Unsupervised Video Summarization via Iterative Training and Simplified GAN",
+    "venue": "ACCV",
+    "paper_url": "https://arxiv.org/abs/2311.03745",
+    "project_url": "Not reported",
+    "encoders": "ImageNet GoogLeNet pool5 (1024-D); feature configuration in reconstruction chapter",
+    "sampling": "2-fps standard features; exact source-specific configuration in reconstruction chapter",
+    "architecture": "512-D BiLSTM selector, trainable mask blend and attention BiLSTM reconstructor; discriminator removed",
+    "fusion": "Visual-only; no audio/text fusion in described configuration",
+    "objective": "Exact primary-source equations and paper/code discrepancies are transcribed in docs/04-reconstruction-generative.md, 12. SUM-SR",
+    "training_data": "SumMe and TVSum training subsets; source-specific additional datasets only where explicitly described in the chapter",
+    "test_data": "SumMe; TVSum",
+    "split": "Five random splits and five seeds; label-free checkpoint selection",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "KTS, mean shot scores and exact knapsack",
+    "code_url": "https://github.com/hanklee97121/SUM-SR-5iter",
+    "code_status": "Official",
+    "framework": "Python 3.6 / PyTorch 1.0.1 (author release)",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
+    "verified_on": "2026-09-06",
+    "authors": [
+      "Hanqing Li",
+      "Diego Klabjan",
+      "Jean Utke"
+    ],
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "reconstruction",
+      "iterative optimization",
+      "learned masking"
+    ],
+    "metrics": [
+      "temporal F1"
+    ],
+    "sources": [
+      "https://arxiv.org/abs/2311.03745",
+      "https://github.com/hanklee97121/SUM-SR-5iter"
+    ],
+    "year": 2024
+  },
+  {
+    "id": "summdiff",
+    "title": "SummDiff: Generative Modeling of Video Summarization with Diffusion",
+    "venue": "ICCV",
+    "paper_url": "https://arxiv.org/abs/2510.08458",
+    "project_url": "Not reported",
+    "encoders": "SumMe/TVSum: GoogLeNet pool5 1024-D; Mr. HiSum: Inception-v3 with PCA to 1024-D",
+    "sampling": "SumMe/TVSum standard feature timeline; Mr. HiSum feature sampling requires separate verification",
+    "architecture": "Video-conditioned Transformer diffusion denoiser for individual annotator score vectors",
+    "fusion": "Visual-conditioned score diffusion; no required audio/text branch",
+    "objective": "Video-conditioned diffusion trained against individual human importance scores; logit-space corruption and score reconstruction described in reconstruction chapter Section 13",
+    "training_data": "SumMe, TVSum and Mr. HiSum training partitions; no OVP/YouTube augmentation established",
+    "test_data": "SumMe; TVSum; Mr. HiSum",
+    "split": "TVT 7:1:2 five random splits; separate 5FCV; original Mr. HiSum split; five repeats",
+    "budget": "15% final duration; soft training length target is separate",
+    "postprocessing": "Rank evaluation before decoding; paper-specific mAP and summary decoding",
+    "code_url": "https://github.com/Kwanseok-K/SummDiff",
+    "code_status": "Official",
+    "framework": "Python 3.10 / PyTorch 2.6.0",
+    "weights": "Not independently verified",
+    "features": "See source-specific artifact status in chapter and resource catalog",
+    "reproducibility": "Primary experiment section rechecked on 2026-09-08; code environment and numerical results not reproduced",
+    "limitations": "Human target scores for SumMe/TVSum; behavioral targets for Mr. HiSum. TVT and 5FCV must be kept separate; do not import OVP/YouTube augmentation.",
+    "verified_on": "2026-09-08",
+    "authors": [
+      "Kwanseok Kim",
+      "Jaehoon Hahm",
+      "Sumin Kim",
+      "Jinhwan Sul",
+      "Byunghak Kim",
+      "Joonseok Lee"
+    ],
+    "supervision": [
+      "supervised",
+      "weakly-supervised"
+    ],
+    "tasks": [
+      "generic single-video"
+    ],
+    "outputs": [
+      "keyshot/video skim"
+    ],
+    "mechanisms": [
+      "diffusion",
+      "transformer"
+    ],
+    "metrics": [
+      "Kendall tau",
+      "Spearman rho",
+      "mAP50",
+      "mAP15"
+    ],
+    "sources": [
+      "https://arxiv.org/abs/2510.08458",
+      "https://github.com/Kwanseok-K/SummDiff",
+      "https://arxiv.org/html/2510.08458v1#S4.SS1"
+    ],
+    "year": 2025
+  }
+]
