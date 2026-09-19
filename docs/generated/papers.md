@@ -1523,7 +1523,7 @@
 - **Reproducibility:** Primary paper inspected; code, features, split manifests and checkpoints were not available for independent execution.
 - **Limitations:** Results use a new paper-local split and cannot be mixed with other SV-Highlights protocols. Three videos are missing, exact split identities and checkpoint selection are unpublished, and editorial highlight videos may omit valid moments. Simple fusion, fixed thresholding and imperfect source separation constrain the conclusions.
 - **Verified on:** 2026-09-19
-- **Sources:** [source 1](https://arxiv.org/pdf/2609.17923v1) · [source 2](https://doi.org/10.1145/3841455.3841533)
+- **Sources:** [source 1](https://arxiv.org/pdf/2609.17923v1) · [source 2](https://openreview.net/forum?id=WMHOZw9UdK)
 
 <a id="byra-zero-shot-highlight"></a>
 
