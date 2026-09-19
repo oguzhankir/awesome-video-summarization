@@ -1,6 +1,6 @@
 # Learning video summarization, from first skim to audited experiment
 
-This path starts on a CPU with a small example, then introduces video handling, feature files, model families and benchmark auditing. Every stage has a concrete output. Upstream projects and tutorials were inspected on **2026-09-08**; their training environments were not run in this audit. Use the [implementation registry](13-implementations.md) for source commits and reproduction caveats.
+This path was reviewed on **2026-09-19** and starts on a CPU with a small example, then introduces video handling, feature files, model families and benchmark auditing. Every stage has a concrete output. Individual resource cards retain their own source-review dates; upstream training environments were not run in this audit. Use the [implementation registry](13-implementations.md) for source commits and reproduction caveats.
 
 ## 1. Build the evaluation intuition first
 
@@ -88,9 +88,55 @@ Start with one dataset, one known split and one model. A source-reading study is
 
 For long query-focused video, inspect [UniVTG QFVS code](https://github.com/showlab/UniVTG/tree/32659ac7aeba21742a63274f30eba785fc57e247) and the [FCSNA-QFVS notebook](https://github.com/srkds/Query-Focused-Long-Video-Summarization). The latter is an author research notebook with incomplete setup and hard-coded paths. Query-focused semantic matching is not the generic SumMe temporal-overlap metric. A text-only transcript summarizer solves another task again.
 
+A productive reading order is:
+
+1. [CLIP author notebook/code](https://github.com/openai/CLIP) for normalized image/text similarity.
+2. [CLIP-It!](https://proceedings.neurips.cc/paper/2021/hash/7503cfacd12053d309b6bed5c89de212-Abstract.html) for the difference between generic captions and a user query; remember that official code is unavailable.
+3. [Multi-VidSum paper](https://aclanthology.org/2023.emnlp-main.457/) and [evaluator](https://github.com/cl-tohoku/Multi-VidSum-Eval/tree/d4aa2fd4f1b88b65a14f2c66676fe1529572772a) for ordered keyframe-caption pairs and alignment-dependent metrics.
+4. VideoXum for jointly trained visual/text outputs and task-specific metrics.
+5. [Byra et al.](https://arxiv.org/abs/2609.14790v1), [KnowVis](https://arxiv.org/abs/2609.03742v2) and [CoE](https://arxiv.org/abs/2603.06213) to compare metadata-conditioned frame ranking, generated pedagogical images and generated text.
+
 **Deliverable:** a task card stating who supplies the query, which labels train the system, whether audio/text are available at inference, the output unit and the exact matching rule.
 
-## 7. Learn to question the score
+## 7. Audit a recent claim without running a large model
+
+**Prerequisites:** complete Sections 1–3, understand correlation versus overlap F1, and be able to read one JSON object. Read the [latest audit](audits/2026-09-19-weekly.md) before the exercise.
+
+First, list the four newly admitted zero-shot result rows:
+
+```bash
+python3 - <<'PY'
+import json
+rows = json.load(open('data/results.json'))
+for row in rows:
+    if row['paper_id'] == 'byra-zero-shot-highlight':
+        print(row['dataset'], row['method'], row['metric'], row['value'])
+PY
+```
+
+**Expected outcome:** TVSum prints the text+image+style-transfer method twice, while SumMe prints the text-only method twice. You should be able to explain why the paper's shared “best variant” label cannot become one cross-dataset configuration. Inspect `sampling`, `split_identity`, `runs` and `variance`; every unknown should prevent false compatibility.
+
+Next, regenerate and validate the catalogs:
+
+```bash
+python3 scripts/generate_catalog.py
+python3 scripts/validate.py
+npm run check:render
+```
+
+**Expected outcome:** all rows remain protocol-isolated; the validator rejects out-of-range F1 percentages and correlation coefficients; every Markdown file, equation and Mermaid block renders under the repository checks.
+
+Then choose one source-readiness comparison:
+
+- **TRINITY versus KnowVis:** confirm that one repository has substantial source but paper/default mismatches, while the other is a release stub. Write down the minimum evidence needed before calling either runnable.
+- **TripleSumm versus LLMVS:** trace checkpoint selection and identify whether the final test labels influence model choice.
+- **SD-VSum versus Multi-VidSum:** trace the first data key the loader/evaluator expects and explain whether the published artifact schema satisfies it.
+
+**Deliverable:** a one-page evidence sheet with paper claim, pinned source line/path, artifact state, blocking issue and a proposed smoke test. Do not download a large archive merely to complete the sheet.
+
+**Suggested next experiments:** create a tiny synthetic HDF5 fixture to test one loader's schema; repair the SD-VSum key mismatch in a separate experimental branch and add a loader test; compare per-annotator versus mean-annotator correlation on fixed toy scores; or freeze a public split/checkpoint rule before porting SSPVS/LLMVS to a current environment. A repair is a new result unless the original behavior is also preserved and reported.
+
+## 8. Learn to question the score
 
 Use [Rethinking the Evaluation of Video Summaries](https://github.com/mayu-ot/rethinking-evs) for author analysis scripts and notebooks. Revisit one experiment while fixing predicted scores and changing only segmentation. Then compare scores before hard decoding using rank correlation, with its annotation-aggregation rule recorded explicitly.
 

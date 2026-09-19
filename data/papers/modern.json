@@ -52,18 +52,19 @@
     "code_url": "https://github.com/smkim37/TripleSumm",
     "code_status": "Official",
     "framework": "PyTorch 2.5.1; Python 3.10; CUDA 12.1 (repository).",
-    "weights": "Official MoSu and Mr. HiSum checkpoints at https://huggingface.co/smkim37/TripleSumm (MIT); not executed.",
-    "features": "MoSu card: https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu; three (N,768) feature arrays per video, metadata, GT and split files; CC-BY-4.0.",
-    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
-    "limitations": "Supervised/weak target regression; zero-shot denotes MoSu-to-long-video transfer only. Main Table 2 and Appendix Table XI agree, but Appendix D prose gives different MoSu rank values. External-dataset captioner is Qwen2.5-VL-7B-Instruct in Section 5.1 versus the Qwen/Qwen2-VL-7B-Instruct link in Appendix B.4; resolve model/cache provenance. Missing-modality and feature-extraction costs must be tracked.",
-    "verified_on": "2026-09-08",
+    "weights": "Official MoSu and Mr. HiSum checkpoints at https://huggingface.co/smkim37/TripleSumm/tree/fbfd318abc4d317a2618a8f9b03bf138a30662c2 (MIT); not executed.",
+    "features": "Pinned MoSu release: https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu/tree/4afad0af62ae4e8da47968d5bd6f337a99f9b398; three (N,768) feature arrays per video, metadata, GT and split files; CC-BY-4.0. Pinned reconstructed Mr. HiSum release: https://huggingface.co/datasets/hminjeong/TripleSumm-Mr.HiSum/tree/4f9cd1bdf40178b8586fe2f9c0f39fdb30bf5c19.",
+    "reproducibility": "Paper, source commit b7a8e7e873ac3223b0ced40b1852d30b9934ba67 and pinned Hugging Face listings were inspected; no environment, checkpoint or feature archive was loaded or executed.",
+    "limitations": "Supervised/weak target regression; zero-shot denotes MoSu-to-long-video transfer only. Main Table 2 and Appendix Table XI agree, but Appendix D prose gives different MoSu rank values. External-dataset captioner is Qwen2.5-VL-7B-Instruct in Section 5.1 versus the Qwen/Qwen2-VL-7B-Instruct link in Appendix B.4; resolve model/cache provenance. The released main evaluator reports correlations and fixed 5-second-shot mAP but does not call the shipped 15%-budget knapsack decoder. Feature extraction is absent, all three modalities are required and reconstructed Mr. HiSum is incomplete.",
+    "verified_on": "2026-09-19",
     "sources": [
       "https://arxiv.org/html/2603.01169v1",
       "https://openreview.net/pdf?id=x74NsHGywD",
-      "https://github.com/smkim37/TripleSumm",
+      "https://github.com/smkim37/TripleSumm/tree/b7a8e7e873ac3223b0ced40b1852d30b9934ba67",
       "https://sumin-kim.com/TripleSumm-page/",
-      "https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu",
-      "https://huggingface.co/smkim37/TripleSumm"
+      "https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu/tree/4afad0af62ae4e8da47968d5bd6f337a99f9b398",
+      "https://huggingface.co/datasets/hminjeong/TripleSumm-Mr.HiSum/tree/4f9cd1bdf40178b8586fe2f9c0f39fdb30bf5c19",
+      "https://huggingface.co/smkim37/TripleSumm/tree/fbfd318abc4d317a2618a8f9b03bf138a30662c2"
     ]
   },
   {
@@ -119,7 +120,7 @@
       "VT-CLIPScore"
     ],
     "code_url": "https://github.com/jylins/videoxum",
-    "code_status": "Official",
+    "code_status": "Official source inspected at commit 11bd4fe3fb51b7dc804dd1519a4914f67bff60df; linked artifacts were not downloaded or run.",
     "framework": "PyTorch; repository documents Python 3.8 / PyTorch 1.10.1.",
     "weights": "Official model zoo on Hugging Face linked by repository.",
     "features": "Author-provided annotations and model/feature preparation instructions.",
@@ -129,7 +130,7 @@
     "sources": [
       "https://arxiv.org/html/2303.12060v3",
       "https://videoxum.github.io/",
-      "https://github.com/jylins/videoxum",
+      "https://github.com/jylins/videoxum/tree/11bd4fe3fb51b7dc804dd1519a4914f67bff60df",
       "https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/utils.py#L255-L281",
       "https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/eval_v2vt_sum.py#L53-L107"
     ]
@@ -368,17 +369,17 @@
       "Spearman rho"
     ],
     "code_url": "https://github.com/mlee47/LLMVS",
-    "code_status": "Official",
+    "code_status": "Official source inspected at commit 417b35bf4704a701d849feeef3b6277ab907a85c; linked artifacts were not downloaded or run.",
     "framework": "PyTorch; Python 3.8.",
     "weights": "Official README links model checkpoints for dataset splits.",
     "features": "Repository documents captions/LLM embeddings and data download.",
-    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
-    "limitations": "Frozen LLM components do not make the global aggregator training-free. Paper reports 5 A100 GPUs; caption errors and context-window choices affect results.",
-    "verified_on": "2026-09-08",
+    "reproducibility": "Paper and source commit 417b35bf4704a701d849feeef3b6277ab907a85c were inspected; linked feature/checkpoint archives were not downloaded and no model was executed.",
+    "limitations": "Frozen LLM components do not make the global aggregator training-free. The released training path selects checkpoints on the test-named partition and evaluates that partition again; five partitions overlap. Visual tensors are loaded but unused by the released model, caption/embedding generation is absent, dependencies are old and no repository-wide license was found. Paper reports 5 A100 GPUs; caption errors and context-window choices affect results.",
+    "verified_on": "2026-09-19",
     "sources": [
       "https://arxiv.org/html/2504.11199v2",
       "https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Video_Summarization_with_Large_Language_Models_CVPR_2025_paper.pdf",
-      "https://github.com/mlee47/LLMVS"
+      "https://github.com/mlee47/LLMVS/tree/417b35bf4704a701d849feeef3b6277ab907a85c"
     ]
   },
   {
@@ -483,17 +484,19 @@
       "Spearman rho"
     ],
     "code_url": "https://github.com/IDT-ITI/SD-VSum",
-    "code_status": "Official",
-    "framework": "PyTorch.",
+    "code_status": "Official source inspected at commit d57c2be3b05cb13eca3b7a3572c3df204e97c4fb; released artifacts were not downloaded or run.",
+    "framework": "Python 3.12.5; PyTorch 2.4.1; CUDA 12.1 (repository environment).",
     "weights": "Official README links pretrained SD-VSum checkpoint.",
     "features": "Zenodo S-VideoXum release includes CLIP H5 features, labels, split JSON and scripts.",
-    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
-    "limitations": "Machine-generated scripts may encode target-summary artifacts. Generic and script-conditioned losses/references differ; keep results separate.",
-    "verified_on": "2026-09-08",
+    "reproducibility": "Paper, source commit d57c2be3b05cb13eca3b7a3572c3df204e97c4fb and Zenodo metadata were inspected; artifact bodies were not downloaded and no model was executed.",
+    "limitations": "Machine-generated scripts may encode target-summary artifacts. Generic and script-conditioned losses/references differ; keep results separate. The released loader requests gtscores while documented/released data expose gtsummaries; validation/test routing drops dataset/split arguments, and the top-15% threshold can select more than the intended budget.",
+    "verified_on": "2026-09-19",
     "sources": [
       "https://arxiv.org/html/2505.03319v2",
       "https://doi.org/10.1145/3746027.3755821",
-      "https://github.com/IDT-ITI/SD-VSum"
+      "https://github.com/IDT-ITI/SD-VSum/tree/d57c2be3b05cb13eca3b7a3572c3df204e97c4fb",
+      "https://zenodo.org/records/15349075",
+      "https://zenodo.org/records/16275302"
     ]
   },
   {
@@ -603,16 +606,16 @@
       "G-Eval"
     ],
     "code_url": "https://github.com/youxiaoxing/CoE",
-    "code_status": "Official",
-    "framework": "Python 3.12, PyTorch, vLLM; MongoDB-backed data preparation.",
+    "code_status": "Official source inspected at commit 924ed7d67935022e09a371c8114d5f25cc1759a6; services, datasets and models were not launched.",
+    "framework": "Python 3.12, PyTorch 2.8, vLLM 0.11 and MongoDB-backed data preparation (repository environment export).",
     "weights": "Off-the-shelf Qwen model; no task-trained checkpoint.",
     "features": "Graph construction and evaluation scripts; underlying dataset access/preparation required.",
-    "reproducibility": "Primary-source and repository inspection only; no model was executed; commit/release pin not independently verified.",
-    "limitations": "Text-only output cannot be ranked with keyshot F1. Training-free does not mean no labeled examples: five reference summaries supply style. Judge versions and paid API components affect reproducibility.",
-    "verified_on": "2026-09-08",
+    "reproducibility": "Paper and source commit 924ed7d67935022e09a371c8114d5f25cc1759a6 were inspected; services, database and models were not launched.",
+    "limitations": "Text-only output cannot be ranked with keyshot F1. Training-free does not mean no labeled examples: five reference summaries supply style. The documented pip command cannot install the conda-export requirements as written, evaluation dependencies are missing, question/BERTScore refinement is disabled by default, failed captions are excluded from the denominator and no repository-wide license was found. Judge versions and paid API components affect reproducibility.",
+    "verified_on": "2026-09-19",
     "sources": [
       "https://arxiv.org/html/2603.06213v1",
-      "https://github.com/youxiaoxing/CoE",
+      "https://github.com/youxiaoxing/CoE/tree/924ed7d67935022e09a371c8114d5f25cc1759a6",
       "https://openaccess.thecvf.com/content/CVPR2026/supplemental/You_Cut_to_the_CVPR_2026_supplemental.pdf"
     ]
   },
@@ -668,6 +671,871 @@
       "https://arxiv.org/html/2506.03171v1",
       "https://media.eventhosts.cc/Conferences/CVPR2025/CVPR_main_conf_2025.pdf",
       "https://gmujtaba.com/assets/pdf/cvpr25_poster_EdgeVidSum.pdf"
+    ]
+  },
+  {
+    "id": "trinity",
+    "title": "TRINITY: A Multi-Perspective Benchmark for Personal-Style Video Highlight Detection",
+    "authors": [
+      "Qianqian Chen",
+      "Hyun Bin Kim",
+      "Denzel Elden Wijaya",
+      "Yang Yi",
+      "Bo Liu",
+      "Yangkai Ding"
+    ],
+    "venue": "arXiv preprint; authors report ECCV 2026 acceptance, but an official proceedings entry was not independently verified",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2608.29577v1",
+    "project_url": "https://github.com/vanilladucky/TRINITY",
+    "supervision": [
+      "supervised",
+      "weakly-supervised"
+    ],
+    "tasks": [
+      "multi-perspective video highlight detection",
+      "personal-style highlight detection",
+      "cross-dataset highlight transfer"
+    ],
+    "outputs": [
+      "perspective-specific segment importance",
+      "ranked highlights"
+    ],
+    "mechanisms": [
+      "shared-private multi-task learning",
+      "perspective-conditioned expert routing",
+      "temporal Transformer"
+    ],
+    "encoders": "Frozen CLIP ViT-B/32 produces 512-dimensional visual features; shared and perspective-private Transformer encoders use hidden width 512, eight heads and depth five.",
+    "sampling": "Emotion and Nature annotation pipelines sample source video at 1 fps; the model operates on fixed non-overlapping 5-second segments.",
+    "architecture": "One shared temporal backbone and three private Event, Emotion and Nature backbones, each followed by a task head; 1D rotary position encoding preserves temporal order.",
+    "fusion": "For each perspective, shared and corresponding private representations are concatenated before the task-specific predictor; modalities are not fused at model input.",
+    "objective": "Binary cross-entropy is summed across Event, Emotion and Nature batches; automated behavioral, affective and scenic/aesthetic signals provide targets.",
+    "training_data": "TRINITY-Event, TRINITY-Emotion and TRINITY-Nature; Event uses Mr. HiSum replay behavior, Emotion uses EmotiEffLib plus Qwen2-VL-7B agreement, and Nature uses detector/CLIP filtering plus Everypixel scores.",
+    "test_data": "TRINITY perspective tests; fine-tuning evaluations on Mr. HiSum, YouTube Highlights and VEATIC.",
+    "split": "The paper's Table 1 pool counts, repository README split counts and released split manifests do not agree. Exact release conflicts are retained in the TRINITY dataset record; no numerical benchmark row is admitted here.",
+    "budget": "mAP at top-15% and top-50% ground-truth segment ratios for TRINITY/Mr. HiSum; standard category mAP for YouTube Highlights; no final summary-duration decoder.",
+    "postprocessing": "Five-second segment scores are ranked per requested perspective; fine-tuning freezes non-target branches.",
+    "metrics": [
+      "mAP at 15%",
+      "mAP at 50%",
+      "YouTube Highlights mAP",
+      "SAGR",
+      "RMSE"
+    ],
+    "code_url": "https://github.com/vanilladucky/TRINITY",
+    "code_status": "Official author repository inspected at a pinned commit; source is present, but released checkpoints were not found and no run was attempted.",
+    "framework": "Python 3.8.8, PyTorch 1.13.1 with CUDA 11.7; README reports RTX 3090 use.",
+    "weights": "No trained checkpoint found at the inspected repository commit; frozen CLIP ViT-B/32 is required.",
+    "features": "Released metadata and 512-dimensional CLIP features are listed on Hugging Face; archive bodies were not downloaded.",
+    "reproducibility": "Paper, live dataset metadata, released split manifests and source at commit dc70fdecb98de5888f71159f6ac1ea223103b9bf were inspected; models and feature archives were not executed or downloaded.",
+    "limitations": "Personal-style means three constructed saliency perspectives, not adaptation to an individual user's history. Counts conflict across paper, README and release manifests. Nature labels depend on a proprietary scorer; annotation pipelines and pretrained encoders may drift. Paper optimization settings differ from released CLI defaults.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://arxiv.org/pdf/2608.29577v1",
+      "https://github.com/vanilladucky/TRINITY/tree/dc70fdecb98de5888f71159f6ac1ea223103b9bf",
+      "https://huggingface.co/datasets/vanilladucky/TRINITY/tree/eb23873d1eb44fc8d600038fadfa39e7c5bb090f"
+    ]
+  },
+  {
+    "id": "knowvis",
+    "title": "KnowVis: Knowledge-Centric Visual Summarization for Video Lectures",
+    "authors": [
+      "Yi Xu",
+      "Yifan Hou",
+      "Xiaoyu Zhang"
+    ],
+    "venue": "arXiv preprint v2; arXiv metadata reports Findings of EMNLP 2026, but an ACL Anthology entry was not independently verified",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2609.03742v2",
+    "project_url": "https://github.com/yixu-cityu/KnowVis",
+    "supervision": [
+      "training-free"
+    ],
+    "tasks": [
+      "lecture video visual summarization",
+      "knowledge-centric educational summarization"
+    ],
+    "outputs": [
+      "generated visual summary",
+      "knowledge-unit storyboard"
+    ],
+    "mechanisms": [
+      "concept graph construction",
+      "pedagogical concept selection",
+      "retrieval-grounded image generation"
+    ],
+    "encoders": "Proprietary Gemini-3-Flash processes transcripts and slide frames; Gemini-3.1-Flash-Image renders and verifies visual summaries.",
+    "sampling": "Transcript chunks and temporally associated slide frames form knowledge units; executable extraction code and exact sampling settings are not released.",
+    "architecture": "A prompted pipeline builds a concept graph, selects important/challenging concepts, spreads labels to form knowledge units, generates a storyboard, renders an image and performs one verification pass.",
+    "fusion": "Transcript evidence and slide frames are joined through concept-subgraph retrieval rather than learned end-to-end fusion.",
+    "objective": "No gradient objective; threshold-concept heuristics and proprietary model prompts drive selection and generation.",
+    "training_data": "No task-specific model training; 125 open-web lecture videos across ten disciplines are processed into 1,079 knowledge units.",
+    "test_data": "The same 125-video collection; automated comparison uses generated outputs, and a separate within-subject human study has ten university students.",
+    "split": "No train/validation/test partition is reported; the Hugging Face release exposes one knowledge_units split.",
+    "budget": "Top 10% important and top 10% challenging concepts seed knowledge-unit construction; no temporal-summary duration budget.",
+    "postprocessing": "A generated image receives a single automated verification/revision pass.",
+    "metrics": [
+      "LLM-judged accuracy",
+      "LLM-judged clarity",
+      "information density",
+      "mental effort",
+      "human learning effectiveness",
+      "retention",
+      "transfer"
+    ],
+    "code_url": "https://github.com/yixu-cityu/KnowVis",
+    "code_status": "Official release stub only: the inspected commit contains a README and two images, with no executable implementation.",
+    "framework": "Proprietary Gemini APIs; no dependency manifest or runnable source released at the inspected commit.",
+    "weights": "Provider-hosted proprietary models; no checkpoints released.",
+    "features": "Hugging Face records contain generated images, concepts, concept-subgraph triples, transcripts, slide paths and source-video metadata.",
+    "reproducibility": "Paper, Hugging Face schema/listing and repository commit da14209fd4a7483474fad4fefdde8f0920290976 were inspected; the roughly 803 MB dataset and proprietary pipeline were not downloaded or run.",
+    "limitations": "Proprietary model versions, prompts and provider behavior limit repeatability. Automated judges may favor related model families; failed baseline generations change denominators. The human study has ten participants. The live dataset card does not declare the license stated prospectively in the paper.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://arxiv.org/pdf/2609.03742v2",
+      "https://github.com/yixu-cityu/KnowVis/tree/da14209fd4a7483474fad4fefdde8f0920290976",
+      "https://huggingface.co/datasets/yixu-cityu/KnowVis/tree/ba4208a250bc60b03d0b4ea48f1c2dc70c2d77cc"
+    ]
+  },
+  {
+    "id": "sgwib",
+    "title": "SGWIB: Sliced Gromov–Wasserstein Information Bottleneck for Video Highlight Detection",
+    "authors": [
+      "Hanjuan Huang",
+      "Yung-Chieh Yeh",
+      "Hsing-Kuo Pao"
+    ],
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2609.13966v1",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "supervised",
+      "weakly-supervised"
+    ],
+    "tasks": [
+      "video highlight detection",
+      "behavior-supervised importance ranking"
+    ],
+    "outputs": [
+      "temporal importance",
+      "ranked highlight segments"
+    ],
+    "mechanisms": [
+      "sliced Gromov-Wasserstein bottleneck",
+      "context disentanglement",
+      "structure-preserving regularization"
+    ],
+    "encoders": "CSTA backbone over YouTube-8M frame features: 1,024-dimensional visual or 128-dimensional audio features; modality branches are trained independently.",
+    "sampling": "Frame-level feature cadence is not stated explicitly; mAP evaluation averages scores in non-overlapping 5-second segments.",
+    "architecture": "CSTA with a stochastic information bottleneck, sliced Gromov-Wasserstein structure regularizer, and HAR-CDM task/context branches for sports pseudo-environments.",
+    "fusion": "No audiovisual fusion; visual and audio models use separate parameters and are evaluated independently.",
+    "objective": "Importance regression plus structure-preserving bottleneck and orthogonality/context losses; sports categories provide pseudo-environment supervision.",
+    "training_data": "MrHiSum and MoSu separately, using Most Replayed behavioral targets; visual is the main comparison and audio is a diagnostic branch.",
+    "test_data": "Held-out MrHiSum and MoSu partitions; an additional qualitative YouTube example is not a benchmark.",
+    "split": "Paper Table II states 80/10/10 for MrHiSum and 60/20/20 for MoSu, but implementation prose instead names 27,892 of 31,892 MrHiSum videos and 42,152 of 52,678 MoSu videos as training data; neither count matches its table percentage. No released split artifact or code was found.",
+    "budget": "Ground-truth top-15%, top-30% and top-50% five-second segments define mAP positives; correlations use full score rankings.",
+    "postprocessing": "Five-second averaging for retrieval metrics; raw temporal score rankings for Kendall tau and Spearman rho.",
+    "metrics": [
+      "Kendall tau",
+      "Spearman rho",
+      "mAP at 15%",
+      "mAP at 30%",
+      "mAP at 50%"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "No official or author-affiliated code found by exact-title, author and repository searches.",
+    "framework": "Paper reports a single NVIDIA A100, 50 epochs, batch size 32 and initial learning rate 0.0001; no environment manifest.",
+    "weights": "Not independently verified",
+    "features": "YouTube-8M visual/audio features; MrHiSum audio is newly extracted from available source videos, but no archive was located.",
+    "reproducibility": "Primary paper inspected; no code, splits, features or checkpoints independently verified, downloaded or executed.",
+    "limitations": "Table III and surrounding prose report conflicting MoSu values; for both datasets, Table II split percentages conflict with training counts in the implementation prose. Behavioral replays are not human-authored summaries. Sports taxonomy and pseudo-environment design may not generalize. Numerical rows are withheld pending clarification.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://arxiv.org/pdf/2609.13966v1"
+    ]
+  },
+  {
+    "id": "byra-zero-shot-highlight",
+    "title": "Zero-shot video highlight detection based on text descriptions and synthetic images",
+    "authors": [
+      "Michal Byra",
+      "Alberto Presta",
+      "Grzegorz Stefanski",
+      "Krzysztof Arendt"
+    ],
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2609.14790v1",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "training-free",
+      "zero-shot"
+    ],
+    "tasks": [
+      "metadata-conditioned video highlight detection"
+    ],
+    "outputs": [
+      "frame importance",
+      "ranked highlights"
+    ],
+    "mechanisms": [
+      "LLM-generated highlight descriptors",
+      "vision-language similarity",
+      "diffusion-generated visual prototypes"
+    ],
+    "encoders": "GPT-o4 generates an average 12.8 text descriptors per video; CLIP ViT-L/14 scores frames; SDXL with IP-Adapter creates one optional visual prototype per descriptor; Qwen2.5-VL supplies coarse SumMe categories.",
+    "sampling": "Frame sampling cadence, resize/crop, score-to-reference alignment and CLIP normalization are not reported.",
+    "architecture": "A metadata prompt produces likely-highlight descriptions; text similarities select an optional video reference frame, synthetic images represent the descriptions, and descriptor-wise text/image scores are combined.",
+    "fusion": "Text and synthetic-image similarities are multiplied per descriptor and then averaged; the best SumMe variant uses text only.",
+    "objective": "No optimization on highlight annotations or target datasets; pretrained models are used at inference.",
+    "training_data": "No task-specific training; upstream foundation-model training data are outside the paper's reported protocol.",
+    "test_data": "TVSum and SumMe.",
+    "split": "No learned train/validation split; all benchmark videos appear to be evaluated, but no evaluated-video manifest, exclusions or code are provided.",
+    "budget": "Correlation metrics have no summary-duration budget; a separate top-5 mAP analysis is not entered because segment extraction is insufficiently specified.",
+    "postprocessing": "Frames are ranked by averaged similarity; no length-constrained summary solver is used for the registered correlations.",
+    "metrics": [
+      "Kendall tau",
+      "Spearman rho",
+      "top-5 mAP"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "No official or author-affiliated code found by exact-title, author and repository searches.",
+    "framework": "Hosted/proprietary GPT-o4 plus CLIP ViT-L/14, SDXL, IP-Adapter and Qwen2.5-VL; exact API/model revisions and dependencies are not reported.",
+    "weights": "Pretrained foundation models; no task-specific checkpoint.",
+    "features": "On-the-fly CLIP text/image embeddings and generated visual prototypes; no released feature archive.",
+    "reproducibility": "Primary paper inspected; no implementation, prompt manifest, outputs, seeds or model-version snapshot was found, downloaded or executed.",
+    "limitations": "Metadata availability conditions the task. SumMe uses a video model to infer categories, so it is an auxiliary bootstrapped-metadata protocol rather than the same native-metadata setting as TVSum. Table 2 conflates different dataset-best variants. Sampling, prompt, API, seed and repetition details are incomplete.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://arxiv.org/pdf/2609.14790v1"
+    ]
+  },
+  {
+    "id": "sspvs",
+    "title": "Progressive Video Summarization via Multimodal Self-supervised Learning",
+    "authors": [
+      "Haopeng Li",
+      "Qiuhong Ke",
+      "Mingming Gong",
+      "Tom Drummond"
+    ],
+    "venue": "WACV",
+    "year": 2023,
+    "paper_url": "https://openaccess.thecvf.com/content/WACV2023/html/Li_Progressive_Video_Summarization_via_Multimodal_Self-Supervised_Learning_WACV_2023_paper.html",
+    "project_url": "https://github.com/HopLee6/SSPVS-PyTorch",
+    "supervision": [
+      "self-supervised",
+      "supervised"
+    ],
+    "tasks": [
+      "generic extractive video summarization",
+      "text-assisted video summarization"
+    ],
+    "outputs": [
+      "frame importance",
+      "keyshot skim"
+    ],
+    "mechanisms": [
+      "multimodal self-supervised pretraining",
+      "progressive frame reweighting",
+      "optional text conditioning"
+    ],
+    "encoders": "ImageNet-pretrained GoogLeNet pool-5 frame features, a Transformer video encoder and uncased BERT-base text encoder.",
+    "sampling": "YTVT, SumMe and TVSum are sampled at 2 fps. Pretraining randomly crops 256 frames; downstream training randomly crops or zero-pads to 512 frames.",
+    "architecture": "Video-text pretraining combines coarse correspondence, fine-grained set alignment and masked-frame recovery; a one-to-four-stage progressive summarizer repeatedly reweights frame features.",
+    "fusion": "Optional category/query/title text is encoded by BERT and fused into the first progressive stage.",
+    "objective": "Three self-supervised pretraining losses followed by supervised mean-squared error against human frame-importance scores.",
+    "training_data": "YTVT (3,081 videos, 23 categories and 202 queries) for self-supervised pretraining; SumMe/TVSum human scores for fine-tuning; OVP and YouTube in augmented/transfer protocols.",
+    "test_data": "SumMe and TVSum under five-fold canonical, augmented and transfer settings.",
+    "split": "Five-fold cross-validation is reported, but the paper does not identify split hashes. Released source uses each fold's test_keys for validation and post-hoc best-epoch selection.",
+    "budget": "KTS shots selected by 0/1 knapsack under a strict 15% video-length constraint.",
+    "postprocessing": "Mean frame importance per KTS shot becomes the knapsack value; SumMe uses average-reference and TVSum max-reference F-score aggregation in released code.",
+    "metrics": [
+      "Kendall tau",
+      "Spearman rho",
+      "keyshot F-score"
+    ],
+    "code_url": "https://github.com/HopLee6/SSPVS-PyTorch",
+    "code_status": "Official author repository inspected at a pinned commit; no runtime reproduction performed.",
+    "framework": "Python 3.8.13, PyTorch 1.12, PyTorch Lightning 1.6.5, OR-Tools 9.3.10497 and pytorch-transformers 1.2.0.",
+    "weights": "README links Figshare checkpoints; files were not downloaded or loaded.",
+    "features": "README links processed data, frame features and text metadata on Figshare; archive bodies and hashes were not inspected.",
+    "reproducibility": "Paper and source at commit e472200069b1697e392f7ac278593c973026b680 were inspected; no model, checkpoint or dataset archive was executed or downloaded.",
+    "limitations": "Self-supervision applies to representation pretraining, not the final summarizer, which uses human importance labels. Released source selects the best epoch using test_keys after training, creating test-influenced model selection. The repository has no standard license and restricts use to non-commercial research/education.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://openaccess.thecvf.com/content/WACV2023/papers/Li_Progressive_Video_Summarization_via_Multimodal_Self-Supervised_Learning_WACV_2023_paper.pdf",
+      "https://github.com/HopLee6/SSPVS-PyTorch/tree/e472200069b1697e392f7ac278593c973026b680"
+    ]
+  },
+  {
+    "id": "semantic-action-graph",
+    "title": "Semantic Action Graph: A Shared Representation for Agent Grounding and Human Interpretation of Sports Highlights",
+    "authors": [
+      "Tica Lin",
+      "Deepak Chandran",
+      "Gauri Jagatap",
+      "Chen Chen",
+      "Andrea Fanelli",
+      "David Gunawan",
+      "Josh Kimball"
+    ],
+    "venue": "IEEE VIS 2026 Workshop on GenAI, Agents, and the Future of VIS",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2609.20768v1",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "training-free"
+    ],
+    "tasks": [
+      "personalized sports highlight composition",
+      "narrated highlight generation",
+      "human-interpretable event browsing"
+    ],
+    "outputs": [
+      "extractive highlight clips",
+      "personalized narration",
+      "interactive action graph"
+    ],
+    "mechanisms": [
+      "semantic action graph",
+      "LLM agent orchestration",
+      "preference-conditioned ranking"
+    ],
+    "encoders": "Claude 3.5 Sonnet creates narratives; another Claude-based agent composes and ranks highlights from structured graph records. No raw-video encoder is used.",
+    "sampling": "Official event-feed timestamps at roughly 2–5-second granularity supply clip boundaries; the system does not infer events from raw frames.",
+    "architecture": "A deterministic Game Analyzer creates Performer, Action, Recipient, Moment and State nodes; narrative, highlight-generation and ranking agents operate on the graph; React/Cytoscape.js exposes it to users.",
+    "fusion": "Structured event metadata is joined to frame-aligned source clips; graph facts condition generated narration and user preferences condition ranking.",
+    "objective": "No gradient objective; agents generate ten candidates and rank five clips according to action, tactical, casual, player, team or player-specific preferences.",
+    "training_data": "No task-specific training; the prototype uses an official structured feed for one 2024–25 DFB-Pokal final.",
+    "test_data": "The same 96-minute match with a 1,330-action-node graph; no benchmark split or reference summaries.",
+    "split": "Not applicable: single-match formative prototype and feedback study.",
+    "budget": "Ten candidate clips are reduced to five; no fixed duration ratio or standard highlight budget.",
+    "postprocessing": "Moment frame indices cut source clips, which are paired with generated narrative text and presented through the graph interface.",
+    "metrics": [
+      "7-point user ratings",
+      "task completion counts"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "No author-affiliated code found through paper, exact-title, system-name and repository searches.",
+    "framework": "Proprietary Claude agents plus React and Cytoscape.js; versions, prompts and environment are not released.",
+    "weights": "Provider-hosted proprietary model; no checkpoint released.",
+    "features": "Structured DFL event feed and frame indices; neither the feed nor match video is released as a public artifact.",
+    "reproducibility": "Primary paper inspected; code, graph data, prompts and media were not available for execution.",
+    "limitations": "Evidence comes from one match and small formative/feedback studies, with no standard summary-quality benchmark or uncertainty. The method requires privileged structured feeds, omits spatial/tactical state and does not build graphs from raw video. Satisfaction cannot be attributed uniquely to the graph or agents.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://arxiv.org/pdf/2609.20768v1"
+    ]
+  },
+  {
+    "id": "unified-agentic-video-editing",
+    "title": "Unified Agentic Video Editing Across Levels of Complexity and Creativity",
+    "authors": [
+      "Surabhi S. Nath",
+      "Kim Ferres",
+      "Milan Petrović",
+      "Lion Schulz"
+    ],
+    "venue": "NeurIPS 2026 (paper header; archival proceedings entry not independently verified)",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2609.12769v1",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "training-free"
+    ],
+    "tasks": [
+      "long-form narrative video summarization",
+      "agentic video editing"
+    ],
+    "outputs": [
+      "audiovisual narrative summary",
+      "generated voice-over"
+    ],
+    "mechanisms": [
+      "LLM agent orchestration",
+      "hierarchical metadata retrieval",
+      "timeline-based media composition"
+    ],
+    "encoders": "Gemini 3.7 Flash reasons over precomputed episode/scene/shot text metadata; Google Cloud Chirp 3 HD with the Charon voice synthesizes narration. Agents do not inspect raw video.",
+    "sampling": "Shot timestamps come from proprietary hierarchical metadata. Each plot line has one eight-second character-introduction segment, with two representative shots selected per relevant character; each narrative beat receives one to three source shots.",
+    "architecture": "An agent orders plot lines, retrieves character shots, converts plot descriptions to voice-over beats, selects matching shots and renders video, music, narration and text to a shared timeline.",
+    "fusion": "Source shots are aligned to LLM-generated narration and music through timestamped metadata rather than learned cross-modal features.",
+    "objective": "No gradient objective; low-temperature agents make one initial ordering call and three calls per plot line.",
+    "training_data": "No task-specific training; proprietary metadata for five episodes of one unnamed established scripted series.",
+    "test_data": "The same five episodes, evaluated by Gemini-2.5-Flash on 22 four-option multimodal questions per episode with summary, trailer or no-video context.",
+    "split": "No public train/validation/test split or independent reference summaries; corpus identity is withheld.",
+    "budget": "Each output targets 90–110 seconds; the paper reports 120,000–220,000 input tokens and 13 model calls for a four-plot-line episode.",
+    "postprocessing": "Rendering tools assemble source shots, generated voice-over, background music and text into a layered audiovisual summary.",
+    "metrics": [
+      "model-answered multimodal multiple-choice accuracy"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "No code or data release linked in the paper or found through exact-title, arXiv-ID and repository searches.",
+    "framework": "Proprietary Gemini and Google Cloud TTS services plus private editing tools; no environment manifest.",
+    "weights": "Provider-hosted proprietary models; no checkpoints released.",
+    "features": "Private hierarchical timestamped plot, scene, dialogue, character, shot and camera metadata.",
+    "reproducibility": "Primary paper inspected; proprietary corpus, metadata, prompts, services and rendering tools were unavailable for independent execution.",
+    "limitations": "Five episodes from one withheld series do not establish benchmark generalization. Gemini-2.5-Flash answers a fixed comprehension quiz rather than judging summary quality; its 69% no-video accuracy indicates strong prior knowledge of the popular series. No uncertainty, repeat count, human summary study or public reference is reported; stochastic chains and rights/safety risks remain.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://arxiv.org/pdf/2609.12769v1"
+    ]
+  },
+  {
+    "id": "audio-sports-highlight",
+    "title": "Audio for Sports Highlight Detection: A Comparative Empirical Study",
+    "authors": [
+      "Hao Xu",
+      "Meenakshi Sarkar",
+      "Vishnu Raj",
+      "David Gunawan"
+    ],
+    "venue": "MMSports at ACM Multimedia",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2609.17923v1",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "sports highlight detection",
+      "multimodal highlight ranking"
+    ],
+    "outputs": [
+      "clip saliency",
+      "binary highlight regions"
+    ],
+    "mechanisms": [
+      "audio-visual feature fusion",
+      "temporal GRU",
+      "audio source-separation diagnostics"
+    ],
+    "encoders": "Frozen AST audio features and frozen CLIP visual features; MLP and GRU heads compare modalities, while an early projected concatenation feeds the audiovisual GRU.",
+    "sampling": "317 available SV-Highlights videos are divided into non-overlapping 2-second clips; three of the original 320 videos are unavailable.",
+    "architecture": "Single-modality MLP/GRU baselines and early-fusion audiovisual GRU; Demucs separates vocal and background tracks for diagnostic experiments.",
+    "fusion": "Projected audio and visual embeddings are concatenated before a temporal GRU.",
+    "objective": "Binary cross-entropy with AdamW, learning rate 0.0001, weight decay 0.0001 and cosine scheduling for 30 epochs.",
+    "training_data": "SV-Highlights, with labels derived from official edited highlight videos.",
+    "test_data": "Paper-local held-out SV-Highlights video partitions across three random seeds.",
+    "split": "SV-Highlights has no official split. For each seed, videos are divided 80/20 train/test and 20% of training becomes validation (effective 64/16/20); exact IDs are not published.",
+    "budget": "No duration budget or summary solver; Hit@K sets K to each video's number of ground-truth positive clips, and temporal IoU thresholds probabilities at 0.5.",
+    "postprocessing": "Clip probabilities are ranked for mAP/Hit metrics and thresholded at 0.5 for temporal IoU.",
+    "metrics": [
+      "mAP",
+      "Hit@1",
+      "Hit@K",
+      "temporal IoU"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "No author-affiliated repository found through paper, exact-title, arXiv-ID and author searches.",
+    "framework": "Paper reports an NVIDIA A100 40 GB and three seeds (42, 2026 and 3020); no dependency manifest or model-selection criterion is published.",
+    "weights": "Frozen CLIP, AST and Demucs dependencies; no task checkpoint released.",
+    "features": "Paper-local audio, visual and source-separated embeddings; no feature archive or exact split manifest released.",
+    "reproducibility": "Primary paper inspected; code, features, split manifests and checkpoints were not available for independent execution.",
+    "limitations": "Results use a new paper-local split and cannot be mixed with other SV-Highlights protocols. Three videos are missing, exact split identities and checkpoint selection are unpublished, and editorial highlight videos may omit valid moments. Simple fusion, fixed thresholding and imperfect source separation constrain the conclusions.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://arxiv.org/pdf/2609.17923v1",
+      "https://openreview.net/forum?id=WMHOZw9UdK"
+    ]
+  },
+  {
+    "id": "clip-it",
+    "title": "CLIP-It! Language-Guided Video Summarization",
+    "authors": [
+      "Medhini Narasimhan",
+      "Anna Rohrbach",
+      "Trevor Darrell"
+    ],
+    "venue": "NeurIPS",
+    "year": 2021,
+    "paper_url": "https://proceedings.neurips.cc/paper/2021/hash/7503cfacd12053d309b6bed5c89de212-Abstract.html",
+    "project_url": "https://medhini.github.io/clip_it/",
+    "supervision": [
+      "supervised",
+      "unsupervised"
+    ],
+    "tasks": [
+      "generic extractive video summarization",
+      "natural-language query-focused video summarization",
+      "long-form egocentric summarization"
+    ],
+    "outputs": [
+      "frame importance",
+      "keyshot skim"
+    ],
+    "mechanisms": [
+      "vision-language pretraining",
+      "language-guided attention",
+      "caption-conditioned frame scoring"
+    ],
+    "encoders": "Fixed pretrained CLIP image/text encoders and off-the-shelf BMT captions; a Transformer with language-guided multi-head attention scores frames.",
+    "sampling": "BMT consumes 2-fps frames, uniformly retaining seven captions for SumMe/TVSum and 15 for QFVS; Transformer sequences are limited to 256 steps.",
+    "architecture": "CLIP text/image embeddings condition a frame-scoring Transformer; generic mode uses generated captions and query mode uses free-form text.",
+    "fusion": "Language-guided attention aligns CLIP visual and text features before temporal scoring.",
+    "objective": "Supervised weighted binary cross-entropy plus diversity and reconstruction losses; the paper's unsupervised variant drops BCE but still uses pretrained CLIP and BMT.",
+    "training_data": "SumMe and TVSum; 39 YouTube and 50 OVP videos in augmented/transfer protocols; QFVS/UT Egocentric for query-focused evaluation.",
+    "test_data": "SumMe, TVSum and QFVS under separate generic, augmented, transfer, generated-caption and query-focused settings.",
+    "split": "TVSum uses five random 20% test splits; SumMe refers to available splits without identifying hashes. QFVS uses four leave-one-video-out rounds with one validation and two training videos.",
+    "budget": "QFVS uses fixed 5-second shots. The paper delegates generic frame-to-keyshot conversion to prior code and does not restate segmentation, duration budget or reference aggregation.",
+    "postprocessing": "Frame scores are averaged into shots and selected by 0/1 knapsack; oracle ground-truth-caption experiments are isolated from generated-caption results.",
+    "metrics": [
+      "keyshot F-score",
+      "Kendall tau",
+      "Spearman rho",
+      "QFVS concept F-score"
+    ],
+    "code_url": "https://github.com/medhini/clip_it",
+    "code_status": "Official author repository is a README-only stub stating that code is coming; an incomplete unofficial forward-pass reimplementation is indexed separately.",
+    "framework": "Paper reports Adam, learning rate 0.0001, weight decay 0.001, 20 epochs, batch size 100 and five RTX 2080 GPUs; no official runnable environment.",
+    "weights": "Fixed CLIP and BMT models; no official task checkpoint released.",
+    "features": "CLIP/BMT features and captions are not released through executable author code.",
+    "reproducibility": "Paper, project page, official stub commit c18180905fa5a56c2297f89ae4c5ccae8d05f180 and unofficial source were inspected; no model or archive was run.",
+    "limitations": "The unsupervised label applies only to loss design, not pretrained components. Generic summary construction and SumMe split identity are underspecified. Ground-truth-caption oracle rows are not deployable. Official code is unavailable and the unofficial repository omits training, data, losses, evaluation and decoding.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://proceedings.neurips.cc/paper_files/paper/2021/file/7503cfacd12053d309b6bed5c89de212-Paper.pdf",
+      "https://github.com/medhini/clip_it/tree/c18180905fa5a56c2297f89ae4c5ccae8d05f180",
+      "https://github.com/srpkdyy/CLIP-It/tree/afb5ef27d77fe4ebf95960fdb63a46bc40832a82"
+    ]
+  },
+  {
+    "id": "multi-vidsum",
+    "title": "A Challenging Multimodal Video Summary: Simultaneously Extracting and Generating Keyframe-Caption Pairs from Video",
+    "authors": [
+      "Keito Kudo",
+      "Haruki Nagasawa",
+      "Jun Suzuki",
+      "Nobuyuki Shimizu"
+    ],
+    "venue": "EMNLP",
+    "year": 2023,
+    "paper_url": "https://aclanthology.org/2023.emnlp-main.457/",
+    "project_url": "https://github.com/cl-tohoku/Multi-VidSum",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "multimodal video summarization",
+      "joint keyframe-caption generation"
+    ],
+    "outputs": [
+      "ordered keyframes",
+      "aligned captions"
+    ],
+    "mechanisms": [
+      "iterative segmentation and refinement",
+      "joint pointer-caption decoding",
+      "dynamic-programming alignment"
+    ],
+    "encoders": "CLIP frame features; iterative captioners include Vid2Seq/InstructBLIP, while the simultaneous model uses a Flan-T5-base encoder-decoder with gate and pointer.",
+    "sampling": "Frames are sampled every 0.5 seconds. Joint experiment configurations use maximum input length 2,048 and beam width eight.",
+    "architecture": "One baseline iteratively segments, captions, refines keyframes and uses dynamic programming; another jointly decodes captions and frame pointers.",
+    "fusion": "Visual frame tokens and language tokens share the joint encoder-decoder; iterative variants score generated captions against temporal candidates.",
+    "objective": "Equal-weight keyframe-pointer and caption cross-entropies; pseudo-pretraining on MS COCO then Visual Storytelling precedes Multi-VidSum fine-tuning.",
+    "training_data": "7,727 Multi-VidSum/ActivityNet training videos, with MS COCO and Visual Storytelling pseudo-pretraining for the joint model.",
+    "test_data": "439 re-captioned videos sampled from ActivityNet Captions' original validation partition.",
+    "split": "Original ActivityNet test references are unavailable. The 439-video evaluation subset is drawn from 4,282 validation videos; experiment validation subsets are randomly sampled and no shared split hash is reported in the paper.",
+    "budget": "A predefined N pairs; released joint configurations use N=4. Iterative dynamic programming minimizes temporal overlap across selected pairs.",
+    "postprocessing": "Iterative mode combines 20 MTM and PySceneDetect segments, drops segments longer than 75% of the video, refines four times and chooses N pairs by dynamic programming; joint mode uses beam search.",
+    "metrics": [
+      "AKM exact",
+      "AKM cosine",
+      "BLEURT",
+      "METEOR"
+    ],
+    "code_url": "https://github.com/cl-tohoku/Multi-VidSum",
+    "code_status": "Official training/preparation and separate evaluator repositories inspected at pinned commits; no runtime reproduction performed.",
+    "framework": "Docker, PyTorch/Hugging Face, Weights & Biases and four GPUs; exact dependencies are repository-configured and large downloads are external.",
+    "weights": "Pretrained CLIP, Flan-T5, Vid2Seq/InstructBLIP variants; no locally verified checkpoint bundle.",
+    "features": "CLIP frame features, captions and candidate-frame annotations; the official dataset listing was pinned at ca03b147ddb4959229b510bde8eacc55933088af, but its 33.8 GB archive was not downloaded.",
+    "reproducibility": "Paper, source commit 23a053970824926c2ae421ab9d5956ce133348b7, evaluator commit d4aa2fd4f1b88b65a14f2c66676fe1529572772a and dataset listing ca03b147ddb4959229b510bde8eacc55933088af were inspected; source was not executed and the archive was not downloaded.",
+    "limitations": "Keyframe and caption metrics require constrained reference alignment and are not comparable with keyshot F1. The evaluation set repurposes validation data. The dataset card declares Apache-2.0, but source/evaluator repositories have no standard license; InstructBLIP zero/few-shot captioning does not make the complete summarizer zero/few-shot.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://aclanthology.org/2023.emnlp-main.457.pdf",
+      "https://github.com/cl-tohoku/Multi-VidSum/tree/23a053970824926c2ae421ab9d5956ce133348b7",
+      "https://github.com/cl-tohoku/Multi-VidSum-Eval/tree/d4aa2fd4f1b88b65a14f2c66676fe1529572772a",
+      "https://huggingface.co/datasets/tohoku-nlp/multi-vidsum/tree/ca03b147ddb4959229b510bde8eacc55933088af"
+    ]
+  },
+  {
+    "id": "personalized-daylong-egocentric",
+    "title": "Generating Personalized Summaries of Day Long Egocentric Videos",
+    "authors": [
+      "Pravin Nagar",
+      "Anuj Rathore",
+      "C. V. Jawahar",
+      "Chetan Arora"
+    ],
+    "venue": "IEEE TPAMI (online 2021; archival volume 2023)",
+    "year": 2023,
+    "paper_url": "https://doi.org/10.1109/TPAMI.2021.3118077",
+    "project_url": "https://pravin74.github.io/Int-sum/index.html",
+    "supervision": [
+      "unsupervised"
+    ],
+    "tasks": [
+      "personalized egocentric video summarization",
+      "day-long video summarization",
+      "interactive variable-length summarization"
+    ],
+    "outputs": [
+      "keyframe sub-shot skim",
+      "variable-length summary"
+    ],
+    "mechanisms": [
+      "policy gradient",
+      "actor-critic",
+      "user-feedback rewards"
+    ],
+    "encoders": "512-dimensional C3D pool-5 features pretrained on Sports-1M feed a bidirectional LSTM policy over non-overlapping 16-frame sub-shots.",
+    "sampling": "Non-overlapping 16-frame sub-shots; sliding windows span 25% of the desired summary length and four full-video passes process day-long streams.",
+    "architecture": "Binary selection policy trained with policy-gradient, Q-learning or actor-critic; reward plug-ins encode distinctiveness, indicativeness, target length, faces/social interactions/identities and positive/negative user examples.",
+    "fusion": "Visual policy rewards are augmented with face, identity, interaction and user-example signals rather than a learned multimodal fusion block.",
+    "objective": "Unsupervised RL rewards for distinctiveness, indicativeness and requested length, optionally extended by explicit personalization feedback.",
+    "training_data": "Disney day-long egocentric videos, UTE, HUJI and ancillary SumMe/TVSum experiments; pretrained feature/detector models supply representations.",
+    "test_data": "Disney, UTE and HUJI long-form corpora; SumMe and TVSum under fixed DR-DSN splits.",
+    "split": "Disney has eight sequences but reference summaries for only three videos with three annotators; UTE has four videos. SumMe/TVSum use five fixed DR-DSN splits; exact files were not rehashed.",
+    "budget": "Variable requested lengths for day-long output; a fixed five-minute summary for reported Disney/UTE RFS-50 comparison; 15% duration for SumMe/TVSum.",
+    "postprocessing": "Four-pass sliding-window decisions are assembled into a skim; optional GUI feedback changes rewards for subsequent personalized summaries.",
+    "metrics": [
+      "RFS-50",
+      "BLEU",
+      "average human rating",
+      "unique events minus jerks",
+      "traditional 15%-duration F-score over 16-frame sub-shot selections"
+    ],
+    "code_url": "https://github.com/Pravin74/interact_summ_code",
+    "code_status": "Official author source inspected at a pinned commit; GUI/script workflow is incomplete without separately acquired feature files.",
+    "framework": "README reports Ubuntu 16.04/18.04, PyTorch 1.4, CUDA 9/10.1 and NVIDIA P5000; no dependency lock.",
+    "weights": "Pretrained C3D, Faster R-CNN and OpenFace dependencies; no end-to-end checkpoint package verified.",
+    "features": "Users must acquire and rename C3D HDF5 features; acquisition and integrity are not automated.",
+    "reproducibility": "Accepted manuscript, project page and source commit b18da63203581c532eb4ad50ad7837fee3f300e6 were inspected; models and data were not executed/downloaded.",
+    "limitations": "Only three day-long Disney videos have reference summaries and the personalization study has ten users. RFS-50 depends on a temporal tolerance and is not ordinary F1. The project-page BLEU claim conflicts in scale with manuscript Table 2. No license or locked environment is provided.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://www.cse.iitd.ac.in/~chetan/papers/pravin-pami21.pdf",
+      "https://pravin74.github.io/Int-sum/index.html",
+      "https://github.com/Pravin74/interact_summ_code/tree/b18da63203581c532eb4ad50ad7837fee3f300e6"
+    ]
+  },
+  {
+    "id": "online-diversity-sampling",
+    "title": "Diversity Promoting Online Sampling for Streaming Video Summarization",
+    "authors": [
+      "Rushil Anirudh",
+      "Ahnaf Masroor",
+      "Pavan Turaga"
+    ],
+    "venue": "ICIP",
+    "year": 2016,
+    "paper_url": "https://doi.org/10.1109/ICIP.2016.7532976",
+    "project_url": "https://www.rushila.com/publications.html",
+    "supervision": [
+      "unsupervised",
+      "training-free"
+    ],
+    "tasks": [
+      "causal streaming video summarization",
+      "online keyframe selection"
+    ],
+    "outputs": [
+      "online keyframe set"
+    ],
+    "mechanisms": [
+      "online exemplar replacement",
+      "diversity maximization",
+      "convex-hull volume"
+    ],
+    "encoders": "ImageNet-pretrained VGG penultimate-layer features extracted with MatConvNet.",
+    "sampling": "Single causal pass over VSUMM video frames; the experiment replaces the final 500 frames of every video with a frozen frame.",
+    "architecture": "A generalization of online K-means maintains K exemplars using competitive replacement with Euclidean clustering cost and reduced-space convex-hull diversity. Online K-medoids is evaluated separately as a baseline; the proposed method also forces noisy updates on 1–10% of samples to escape local minima.",
+    "fusion": "Visual-only streaming features; no cross-modal fusion.",
+    "objective": "Training-free online clustering/diversity objective with O(K) memory and O(NK) analytical time.",
+    "training_data": "None beyond pretrained VGG.",
+    "test_data": "VSUMM: 50 MPEG-1 videos with five human keyframe summaries each, modified by frozen-frame suffixes for this experiment.",
+    "split": "No learned split; all modified VSUMM videos are evaluated. K is chosen from each video's longest human reference summary, with K doubled when below five.",
+    "budget": "User-specified K, but the reported experiment derives K from human reference sizes; this leaks reference budget information.",
+    "postprocessing": "Fixed gamma 70 removes redundant exemplars before matching; evaluation then normalizes the number of matches by each user's reference-summary length.",
+    "metrics": [
+      "user-wise normalized keyframe match"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "No official or author-affiliated implementation found through exact-title, author-site and repository searches.",
+    "framework": "Paper reports MATLAB/MatConvNet and an Intel i7 throughput experiment; no environment or source release.",
+    "weights": "Pretrained VGG; no task checkpoint.",
+    "features": "Online VGG frame embeddings; no released feature archive.",
+    "reproducibility": "Primary paper and author publication page inspected; source, exact altered videos and evaluator were unavailable for execution.",
+    "limitations": "The protocol alters every video, derives K from reference summaries and uses a modified VSUMM match metric rather than original precision/recall/F-score. No runs or uncertainty are reported. Throughput is hardware/implementation-specific and was not reproduced.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://arxiv.org/pdf/1610.09582",
+      "https://www.rushila.com/publications.html"
+    ]
+  },
+  {
+    "id": "multimodal-vl-htm",
+    "title": "Multimodal Video Summarization Using Vision-Language Embeddings and Hierarchical Temporal Modeling",
+    "authors": [
+      "Saadman Sakib",
+      "Kaushik Deb"
+    ],
+    "venue": "Applied AI Letters",
+    "year": 2026,
+    "paper_url": "https://doi.org/10.1002/ail2.70039",
+    "project_url": "https://drive.google.com/drive/folders/12S_MrV9GpmIv-C2raDdqxJ-UmHZPHu5P?usp=sharing",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "generic extractive video summarization",
+      "multimodal keyshot selection"
+    ],
+    "outputs": [
+      "frame importance",
+      "keyshot skim"
+    ],
+    "mechanisms": [
+      "vision-language embeddings",
+      "temporal U-Net",
+      "hierarchical shot-frame Transformer"
+    ],
+    "encoders": "BLIP-2 produces frame captions; CLIP produces image and text embeddings combined as image-only, text-only, average or concatenated features. The headline system computes KTS change points from conventional GoogLeNet pool-5 features.",
+    "sampling": "Videos are sampled at 2 fps (described as every fifteenth frame) before feature extraction and KTS segmentation.",
+    "architecture": "A temporal U-Net and hierarchical shot/frame Transformer score frames from vision-language features.",
+    "fusion": "CLIP image/text embeddings are compared under separate, averaged and concatenated fusion variants.",
+    "objective": "Weighted focal loss against human-derived summary masks; the paper uses the term weak supervision, but task training consumes reference-summary labels.",
+    "training_data": "SumMe and TVSum, with OVP and YouTube videos in augmented and transfer settings.",
+    "test_data": "SumMe and TVSum under five-fold canonical, augmented and transfer protocols.",
+    "split": "Five-fold cross-validation with best-validation-F1 checkpoint; exact split IDs, seeds and Optuna tuning boundaries are not reported.",
+    "budget": "KTS shot means multiplied by 1,000 and decoded by 0/1 dynamic-programming knapsack at 20% source duration, not the common 15% setting.",
+    "postprocessing": "Selected KTS shots are concatenated chronologically; F1 is averaged over all annotators for both datasets.",
+    "metrics": [
+      "keyshot F1"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "No GitHub source, evaluator or checkpoint located; an author-linked Google Drive feature folder was found but bodies were not downloaded.",
+    "framework": "Paper reports Adam, 300 epochs per fold and Optuna tuning; executable environment and seed configuration are not released.",
+    "weights": "Pretrained BLIP-2 and CLIP; no task checkpoint found.",
+    "features": "Author-linked vision-language feature folder on Google Drive; listing provenance inspected, archives not downloaded or hashed.",
+    "reproducibility": "Official open-access article and linked feature listing inspected; no source, model, split manifest or feature body was executed/downloaded.",
+    "limitations": "The 20% budget and mean-over-annotator aggregation are incompatible with many cited 15% dataset-specific protocols. Headline tuned values differ sharply from controlled canonical concatenation results, while tuning boundaries, splits, runs and uncertainty are unreported. No global-best claim is retained.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://doi.org/10.1002/ail2.70039",
+      "https://drive.google.com/drive/folders/12S_MrV9GpmIv-C2raDdqxJ-UmHZPHu5P?usp=sharing"
+    ]
+  },
+  {
+    "id": "soccer-event-summarization",
+    "title": "Multimodal deep learning framework for soccer video event detection and summarization",
+    "authors": [
+      "Ali Karimi",
+      "Mohammad Ghanbari"
+    ],
+    "venue": "Discover Artificial Intelligence",
+    "year": 2026,
+    "paper_url": "https://doi.org/10.1007/s44163-026-02093-3",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "soccer event detection",
+      "domain-specific extractive video summarization"
+    ],
+    "outputs": [
+      "event labels",
+      "duration-constrained highlight video"
+    ],
+    "mechanisms": [
+      "modular event detection",
+      "audio-visual score fusion",
+      "knapsack shot selection"
+    ],
+    "encoders": "Dilated 3D CNN for shot boundaries; dual image/video visual classifiers; MFCC convolution/MBConv/LSTM keyword branch; SoundNet-initialized crowd-audio branch.",
+    "sampling": "Visual event classifier uses first/last shot frames plus 16 temporal samples. Commentary uses 20 ms MFCC windows with 10 ms stride; fusion produces per-second scores.",
+    "architecture": "Shot segmentation feeds visual event classification; separated commentary detects keywords and crowd audio detects excitement; weighted evidence becomes a shot value for selection.",
+    "fusion": "Per-second score is three times visual-event evidence plus one times keyword evidence plus one times crowd evidence.",
+    "objective": "Supervised classification losses per module. Event weights are empirically assigned from 20 human summaries, then normalized from 0 to 100.",
+    "training_data": "SoccerVE 6,277 shots; synthetic shot-boundary sequences; SoccerAE 25,200 English audio clips; SoccerCC 3,000 crowd-audio shots; pretrained ImageNet-21k and SoundNet representations.",
+    "test_data": "Module-specific test sets plus ten independently collected full matches from five European leagues for the end-to-end event/highlight pipeline.",
+    "split": "SoccerVE uses 80/20 train/test and synthetic shot-boundary data use 8,000/2,000; SoccerAE/SoccerCC splits and the ten match IDs are not published.",
+    "budget": "User-specified duration T seconds; 0/1 shot knapsack. No fixed T/ratio or exact solver implementation is reported.",
+    "postprocessing": "Tie-breaking favors shots adjacent to selected shots; final shots are concatenated chronologically.",
+    "metrics": [
+      "event precision",
+      "event recall",
+      "event F1",
+      "module classification accuracy"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "No code statement or relevant author-affiliated repository found by title, DOI, dataset and author searches.",
+    "framework": "Paper reports five-seed module experiments and roughly 35 fps/6.8 GB runtime, but no dependency/environment manifest or summarization implementation.",
+    "weights": "ImageNet-21k and SoundNet-pretrained modules; no released task checkpoints.",
+    "features": "Private/request-only soccer video and audio corpora; match IDs and feature files are not public.",
+    "reproducibility": "Open-access paper inspected; data are available only on reasonable noncommercial academic request, and no source, split manifest or checkpoint was available to execute.",
+    "limitations": "End-to-end Table 14 measures detection of 641 events, not summary overlap or user utility. The summary duration, exact solver and audio splits are unspecified; match IDs/data and code are private. Table 13 inconsistently names the crowd dataset. No generic summarization comparison is valid.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://link.springer.com/content/pdf/10.1007/s44163-026-02093-3.pdf"
+    ]
+  },
+  {
+    "id": "m2ur",
+    "title": "M2UR: Meta-Guided Multi-Expert with Uncertainty-Aware Refinement Framework for Video Summarization",
+    "authors": [
+      "Yupeng Wu",
+      "Xiaoran Xu",
+      "Xiaoshan Yang",
+      "Changsheng Xu"
+    ],
+    "venue": "ICIP",
+    "year": 2026,
+    "paper_url": "https://doi.org/10.1109/ICIP61757.2026.11630213",
+    "project_url": "Not independently verified",
+    "supervision": [
+      "not reported"
+    ],
+    "tasks": [
+      "generic video summarization"
+    ],
+    "outputs": [
+      "importance-based video summary; exact representation not accessible"
+    ],
+    "mechanisms": [
+      "multi-expert importance assessment",
+      "meta-guided expert coordination",
+      "uncertainty-aware temporal refinement"
+    ],
+    "encoders": "Not reported in the accessible IEEE abstract/accepted-paper metadata.",
+    "sampling": "Not reported in the accessible primary metadata.",
+    "architecture": "IEEE abstract describes multi-dimensional experts, meta-guided coordination and uncertainty-aware temporal refinement; full architectural details were inaccessible.",
+    "fusion": "Meta-guided coordination across experts; exact operator not accessible.",
+    "objective": "Not reported in the accessible primary metadata.",
+    "training_data": "Not reported in the accessible primary metadata.",
+    "test_data": "SumMe and TVSum, according to the official abstract.",
+    "split": "Not reported; full paper tables/protocol were inaccessible.",
+    "budget": "Not reported; no decoder or duration constraint was accessible.",
+    "postprocessing": "Uncertainty-aware temporal refinement is named in the abstract; exact refinement and summary construction are unavailable.",
+    "metrics": [
+      "Not reported in accessible primary metadata"
+    ],
+    "code_url": "Not independently verified",
+    "code_status": "No author-affiliated repository found through exact-title, DOI and author searches.",
+    "framework": "Not reported in accessible primary metadata.",
+    "weights": "Not independently verified",
+    "features": "Not reported in accessible primary metadata.",
+    "reproducibility": "DOI/Xplore metadata, official ICIP accepted-paper list and abstract were verified; the IEEE PDF was inaccessible to the audit, and no code or artifacts were found.",
+    "limitations": "Protocol, supervision, features, split identities, budget, solver, reference aggregation, metrics and numerical tables remain unresolved. The abstract's performance claim is not retained as a benchmark or global-best statement.",
+    "verified_on": "2026-09-19",
+    "sources": [
+      "https://ieeexplore.ieee.org/abstract/document/11630213/",
+      "https://2026.ieeeicip.org/list-of-accepted-regular-and-special-session-papers/"
     ]
   }
 ]

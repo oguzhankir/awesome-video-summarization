@@ -24,6 +24,12 @@ The positive appears in the denominator. Positive/negative construction determin
 
 [A2Summ](https://openaccess.thecvf.com/content/CVPR2023/html/He_Align_and_Attend_Multimodal_Summarization_With_Dual_Contrastive_Losses_CVPR_2023_paper.html) combines multimodal alignment and supervised summarization. Contrastive losses are secondary mechanisms when human importance targets also train the selector.
 
+### SSPVS: pretraining and summarization have different supervision
+
+[Progressive Video Summarization via Multimodal Self-supervised Learning](https://openaccess.thecvf.com/content/WACV2023/html/Li_Progressive_Video_Summarization_via_Multimodal_Self-Supervised_Learning_WACV_2023_paper.html) pretrains video/text representations with coarse correspondence, fine-grained set alignment and masked-frame recovery on YTVT. Its downstream progressive summarizer then minimizes mean-squared error against SumMe/TVSum human frame-importance scores. Classify the complete benchmark route as self-supervised **pretraining plus supervised fine-tuning**, not end-to-end label-free summarization.
+
+The downstream model repeatedly reweights 2-fps GoogLeNet features over one to four stages; optional BERT text enters the first stage. KTS shot means feed a 15%-capacity knapsack. The [official source](https://github.com/HopLee6/SSPVS-PyTorch/tree/e472200069b1697e392f7ac278593c973026b680) exposes another protocol warning: each fold's `test_keys` serve as Lightning validation data, and a post-hoc utility selects the best epoch from those metrics. A clean rerun needs a separate validation partition and fixed epoch rule before final test evaluation.
+
 ## Masked and predictive objectives
 
 A **repository-level masked-prediction abstraction** is

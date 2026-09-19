@@ -9,7 +9,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL_FIELDS = ('dataset_id', 'split_identity', 'split', 'training_regime', 'setting', 'features',
                    'sampling', 'segmentation', 'shot_aggregation', 'budget', 'solver',
-                   'reference_aggregation', 'metric', 'unit', 'runs', 'variance', 'reproduction')
+                   'reference_aggregation', 'metric', 'unit', 'runs', 'reproduction')
+UNKNOWN_PROTOCOL_MARKERS = (
+    'not reported', 'not independently verified', 'unknown', 'unspecified',
+    'not specified', 'not available', 'not explained', 'not stated', 'not disclosed',
+    'not documented', 'not established', 'not provided', 'unresolved', 'unverified',
+)
 
 
 def read_records(name):
@@ -26,7 +31,7 @@ def cell(value):
 def protocol_key(record):
     # An unknown value cannot establish compatibility, even with another unknown.
     values = tuple(record[k] for k in PROTOCOL_FIELDS)
-    if any(any(marker in value.lower() for marker in ('not reported', 'not independently verified', 'unknown', 'unspecified')) for value in values):
+    if any(any(marker in value.lower() for marker in UNKNOWN_PROTOCOL_MARKERS) for value in values):
         return values + (record['id'],)
     return values
 

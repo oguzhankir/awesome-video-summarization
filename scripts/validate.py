@@ -173,9 +173,14 @@ def result_number_errors(result):
     value = result.get('value')
     if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
         return [f"{result.get('id', '?')}: result value must be a finite number"]
-    metric = result.get('metric', '').lower().replace('_', '-')
-    if (metric.startswith('f1') or metric in {'f-score', 'fscore'}) and result.get('unit') == '%' and not 0 <= value <= 100:
+    metric = result.get('metric', '').strip().lower().replace('_', '-')
+    unit = result.get('unit', '').strip().lower()
+    is_f1 = (re.search(r'(^|[^a-z0-9])f1(?![0-9])', metric) is not None
+             or metric in {'f-score', 'fscore'})
+    if is_f1 and unit in {'%', 'percent', 'percentage'} and not 0 <= value <= 100:
         return [f"{result.get('id', '?')}: F1 percentage outside [0, 100]"]
+    if unit == 'correlation coefficient' and not -1 <= value <= 1:
+        return [f"{result.get('id', '?')}: correlation coefficient outside [-1, 1]"]
     return []
 
 

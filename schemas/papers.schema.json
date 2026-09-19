@@ -151,11 +151,24 @@
             "self-supervised",
             "training-free",
             "zero-shot",
-            "few-shot"
+            "few-shot",
+            "not reported"
           ]
         },
         "minItems": 1,
-        "uniqueItems": true
+        "uniqueItems": true,
+        "allOf": [
+          {
+            "if": {
+              "contains": {
+                "const": "not reported"
+              }
+            },
+            "then": {
+              "maxItems": 1
+            }
+          }
+        ]
       },
       "tasks": {
         "type": "array",

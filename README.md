@@ -2,7 +2,7 @@
 
 A research handbook and practical learning guide to video summarization: classical and supervised methods, weak/semi/self-supervision, unsupervised and reinforcement learning, training-free selection, multimodal foundation models, and query or user-conditioned systems. It covers keyframes, keyshots, textual and multimodal summaries, with source-linked code, datasets and protocol-aware benchmarks.
 
-**Last literature audit: 2026-09-08.** Coverage is selective and dated; [the ledger](docs/15-coverage.md) distinguishes newly verified entries from inherited technical audits. Source availability does not imply successful reproduction.
+**Last literature audit: 2026-09-19.** Coverage is selective and dated; [the ledger](docs/15-coverage.md) and [latest audit](docs/audits/2026-09-19-weekly.md) distinguish newly verified entries from inherited technical audits. Source availability does not imply successful reproduction.
 
 **Start learning:** [Learning path](docs/16-learning-path.md) · **Find a paper:** [Catalog](docs/generated/papers.md) · **Find code:** [Implementations](docs/13-implementations.md) · **Compare results:** [Benchmarks](docs/12-benchmarks.md)
 
@@ -30,11 +30,11 @@ These axes are independent. The four original unsupervised families remain a [su
 
 ## Datasets and results
 
-SumMe and TVSum support classic importance-to-skim studies; VideoXum supports visual and textual summaries; query and egocentric resources have their own annotations and metrics. MoSu adds behavior-derived multimodal importance targets. QA and grounding resources remain explicitly adjacent. See [dataset cards](docs/generated/datasets.md) for licensing, availability, features and unresolved fields.
+SumMe and TVSum support classic importance-to-skim studies; VideoXum supports visual and textual summaries; query and egocentric resources have their own annotations and metrics. MoSu adds behavior-derived multimodal importance targets, TRINITY separates Event/Emotion/Nature saliency, KnowVis generates pedagogical images, and Multi-VidSum pairs keyframes with captions. QA and grounding resources remain explicitly adjacent. See [dataset cards](docs/generated/datasets.md) for licensing, availability, features and unresolved fields.
 
 A score is meaningful only with its split, training data, features, sampling, segmentation, shot values, budget solver, reference aggregation and metric. The [generated benchmark catalog](docs/12-benchmarks.md) isolates unknown/incompatible protocols and distinguishes author-reported values from reproduced ones. It does not assert a field-wide winner.
 
-Recent starting points include **TripleSumm** (ICLR 2026), **SummDiff**, **LLMVS**, **V2Xum-LLM**, **SD-VSum** and **CoE**. The [modern-method audit](docs/10-foundation-models.md) explains their actual training signals and output differences, including TripleSumm's source-pretraining, fine-tuning and direct-transfer distinction.
+Recent starting points include **TRINITY**, **SGWIB**, metadata-conditioned **zero-shot highlight detection**, **KnowVis**, agentic narrative summaries, multimodal sports systems, **TripleSumm** and **CoE**. The [modern-method chapter](docs/10-foundation-models.md) explains their actual training signals and output differences; the latest audit preserves count conflicts, restricted sources and withheld numerical claims.
 
 ## Run a first experiment
 
