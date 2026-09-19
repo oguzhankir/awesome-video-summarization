@@ -4,11 +4,11 @@
 
 [Handbook home](../README.md) · [Metric definitions](02-evaluation.md) · [Paper catalog](generated/papers.md)
 
-34 primary-source result records; 34 exact protocol groups. All values retain author/reproduction status.
+38 primary-source result records; 38 exact protocol groups. All values retain author/reproduction status.
 
 Groups require equality of the full recorded protocol tuple. Unknown metadata isolates a record. A missing split identity isolates a record even when prose such as “random 80/20” matches. An identity must name a verified shared split artifact, fixed official partition, or primary experiment configuration; comparison notes remain binding. No global SOTA ranking is asserted; the highest value within a multi-row group is only the best value in this catalog under that recorded protocol, not a verified field-wide best.
 
-## MoSu — In-domain MoSu test; full trimodal model, main Table 2. — Spearman rho (8bc35431)
+## MoSu — In-domain MoSu test; full trimodal model, main Table 2. — Spearman rho (eec950da)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -32,13 +32,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Spearman rho
 - **Unit:** correlation coefficient
 - **Runs:** One reported train/validation/test result; independent seed count not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-mosu-test-rho (2026-09-08):** Main Table 2 and Appendix Table XI agree on .351/.472, but Appendix D prose instead says .361/.484. Preserve the main-table values; conflict remains unresolved. No independent rerun; not temporal-overlap F1 or highlight mAP.
 
 </details>
 
-## MoSu — In-domain MoSu test; full trimodal model, main Table 2. — Kendall tau (6b2c822e)
+## MoSu — In-domain MoSu test; full trimodal model, main Table 2. — Kendall tau (b2690cd0)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -62,13 +61,70 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Kendall tau
 - **Unit:** correlation coefficient
 - **Runs:** One reported train/validation/test result; independent seed count not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-mosu-test-tau (2026-09-08):** Main Table 2 and Appendix Table XI agree on .351/.472, but Appendix D prose instead says .361/.484. Preserve the main-table values; conflict remains unresolved. No independent rerun; not temporal-overlap F1 or highlight mAP.
 
 </details>
 
-## SumMe — Ours (Full): trained on SumMe; TVT columns only. — Spearman rho (a16828f1)
+## SumMe — Auxiliary bootstrapped-metadata protocol; text descriptors only, using generic titles plus a Qwen2.5-VL-inferred category because SumMe has no native category metadata. — Kendall tau (7f016a50)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [Text descriptors](generated/papers.md#byra-zero-shot-highlight) | 0.088 correlation coefficient | Generation/evaluation repetition count not reported; Table 1 shows one point estimate per variant.; Not reported | [Table 1, physical PDF page 3; protocol Section 2.2, physical page 3; method equations, physical pages 1–2.](https://arxiv.org/pdf/2609.14790v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** Not independently verified; no evaluated-video manifest or code
+- **Split:** No learned train/validation split; zero-shot evaluation on the paper's described 25-video SumMe set, with no evaluated-video manifest or explicit exclusions.
+- **Training regime:** No highlight annotations or dataset-specific optimization; Qwen2.5-VL bootstraps a coarse video category before inference with pretrained GPT-o4 and CLIP ViT-L/14.
+- **Setting:** Auxiliary bootstrapped-metadata protocol; text descriptors only, using generic titles plus a Qwen2.5-VL-inferred category because SumMe has no native category metadata.
+- **Features:** Qwen2.5-VL coarse category, GPT-o4 descriptors (12.8 per video on average), and CLIP ViT-L/14 text-image similarities averaged across descriptors.
+- **Sampling:** Frame sampling cadence, resize/crop, CLIP normalization and score-to-reference alignment are not reported.
+- **Segmentation:** No prediction segmentation for correlation; raw frame scores/rankings. Conversion of SumMe interval summaries to per-annotator importance sequences is not explained.
+- **Shot aggregation:** Not applicable to the reported correlation; frame-level scores are evaluated.
+- **Budget:** Not applicable to prediction correlation; SumMe references cover approximately 5–15% but no predicted skim is decoded.
+- **Solver:** Not applicable; frames are ranked by the averaged text-descriptor score.
+- **Reference aggregation:** Correlation is computed separately for each annotator, then averaged across annotators and videos; weighting/order beyond this is not reported.
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** Generation/evaluation repetition count not reported; Table 1 shows one point estimate per variant.
+- **Reproduction:** author-reported
+- **byra-zero-shot-summe-kendall (2026-09-19):** This is SumMe's text-only dataset-specific best variant. It uses video-derived category bootstrapping and therefore is not the same native-metadata setting as TVSum. Prompt inputs, Qwen2.5-VL checkpoint size, sampling, seeds, API/model revisions, reference conversion and uncertainty are not reported.
+
+</details>
+
+## SumMe — Auxiliary bootstrapped-metadata protocol; text descriptors only, using generic titles plus a Qwen2.5-VL-inferred category because SumMe has no native category metadata. — Spearman rho (d427c6e2)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [Text descriptors](generated/papers.md#byra-zero-shot-highlight) | 0.108 correlation coefficient | Generation/evaluation repetition count not reported; Table 1 shows one point estimate per variant.; Not reported | [Table 1, physical PDF page 3; protocol Section 2.2, physical page 3; method equations, physical pages 1–2.](https://arxiv.org/pdf/2609.14790v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** Not independently verified; no evaluated-video manifest or code
+- **Split:** No learned train/validation split; zero-shot evaluation on the paper's described 25-video SumMe set, with no evaluated-video manifest or explicit exclusions.
+- **Training regime:** No highlight annotations or dataset-specific optimization; Qwen2.5-VL bootstraps a coarse video category before inference with pretrained GPT-o4 and CLIP ViT-L/14.
+- **Setting:** Auxiliary bootstrapped-metadata protocol; text descriptors only, using generic titles plus a Qwen2.5-VL-inferred category because SumMe has no native category metadata.
+- **Features:** Qwen2.5-VL coarse category, GPT-o4 descriptors (12.8 per video on average), and CLIP ViT-L/14 text-image similarities averaged across descriptors.
+- **Sampling:** Frame sampling cadence, resize/crop, CLIP normalization and score-to-reference alignment are not reported.
+- **Segmentation:** No prediction segmentation for correlation; raw frame scores/rankings. Conversion of SumMe interval summaries to per-annotator importance sequences is not explained.
+- **Shot aggregation:** Not applicable to the reported correlation; frame-level scores are evaluated.
+- **Budget:** Not applicable to prediction correlation; SumMe references cover approximately 5–15% but no predicted skim is decoded.
+- **Solver:** Not applicable; frames are ranked by the averaged text-descriptor score.
+- **Reference aggregation:** Correlation is computed separately for each annotator, then averaged across annotators and videos; weighting/order beyond this is not reported.
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** Generation/evaluation repetition count not reported; Table 1 shows one point estimate per variant.
+- **Reproduction:** author-reported
+- **byra-zero-shot-summe-spearman (2026-09-19):** This is SumMe's text-only dataset-specific best variant. It uses video-derived category bootstrapping and therefore is not the same native-metadata setting as TVSum. Prompt inputs, Qwen2.5-VL checkpoint size, sampling, seeds, API/model revisions, reference conversion and uncertainty are not reported.
+
+</details>
+
+## SumMe — Ours (Full): trained on SumMe; TVT columns only. — Spearman rho (e9e975ce)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -92,13 +148,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Spearman rho
 - **Unit:** correlation coefficient
 - **Runs:** Five folds; independent seed repetitions not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-summe-full-tvt-rho (2026-09-08):** Dedicated validation/test protocol; do not mix with the larger TV values in adjacent columns. Additional text/audio inputs differ from visual-only historical baselines. Unknown reference aggregation and feature-remapping fields prevent exact protocol-equivalence claims. No independent rerun.
 
 </details>
 
-## SumMe — Ours (Full): trained on SumMe; TVT columns only. — Kendall tau (f0f1daeb)
+## SumMe — Ours (Full): trained on SumMe; TVT columns only. — Kendall tau (7c7cdc7c)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -122,13 +177,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Kendall tau
 - **Unit:** correlation coefficient
 - **Runs:** Five folds; independent seed repetitions not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-summe-full-tvt-tau (2026-09-08):** Dedicated validation/test protocol; do not mix with the larger TV values in adjacent columns. Additional text/audio inputs differ from visual-only historical baselines. Unknown reference aggregation and feature-remapping fields prevent exact protocol-equivalence claims. No independent rerun.
 
 </details>
 
-## SumMe — Ours (MoSu): pretraining plus SumMe fine-tuning; TVT columns only; not zero-shot. — Spearman rho (997bf1b5)
+## SumMe — Ours (MoSu): pretraining plus SumMe fine-tuning; TVT columns only; not zero-shot. — Spearman rho (306d7d03)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -152,13 +206,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Spearman rho
 - **Unit:** correlation coefficient
 - **Runs:** Five folds; independent seed repetitions not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-summe-mosu-finetuned-tvt-rho (2026-09-08):** Dedicated validation/test protocol; do not mix with the larger TV values in adjacent columns. Additional text/audio inputs differ from visual-only historical baselines. Unknown reference aggregation and feature-remapping fields prevent exact protocol-equivalence claims. No independent rerun.
 
 </details>
 
-## SumMe — Ours (MoSu): pretraining plus SumMe fine-tuning; TVT columns only; not zero-shot. — Kendall tau (5e0cc101)
+## SumMe — Ours (MoSu): pretraining plus SumMe fine-tuning; TVT columns only; not zero-shot. — Kendall tau (ed31dea8)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -182,13 +235,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Kendall tau
 - **Unit:** correlation coefficient
 - **Runs:** Five folds; independent seed repetitions not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-summe-mosu-finetuned-tvt-tau (2026-09-08):** Dedicated validation/test protocol; do not mix with the larger TV values in adjacent columns. Additional text/audio inputs differ from visual-only historical baselines. Unknown reference aggregation and feature-remapping fields prevent exact protocol-equivalence claims. No independent rerun.
 
 </details>
 
-## SumMe — Zhang 2016 augmented — Temporal-overlap F1 (051b481d)
+## SumMe — Zhang 2016 augmented — Temporal-overlap F1 (a5cb7722)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -212,13 +264,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.5 percentage points
 - **Reproduction:** author-reported
 - **dpp-lstm-summe-augmented (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## SumMe — Zhang 2016 augmented — Temporal-overlap F1 (fd887c70)
+## SumMe — Zhang 2016 augmented — Temporal-overlap F1 (122456fb)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -242,13 +293,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.5 percentage points
 - **Reproduction:** author-reported
 - **vs-lstm-summe-augmented (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## SumMe — Zhang 2016 canonical — Temporal-overlap F1 (d37ba7b6)
+## SumMe — Zhang 2016 canonical — Temporal-overlap F1 (6b5eb391)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -272,13 +322,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.8 percentage points
 - **Reproduction:** author-reported
 - **dpp-lstm-summe-canonical (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## SumMe — Zhang 2016 canonical — Temporal-overlap F1 (f50022ea)
+## SumMe — Zhang 2016 canonical — Temporal-overlap F1 (d8868c74)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -302,13 +351,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.8 percentage points
 - **Reproduction:** author-reported
 - **vs-lstm-summe-canonical (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## SumMe — Zhang 2016 transfer — Temporal-overlap F1 (c20bb179)
+## SumMe — Zhang 2016 transfer — Temporal-overlap F1 (b1c905ce)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -332,13 +380,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.5 percentage points
 - **Reproduction:** author-reported
 - **dpp-lstm-summe-transfer (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## SumMe — Zhang 2016 transfer — Temporal-overlap F1 (a9f463b4)
+## SumMe — Zhang 2016 transfer — Temporal-overlap F1 (2ad0da59)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -362,13 +409,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.6 percentage points
 - **Reproduction:** author-reported
 - **vs-lstm-summe-transfer (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## SumMe — Zhou 2018 augmented — Temporal-overlap F1 (57827637)
+## SumMe — Zhou 2018 augmented — Temporal-overlap F1 (a104389e)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -392,13 +438,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5-fold cross-validation for canonical/augmented; repetitions and seeds not reported
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **dr-dsn-summe-augmented (2026-09-08):** Original paper uses Theano; PyTorch code is a later author port, not an independently reproduced run. Augmented definition differs from Zhang 2016: do not silently add the other target benchmark. Code evidence: https://github.com/KaiyangZhou/pytorch-vsumm-reinforce ; https://raw.githubusercontent.com/KaiyangZhou/pytorch-vsumm-reinforce/master/vsum_tools.py
 
 </details>
 
-## SumMe — Zhou 2018 canonical — Temporal-overlap F1 (cb492d03)
+## SumMe — Zhou 2018 canonical — Temporal-overlap F1 (68a26bca)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -422,13 +467,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5-fold cross-validation for canonical/augmented; repetitions and seeds not reported
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **dr-dsn-summe-canonical (2026-09-08):** Original paper uses Theano; PyTorch code is a later author port, not an independently reproduced run. Augmented definition differs from Zhang 2016: do not silently add the other target benchmark. Code evidence: https://github.com/KaiyangZhou/pytorch-vsumm-reinforce ; https://raw.githubusercontent.com/KaiyangZhou/pytorch-vsumm-reinforce/master/vsum_tools.py
 
 </details>
 
-## SumMe — Zhou 2018 transfer — Temporal-overlap F1 (d9fd9655)
+## SumMe — Zhou 2018 transfer — Temporal-overlap F1 (0ac866c8)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -452,13 +496,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5-fold cross-validation for canonical/augmented; repetitions and seeds not reported
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **dr-dsn-summe-transfer (2026-09-08):** Original paper uses Theano; PyTorch code is a later author port, not an independently reproduced run. Augmented definition differs from Zhang 2016: do not silently add the other target benchmark. Code evidence: https://github.com/KaiyangZhou/pytorch-vsumm-reinforce ; https://raw.githubusercontent.com/KaiyangZhou/pytorch-vsumm-reinforce/master/vsum_tools.py
 
 </details>
 
-## TVSum — Ours (Full): trained on TVSum; TVT columns only. — Spearman rho (32ca4de7)
+## TVSum — Ours (Full): trained on TVSum; TVT columns only. — Spearman rho (ece5843c)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -482,13 +525,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Spearman rho
 - **Unit:** correlation coefficient
 - **Runs:** Five folds; independent seed repetitions not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-tvsum-full-tvt-rho (2026-09-08):** Dedicated validation/test protocol; do not mix with the larger TV values in adjacent columns. Additional text/audio inputs differ from visual-only historical baselines. Unknown reference aggregation and feature-remapping fields prevent exact protocol-equivalence claims. No independent rerun.
 
 </details>
 
-## TVSum — Ours (Full): trained on TVSum; TVT columns only. — Kendall tau (f01832f7)
+## TVSum — Ours (Full): trained on TVSum; TVT columns only. — Kendall tau (431ec46b)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -512,13 +554,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Kendall tau
 - **Unit:** correlation coefficient
 - **Runs:** Five folds; independent seed repetitions not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-tvsum-full-tvt-tau (2026-09-08):** Dedicated validation/test protocol; do not mix with the larger TV values in adjacent columns. Additional text/audio inputs differ from visual-only historical baselines. Unknown reference aggregation and feature-remapping fields prevent exact protocol-equivalence claims. No independent rerun.
 
 </details>
 
-## TVSum — Ours (MoSu): pretraining plus TVSum fine-tuning; TVT columns only; not zero-shot. — Spearman rho (a62a98f9)
+## TVSum — Ours (MoSu): pretraining plus TVSum fine-tuning; TVT columns only; not zero-shot. — Spearman rho (b4d13ca4)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -542,13 +583,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Spearman rho
 - **Unit:** correlation coefficient
 - **Runs:** Five folds; independent seed repetitions not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-tvsum-mosu-finetuned-tvt-rho (2026-09-08):** Dedicated validation/test protocol; do not mix with the larger TV values in adjacent columns. Additional text/audio inputs differ from visual-only historical baselines. Unknown reference aggregation and feature-remapping fields prevent exact protocol-equivalence claims. No independent rerun.
 
 </details>
 
-## TVSum — Ours (MoSu): pretraining plus TVSum fine-tuning; TVT columns only; not zero-shot. — Kendall tau (6381d1dc)
+## TVSum — Ours (MoSu): pretraining plus TVSum fine-tuning; TVT columns only; not zero-shot. — Kendall tau (ac51aad6)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -572,13 +612,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Kendall tau
 - **Unit:** correlation coefficient
 - **Runs:** Five folds; independent seed repetitions not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-tvsum-mosu-finetuned-tvt-tau (2026-09-08):** Dedicated validation/test protocol; do not mix with the larger TV values in adjacent columns. Additional text/audio inputs differ from visual-only historical baselines. Unknown reference aggregation and feature-remapping fields prevent exact protocol-equivalence claims. No independent rerun.
 
 </details>
 
-## TVSum — Zhang 2016 augmented — Temporal-overlap F1 (55822dd8)
+## TVSum — Zhang 2016 augmented — Temporal-overlap F1 (69b8ee12)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -602,13 +641,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.4 percentage points
 - **Reproduction:** author-reported
 - **dpp-lstm-tvsum-augmented (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## TVSum — Zhang 2016 augmented — Temporal-overlap F1 (444c41a8)
+## TVSum — Zhang 2016 augmented — Temporal-overlap F1 (696105c8)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -632,13 +670,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.5 percentage points
 - **Reproduction:** author-reported
 - **vs-lstm-tvsum-augmented (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## TVSum — Zhang 2016 canonical — Temporal-overlap F1 (6afe1701)
+## TVSum — Zhang 2016 canonical — Temporal-overlap F1 (c295ad42)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -662,13 +699,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.7 percentage points
 - **Reproduction:** author-reported
 - **dpp-lstm-tvsum-canonical (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## TVSum — Zhang 2016 canonical — Temporal-overlap F1 (de1f62d8)
+## TVSum — Zhang 2016 canonical — Temporal-overlap F1 (5e508a16)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -692,13 +728,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.7 percentage points
 - **Reproduction:** author-reported
 - **vs-lstm-tvsum-canonical (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## TVSum — Zhang 2016 transfer — Temporal-overlap F1 (ebccbad2)
+## TVSum — Zhang 2016 transfer — Temporal-overlap F1 (c44f8134)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -722,13 +757,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.4 percentage points
 - **Reproduction:** author-reported
 - **dpp-lstm-tvsum-transfer (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## TVSum — Zhang 2016 transfer — Temporal-overlap F1 (903b4196)
+## TVSum — Zhang 2016 transfer — Temporal-overlap F1 (a5f9beaf)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -752,13 +786,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5 repeats per setting and testing fold (supplement Section 5.2); fold identities not reported
-- **Variance:** Standard deviation 0.5 percentage points
 - **Reproduction:** author-reported
 - **vs-lstm-tvsum-transfer (2026-09-08):** No independent rerun. Paper and released dppLSTM decoder differ in description; TVSum evaluator has inherited 0.18 reference-budget discrepancy, so paper scores cannot be declared protocol-identical to later repositories. Protocol evidence: https://www.cs.utexas.edu/~grauman/papers/zhang-eccv2016-lstm-summ-supp.pdf ; https://github.com/kezhang-cs/Video-Summarization-with-LSTM/blob/master/codes/dppLSTM_eval.m
 
 </details>
 
-## TVSum — Zhou 2018 augmented — Temporal-overlap F1 (af770e84)
+## TVSum — Zhou 2018 augmented — Temporal-overlap F1 (ca45edc7)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -782,13 +815,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5-fold cross-validation for canonical/augmented; repetitions and seeds not reported
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **dr-dsn-tvsum-augmented (2026-09-08):** Original paper uses Theano; PyTorch code is a later author port, not an independently reproduced run. Augmented definition differs from Zhang 2016: do not silently add the other target benchmark. Code evidence: https://github.com/KaiyangZhou/pytorch-vsumm-reinforce ; https://raw.githubusercontent.com/KaiyangZhou/pytorch-vsumm-reinforce/master/vsum_tools.py
 
 </details>
 
-## TVSum — Zhou 2018 canonical — Temporal-overlap F1 (8f432353)
+## TVSum — Zhou 2018 canonical — Temporal-overlap F1 (70552fa1)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -812,13 +844,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5-fold cross-validation for canonical/augmented; repetitions and seeds not reported
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **dr-dsn-tvsum-canonical (2026-09-08):** Original paper uses Theano; PyTorch code is a later author port, not an independently reproduced run. Augmented definition differs from Zhang 2016: do not silently add the other target benchmark. Code evidence: https://github.com/KaiyangZhou/pytorch-vsumm-reinforce ; https://raw.githubusercontent.com/KaiyangZhou/pytorch-vsumm-reinforce/master/vsum_tools.py
 
 </details>
 
-## TVSum — Zhou 2018 transfer — Temporal-overlap F1 (f9515d20)
+## TVSum — Zhou 2018 transfer — Temporal-overlap F1 (345f55b6)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -842,13 +873,70 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Temporal-overlap F1
 - **Unit:** percent
 - **Runs:** 5-fold cross-validation for canonical/augmented; repetitions and seeds not reported
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **dr-dsn-tvsum-transfer (2026-09-08):** Original paper uses Theano; PyTorch code is a later author port, not an independently reproduced run. Augmented definition differs from Zhang 2016: do not silently add the other target benchmark. Code evidence: https://github.com/KaiyangZhou/pytorch-vsumm-reinforce ; https://raw.githubusercontent.com/KaiyangZhou/pytorch-vsumm-reinforce/master/vsum_tools.py
 
 </details>
 
-## TripleSumm long-video test set — Zero-shot dataset transfer in Table 5; selector itself was trained. — Spearman rho (576d72c3)
+## TVSum / TVSum50 — Native title/category metadata; text plus synthetic-image descriptors with reference-frame style transfer at image-conditioning scale 0.7. — Kendall tau (b17bb813)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [Text and image descriptors with style transfer](generated/papers.md#byra-zero-shot-highlight) | 0.217 correlation coefficient | Generation/evaluation repetition count not reported; Table 1 shows one point estimate per variant.; Not reported | [Table 1, physical PDF page 3; protocol Section 2.2, physical page 3; method equations, physical pages 1–2.](https://arxiv.org/pdf/2609.14790v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** Not independently verified; no evaluated-video manifest or code
+- **Split:** No learned train/validation split; zero-shot evaluation on the paper's described 50-video TVSum set, with no evaluated-video manifest or explicit exclusions.
+- **Training regime:** No highlight annotations or dataset-specific optimization; inference uses pretrained GPT-o4, CLIP ViT-L/14, SDXL and IP-Adapter.
+- **Setting:** Native title/category metadata; text plus synthetic-image descriptors with reference-frame style transfer at image-conditioning scale 0.7.
+- **Features:** GPT-o4 text descriptors (12.8 per video on average); CLIP ViT-L/14 text/image similarities; one SDXL/IP-Adapter prototype per descriptor, conditioned on the top text-scoring frame; descriptor-wise products averaged.
+- **Sampling:** Frame sampling cadence, resize/crop, CLIP normalization and score-to-reference alignment are not reported.
+- **Segmentation:** No prediction segmentation for correlation; raw frame scores/rankings. TVSum references are 2-second clip scores, but resampling/alignment is not explained.
+- **Shot aggregation:** Not applicable to the reported correlation; frame-level scores are evaluated.
+- **Budget:** Not applicable to correlation; no length-constrained summary is decoded.
+- **Solver:** Not applicable; frames are ranked by the averaged descriptor score.
+- **Reference aggregation:** Correlation is computed separately for each annotator, then averaged across annotators and videos; weighting/order beyond this is not reported.
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** Generation/evaluation repetition count not reported; Table 1 shows one point estimate per variant.
+- **Reproduction:** author-reported
+- **byra-zero-shot-tvsum-kendall (2026-09-19):** This is TVSum's dataset-specific best variant, not the same configuration as SumMe's best. No code, prompt manifest, evaluated-video manifest, seeds, model/API revisions or uncertainty were released. Table 2's shared 'best variant' label must not merge these protocols.
+
+</details>
+
+## TVSum / TVSum50 — Native title/category metadata; text plus synthetic-image descriptors with reference-frame style transfer at image-conditioning scale 0.7. — Spearman rho (bad3c9d0)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [Text and image descriptors with style transfer](generated/papers.md#byra-zero-shot-highlight) | 0.283 correlation coefficient | Generation/evaluation repetition count not reported; Table 1 shows one point estimate per variant.; Not reported | [Table 1, physical PDF page 3; protocol Section 2.2, physical page 3; method equations, physical pages 1–2.](https://arxiv.org/pdf/2609.14790v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** Not independently verified; no evaluated-video manifest or code
+- **Split:** No learned train/validation split; zero-shot evaluation on the paper's described 50-video TVSum set, with no evaluated-video manifest or explicit exclusions.
+- **Training regime:** No highlight annotations or dataset-specific optimization; inference uses pretrained GPT-o4, CLIP ViT-L/14, SDXL and IP-Adapter.
+- **Setting:** Native title/category metadata; text plus synthetic-image descriptors with reference-frame style transfer at image-conditioning scale 0.7.
+- **Features:** GPT-o4 text descriptors (12.8 per video on average); CLIP ViT-L/14 text/image similarities; one SDXL/IP-Adapter prototype per descriptor, conditioned on the top text-scoring frame; descriptor-wise products averaged.
+- **Sampling:** Frame sampling cadence, resize/crop, CLIP normalization and score-to-reference alignment are not reported.
+- **Segmentation:** No prediction segmentation for correlation; raw frame scores/rankings. TVSum references are 2-second clip scores, but resampling/alignment is not explained.
+- **Shot aggregation:** Not applicable to the reported correlation; frame-level scores are evaluated.
+- **Budget:** Not applicable to correlation; no length-constrained summary is decoded.
+- **Solver:** Not applicable; frames are ranked by the averaged descriptor score.
+- **Reference aggregation:** Correlation is computed separately for each annotator, then averaged across annotators and videos; weighting/order beyond this is not reported.
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** Generation/evaluation repetition count not reported; Table 1 shows one point estimate per variant.
+- **Reproduction:** author-reported
+- **byra-zero-shot-tvsum-spearman (2026-09-19):** This is TVSum's dataset-specific best variant, not the same configuration as SumMe's best. No code, prompt manifest, evaluated-video manifest, seeds, model/API revisions or uncertainty were released. Table 2's shared 'best variant' label must not merge these protocols.
+
+</details>
+
+## TripleSumm long-video test set — Zero-shot dataset transfer in Table 5; selector itself was trained. — Spearman rho (71261af4)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -872,13 +960,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Spearman rho
 - **Unit:** correlation coefficient
 - **Runs:** One 50-video test evaluation; independent seed count not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-long-transfer-rho (2026-09-08):** Average test duration 70.4 minutes; evaluate separately from in-domain MoSu and target-finetuned SumMe/TVSum. Behavioral targets are not independent human summary choices. Public raw evaluation-set manifest not verified; no independent rerun.
 
 </details>
 
-## TripleSumm long-video test set — Zero-shot dataset transfer in Table 5; selector itself was trained. — Kendall tau (0542dfdc)
+## TripleSumm long-video test set — Zero-shot dataset transfer in Table 5; selector itself was trained. — Kendall tau (488780d8)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -902,13 +989,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Kendall tau
 - **Unit:** correlation coefficient
 - **Runs:** One 50-video test evaluation; independent seed count not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **triplesumm-long-transfer-tau (2026-09-08):** Average test duration 70.4 minutes; evaluate separately from in-domain MoSu and target-finetuned SumMe/TVSum. Behavioral targets are not independent human summary choices. Public raw evaluation-set manifest not verified; no independent rerun.
 
 </details>
 
-## VideoXum — Text output (V2T-SUM metric) of joint VTSUM-BLIP + TT + CA. — BLEU-4 (7f73607e)
+## VideoXum — Text output (V2T-SUM metric) of joint VTSUM-BLIP + TT + CA. — BLEU-4 (af9a5a27)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -932,13 +1018,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** BLEU-4
 - **Unit:** paper-scaled score (table labels percent)
 - **Runs:** One reported configuration; independent seed count not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **videoxum-vtsum-blip-tt-ca-text-bleu4 (2026-09-08):** Table III scales text metrics as stated in caption; CIDEr is not a probability. Do not compare generated-text scores with frame or keyshot F1. Same joint-model row as visual result; independent task metric, not another model run. No independent rerun.
 
 </details>
 
-## VideoXum — Text output (V2T-SUM metric) of joint VTSUM-BLIP + TT + CA. — CIDEr (4aecf6ba)
+## VideoXum — Text output (V2T-SUM metric) of joint VTSUM-BLIP + TT + CA. — CIDEr (a41d1199)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -962,13 +1047,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** CIDEr
 - **Unit:** paper-scaled score (table labels percent)
 - **Runs:** One reported configuration; independent seed count not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **videoxum-vtsum-blip-tt-ca-text-cider (2026-09-08):** Table III scales text metrics as stated in caption; CIDEr is not a probability. Do not compare generated-text scores with frame or keyshot F1. Same joint-model row as visual result; independent task metric, not another model run. No independent rerun.
 
 </details>
 
-## VideoXum — Text output (V2T-SUM metric) of joint VTSUM-BLIP + TT + CA. — ROUGE-L (9474f08b)
+## VideoXum — Text output (V2T-SUM metric) of joint VTSUM-BLIP + TT + CA. — ROUGE-L (f1bb23ad)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -992,13 +1076,12 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** ROUGE-L
 - **Unit:** paper-scaled score (table labels percent)
 - **Runs:** One reported configuration; independent seed count not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **videoxum-vtsum-blip-tt-ca-text-rougel (2026-09-08):** Table III scales text metrics as stated in caption; CIDEr is not a probability. Do not compare generated-text scores with frame or keyshot F1. Same joint-model row as visual result; independent task metric, not another model run. No independent rerun.
 
 </details>
 
-## VideoXum — Visual output (V2V-SUM metric) of joint VTSUM-BLIP + TT + CA. — Frame-overlap F1 (bc90b2ed)
+## VideoXum — Visual output (V2V-SUM metric) of joint VTSUM-BLIP + TT + CA. — Frame-overlap F1 (1d0e6611)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -1022,7 +1105,6 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Metric:** Frame-overlap F1
 - **Unit:** percent
 - **Runs:** One reported configuration; independent seed count not reported.
-- **Variance:** Not reported
 - **Reproduction:** author-reported
 - **videoxum-vtsum-blip-tt-ca-frame-f1 (2026-09-08):** Frame summary protocol differs from traditional keyshot F1. This is the visual output of the joint model, not the VSUM-BLIP single-output row (23.1). The reported value is retained from Table III; source inspection does not establish that the inspected commit generated it. Preserve truncation, reference pairing and the inclusive-threshold budget caveat. Pinned code evidence: https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/utils.py#L255-L281 ; https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/eval_v2vt_sum.py#L53-L107 . No independent rerun.
 

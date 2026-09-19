@@ -4,7 +4,47 @@
 
 [Handbook home](../../README.md) · [Coverage methodology](../15-coverage.md)
 
-21 records. Verification is field-specific; source inspection does not certify runtime reproduction.
+33 records. Verification is field-specific; source inspection does not certify runtime reproduction.
+
+<a id="clip-it-community"></a>
+
+## CLIP-It community forward-pass reimplementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/srpkdyy/CLIP-It)
+- **Provenance:** community
+- **Attribution evidence:** Repository README explicitly describes an unofficial CLIP-It reproduction and links the paper; no author affiliation is claimed.
+- **Paper ids:** clip-it
+- **Framework:** Python/PyTorch; no complete training environment or locked dependency set.
+- **Version or commit:** afb5ef27d77fe4ebf95960fdb63a46bc40832a82
+- **License:** MIT
+- **Artifacts:** Approximate model forward pass only; no loss implementation, data preparation, training loop, evaluator, checkpoints or summary decoder.
+- **Feature schema:** Expects visual and text features for the attention/scoring path; no benchmark loader or released feature manifest.
+- **Evaluation notes:** No paper-protocol evaluation exists. Source normalizes texts_feats and then ignores that tensor, passing unnormalized text_feats instead; behavioral parity is unverified.
+- **Reproducibility:** README and source inspected at pinned commit; code was not executed and cannot reproduce paper results end to end as released.
+- **Limitations:** Credible as a readable community sketch, not a validated reimplementation or training/evaluation package.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/srpkdyy/CLIP-It/tree/afb5ef27d77fe4ebf95960fdb63a46bc40832a82)
+
+<a id="clip-it-official-stub"></a>
+
+## CLIP-It official repository (stub)
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/medhini/clip_it)
+- **Provenance:** official
+- **Attribution evidence:** The author project page links this repository for CLIP-It.
+- **Paper ids:** clip-it
+- **Framework:** Not released
+- **Version or commit:** c18180905fa5a56c2297f89ae4c5ccae8d05f180
+- **License:** No LICENSE found at the inspected commit
+- **Artifacts:** README only; it states that code is coming. No source, checkpoints, features, dependency manifest, evaluator or notebook.
+- **Feature schema:** Not released; paper describes CLIP/BMT features.
+- **Evaluation notes:** No evaluator is present. Paper protocols cannot be run from the repository.
+- **Reproducibility:** Pinned repository tree inspected; no executable implementation exists.
+- **Limitations:** Official attribution must not be confused with code availability or runtime reproducibility.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/medhini/clip_it/tree/c18180905fa5a56c2297f89ae4c5ccae8d05f180) · [source 2](https://medhini.github.io/clip_it/)
 
 <a id="clip-reference"></a>
 
@@ -16,15 +56,35 @@
 - **Attribution evidence:** Published on the resource maintainers' official documentation or author distribution: https://github.com/openai/CLIP
 - **Paper ids:** None
 - **Framework:** PyTorch; README minimum 1.7.1
-- **Version or commit:** Live documentation/listing inspected 2026-09-08; no release or source commit pinned
+- **Version or commit:** d05afc436d78f1c48dc0dbf8e5980a9d471f35f6
 - **License:** MIT (repository listing).
 - **Artifacts:** Author code, model loader, preprocessing and notebook; checkpoints fetched by loader, not downloaded here.
 - **Feature schema:** Paired image/text embeddings; checkpoint-specific dimensions and preprocessing; normalize embeddings for cosine scoring.
 - **Evaluation notes:** CLIP similarity is a component for query relevance, not a calibrated importance metric.
 - **Reproducibility:** Documentation or artifact listing inspected; tutorial/tool/model not executed in this audit.
 - **Limitations:** Generic CLIP is not a trained video summarizer; upstream benchmark overlap is unknown.
-- **Verified on:** 2026-09-08
-- **Sources:** [source 1](https://github.com/openai/CLIP)
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6)
+
+<a id="coe-code"></a>
+
+## Chain-of-Events official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/youxiaoxing/CoE)
+- **Provenance:** official
+- **Attribution evidence:** Repository README calls the repository the official implementation of the CVPR 2026 paper and lists its authors.
+- **Paper ids:** coe
+- **Framework:** README says Python 3.12, MongoDB and pip install; requirements.txt is actually a Linux conda explicit export with torch 2.8, vLLM 0.11, transformers 4.57.1, OpenAI 2.6, decord and pymongo.
+- **Version or commit:** 924ed7d67935022e09a371c8114d5f25cc1759a6
+- **License:** No repository-wide license found at the inspected commit
+- **Artifacts:** No task-trained checkpoints or datasets. Users must build MongoDB collections, provide local videos, configure OpenAI-compatible Qwen2.5-72B and Qwen2.5-VL-7B endpoints, and optionally provide a BERTScore service.
+- **Feature schema:** Decord samples approximately 1 fps, caps at 72 uniformly spaced indices and groups six sampled frames by default; short videos duplicate linspace indices. Graph/data collections and local path/config schemas are dataset-specific.
+- **Evaluation notes:** Committed main passes need_evaluate=False, disabling question/BERTScore refinement. Caption evaluator excludes failed outputs, changing the denominator; entity scoring is exact lowercased spaCy NER matching. Evaluator imports bert_score, pycocoevalcap, rouge_score, unidecode and en_core_web_lg, which are absent from the supplied environment list.
+- **Reproducibility:** README, environment export, graph construction, main pipeline, configs and evaluators inspected at the pinned commit; services, database and models were not launched.
+- **Limitations:** The documented pip command cannot install the conda-export requirements as written. Configs contain placeholder hosts/paths, evaluator dependencies are missing, refinement is disabled by default, no unified import exists and no license is supplied.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/youxiaoxing/CoE/tree/924ed7d67935022e09a371c8114d5f25cc1759a6)
 
 <a id="dppy-guide"></a>
 
@@ -146,6 +206,106 @@
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://docs.h5py.org/en/stable/quick.html)
 
+<a id="knowvis-release"></a>
+
+## KnowVis release repository (stub)
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/yixu-cityu/KnowVis)
+- **Provenance:** official
+- **Attribution evidence:** Paper and dataset card link the author-owned repository as the KnowVis code location.
+- **Paper ids:** knowvis
+- **Framework:** Not released; paper describes proprietary Gemini APIs.
+- **Version or commit:** da14209fd4a7483474fad4fefdde8f0920290976
+- **License:** No LICENSE found at the inspected commit
+- **Artifacts:** README plus two PNG diagrams only, roughly 2.61 MB total. How-to-run headings are empty; no source, dependency manifest, prompts, evaluator, checkpoint, configuration, test or notebook is present.
+- **Feature schema:** No loader/schema in the repository. The separate Hugging Face dataset stores generated images, text, graph triples, slide paths and source metadata.
+- **Evaluation notes:** Generation and GPT-5.4/Claude evaluation cannot be executed from this repository.
+- **Reproducibility:** Repository tree and README inspected at the pinned commit; no executable code exists to run. Dataset metadata was inspected separately without downloading bodies.
+- **Limitations:** Repository existence is not working code. The paper says code is available while README says the full codebase and usage will be updated. Proprietary APIs may change silently, and no license/version lock is present.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/yixu-cityu/KnowVis/tree/da14209fd4a7483474fad4fefdde8f0920290976) · [source 2](https://huggingface.co/datasets/yixu-cityu/KnowVis/tree/ba4208a250bc60b03d0b4ea48f1c2dc70c2d77cc)
+
+<a id="llmvs-code"></a>
+
+## LLMVS official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/mlee47/LLMVS)
+- **Provenance:** official
+- **Attribution evidence:** Repository README names the CVPR 2025 paper and authors; the owner matches first author Minyoung Lee.
+- **Paper ids:** llmvs
+- **Framework:** Python 3.8, torch 1.13.1+cu117, torchvision 0.14.1+cu117, PyTorch Lightning 1.5.10 and conda h5py 2.10; README trains with five GPUs.
+- **Version or commit:** 417b35bf4704a701d849feeef3b6277ab907a85c
+- **License:** No repository-wide license found at the inspected commit
+- **Artifacts:** README links external PGL-SUM-style SumMe/TVSum HDF5, max-pooled LLaMA user-prompt/generation HDF5 and SharePoint checkpoints. Link targets were listed but archive bodies and checksums were not inspected; caption/embedding-generation source is absent.
+- **Feature schema:** Summarization HDF5 supplies features, gtscore, frame mapping, change points, segment lengths and user summaries. Two LLaMA streams are keyed by normalized filename. Visual features are loaded/collated but the released model trains and infers only on concatenated 5,120-D LLaMA embeddings.
+- **Evaluation notes:** Split JSONs contain train/test only. train.py uses mode=test as validation, selects checkpoints by its rank metrics and test.py evaluates that same test-named partition again. Five partitions overlap. SumMe correlates a binary 15%-knapsack summary with mean human binary summary; TVSum correlates raw scores with each annotator curve subsampled every 15 entries; no F1 path.
+- **Reproducibility:** README, dependencies, train/test scripts, model, loaders, decoder, metrics and split JSON inspected at the pinned commit; source and linked artifacts were not executed/downloaded.
+- **Limitations:** Checkpoint selection is test-influenced and leaves no untouched final set; splits overlap. Visual tensors are unused by the released model path, embedding generation is absent, dependencies are old, deterministic execution is disabled and no license is present.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/mlee47/LLMVS/tree/417b35bf4704a701d849feeef3b6277ab907a85c)
+
+<a id="multi-vidsum-code"></a>
+
+## Multi-VidSum official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/cl-tohoku/Multi-VidSum)
+- **Provenance:** official
+- **Attribution evidence:** ACL Anthology paper links the author repository; current organization repository identifies the EMNLP 2023 work.
+- **Paper ids:** multi-vidsum
+- **Framework:** Dockerized Python/PyTorch/Hugging Face workflow with Weights & Biases and paper configurations expecting four GPUs; external model/data archives are required.
+- **Version or commit:** 23a053970824926c2ae421ab9d5956ce133348b7
+- **License:** No LICENSE found at the inspected commit
+- **Artifacts:** Data preparation, iterative and simultaneous model training/configuration source; legacy redirect repository at d6ba00df5e990a24ddb355cc2adcb256b0202162. The official tohoku-nlp/multi-vidsum release at ca03b147ddb4959229b510bde8eacc55933088af lists a 33,838,742,254-byte download.tar.gz LFS object with pointer SHA-256 56c279b2f6a5a32d50c86df85c52ab755d77e8e40f9c68a7434ec8a034872196; its body was not downloaded.
+- **Feature schema:** 0.5-second CLIP frame features, ordered caption/reference records and multiple candidate frames per caption; joint configs fix four output pairs and beam width eight.
+- **Evaluation notes:** Evaluation is delegated to a separate official repository. Iterative path combines 20 MTM/PySceneDetect segments and dynamic programming; simultaneous path uses caption and pointer outputs. Exact runtime compatibility with current external models was not tested.
+- **Reproducibility:** README, configs and source topology inspected at pinned current and redirect commits; Docker, four-GPU workflow, W&B key and external artifacts were not run.
+- **Limitations:** No repository license, no lightweight smoke test and substantial external dependencies. Source inspection does not certify that current downloads reproduce paper checkpoints or metrics.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/cl-tohoku/Multi-VidSum/tree/23a053970824926c2ae421ab9d5956ce133348b7) · [source 2](https://github.com/keitokudo/Multi-VidSum/tree/d6ba00df5e990a24ddb355cc2adcb256b0202162) · [source 3](https://huggingface.co/datasets/tohoku-nlp/multi-vidsum/tree/ca03b147ddb4959229b510bde8eacc55933088af)
+
+<a id="multi-vidsum-eval"></a>
+
+## Multi-VidSum official evaluator
+
+- **Kind:** tool
+- **Url:** [url](https://github.com/cl-tohoku/Multi-VidSum-Eval)
+- **Provenance:** official
+- **Attribution evidence:** Maintained by the paper authors' organization and linked from the official implementation for Multi-VidSum evaluation.
+- **Paper ids:** multi-vidsum
+- **Framework:** Python evaluator with external language/vision metric dependencies; environment not executed.
+- **Version or commit:** d4aa2fd4f1b88b65a14f2c66676fe1529572772a
+- **License:** No LICENSE found at the inspected commit
+- **Artifacts:** Separate AKM exact/cosine and caption-metric evaluation source; no model checkpoints or dataset bodies.
+- **Feature schema:** Predicted ordered keyframe-caption pairs plus per-video reference captions and multiple valid candidate frames.
+- **Evaluation notes:** AKM maximizes matching over valid reference sublists. Caption metrics first select the reference alignment with highest AKM cosine, so BLEURT/METEOR depend on the visual alignment stage; Table 2 values are scaled by 100.
+- **Reproducibility:** Evaluator source and README inspected at the pinned commit; dependencies and paper outputs were not executed.
+- **Limitations:** This metric is task-specific and not interchangeable with temporal keyshot F1, frame correlation or free-running caption scores. No standard license is present.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/cl-tohoku/Multi-VidSum-Eval/tree/d4aa2fd4f1b88b65a14f2c66676fe1529572772a) · [source 2](https://aclanthology.org/2023.emnlp-main.457.pdf)
+
+<a id="personalized-daylong-code"></a>
+
+## Personalized day-long egocentric summarization code
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/Pravin74/interact_summ_code)
+- **Provenance:** official
+- **Attribution evidence:** Author project page links this first-author repository for the TPAMI paper.
+- **Paper ids:** personalized-daylong-egocentric
+- **Framework:** README reports NVIDIA P5000, Ubuntu 16.04/18.04, PyTorch 1.4 and CUDA 9/10.1; no dependency lock.
+- **Version or commit:** b18da63203581c532eb4ad50ad7837fee3f300e6
+- **License:** No LICENSE found at the inspected commit
+- **Artifacts:** Training/evaluation scripts, GUI workflow and checked-in outputs; users must separately acquire/rename C3D HDF5 features. No end-to-end data acquisition or integrity manifest.
+- **Feature schema:** C3D pool-5 HDF5 over non-overlapping 16-frame sub-shots, plus optional face/identity/interaction and user-example signals.
+- **Evaluation notes:** Supports policy-gradient/Q-learning/actor-critic variants and long-video reward/summary metrics; RFS tolerance and requested duration must be preserved. SumMe/TVSum F1 is a separate ancillary protocol.
+- **Reproducibility:** README, scripts and project page inspected at the pinned commit; old environment, features, models and GUI were not run.
+- **Limitations:** No license or locked environment, manual feature/data preparation, legacy CUDA/PyTorch assumptions and checked-in outputs without a complete provenance chain. Repository existence is not a reproduced result.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/Pravin74/interact_summ_code/tree/b18da63203581c532eb4ad50ad7837fee3f300e6) · [source 2](https://pravin74.github.io/Int-sum/index.html)
+
 <a id="pgl-sum-code"></a>
 
 ## PGL-SUM
@@ -246,6 +406,46 @@
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://github.com/mayu-ot/rethinking-evs/blob/7a3b05e63ba531c89ac022e3a98bfd37d22d60a2/README.md) · [source 2](https://github.com/mayu-ot/rethinking-evs/blob/7a3b05e63ba531c89ac022e3a98bfd37d22d60a2/environment.yml) · [source 3](https://github.com/mayu-ot/rethinking-evs/blob/7a3b05e63ba531c89ac022e3a98bfd37d22d60a2/src/summe_eval.py)
 
+<a id="sd-vsum-code"></a>
+
+## SD-VSum official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/IDT-ITI/SD-VSum)
+- **Provenance:** official
+- **Attribution evidence:** Repository README identifies the ACM Multimedia 2025 paper and official implementation; pinned source is authored by paper author Evlampios Apostolidis.
+- **Paper ids:** sd-vsum
+- **Framework:** Conda environment pins Python 3.12.5, PyTorch 2.4.1 with CUDA 12.1, torchvision 0.19.1, h5py 3.12.1, NumPy 1.26.4, SciPy 1.13.1 and scikit-learn 1.5.1.
+- **Version or commit:** d57c2be3b05cb13eca3b7a3572c3df204e97c4fb
+- **License:** Custom academic/non-commercial repository license
+- **Artifacts:** Zenodo S-VideoXum v1 includes 3.9 GB HDF5 MD5 0ef79bf93999aa42232d7e267dccd46e, split JSON MD5 1eaa2476532dfc021475df828f7f8781 and 78.4 MB text annotations MD5 dde3459bf15dcd3c229a6a1dc50eb23c; checkpoint sd_vsum.pkl is 180.8 MB, MD5 af433ba769c436c6eec1c54dde5cf651. Bodies were not downloaded.
+- **Feature schema:** Official docs specify video_embeddings N×512, text_embeddings 10×Mmax×512 and gtsummaries 10×N at 1 fps. S-NewsVSum uses text M×512, one binary GT and 2 fps.
+- **Evaluation notes:** Loader asks for gtscores although official docs and committed S-NewsVSum HDF5 expose gtsummaries, so the advertised path should raise KeyError. get_loader drops dataset/split arguments for validation/test, routing S-News evaluation to defaults. Decoder sets k=int(0.15N) but thresholds at index k, selecting at least k+1 and more on ties; selections over 25% get F1 zero.
+- **Reproducibility:** README, license, environment, main, loaders, solver/evaluator and Zenodo metadata inspected at the pinned commit; artifact bodies and model execution were deliberately omitted.
+- **Limitations:** Released data-key mismatch blocks the documented path without repair; S-News validation/test routing is broken. README reverses the pinned S-VideoXum validation/test counts. No KTS/shot budget is used, and artifact availability does not establish reproduction.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/IDT-ITI/SD-VSum/tree/d57c2be3b05cb13eca3b7a3572c3df204e97c4fb) · [source 2](https://zenodo.org/records/15349075) · [source 3](https://zenodo.org/records/16275302)
+
+<a id="sspvs-code"></a>
+
+## SSPVS official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/HopLee6/SSPVS-PyTorch)
+- **Provenance:** official
+- **Attribution evidence:** Repository is linked by the WACV paper and owned by first author Haopeng Li.
+- **Paper ids:** sspvs
+- **Framework:** Python 3.8.13, PyTorch 1.12, PyTorch Lightning 1.6.5, OR-Tools 9.3.10497 and pytorch-transformers 1.2.0.
+- **Version or commit:** e472200069b1697e392f7ac278593c973026b680
+- **License:** No standard LICENSE; README restricts use to non-commercial research and education
+- **Artifacts:** README links Figshare checkpoints, frame features, text metadata and processed datasets; large artifacts were not downloaded or hashed.
+- **Feature schema:** HDF5 frames, scores, picks, change points, segment lengths, user summaries and eval_metric; method uses 2-fps GoogLeNet pool-5 features and optional text metadata.
+- **Evaluation notes:** KTS shot means feed floor-15%-capacity OR-Tools knapsack. HDF5 eval_metric selects average-user SumMe versus max-user TVSum F-score; per-user rank correlations are averaged. Each split's test_keys become Lightning validation data, and a post-hoc utility selects the best epoch from logged held-out metrics.
+- **Reproducibility:** Paper, README, environment, dataset interface, summary module and result-selection utility inspected at the pinned commit; no artifact or model was executed.
+- **Limitations:** Released workflow performs test-influenced epoch/model selection and disables Lightning checkpointing during training. Data acquisition/checksums are external, dependencies are historical and the repository restriction is not an OSI license.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/HopLee6/SSPVS-PyTorch/tree/e472200069b1697e392f7ac278593c973026b680) · [source 2](https://openaccess.thecvf.com/content/WACV2023/papers/Li_Progressive_Video_Summarization_via_Multimodal_Self-Supervised_Learning_WACV_2023_paper.pdf)
+
 <a id="sum-gan-aae-code"></a>
 
 ## SUM-GAN-AAE
@@ -285,6 +485,46 @@
 - **Limitations:** README documents changed backbone, reduced discriminator learning rate, and frozen discriminator updates; no ready end-to-end benchmark evaluator found in inspected tree.
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/README.md) · [source 2](https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/feature_extraction.py) · [source 3](https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/configs.py) · [source 4](https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/solver.py)
+
+<a id="trinity-code"></a>
+
+## TRINITY official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/vanilladucky/TRINITY)
+- **Provenance:** official
+- **Attribution evidence:** Paper and Hugging Face card link this author repository as the TRINITY implementation.
+- **Paper ids:** trinity
+- **Framework:** PyTorch 1.13.1+cu117 and CUDA 11.7; README says tested with Python 3.8.8/RTX 3090 while its install recipe creates Python 3.10. Requirements omit huggingface_hub although the downloader imports it.
+- **Version or commit:** dc70fdecb98de5888f71159f6ac1ea223103b9bf
+- **License:** MIT for source code; dataset/source-video terms are separate
+- **Artifacts:** Training/evaluation source, perspective loaders, Hugging Face downloader, proposed model and four advertised baselines. Pinned HF revision eb23873d1eb44fc8d600038fadfa39e7c5bb090f provides features/labels/splits; no checkpoints, tests, notebooks or locked environment found.
+- **Feature schema:** 512-D CLIP ViT-B/32 features. Event/Nature inputs are 1 fps and pooled into non-overlapping 5-second means; Emotion is already 5-second pooled. Incomplete Event/Nature tails are truncated.
+- **Evaluation notes:** Evaluator converts each GT sequence to ceil(15%T)/ceil(50%T) top-k positives and macro-averages per-video AP, including arbitrary positives on all-zero Emotion clips; ties are unresolved. Six checkpoints are saved independently, but testing uses each perspective's best-mAP15 model. No seeds. Early stopping monitors three BCE losses, not mAP.
+- **Reproducibility:** README, license, requirements, downloader, loaders, solver/evaluator and checkpoint logic inspected; Python files passed static AST parsing, but no archive, dependency environment, model or metric was executed.
+- **Limitations:** Paper/README/manifests disagree on counts. Paper weight decay is 0.01 versus released default 0.0001; paper says 50 epochs while bare train.py defaults to 20. Advertised alternative models have incompatible signatures/return values, and three expect 1,024-D rather than released 512-D input. Only the default proposed path is structurally compatible; this is not a working-code claim.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/vanilladucky/TRINITY/tree/dc70fdecb98de5888f71159f6ac1ea223103b9bf) · [source 2](https://huggingface.co/datasets/vanilladucky/TRINITY/tree/eb23873d1eb44fc8d600038fadfa39e7c5bb090f)
+
+<a id="triplesumm-code"></a>
+
+## TripleSumm official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/smkim37/TripleSumm)
+- **Provenance:** official
+- **Attribution evidence:** Repository README explicitly identifies the ICLR 2026 paper and official implementation; the pinned commit is authored by paper author Sumin Kim.
+- **Paper ids:** triplesumm
+- **Framework:** README-tested Python 3.10.20, PyTorch 2.5.1, CUDA 12.1 and RTX A6000 48 GB; requirements pin h5py 3.16.0, NumPy 2.2.6, PyYAML 6.0.3, scikit-learn 1.7.2 and SciPy 1.15.3, while torch is installed separately.
+- **Version or commit:** b7a8e7e873ac3223b0ced40b1852d30b9934ba67
+- **License:** MIT
+- **Artifacts:** Official Hugging Face listings: MoSu features/GT/split at 4afad0af62ae4e8da47968d5bd6f337a99f9b398; reconstructed Mr. HiSum at 4f9cd1bdf40178b8586fe2f9c0f39fdb30bf5c19; two roughly 10.7–10.8 MB checkpoints at fbfd318abc4d317a2618a8f9b03bf138a30662c2. Large bodies were not downloaded.
+- **Feature schema:** Three per-video HDF5 matrices plus dataset GT HDF5. MoSu uses 768-D CLIP/RoBERTa/AST; reconstructed Mr. HiSum uses 1,024-D InceptionV3 plus 768-D RoBERTa/AST. Loader reads gt_score, gt_summary and change_points and assumes one feature row per second.
+- **Evaluation notes:** Supervised MSE; validation chooses maximum Kendall tau plus Spearman rho. Main test path reports raw-score correlations and fixed non-overlapping 5-second-shot mAP with GT top-50%/15% positives. The shipped 15%-budget knapsack decoder is not called by main/solver and must not be described as the main evaluator.
+- **Reproducibility:** README, license, dependencies, loader, solver, metrics and artifact listings inspected at pinned revisions; no environment, checkpoint or feature archive was loaded.
+- **Limitations:** No feature-extraction/preprocessing source; all three modalities are mandatory. Reconstructed Mr. HiSum contains 30,452 rather than 31,892 videos because sources were unavailable. Artifact existence does not establish checkpoint compatibility or score reproduction.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://github.com/smkim37/TripleSumm/tree/b7a8e7e873ac3223b0ced40b1852d30b9934ba67) · [source 2](https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu/tree/4afad0af62ae4e8da47968d5bd6f337a99f9b398) · [source 3](https://huggingface.co/datasets/hminjeong/TripleSumm-Mr.HiSum/tree/4f9cd1bdf40178b8586fe2f9c0f39fdb30bf5c19) · [source 4](https://huggingface.co/smkim37/TripleSumm/tree/fbfd318abc4d317a2618a8f9b03bf138a30662c2)
 
 <a id="tvsum-official-eval"></a>
 

@@ -4,7 +4,7 @@
 
 [Handbook home](../../README.md) · [Coverage methodology](../15-coverage.md)
 
-18 records. Verification is field-specific; source inspection does not certify runtime reproduction.
+21 records. Verification is field-specific; source inspection does not certify runtime reproduction.
 
 <a id="activitynet-qa"></a>
 
@@ -122,6 +122,35 @@
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://pages.cs.wisc.edu/~jiaxu/projects/ego-video-sum/) · [source 2](https://pages.cs.wisc.edu/~jiaxu/projects/ego-video-sum/ego-video-sum-cvpr2015.pdf)
 
+<a id="knowvis"></a>
+
+## KnowVis
+
+- **Role:** core
+- **Task:** Lecture video to pedagogical visual-summary generation
+- **Domain:** 125 open educational lectures across ten academic disciplines
+- **Videos:** 125 source videos producing 1,079 knowledge-unit summary records
+- **Duration:** Exact aggregate and range not tabulated; paper Figure 2 plots source videos at roughly 5–40 minutes, while released source_video_length units are undocumented
+- **Annotations:** Machine-generated records with concept, rendered image, concept-subgraph triples, transcript, slide-path sequence and source-video metadata; not human gold summaries
+- **Annotators:** No human dataset annotators reported; GPT-5.4/Claude judges and the ten-person user study evaluate outputs rather than author reference annotations
+- **Granularity:** Concept and knowledge-unit level
+- **Summary format:** Generated pedagogical image/visual narrative paired with a knowledge subgraph, transcript and slides
+- **Split:** One Hugging Face knowledge_units split with 1,079 records; no train/validation/test partition
+- **Metrics:** 1–5 LLM-judged accuracy; clarity; information density; mental effort; human learning effectiveness; retention; transfer
+- **License:** Unresolved: paper Appendix F says the dataset will be CC BY-NC-SA 4.0, but the pinned live dataset card has no license field and the repository has no LICENSE; source lectures mix CC BY, CC BY-NC-SA and Standard YouTube terms
+- **Availability:** Public ungated pinned release; provider reports 803,323,547 bytes download size and 795,842,288.247 bytes dataset size. Bodies were not downloaded.
+- **Official url:** [official url](https://huggingface.co/datasets/yixu-cityu/KnowVis/tree/ba4208a250bc60b03d0b4ea48f1c2dc70c2d77cc)
+- **Download url:** [download url](https://huggingface.co/datasets/yixu-cityu/KnowVis/tree/ba4208a250bc60b03d0b4ea48f1c2dc70c2d77cc)
+- **Annotation url:** [annotation url](https://huggingface.co/datasets/yixu-cityu/KnowVis/tree/ba4208a250bc60b03d0b4ea48f1c2dc70c2d77cc)
+- **Mirrors:** Not reported
+- **Preprocessing:** Transcript/slide extraction; Gemini-3-Flash concept graph; top-10% important and challenging seed concepts; LabelSpreading with clamping factor alpha=0.9 and node-to-seed inclusion threshold 0.8; storyboard; Gemini-3.1-Flash-Image render and one verification pass
+- **Features:** Structured text, graph, image and slide-path records; no fixed pretrained tensor schema
+- **Checksums:** Not independently verified
+- **Leakage risks:** No held-out split; source/provider pretraining overlap is unknown; the released summaries are outputs of the evaluated proprietary pipeline; underlying lecture rights vary
+- **Limitations:** No executable generation code, no split, proprietary model drift, generated artifacts rather than human references, ambiguous live-release license and a ten-person human study
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://arxiv.org/pdf/2609.03742v2) · [source 2](https://huggingface.co/datasets/yixu-cityu/KnowVis/tree/ba4208a250bc60b03d0b4ea48f1c2dc70c2d77cc) · [source 3](https://github.com/yixu-cityu/KnowVis/tree/da14209fd4a7483474fad4fefdde8f0920290976)
+
 <a id="mosu"></a>
 
 ## MoSu (Most Replayed Multimodal Video Summarization)
@@ -150,6 +179,35 @@
 - **Videos:** 52678
 - **Metrics:** Kendall tau; Spearman rho; mAP50 and mAP15 under Mr. HiSum 5-second segment protocol
 - **Sources:** [source 1](https://arxiv.org/html/2603.01169v1) · [source 2](https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu) · [source 3](https://github.com/smkim37/TripleSumm)
+
+<a id="multi-vidsum"></a>
+
+## Multi-VidSum
+
+- **Role:** core
+- **Task:** Ordered keyframe-caption pair generation from video
+- **Domain:** ActivityNet Captions open-domain videos
+- **Videos:** 12009
+- **Duration:** Inherits ActivityNet Captions video durations; aggregate duration not independently tabulated in the inspected paper
+- **Annotations:** Crowdsourced candidate keyframes aligned to dense captions; paper Table 1 reports 14.72 candidate keyframes per caption, 4.8 captions per video and 13.20 words per sentence
+- **Annotators:** Crowd workers select candidate frames; separate native-English-speaker annotators recruited through a data company re-caption the evaluation subset. Exact annotator count per item is not restated here.
+- **Granularity:** Ordered event caption with one of multiple valid frame candidates
+- **Summary format:** A predefined number of ordered keyframe-caption pairs
+- **Split:** 7,727 videos from ActivityNet training; 439 re-captioned evaluation videos sampled from the original 4,282-video validation split. No ordinary independent validation split is stated; experiment validation subsets are sampled internally.
+- **Metrics:** AKM exact; AKM cosine; BLEURT; METEOR
+- **License:** Pinned Hugging Face dataset card declares Apache-2.0 for the released archive; code/evaluator repositories have no LICENSE at inspected commits, and ActivityNet media rights remain separate
+- **Availability:** Official Hugging Face release lists a 33,838,742,254-byte download.tar.gz LFS object; only repository metadata and the LFS pointer were inspected, not the archive body, videos or models
+- **Official url:** [official url](https://huggingface.co/datasets/tohoku-nlp/multi-vidsum/tree/ca03b147ddb4959229b510bde8eacc55933088af)
+- **Download url:** [download url](https://huggingface.co/datasets/tohoku-nlp/multi-vidsum/tree/ca03b147ddb4959229b510bde8eacc55933088af)
+- **Annotation url:** [annotation url](https://huggingface.co/datasets/tohoku-nlp/multi-vidsum/tree/ca03b147ddb4959229b510bde8eacc55933088af)
+- **Mirrors:** Legacy author redirect repository: https://github.com/keitokudo/Multi-VidSum
+- **Preprocessing:** Frames every 0.5 seconds with CLIP image features; iterative baseline merges 20 MTM and PySceneDetect segments, removes segments longer than 75% of the video and refines four times
+- **Features:** CLIP frame features, caption text and multiple valid frame candidates per caption; joint experiment configurations use N=4 pairs
+- **Checksums:** Pinned download.tar.gz LFS pointer declares SHA-256 56c279b2f6a5a32d50c86df85c52ab755d77e8e40f9c68a7434ec8a034872196 and size 33,838,742,254 bytes; archive body was not downloaded or independently hashed
+- **Leakage risks:** Validation subsets are randomly constructed from available data; pseudo-pretraining uses MS COCO and Visual Storytelling, whose image/source overlap was not audited
+- **Limitations:** ActivityNet's original test references are unavailable, so 439 validation videos become the re-captioned test. The dataset card's Apache-2.0 declaration does not override underlying ActivityNet media rights; code/evaluator licensing, split hashes and independent execution remain unresolved.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://aclanthology.org/2023.emnlp-main.457.pdf) · [source 2](https://huggingface.co/datasets/tohoku-nlp/multi-vidsum/tree/ca03b147ddb4959229b510bde8eacc55933088af) · [source 3](https://github.com/cl-tohoku/Multi-VidSum/tree/23a053970824926c2ae421ab9d5956ce133348b7) · [source 4](https://github.com/cl-tohoku/Multi-VidSum-Eval/tree/d4aa2fd4f1b88b65a14f2c66676fe1529572772a)
 
 <a id="ovp"></a>
 
@@ -295,6 +353,35 @@
 - **Limitations:** Video-to-text evaluation differs from temporal extractive F1. 5199 counts training pairs, not unique videos.
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://aclanthology.org/2023.findings-eacl.96.pdf) · [source 2](https://github.com/ppapalampidi/long_video_summarization)
+
+<a id="trinity"></a>
+
+## TRINITY
+
+- **Role:** core
+- **Task:** Multi-perspective Event, Emotion and Nature video highlight detection
+- **Domain:** Pooled open-web and personal-video sources from ten public datasets; Event reuses Mr. HiSum
+- **Videos:** Paper reports Event 27,845, Emotion 16,257 and Nature 15,540. Pinned manifests contain 31,892 Event video_* keys, 16,257 Emotion clip/window keys and 15,540 Nature keys; only Nature marks 3,621 training keys with an _aug suffix.
+- **Duration:** Aggregate source duration and range not reported; paper mean peak durations are 9.90 seconds Event, 4.87 seconds Emotion and 10.34 seconds Nature
+- **Annotations:** Event replay-frequency targets; Emotion binary stable non-neutral facial-expression windows confirmed with Qwen2-VL-7B; Nature continuous scenic/aesthetic targets from YOLOv8n, CLIP prompts and Everypixel
+- **Annotators:** Primarily behavioral/automatic labels, not full human summaries. Paper audits Emotion with three annotators on 50 segments and Nature with three annotators on 50 videos.
+- **Granularity:** Model uses fixed 5-second segments. Event/Nature releases contain 1-fps features aggregated into 5-second means; Emotion is released as 5-second windows.
+- **Summary format:** Three perspective-specific temporal saliency sequences; no decoded keyshot skim
+- **Split:** Pinned manifests: Event 27,892/2,000/2,000 train/validation/test keys; Emotion 11,352/1,615/3,290; Nature 12,763/1,266/1,511. README and paper counts conflict with these files. Nature includes 3,621 train-only _aug keys; effective source-video counts are not established.
+- **Metrics:** per-video mAP at top 15%; per-video mAP at top 50%; cross-perspective overlap
+- **License:** Hugging Face card declares CC-BY-4.0 for the derived release; code is MIT; underlying source-video rights remain with original datasets and owners
+- **Availability:** Pinned public Hugging Face release provides extracted features, labels and split manifests, not raw media; large archives were not downloaded
+- **Official url:** [official url](https://huggingface.co/datasets/vanilladucky/TRINITY/tree/eb23873d1eb44fc8d600038fadfa39e7c5bb090f)
+- **Download url:** [download url](https://huggingface.co/datasets/vanilladucky/TRINITY/tree/eb23873d1eb44fc8d600038fadfa39e7c5bb090f)
+- **Annotation url:** [annotation url](https://huggingface.co/datasets/vanilladucky/TRINITY/tree/eb23873d1eb44fc8d600038fadfa39e7c5bb090f)
+- **Mirrors:** Not reported
+- **Preprocessing:** Frozen CLIP ViT-B/32 features. Event and Nature loaders truncate incomplete 5-second tails; Emotion windows are already pooled. Nature training includes explicit augmented keys.
+- **Features:** 512-dimensional CLIP arrays. Event uses NPZ data float32 plus float64 GT; Emotion uses NPZ features float16 plus labels/timing metadata; Nature uses NPZ features float16 plus JSON aesthetic scores.
+- **Checksums:** Auditor-computed SHA-256 for pinned split bodies: Emotion 010db3932d226c2f993a3c6f8208fcc1f2bad98342409c32ea8800f10105ae43; Event 5c571d1d9f00b33662d631d85a62468dfb7599b096dc640d67873a2a0ba93f63; Nature b15283daa03cb99f771decfa4974df7c101c97edbcce3e5ed2436ec488d8fe67. Feature archives were not hashed.
+- **Leakage risks:** Paper says Mr. HiSum test videos are removed from pretraining, but the Event manifest/effective-count conflict remains. Cross-source deduplication across ten pools is unverified; automated labels inherit pretrained-model and proprietary-service bias.
+- **Limitations:** Paper, README and release counts disagree; video, clip and augmented-key terminology is inconsistent. The effective Event split requires unavailable archive-level checking. Nature depends on a proprietary scorer, and raw video is not released.
+- **Verified on:** 2026-09-19
+- **Sources:** [source 1](https://arxiv.org/pdf/2608.29577v1) · [source 2](https://huggingface.co/datasets/vanilladucky/TRINITY/tree/eb23873d1eb44fc8d600038fadfa39e7c5bb090f) · [source 3](https://github.com/vanilladucky/TRINITY/tree/dc70fdecb98de5888f71159f6ac1ea223103b9bf)
 
 <a id="triplesumm-long"></a>
 

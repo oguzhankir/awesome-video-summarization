@@ -10,9 +10,12 @@ import unittest
 from unittest.mock import Mock, patch
 from urllib.request import Request
 
+import jsonschema
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import audit_links
+import generate_catalog
 import validate
 
 
@@ -48,10 +51,40 @@ class MarkdownValidationTests(unittest.TestCase):
             for value in (float('nan'), float('inf'), -float('inf')):
                 self.assertTrue(validate.result_number_errors(
                     {'id': 'test', 'metric': metric, 'unit': '%', 'value': value}))
+
+    def test_result_bounds_match_registry_metric_names_and_units(self):
+        for metric in ('F1-Avg', 'F1Avg', 'F1Score', 'Temporal-overlap F1',
+                       'Frame-overlap F1'):
+            for unit in ('%', 'percent', 'percentage'):
+                self.assertTrue(validate.result_number_errors(
+                    {'id': 'test', 'metric': metric, 'unit': unit, 'value': 101}))
+                self.assertTrue(validate.result_number_errors(
+                    {'id': 'test', 'metric': metric, 'unit': unit, 'value': -1}))
+                self.assertEqual(validate.result_number_errors(
+                    {'id': 'test', 'metric': metric, 'unit': unit, 'value': 42}), [])
+        for metric in ('Kendall tau', 'Spearman rho'):
+            self.assertTrue(validate.result_number_errors(
+                {'id': 'test', 'metric': metric, 'unit': 'correlation coefficient',
+                 'value': 1.01}))
+            self.assertTrue(validate.result_number_errors(
+                {'id': 'test', 'metric': metric, 'unit': 'correlation coefficient',
+                 'value': -1.01}))
+            self.assertEqual(validate.result_number_errors(
+                {'id': 'test', 'metric': metric, 'unit': 'correlation coefficient',
+                 'value': -0.2}), [])
         self.assertTrue(validate.result_number_errors(
-            {'id': 'test', 'metric': 'F1-Avg', 'unit': '%', 'value': 101}))
-        self.assertEqual(validate.result_number_errors(
-            {'id': 'test', 'metric': 'F1-Avg', 'unit': '%', 'value': 42}), [])
+            {'id': 'test', 'metric': 'F1Score', 'unit': ' percent ', 'value': 101}))
+        self.assertTrue(validate.result_number_errors(
+            {'id': 'test', 'metric': 'Kendall tau',
+             'unit': ' correlation coefficient ', 'value': 1.01}))
+
+    def test_not_reported_supervision_is_exclusive(self):
+        schema = json.loads((ROOT / 'schemas/papers.schema.json').read_text())
+        supervision = schema['items']['properties']['supervision']
+        validator = jsonschema.Draft202012Validator(supervision)
+        self.assertTrue(validator.is_valid(['not reported']))
+        self.assertTrue(validator.is_valid(['supervised', 'zero-shot']))
+        self.assertFalse(validator.is_valid(['supervised', 'not reported']))
 
     def test_math_operators_cannot_become_setext_headings(self):
         for operator in ('=', '-', '===', '---'):
@@ -83,6 +116,30 @@ class MarkdownValidationTests(unittest.TestCase):
                                     text=True, capture_output=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertIn('1 math expressions rendered', result.stdout)
+
+
+class CatalogGroupingTests(unittest.TestCase):
+    def result(self, identifier, variance):
+        result = {field: 'fixed protocol value' for field in generate_catalog.PROTOCOL_FIELDS}
+        result.update({'id': identifier, 'variance': variance})
+        return result
+
+    def test_variance_is_an_outcome_not_a_protocol_field(self):
+        first = self.result('first', '0.1 standard deviation')
+        second = self.result('second', '0.2 standard deviation')
+        self.assertEqual(generate_catalog.protocol_key(first),
+                         generate_catalog.protocol_key(second))
+
+    def test_unknown_protocol_metadata_still_isolates_rows(self):
+        for marker in ('Not reported', 'Not independently verified', 'Unknown',
+                       'Unspecified', 'Not specified', 'Not available',
+                       'Not explained'):
+            first = self.result('first', 'Not reported')
+            second = self.result('second', 'Not reported')
+            first['split_identity'] = marker
+            second['split_identity'] = marker
+            self.assertNotEqual(generate_catalog.protocol_key(first),
+                                generate_catalog.protocol_key(second))
 
 
 class LinkAuditTests(unittest.TestCase):

@@ -2,7 +2,7 @@
 
 [Back to handbook](../README.md) · [Task settings](11-task-settings.md) · [Structured paper records](../data/papers/modern.json)
 
-**Verified: 2026-09-08.** These methods share pretrained representations, but their learning signals differ. Read the supervision column before comparing their results. Official code means author-linked code was found; it does not mean this repository reproduced the model.
+**Verified: 2026-09-19.** These methods share pretrained representations, but their learning signals differ. Read the supervision column before comparing their results. Official code means author-linked code was found; it does not mean this repository reproduced the model.
 
 ## 1. What a foundation model contributes
 
@@ -41,6 +41,9 @@ For implementations, keep raw timestamps, sampled-frame indices and model tokens
 | [V2Xum-LLM](https://arxiv.org/abs/2404.12353) — Hang Hua, Yunlong Tang, Chenliang Xu, Jiebo Luo; AAAI 2025 | Interleaved frame/timestamp prompts; one language decoder for visual and textual outputs | Supervised instruction tuning, including machine-assisted data | [Official PyTorch](https://github.com/hanghuacs/V2Xum-LLM) |
 | [LLMVS](https://arxiv.org/abs/2504.11199) — Min Jung Lee, Dayoung Gong, Minsu Cho; CVPR 2025 | Local LLM reasoning followed by a learned global importance model | Supervised mean squared error | [Official PyTorch](https://github.com/mlee47/LLMVS) |
 | [TripleSumm](https://arxiv.org/abs/2603.01169) — Sumin Kim, Hyemin Jeong, Mingu Kang, Yejin Kim, Yoori Oh, Joonseok Lee; ICLR 2026 | Adaptive visual/text/audio fusion and explicit TV versus TVT evaluation | Human or replay-derived score targets | [Official PyTorch](https://github.com/smkim37/TripleSumm) |
+| [CLIP-It!](https://proceedings.neurips.cc/paper/2021/hash/7503cfacd12053d309b6bed5c89de212-Abstract.html) — Medhini Narasimhan, Anna Rohrbach, Trevor Darrell; NeurIPS 2021 | Early bridge between generic, free-form query and long-form egocentric summarization | Supervised selector or an ablation without BCE; both use pretrained CLIP/BMT | [Official stub](https://github.com/medhini/clip_it) |
+| [Multi-VidSum](https://aclanthology.org/2023.emnlp-main.457/) — Keito Kudo, Haruki Nagasawa, Jun Suzuki, Nobuyuki Shimizu; EMNLP 2023 | Ordered keyframe-caption pairs and task-specific alignment metrics | Supervised joint/iterative models with optional pseudo-pretraining | [Official source](https://github.com/cl-tohoku/Multi-VidSum) |
+| [SSPVS](https://openaccess.thecvf.com/content/WACV2023/html/Li_Progressive_Video_Summarization_via_Multimodal_Self-Supervised_Learning_WACV_2023_paper.html) — Haopeng Li, Qiuhong Ke, Mingming Gong, Tom Drummond; WACV 2023 | Multimodal self-supervised representation pretraining plus progressive selection | Self-supervised pretraining, then supervised frame-score MSE | [Official PyTorch](https://github.com/HopLee6/SSPVS-PyTorch) |
 
 ### VideoXum: paired outputs change the objective
 
@@ -65,7 +68,7 @@ Argaw and colleagues retain timestamps while asking an LLM to summarize transcri
 
 ### LLMVS and V2Xum-LLM: two routes from language to selection
 
-LLMVS uses LLaVA captions and Llama-2 local context embeddings, followed by a self-attention aggregator trained against human importance scores. V2Xum-LLM trains its adapter and decoder to emit temporal indices and/or natural language. Their supervised objectives are, respectively, frame-score MSE and output-token negative log likelihood. Freeze status of the captioner or visual encoder does not change these selector-level categories. [LLMVS, Sections 3.3–3.5](https://arxiv.org/html/2504.11199v2) · [V2Xum-LLM, Methodology and Training](https://arxiv.org/html/2404.12353v3).
+LLMVS uses LLaVA captions and Llama-2 local context embeddings, followed by a self-attention aggregator trained against human importance scores. V2Xum-LLM trains its adapter and decoder to emit temporal indices and/or natural language. Their supervised objectives are, respectively, frame-score MSE and output-token negative log likelihood. Freeze status of the captioner or visual encoder does not change these selector-level categories. The pinned LLMVS source loads visual tensors but its model path uses only two LLaMA embedding streams; it also selects checkpoints on the test-named partition and evaluates that partition again. [LLMVS, Sections 3.3–3.5](https://arxiv.org/html/2504.11199v2) · [V2Xum-LLM, Methodology and Training](https://arxiv.org/html/2404.12353v3).
 
 ## 3. TripleSumm: exact identity and protocol audit
 
@@ -92,7 +95,7 @@ The main method alternates temporal attention within modalities and fusion acros
 
 against importance targets. It is **supervised** on human-annotated datasets and uses behavioral weak supervision on MoSu. MoSu pretraining followed by target fine-tuning is distinct from direct transfer. The main results separate traditional TV folds from TVT folds with dedicated validation and test partitions. [Sections 3.3 and 5.1; Appendix B.5](https://arxiv.org/html/2603.01169v1).
 
-The [author project](https://sumin-kim.com/TripleSumm-page/) introduces MoSu, a 52,678-video dataset with synchronized visual, text and audio features, and interactive examples of modality contributions. Replay statistics measure viewer behavior; they should not be described as independent human judgments of summary quality. The [code repository](https://github.com/smkim37/TripleSumm) links datasets and MoSu/Mr. HiSum checkpoints, with Python 3.10, PyTorch 2.5.1 and CUDA 12.1 instructions. These artifacts were inspected, not executed here.
+The [author project](https://sumin-kim.com/TripleSumm-page/) introduces MoSu, a 52,678-video dataset with synchronized visual, text and audio features, and interactive examples of modality contributions. Replay statistics measure viewer behavior; they should not be described as independent human judgments of summary quality. The [code repository](https://github.com/smkim37/TripleSumm) links pinned datasets and MoSu/Mr. HiSum checkpoints, with Python 3.10, PyTorch 2.5.1 and CUDA 12.1 instructions. Its main evaluator reports raw-score correlations and fixed-five-second-shot mAP; the shipped 15%-knapsack decoder is not invoked by the main path. These artifacts were inspected, not executed here.
 
 Three reporting traps require particular care:
 
@@ -100,21 +103,40 @@ Three reporting traps require particular care:
 - **Main Table 2 and Appendix D prose disagree on the MoSu rank values.** Appendix Table XI agrees with the main table. Preserve the table identifier beside any copied number; do not silently select the higher prose claim. Correlations, highlight mAP and final keyshot overlap are separate evaluations. [Primary tables and appendices](https://arxiv.org/html/2603.01169v1).
 - **External-dataset captioner names differ.** Section 5.1 names `Qwen2.5-VL-7B-Instruct`, while Appendix B.4 links `Qwen/Qwen2-VL-7B-Instruct`. Resolve the actual caption cache and model revision before reproducing these experiments. [Primary preprocessing descriptions](https://arxiv.org/html/2603.01169v1).
 
-## 4. Training-free pipelines and the data used to design them
+## 4. The 2026 audit window: similar labels, different tasks
+
+| Work | Output and supervision | Protocol boundary |
+|---|---|---|
+| [TRINITY](https://arxiv.org/abs/2608.29577v1) | Supervised perspective-specific Event/Emotion/Nature segment scores | “Personal-style” is three constructed views, not an individual user model; paper, README and manifests conflict on counts |
+| [SGWIB](https://arxiv.org/abs/2609.13966v1) | Replay-supervised visual or audio highlight ranking, trained separately | No audiovisual fusion; MoSu Table III and prose values conflict, so no row is admitted |
+| [Zero-shot text/synthetic-image highlights](https://arxiv.org/abs/2609.14790v1) | Training-free metadata-conditioned frame ranking | TVSum's best uses text+image+style; SumMe's best is text-only with video-derived category bootstrapping |
+| [KnowVis](https://arxiv.org/abs/2609.03742v2) | Training-free generated pedagogical image from lecture transcripts/slides | Not a temporal skim; proprietary models, no executable code, one unsplit generated-output dataset |
+| [Unified Agentic Video Editing](https://arxiv.org/abs/2609.12769v1) | Training-free 90–110-second audiovisual narrative from private metadata | Five episodes; Gemini-2.5-Flash answers a fixed comprehension quiz, and editing agents do not inspect pixels |
+| [Semantic Action Graph](https://arxiv.org/abs/2609.20768v1) | Five personalized sports clips plus narration and graph UI | One match and privileged event feed; no standard summary metric or code |
+| [Vision-language hierarchical model](https://doi.org/10.1002/ail2.70039) | Supervised CLIP/BLIP-2 importance model and KTS skim | 20% budget, mean-all-annotators F1 and GoogLeNet KTS boundaries isolate its headline rows |
+| [Audio sports highlights](https://arxiv.org/abs/2609.17923v1) | Supervised 2-second sports clip ranking with audio/visual/fused GRUs | Paper-local three-seed splits of 317 videos have no public identities |
+
+TRINITY's released source is substantive, but paper weight decay and epoch settings differ from defaults, checkpoints are absent, and advertised baseline signatures do not match the combined solver. KnowVis's official repository contains only a README and two images. These are different reproducibility states even though both have author-linked repositories. See the [pinned resource records](generated/resources.md) and [weekly audit](audits/2026-09-19-weekly.md).
+
+The metadata-conditioned zero-shot paper reports its strongest TVSum correlations with text and synthetic-image descriptors plus reference-frame style transfer, but its strongest SumMe correlations use text descriptors alone. SumMe first infers a coarse category with Qwen2.5-VL, so this is not the same native-metadata setting as TVSum. Sampling cadence, prompt/model snapshots, seeds and evaluated-video manifests are absent; the four recorded correlations remain isolated.
+
+## 5. Training-free pipelines and the data used to design them
 
 | Work | Actual output and inference | Qualification needed |
 |---|---|---|
 | [Prompts to Summaries](https://arxiv.org/abs/2506.10807), Mario Barbara and Alaa Maalouf; arXiv 2025, revised 2026 | Scene captions and prompted judgments become frame scores; optional natural-language query | No selector gradient training, but SumMe and TVSum use different normalization selected through dataset experiments |
 | [Context-Aware Pseudo-Label Scoring](https://arxiv.org/abs/2510.17501), Yuanli Wu, Long Zhang, Yue Du and Bin Li; arXiv 2025 | Captions and contextual rubric prompts produce importance scores | Human-annotated examples help construct the rubric; label-assisted calibration, despite the zero-shot title |
 | [Cut to the Chase / CoE](https://arxiv.org/abs/2603.06213), Xiaoxing You, Qiang Huang, Lingyu Li, Xiaojun Chang and Jun Yu; CVPR 2026 | Event graph, visual grounding and event evolution produce a textual summary | No gradient training; five training-set summaries serve as style references |
+| [KnowVis](https://arxiv.org/abs/2609.03742v2), Yi Xu, Yifan Hou and Xiaoyu Zhang; arXiv 2026 | Knowledge graph and lecture evidence become a pedagogical visual image | Proprietary generation/judging APIs; generated dataset outputs are not human references |
+| [Zero-shot text/synthetic-image highlights](https://arxiv.org/abs/2609.14790v1), Michal Byra, Alberto Presta, Grzegorz Stefanski and Krzysztof Arendt; arXiv 2026 | Metadata prompts become CLIP text/image prototypes and frame rankings | Metadata-dependent; SumMe category is inferred from the video; no summary decoder/code |
 
 **Prompts to Summaries.** Sections 3.3–3.4 define scene judgment, score normalization, temporal smoothing, and frame consistency/uniqueness weighting. The standard-video experiments use a 15% duration budget, but VidSum-Reason uses 36%; do not merge these results. Its [official implementation](https://github.com/mario998-hash/ZeroShotVideoSummary) requires a video-language model and an OpenAI API key. The README retains an older clone URL, so use the paper-linked repository and check configuration against the inspected revision. [Primary methodology and protocol](https://arxiv.org/html/2506.10807v3).
 
 **Context-Aware Pseudo-Label Scoring.** Section 3 explicitly starts with a small human-annotated subset and creates dataset-specific rubrics before inference. A clean reproduction needs the identities of those examples and evidence that evaluation videos were excluded from rubric design. The current manuscript also contains placeholder venue metadata and inconsistent baseline attributions. Its [author-linked code](https://github.com/wuyuanli60-svg/Context-Aware-Pseudo-Label-Scoring-for-Zero-Shot-Video-Summarization) is useful for inspecting prompts, but no headline numerical comparison is accepted here. [Primary paper, Sections 3–4](https://arxiv.org/html/2510.17501v3).
 
-**CoE.** Section 3 structures summarization through a hierarchical event graph, cross-modal grounding, event-evolution reasoning and domain-adaptive generation. Section 4.1 selects five reference summaries from training data for style adaptation. Its output is text; entity F1, ROUGE and BERTScore do not measure temporal overlap of selected keyshots. The [official code](https://github.com/youxiaoxing/CoE) includes graph construction and evaluation but also needs dataset preparation, MongoDB and model-serving configuration. [Primary paper](https://arxiv.org/html/2603.06213v1).
+**CoE.** Section 3 structures summarization through a hierarchical event graph, cross-modal grounding, event-evolution reasoning and domain-adaptive generation. Section 4.1 selects five reference summaries from training data for style adaptation. Its output is text; entity F1, ROUGE and BERTScore do not measure temporal overlap of selected keyshots. The [official code](https://github.com/youxiaoxing/CoE) needs dataset preparation, MongoDB and model-serving configuration. Its documented pip command targets a conda-export file, several evaluator dependencies are absent, and the committed main call disables question/BERTScore refinement. [Primary paper](https://arxiv.org/html/2603.06213v1).
 
-## 5. Reproduction and open questions
+## 6. Reproduction and open questions
 
 For each foundation-model run, record model/checkpoint identifiers, prompt text, sampling timeline, decoding parameters, example provenance, caption/transcript cache hashes, API usage and cost, and the final selection procedure. Measure feature extraction and captioning separately from selector latency. Model availability and benchmark contamination remain unverified unless independently audited.
 

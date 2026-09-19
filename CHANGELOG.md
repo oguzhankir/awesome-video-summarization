@@ -2,6 +2,35 @@
 
 Record substantive handbook, evidence, implementation-resource and validation changes on each maintenance run. Dates describe repository updates; individual source-verification dates remain in the registries. An entry does not imply a model was reproduced.
 
+## 2026-09-19
+
+### Added in 2026-09-19
+
+- Ten recent records from the 2026-08-09 overlap window: TRINITY, KnowVis, SGWIB, metadata-conditioned zero-shot highlights, Audio for Sports Highlight Detection, Semantic Action Graph, Unified Agentic Video Editing, the Wiley vision-language/hierarchical model, the Springer soccer pipeline and metadata-only M2UR.
+- Five historical gap records: SSPVS, CLIP-It!, Multi-VidSum, personalized day-long egocentric summarization and causal online diversity sampling.
+- TRINITY, KnowVis and Multi-VidSum dataset cards; four protocol-isolated Byra et al. Table 1 correlation records; twelve pinned implementation/evaluator resources. The registries now contain 54 papers, 21 datasets, 38 benchmark rows and 33 resources.
+- A dated search/source audit covering the 30-day overlap, 11,568-record official arXiv scan, publisher/proceedings follow-up, exclusions, restricted sources, code inspection and remaining gaps.
+
+### Changed in 2026-09-19
+
+- Updated the foundation-model, task-setting, dataset, self-supervision, RL, implementation and learning-path chapters with recent methods, historical coverage and runnable audit exercises.
+- Extended the paper schema with an explicit `not reported` supervision state so restricted metadata-only records do not require invented labels.
+- Pinned and inspected TripleSumm, LLMVS, CoE, SD-VSum, TRINITY, KnowVis, SSPVS, CLIP-It, Multi-VidSum and personalized-egocentric source releases without downloading large artifacts.
+- Replaced the generic live CLIP source reference with commit `d05afc436d78f1c48dc0dbf8e5980a9d471f35f6`.
+
+### Fixed in 2026-09-19
+
+- Separated Byra et al.'s TVSum text+image+style variant from its SumMe text-only/category-bootstrap variant; rejected the paper's shared “best variant” label as one configuration and withheld underspecified top-5 mAP.
+- Withheld SGWIB values because MoSu prose conflicts with Table III; isolated TRINITY's paper/README/manifest counts and optimizer/epoch differences; recorded KnowVis as a release stub rather than working code.
+- Recorded concrete release blockers: LLMVS test-influenced checkpoint selection, unused visual features and overlapping partitions; CoE dependency/configuration mismatches and disabled refinement; SD-VSum HDF5 key and loader-routing errors; TRINITY baseline signature/dimension mismatches; SSPVS test-influenced epoch selection.
+- Corrected result bounds so the actual `Temporal-overlap F1` / `Frame-overlap F1` plus `percent` records are checked in `[0, 100]`, and correlation coefficients are checked in `[-1, 1]`.
+- Removed reported variance from the benchmark protocol-group key: uncertainty remains displayed with each result but can no longer split otherwise identical protocols. Unknown protocol metadata still isolates rows.
+
+### Remaining audit work after 2026-09-19
+
+- No upstream GPU model, paid API, large feature/video archive or published score was executed. M2UR's IEEE PDF remained restricted; HABSS, FastPerson/QA-FastPerson, QEVA, multilingual, multi-camera, medical/procedural and preference-learning audits remain follow-ups. No global-best or exhaustive-coverage claim is made.
+- The full 370-URL link audit was inconclusive because every endpoint hit the same execution-environment DNS failure; all remained unresolved and no citation was removed.
+
 ## 2026-09-08
 
 ### Added
