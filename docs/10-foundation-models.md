@@ -2,7 +2,7 @@
 
 [Back to handbook](../README.md) · [Task settings](11-task-settings.md) · [Structured paper records](../data/papers/modern.json)
 
-**Verified: 2026-09-19.** These methods share pretrained representations, but their learning signals differ. Read the supervision column before comparing their results. Official code means author-linked code was found; it does not mean this repository reproduced the model.
+**Verified: 2026-10-01.** These methods share pretrained representations, but their learning signals differ. Read the supervision column before comparing their results. Official code means author-linked code was found; it does not mean this repository reproduced the model.
 
 ## 1. What a foundation model contributes
 
@@ -115,10 +115,14 @@ Three reporting traps require particular care:
 | [Semantic Action Graph](https://arxiv.org/abs/2609.20768v1) | Five personalized sports clips plus narration and graph UI | One match and privileged event feed; no standard summary metric or code |
 | [Vision-language hierarchical model](https://doi.org/10.1002/ail2.70039) | Supervised CLIP/BLIP-2 importance model and KTS skim | 20% budget, mean-all-annotators F1 and GoogLeNet KTS boundaries isolate its headline rows |
 | [Audio sports highlights](https://arxiv.org/abs/2609.17923v1) | Supervised 2-second sports clip ranking with audio/visual/fused GRUs | Paper-local three-seed splits of 317 videos have no public identities |
+| [TSMD](https://arxiv.org/abs/2609.39051v1) | Weakly supervised multimodal highlight scoring with temporal and full-stream dropout | Zero-masking tests robustness on MoSu/Mr. HiSum; segment mAP is not final keyshot F1 |
+| [EviDETR](https://arxiv.org/abs/2609.30724v1) | Query-conditioned moment retrieval and highlight scores with evidence transfer | QVHighlights validation HD-mAP/HIT@1 are adjacent task metrics, not generic summary quality |
 
-TRINITY's released source is substantive, but paper weight decay and epoch settings differ from defaults, checkpoints are absent, and advertised baseline signatures do not match the combined solver. KnowVis's official repository contains only a README and two images. These are different reproducibility states even though both have author-linked repositories. See the [pinned resource records](generated/resources.md) and [weekly audit](audits/2026-09-19-weekly.md).
+TRINITY's released source is substantive, but paper weight decay and epoch settings differ from defaults, checkpoints are absent, and advertised baseline signatures do not match the combined solver. KnowVis's official repository contains only a README and two images. These are different reproducibility states even though both have author-linked repositories. See the [pinned resource records](generated/resources.md) and [weekly audit](audits/2026-10-01-weekly.md).
 
 The metadata-conditioned zero-shot paper reports its strongest TVSum correlations with text and synthetic-image descriptors plus reference-frame style transfer, but its strongest SumMe correlations use text descriptors alone. SumMe first infers a coarse category with Qwen2.5-VL, so this is not the same native-metadata setting as TVSum. Sampling cadence, prompt/model snapshots, seeds and evaluated-video manifests are absent; the four recorded correlations remain isolated.
+
+TSMD studies synthetic feature loss in behavior-supervised highlight detection: temporal masks remove 50% of feature positions, while stream masks remove visual, audio or text features. Its 16 admitted Table 1 mAP@15 rows preserve the retrained baseline, three dropout policies, two datasets and both failure regimes; the values remain author-reported and split-isolated. EviDETR combines query-conditioned temporal grounding with clip highlight prediction on QVHighlights. Its HD-mAP and HIT@1 rows are listed separately from the generic keyshot catalog. Neither study supplies a new SumMe/TVSum-compatible score.
 
 ## 5. Training-free pipelines and the data used to design them
 

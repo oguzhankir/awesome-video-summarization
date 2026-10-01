@@ -1537,5 +1537,198 @@
       "https://ieeexplore.ieee.org/abstract/document/11630213/",
       "https://2026.ieeeicip.org/list-of-accepted-regular-and-special-session-papers/"
     ]
+  },
+  {
+    "id": "tsmd",
+    "title": "TSMD: Temporal-Stream Modality Dropout for Robust Video Highlight Detection",
+    "authors": [
+      "Bo-Yuan Cheng",
+      "Kuan-Yu Chen",
+      "Po-Han Huang",
+      "Jeng-Lin Li",
+      "Jian-Jiun Ding"
+    ],
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2609.39051v1",
+    "project_url": "https://github.com/boyuan-ch/TSMD",
+    "supervision": [
+      "weakly-supervised"
+    ],
+    "tasks": [
+      "multimodal highlight detection",
+      "robust video highlight detection"
+    ],
+    "outputs": [
+      "frame-level salience scores",
+      "ranked five-second segments"
+    ],
+    "mechanisms": [
+      "temporal modality dropout",
+      "complete-stream modality dropout",
+      "multi-objective salience regression",
+      "peak-oriented pairwise ranking"
+    ],
+    "encoders": "TripleSumm backbone; MoSu uses CLIP ViT-L/14, AST and RoBERTa features; Mr. HiSum uses PCA-reduced InceptionV3 visual features with AST and RoBERTa.",
+    "sampling": "Pre-extracted feature grid at 1 Hz.",
+    "architecture": "Keeps the TripleSumm multimodal temporal and cross-modal architecture unchanged; applies structured feature masks only during training.",
+    "fusion": "TripleSumm timestep-wise multimodal fusion; temporal masking is independent across streams and complete-stream masking zeros one modality.",
+    "objective": "MSE + 0.35(1 − per-video Pearson r) + 0.10 RankNet. RankNet samples 512 frame pairs/video, comparing top-15%-target frames against other frames.",
+    "training_data": "MoSu and the accessible trimodal Mr. HiSum subset, trained and evaluated separately with behavior-derived Most Replayed salience labels.",
+    "test_data": "MoSu test split and accessible trimodal Mr. HiSum test split.",
+    "split": "MoSu: 42,152/5,263/5,263 train/validation/test. Trimodal Mr. HiSum derivative: 26,639/1,904/1,909 over 30,452 accessible videos; split artifact identity not independently pinned.",
+    "budget": "mAP@15 ranks five-second segments against the top 15% of ground-truth segments; no final duration-constrained keyshot summary is emitted.",
+    "postprocessing": "Non-overlapping five-second segments; mean frame score per segment; no KTS or knapsack for reported mAP.",
+    "metrics": [
+      "Kendall tau",
+      "Spearman rho",
+      "mAP@50",
+      "mAP@15"
+    ],
+    "code_url": "https://github.com/boyuan-ch/TSMD",
+    "code_status": "Official author repository inspected at commit ef42f98c763c1e88b82a1dc3ec25849fd206e9e3; configs and implementation are present. No code or tests were run. Its README BibTeX lists an extra Yu Tsao absent from the arXiv author list.",
+    "framework": "PyTorch; repository documents Python 3.10 and PyTorch 2.5+.",
+    "weights": "No released task checkpoint verified in the inspected repository.",
+    "features": "Paper uses pre-extracted TripleSumm features: MoSu CLIP/AST/RoBERTa, each 768-D; Mr. HiSum InceptionV3 PCA visual 1024-D and AST/RoBERTa 768-D. Large feature archives were not downloaded.",
+    "reproducibility": "Paper and official repository inspected; no model execution, feature download or independent result reproduction.",
+    "limitations": "The robustness benchmark uses zero-masking and does not model realistic sensor, alignment or transcript failures. mAP@15 is segment retrieval, not keyshot F1. Mr. HiSum trimodal coverage is an accessible subset of the original dataset; author metadata differs between paper and repository README.",
+    "verified_on": "2026-10-01",
+    "sources": [
+      "https://arxiv.org/abs/2609.39051v1",
+      "https://github.com/boyuan-ch/TSMD/tree/ef42f98c763c1e88b82a1dc3ec25849fd206e9e3",
+      "https://proceedings.neurips.cc/paper_files/paper/2023/hash/7f880e3a325b06e3601af1384a653038-Abstract.html"
+    ]
+  },
+  {
+    "id": "evidetr",
+    "title": "EviDETR: Preserving Query-Relevant Temporal Evidence for Moment Retrieval and Highlight Detection",
+    "authors": [
+      "Haoran Sun",
+      "Yufan Li",
+      "Qichen Zhang",
+      "Haoran Zhao",
+      "Shuqi Wang"
+    ],
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2609.30724v1",
+    "project_url": "https://kevin-kas.github.io/Evi-detr-webpage/",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "video moment retrieval",
+      "query-conditioned highlight detection"
+    ],
+    "outputs": [
+      "query-relevant temporal segments",
+      "clip-level highlight scores"
+    ],
+    "mechanisms": [
+      "semantic-aware feature reweighting",
+      "temporal Top-2 mixture-of-experts decoder",
+      "moment-retrieval-to-highlight evidence fusion"
+    ],
+    "encoders": "Pre-extracted CLIP+SlowFast video features and CLIP text-query features.",
+    "sampling": "QVHighlights benchmark feature sequence; exact extraction stride and artifact revision are not independently established in this audit.",
+    "architecture": "Three-stage DETR-style temporal decoder with eight experts/stage and Top-2 routing; 10 temporal queries, 256-D hidden space and 1024-wide expert FFNs.",
+    "fusion": "Semantic-aware query/video reweighting plus confidence-weighted multi-scale moment evidence transferred to clip-level highlight features.",
+    "objective": "Joint DETR moment localization/classification losses and highlight saliency supervision, with auxiliary decoder-stage supervision.",
+    "training_data": "QVHighlights training split.",
+    "test_data": "QVHighlights validation; Charades-STA and TACoS test splits for cross-dataset moment retrieval.",
+    "split": "Main highlight results use the QVHighlights validation split; split manifest and source-feature identity were not pinned in this audit.",
+    "budget": "No generic summary duration budget; highlight evaluation follows QVHighlights relevance/saliency annotations.",
+    "postprocessing": "DETR moment prediction and query-conditioned clip saliency; not a generic keyshot decoder.",
+    "metrics": [
+      "HD-mAP (≥Very Good)",
+      "HIT@1 (≥Very Good)",
+      "R1@0.5",
+      "R1@0.7",
+      "moment retrieval Avg. mAP"
+    ],
+    "code_url": "Not reported",
+    "code_status": "Author project page found; no author-affiliated executable code repository was identified in this scan.",
+    "framework": "Not reported.",
+    "weights": "Not reported.",
+    "features": "CLIP+SlowFast video features and CLIP text features; source artifacts were not downloaded.",
+    "reproducibility": "Primary arXiv paper and project page inspected; three-seed results are author-reported. No code execution or independent reproduction.",
+    "limitations": "QVHighlights validation numbers are query-conditioned highlight/moment retrieval, not generic video-summary quality. Evaluator version and feature artifact identity remain unverified; the project page is not an implementation release.",
+    "verified_on": "2026-10-01",
+    "sources": [
+      "https://arxiv.org/abs/2609.30724v1",
+      "https://kevin-kas.github.io/Evi-detr-webpage/",
+      "https://proceedings.neurips.cc/paper_files/paper/2021/file/62e0973455fd26eb03e91d5741a4a3bb-Paper.pdf",
+      "https://github.com/jayleicn/moment_detr"
+    ]
+  },
+  {
+    "id": "multivent-raw",
+    "title": "MultiVENT-Raw: A Benchmark for Retrieval and Reasoning over Raw Videos",
+    "authors": [
+      "Reno Kriz",
+      "David Etter",
+      "Alexander Martin",
+      "Cameron Carpenter",
+      "Debashish Chakraborty",
+      "Hannah Recknor",
+      "Reihaneh Iranmanesh",
+      "Matthew Maciejewski",
+      "Kenton Murray",
+      "Eugene Yang",
+      "Benjamin Van Durme",
+      "Aaron Steven White",
+      "Andrew Yates",
+      "William Walden"
+    ],
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "paper_url": "https://arxiv.org/abs/2609.28437v1",
+    "project_url": "https://github.com/hltcoe/multivent-raw",
+    "supervision": [
+      "not reported"
+    ],
+    "tasks": [
+      "multi-video retrieval",
+      "persona-conditioned report generation"
+    ],
+    "outputs": [
+      "ranked video/segment evidence",
+      "cited multi-video report"
+    ],
+    "mechanisms": [
+      "event-centric query and persona benchmark",
+      "claim-grounded report evaluation",
+      "retrieval-augmented generation"
+    ],
+    "encoders": "Paper evaluates multimodal dense retrieval and reranking baselines; it does not propose one required encoder.",
+    "sampling": "Videos are divided into segments of at most five minutes for retrieval and VLM input.",
+    "architecture": "Benchmark with FULL and CORE variants, video retrieval, and query/persona-conditioned report generation over retrieved evidence.",
+    "fusion": "Not applicable as a single proposed model; baseline systems combine text/video embeddings and report-generation models.",
+    "objective": "Benchmark retrieval with relevance judgments and report generation with evidence-supported claims and sentence-level video citations.",
+    "training_data": "Not applicable to a single proposed method; some retrieval baselines use MultiVENT 2.0 training data.",
+    "test_data": "MultiVENT-Raw FULL and CORE benchmark collections; MicroVENT is a companion development set.",
+    "split": "FULL contains 118,802 videos across 130 events and 222 queries; paper separately defines a CORE subset. Dataset access is gated.",
+    "budget": "Not applicable to single-video temporal summary length; report generation targets the query/persona and cites source videos.",
+    "postprocessing": "Retrieval ranks videos/segments; generated report sentences carry citations to supporting videos.",
+    "metrics": [
+      "nDCG@k",
+      "Recall@k",
+      "InfoF1",
+      "CiteF1"
+    ],
+    "code_url": "https://github.com/hltcoe/multivent-raw",
+    "code_status": "Repository inspected at commit 0b32135607856a26f8c73ffd52ca59b6b78c054a; it contains documentation and data pointers, not an executable model implementation.",
+    "framework": "Not applicable to the benchmark paper; individual baseline environments vary.",
+    "weights": "No generally released benchmark checkpoint verified.",
+    "features": "Gated raw-video dataset and a separate gated feature dataset are linked by the release; archives were not downloaded.",
+    "reproducibility": "Primary paper and official repository/Hugging Face release descriptions inspected; no large data, feature archive or model was downloaded or executed.",
+    "limitations": "This is a retrieval-conditioned, multi-video report task, not a single-video keyshot summary. Full release is about 4.5 TB and access-gated; original clip rights and feature provenance were not independently checked. Some derived annotation subsets use model judgments.",
+    "verified_on": "2026-10-01",
+    "sources": [
+      "https://arxiv.org/abs/2609.28437v1",
+      "https://github.com/hltcoe/multivent-raw/tree/0b32135607856a26f8c73ffd52ca59b6b78c054a",
+      "https://huggingface.co/datasets/hltcoe/multivent-raw",
+      "https://huggingface.co/datasets/hltcoe/multivent-raw-features"
+    ]
   }
 ]

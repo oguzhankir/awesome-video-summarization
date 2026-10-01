@@ -2,6 +2,23 @@
 
 Record substantive handbook, evidence, implementation-resource and validation changes on each maintenance run. Dates describe repository updates; individual source-verification dates remain in the registries. An entry does not imply a model was reproduced.
 
+## 2026-10-01
+
+### Added
+
+- TSMD, EviDETR and MultiVENT-Raw paper records; 16 protocol-isolated TSMD robustness rows and two QVHighlights highlight rows. No generic SumMe/TVSum score was added.
+- Dataset cards for Mr. HiSum, QVHighlights, MultiVENT-Raw and MicroVENT, plus the pinned TSMD implementation record.
+- A dated arXiv/source audit for the 2026-09-20–10-01 delta, with candidate exclusions, gated-access notes and verified publication boundaries.
+
+### Changed
+
+- Updated the dataset, foundation-model, task-setting and coverage chapters and README to describe query-conditioned highlights, modality-missingness robustness and multi-video cited reports.
+- Regenerated paper, dataset, result and implementation catalogs from the registries.
+
+### Audit gaps
+
+- No model, GPU run or large video/feature archive was executed or downloaded. The arXiv identity-centric English version remains deferred because its claimed earlier Spanish journal record and conflicting metric statements were not resolved. No external-link audit was repeated; the prior 370-URL run remains unresolved due to environment DNS failures.
+
 ## 2026-09-19
 
 ### Added in 2026-09-19

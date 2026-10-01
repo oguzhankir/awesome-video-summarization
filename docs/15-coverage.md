@@ -1,8 +1,8 @@
 # Coverage methodology and research gaps
 
-[Home](../README.md) · [Paper catalog](generated/papers.md) · [Implementation sources](generated/resources.md) · [Latest audit](audits/2026-09-19-weekly.md) · [Overhaul audit](audits/2026-09-08-overhaul.md)
+[Home](../README.md) · [Paper catalog](generated/papers.md) · [Implementation sources](generated/resources.md) · [Latest audit](audits/2026-10-01-weekly.md) · [Overhaul audit](audits/2026-09-08-overhaul.md)
 
-**Literature/source review: 2026-09-19.** This is a selective, evidence-backed handbook, not a systematic review with a completed census of every proceedings volume. A registry can have complete fields while experiment details remain explicitly unverified. Neither a verification date nor a reachable repository establishes successful ML reproduction.
+**Literature/source review: 2026-10-01.** This is a selective, evidence-backed handbook, not a systematic review with a completed census of every proceedings volume. A registry can have complete fields while experiment details remain explicitly unverified. Neither a verification date nor a reachable repository establishes successful ML reproduction.
 
 ## 1. Inclusion and verification
 
@@ -14,7 +14,7 @@ Inherited reconstruction cards retain their earlier 2026-09-06 technical-audit d
 
 ## 2. Executed search matrix
 
-The latest pass used a 30-day overlap from 2026-08-09 and searched through 2026-09-19. The official arXiv submitted-date scan covered 11,568 records across `cs.CV`, `cs.MM`, `cs.CL`, `cs.AI` and `cs.HC`, supplemented by updated-record queries, Crossref, publisher pages, proceedings lists, paper references and GitHub. This table states actual depth rather than suggesting every venue was exhaustively searched.
+The previous pass covered 2026-08-09 through 2026-09-19 and screened 11,568 records across `cs.CV`, `cs.MM`, `cs.CL`, `cs.AI` and `cs.HC`. The latest incremental pass covers 2026-09-20 through 2026-10-01; its query, result count and source follow-up are recorded in the [2026-10-01 audit](audits/2026-10-01-weekly.md). This table states actual depth rather than suggesting every venue was exhaustively searched.
 
 | Venue/source family | Work performed | Limits |
 |---|---|---|
@@ -53,10 +53,11 @@ video summarization TPAMI survey 2022 2024
 video summarization submitted 2026-08-09 TO 2026-09-19 cs.CV cs.MM cs.CL cs.AI cs.HC
 video highlight detection audio sports 2026; video summary visual narrative agentic 2026
 video summarization personalized multi-video causal streaming online 2026
+all:video AND submittedDate:[202609200000 TO 202610012359] AND (cat:cs.CV OR cat:cs.MM OR cat:cs.CL OR cat:cs.AI OR cat:cs.HC)
 video summarization site:doi.org 2026 CLIP BLIP-2 hierarchical temporal soccer
 ```
 
-The deliberately broad DSNet query initially suggested AAAI; the verified archival venue is TIP. Search terms are hypotheses, not evidence. GitHub lookups included exact title/author/identifier searches for every admitted recent paper plus historical source leads. [The 2026-09-08 source ledger](audits/2026-09-08-sources.md) preserves overhaul provenance; [the 2026-09-19 audit](audits/2026-09-19-weekly.md) records this run's search and dispositions.
+The deliberately broad DSNet query initially suggested AAAI; the verified archival venue is TIP. Search terms are hypotheses, not evidence. GitHub lookups included exact title/author/identifier searches for every admitted recent paper plus historical source leads. [The 2026-09-08 source ledger](audits/2026-09-08-sources.md) preserves overhaul provenance; [the 2026-09-19 audit](audits/2026-09-19-weekly.md) and [2026-10-01 audit](audits/2026-10-01-weekly.md) record the incremental searches and dispositions.
 
 ## 3. Candidates and disposition
 
@@ -83,7 +84,7 @@ The deliberately broad DSNet query initially suggested AAAI; the verified archiv
 
 ## 4. Access and reproducibility gaps
 
-Selected publisher/CVF/author pages rejected automated requests or lacked usable HTML; primary PDFs, arXiv versions or author source were used where available. M2UR's IEEE PDF returned a security challenge and remains a metadata-only record. The old QFVS project could not be retrieved. Legacy VASNet Box artifacts return 404 and remain documented as [known link issues](../.github/known-link-issues.json); they are rechecked, not silently ignored. The required 2026-09-19 link-audit run saw environment-level DNS failure for all 370 URLs and therefore classified every endpoint as unresolved; it could not update the differentiated 2026-09-08 snapshot. Access restrictions, unresolved hosts and missing artifacts are different statuses.
+Selected publisher/CVF/author pages rejected automated requests or lacked usable HTML; primary PDFs, arXiv versions or author source were used where available. M2UR's IEEE PDF returned a security challenge and remains a metadata-only record. The old QFVS project could not be retrieved. Legacy VASNet Box artifacts return 404 and remain documented as [known link issues](../.github/known-link-issues.json); they are rechecked, not silently ignored. The last full link-audit run, on 2026-09-19, saw environment-level DNS failure for all 370 URLs and classified every endpoint as unresolved; this incremental scan did not repeat that audit. The differentiated 2026-09-08 snapshot remains the latest useful network observation. Access restrictions, unresolved hosts and missing artifacts are different statuses.
 
 No GPU environments were rebuilt. No datasets, checkpoints or feature archives were downloaded or rehashed. Modern repositories may need large models, a model-serving stack or API access. Dependency and evaluator source were inspected, which supports concrete caveats but not a claim of complete reproduction.
 

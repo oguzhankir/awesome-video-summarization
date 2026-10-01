@@ -4,9 +4,44 @@
 
 [Handbook home](../README.md) · [Metric definitions](02-evaluation.md) · [Paper catalog](generated/papers.md)
 
-38 primary-source result records; 38 exact protocol groups. All values retain author/reproduction status.
+56 primary-source result records; 44 exact protocol groups. All values retain author/reproduction status.
 
 Groups require equality of the full recorded protocol tuple. Unknown metadata isolates a record. A missing split identity isolates a record even when prose such as “random 80/20” matches. An identity must name a verified shared split artifact, fixed official partition, or primary experiment configuration; comparison notes remain binding. No global SOTA ranking is asserted; the highest value within a multi-row group is only the best value in this catalog under that recorded protocol, not a verified field-wide best.
+
+## MoSu — Complete-stream feature removal; one of visual, audio or text is zero-masked, averaged over −V/−A/−T. — mAP@15 (80088e8d)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TripleSumm† (retrained MSE baseline)](generated/papers.md#tsmd) | 38.89 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.30 percentage points across training seeds. | [Table 1(c), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Stream](generated/papers.md#tsmd) | 43.3 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.11 percentage points across training seeds. | [Table 1(c), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Temporal](generated/papers.md#tsmd) | 42.34 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.10 percentage points across training seeds. | [Table 1(c), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Mix](generated/papers.md#tsmd) | 43.06 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.29 percentage points across training seeds. | [Table 1(c), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** mosu
+- **Split identity:** MoSu released split (42,152/5,263/5,263); manifest identity not pinned in this audit.
+- **Split:** Official train/validation/test counts 42,152/5,263/5,263; test split.
+- **Training regime:** Supervised regression on behavior-derived Most Replayed importance targets; trained per dataset.
+- **Setting:** Complete-stream feature removal; one of visual, audio or text is zero-masked, averaged over −V/−A/−T.
+- **Features:** CLIP ViT-L/14 visual 768-D, AST audio 768-D, RoBERTa text 768-D.
+- **Sampling:** Pre-extracted feature sequence at 1 Hz.
+- **Segmentation:** Non-overlapping five-second segments; mAP ground truth uses segment mean salience.
+- **Shot aggregation:** Mean frame score within each five-second segment.
+- **Budget:** mAP@15: rank segments against the top 15% of ground-truth segments; no output summary-duration budget.
+- **Solver:** None; segment ranking/AP evaluation.
+- **Reference aggregation:** Per-video behavior-derived frame importance; mAP averaged over videos.
+- **Metric:** mAP@15
+- **Unit:** percent
+- **Runs:** Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.
+- **Reproduction:** author-reported
+- **tsmd-mosu-mean-stream-drop-triplesumm (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mosu-mean-stream-drop-tsmd-stream (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mosu-mean-stream-drop-tsmd-temporal (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mosu-mean-stream-drop-tsmd-mix (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+
+</details>
 
 ## MoSu — In-domain MoSu test; full trimodal model, main Table 2. — Spearman rho (eec950da)
 
@@ -63,6 +98,169 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Runs:** One reported train/validation/test result; independent seed count not reported.
 - **Reproduction:** author-reported
 - **triplesumm-mosu-test-tau (2026-09-08):** Main Table 2 and Appendix Table XI agree on .351/.472, but Appendix D prose instead says .361/.484. Preserve the main-table values; conflict remains unresolved. No independent rerun; not temporal-overlap F1 or highlight mAP.
+
+</details>
+
+## MoSu — Independent temporal feature removal at r=0.5; all streams are independently zero-masked at missing timesteps. — mAP@15 (707fb65f)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TripleSumm† (retrained MSE baseline)](generated/papers.md#tsmd) | 38.14 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 1.53 percentage points across training seeds. | [Table 1(b), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Stream](generated/papers.md#tsmd) | 42.46 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.24 percentage points across training seeds. | [Table 1(b), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Temporal](generated/papers.md#tsmd) | 45.2 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.23 percentage points across training seeds. | [Table 1(b), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Mix](generated/papers.md#tsmd) | 45.25 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.26 percentage points across training seeds. | [Table 1(b), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** mosu
+- **Split identity:** MoSu released split (42,152/5,263/5,263); manifest identity not pinned in this audit.
+- **Split:** Official train/validation/test counts 42,152/5,263/5,263; test split.
+- **Training regime:** Supervised regression on behavior-derived Most Replayed importance targets; trained per dataset.
+- **Setting:** Independent temporal feature removal at r=0.5; all streams are independently zero-masked at missing timesteps.
+- **Features:** CLIP ViT-L/14 visual 768-D, AST audio 768-D, RoBERTa text 768-D.
+- **Sampling:** Pre-extracted feature sequence at 1 Hz.
+- **Segmentation:** Non-overlapping five-second segments; mAP ground truth uses segment mean salience.
+- **Shot aggregation:** Mean frame score within each five-second segment.
+- **Budget:** mAP@15: rank segments against the top 15% of ground-truth segments; no output summary-duration budget.
+- **Solver:** None; segment ranking/AP evaluation.
+- **Reference aggregation:** Per-video behavior-derived frame importance; mAP averaged over videos.
+- **Metric:** mAP@15
+- **Unit:** percent
+- **Runs:** Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.
+- **Reproduction:** author-reported
+- **tsmd-mosu-temporal-drop-r05-triplesumm (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mosu-temporal-drop-r05-tsmd-stream (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mosu-temporal-drop-r05-tsmd-temporal (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mosu-temporal-drop-r05-tsmd-mix (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+
+</details>
+
+## Mr. HiSum — Complete-stream feature removal; one of visual, audio or text is zero-masked, averaged over −V/−A/−T. — mAP@15 (05f143d2)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TripleSumm† (retrained MSE baseline)](generated/papers.md#tsmd) | 37.81 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.11 percentage points across training seeds. | [Table 1(c), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Stream](generated/papers.md#tsmd) | 40.4 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.37 percentage points across training seeds. | [Table 1(c), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Temporal](generated/papers.md#tsmd) | 39.32 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.55 percentage points across training seeds. | [Table 1(c), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Mix](generated/papers.md#tsmd) | 40.22 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.29 percentage points across training seeds. | [Table 1(c), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** mr-hisum
+- **Split identity:** Trimodal Mr. HiSum derivative split (26,639/1,904/1,909); artifact identity not pinned in this audit.
+- **Split:** Trimodal accessible derivative: 30,452 videos; train/validation/test counts 26,639/1,904/1,909; test split.
+- **Training regime:** Supervised regression on behavior-derived Most Replayed importance targets; trained per dataset.
+- **Setting:** Complete-stream feature removal; one of visual, audio or text is zero-masked, averaged over −V/−A/−T.
+- **Features:** InceptionV3 PCA visual 1024-D, AST audio 768-D, RoBERTa text 768-D.
+- **Sampling:** Pre-extracted feature sequence at 1 Hz.
+- **Segmentation:** Non-overlapping five-second segments; mAP ground truth uses segment mean salience.
+- **Shot aggregation:** Mean frame score within each five-second segment.
+- **Budget:** mAP@15: rank segments against the top 15% of ground-truth segments; no output summary-duration budget.
+- **Solver:** None; segment ranking/AP evaluation.
+- **Reference aggregation:** Per-video behavior-derived frame importance; mAP averaged over videos.
+- **Metric:** mAP@15
+- **Unit:** percent
+- **Runs:** Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.
+- **Reproduction:** author-reported
+- **tsmd-mr-hisum-mean-stream-drop-triplesumm (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mr-hisum-mean-stream-drop-tsmd-stream (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mr-hisum-mean-stream-drop-tsmd-temporal (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mr-hisum-mean-stream-drop-tsmd-mix (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+
+</details>
+
+## Mr. HiSum — Independent temporal feature removal at r=0.5; all streams are independently zero-masked at missing timesteps. — mAP@15 (b098e914)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TripleSumm† (retrained MSE baseline)](generated/papers.md#tsmd) | 38.19 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 1.67 percentage points across training seeds. | [Table 1(b), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Stream](generated/papers.md#tsmd) | 39.07 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.15 percentage points across training seeds. | [Table 1(b), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Temporal](generated/papers.md#tsmd) | 41.6 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.14 percentage points across training seeds. | [Table 1(b), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+| [TSMD-Mix](generated/papers.md#tsmd) | 41.47 percent | Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.; Standard deviation 0.09 percentage points across training seeds. | [Table 1(b), PDF page 3.](https://arxiv.org/abs/2609.39051v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** mr-hisum
+- **Split identity:** Trimodal Mr. HiSum derivative split (26,639/1,904/1,909); artifact identity not pinned in this audit.
+- **Split:** Trimodal accessible derivative: 30,452 videos; train/validation/test counts 26,639/1,904/1,909; test split.
+- **Training regime:** Supervised regression on behavior-derived Most Replayed importance targets; trained per dataset.
+- **Setting:** Independent temporal feature removal at r=0.5; all streams are independently zero-masked at missing timesteps.
+- **Features:** InceptionV3 PCA visual 1024-D, AST audio 768-D, RoBERTa text 768-D.
+- **Sampling:** Pre-extracted feature sequence at 1 Hz.
+- **Segmentation:** Non-overlapping five-second segments; mAP ground truth uses segment mean salience.
+- **Shot aggregation:** Mean frame score within each five-second segment.
+- **Budget:** mAP@15: rank segments against the top 15% of ground-truth segments; no output summary-duration budget.
+- **Solver:** None; segment ranking/AP evaluation.
+- **Reference aggregation:** Per-video behavior-derived frame importance; mAP averaged over videos.
+- **Metric:** mAP@15
+- **Unit:** percent
+- **Runs:** Three training seeds (42, 123, 2026); temporal-removal scores also average three fixed mask seeds.
+- **Reproduction:** author-reported
+- **tsmd-mr-hisum-temporal-drop-r05-triplesumm (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mr-hisum-temporal-drop-r05-tsmd-stream (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mr-hisum-temporal-drop-r05-tsmd-temporal (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+- **tsmd-mr-hisum-temporal-drop-r05-tsmd-mix (2026-10-01):** Not independently reproduced. For temporal removal, paper reports r=0.5 and averages over three fixed mask seeds; for complete-stream removal it averages −V/−A/−T. Unknown split artifact identity is isolated. mAP@15 is not temporal keyshot F1.
+
+</details>
+
+## QVHighlights — Query-conditioned highlight detection; saliency target is the ≥Very Good split of QVHighlights. — HD-mAP (≥Very Good) (236417c0)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [EviDETR](generated/papers.md#evidetr) | 41.83 percent | Three random seeds; mean and standard deviation reported.; Standard deviation 0.39 percentage points. | [Table 1, PDF page 4; QVHighlights validation split, CLIP+SlowFast features.](https://arxiv.org/abs/2609.30724v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** qvhighlights
+- **Split identity:** QVHighlights official validation partition; exact manifest identity not pinned in this audit.
+- **Split:** QVHighlights official validation split.
+- **Training regime:** Supervised joint moment retrieval and query-conditioned highlight detection.
+- **Setting:** Query-conditioned highlight detection; saliency target is the ≥Very Good split of QVHighlights.
+- **Features:** Pre-extracted CLIP+SlowFast video features and CLIP text-query features.
+- **Sampling:** Benchmark feature sequence; extraction stride/revision not independently verified.
+- **Segmentation:** Two-second QVHighlights clips; highlight evaluation uses dataset-provided saliency labels.
+- **Shot aggregation:** Per-clip query-conditioned highlight score; standard QVHighlights evaluator.
+- **Budget:** No generic summary-length budget.
+- **Solver:** None; query-conditioned clip ranking.
+- **Reference aggregation:** ≥Very Good human clip labels; evaluator averages over validation queries/videos.
+- **Metric:** HD-mAP (≥Very Good)
+- **Unit:** percent
+- **Runs:** Three random seeds; mean and standard deviation reported.
+- **Reproduction:** author-reported
+- **evidetr-qvhighlights-hd-map (2026-10-01):** Not independently reproduced. Query-conditioned temporal highlight detection is not generic keyshot summary F1. Dataset feature and validation manifest revisions are not pinned in this audit.
+
+</details>
+
+## QVHighlights — Query-conditioned highlight detection; saliency target is the ≥Very Good split of QVHighlights. — HIT@1 (≥Very Good) (d905c6d2)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [EviDETR](generated/papers.md#evidetr) | 68.33 percent | Three random seeds; mean and standard deviation reported.; Standard deviation 1.26 percentage points. | [Table 1, PDF page 4; QVHighlights validation split, CLIP+SlowFast features.](https://arxiv.org/abs/2609.30724v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** qvhighlights
+- **Split identity:** QVHighlights official validation partition; exact manifest identity not pinned in this audit.
+- **Split:** QVHighlights official validation split.
+- **Training regime:** Supervised joint moment retrieval and query-conditioned highlight detection.
+- **Setting:** Query-conditioned highlight detection; saliency target is the ≥Very Good split of QVHighlights.
+- **Features:** Pre-extracted CLIP+SlowFast video features and CLIP text-query features.
+- **Sampling:** Benchmark feature sequence; extraction stride/revision not independently verified.
+- **Segmentation:** Two-second QVHighlights clips; highlight evaluation uses dataset-provided saliency labels.
+- **Shot aggregation:** Per-clip query-conditioned highlight score; standard QVHighlights evaluator.
+- **Budget:** No generic summary-length budget.
+- **Solver:** None; query-conditioned clip ranking.
+- **Reference aggregation:** ≥Very Good human clip labels; evaluator averages over validation queries/videos.
+- **Metric:** HIT@1 (≥Very Good)
+- **Unit:** percent
+- **Runs:** Three random seeds; mean and standard deviation reported.
+- **Reproduction:** author-reported
+- **evidetr-qvhighlights-hit1 (2026-10-01):** Not independently reproduced. Query-conditioned temporal highlight detection is not generic keyshot summary F1. Dataset feature and validation manifest revisions are not pinned in this audit.
 
 </details>
 

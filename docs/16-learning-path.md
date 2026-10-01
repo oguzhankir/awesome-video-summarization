@@ -100,9 +100,9 @@ A productive reading order is:
 
 ## 7. Audit a recent claim without running a large model
 
-**Prerequisites:** complete Sections 1–3, understand correlation versus overlap F1, and be able to read one JSON object. Read the [latest audit](audits/2026-09-19-weekly.md) before the exercise.
+**Prerequisites:** complete Sections 1–3, understand correlation versus overlap F1, and be able to read one JSON object. Read the [latest audit](audits/2026-10-01-weekly.md) before the exercise.
 
-First, list the four newly admitted zero-shot result rows:
+In the 2026-09-19 audit, list the four newly admitted zero-shot result rows:
 
 ```bash
 python3 - <<'PY'

@@ -2,7 +2,7 @@
 
 [Back to handbook](../README.md) · [Foundation models](10-foundation-models.md) · [Evaluation](02-evaluation.md) · [Paper records](../data/papers/modern.json)
 
-**Verified: 2026-09-19.** A system's task is defined by its inputs, permitted context, output and evaluation target. Architecture alone cannot tell us whether two results measure the same problem.
+**Verified: 2026-10-01.** A system's task is defined by its inputs, permitted context, output and evaluation target. Architecture alone cannot tell us whether two results measure the same problem.
 
 ## 1. Choose the task before the metric
 
@@ -26,6 +26,8 @@ A query can name a concept, describe an event, or express an abstract preference
 [CLIP-It!](https://proceedings.neurips.cc/paper/2021/hash/7503cfacd12053d309b6bed5c89de212-Abstract.html) is an important bridge: generated captions condition generic SumMe/TVSum selection, while free-form text conditions QFVS selection. Its QFVS experiment uses four leave-one-video-out rounds and fixed 5-second shots. Ground-truth-caption oracle rows, generated-caption rows, supervised training and the no-BCE variant are different settings. The official repository is only a “code coming soon” stub, and the available community source is not an end-to-end reproduction.
 
 A useful small study is to vary one query while keeping video, sampling, budget and model fixed. Compare the selected moments and inspect whether the change reflects the requested content rather than generic visual salience. This is a proposed exercise, not a published benchmark result.
+
+[EviDETR](https://arxiv.org/abs/2609.30724v1) is a newer joint moment-retrieval/highlight detector: semantic-aware feature weighting and a Top-2 expert decoder refine candidate spans, then retrieval evidence feeds clip saliency. Its reported QVHighlights validation HD-mAP and HIT@1 use the dataset's query-conditioned Very Good saliency labels. They measure query-relevant clips, not a duration-constrained summary. Keep these results in their own task group in the [benchmark catalog](12-benchmarks.md).
 
 ## 3. SD-VSum: a full script changes the reference
 
@@ -96,6 +98,8 @@ This release provides routes into query/script conditioning, multimodal text gen
 [Chu, Song and Jaimes, CVPR 2015](https://people.csail.mit.edu/yalesong/publications/ChuSJ2015CVPR.pdf) introduced **video co-summarization by visual co-occurrence**. Topic-related videos provide context for one another: a shot gains importance when similar content occurs across the group. Their maximal biclique method selects sparse, mutually similar shot groups in a bipartite graph; its relaxed objective trades co-occurrence against sparsity, optimized by alternating updates. It produces ranked shots for each video. A single compiled film assembled from multiple sources is a further editorial task with different continuity and redundancy requirements.
 
 The [CoSum release](https://github.com/l2ior/cosum) supplies video URLs, annotations and shot indices; it does not establish a runnable implementation of the full algorithm. Its top-5/top-15 shot mAP should remain separate from temporal summary F1. In a reproduction, preserve the topic-group membership and state which companion videos are visible at inference: changing the collection changes the information used to score each shot. As a proposed diagnostic, remove one companion video and inspect which selected events disappear; this exposes dependence on shared content versus video-specific importance.
+
+[MultiVENT-Raw](https://arxiv.org/abs/2609.28437v1) broadens the multi-video setting from co-occurring shots to query/persona-conditioned retrieval and cited report generation over a large raw-video collection. Its 118,802-video FULL split spans 130 events and 222 queries; the paper also releases MicroVENT as a compact development set. Retrieval and claim/citation report metrics are not keyshot metrics. The full data and feature releases are gated and large; the [dataset cards](generated/datasets.md) record their access and licensing boundaries.
 
 ## 8. Historical query-focused summarization: QFVS
 

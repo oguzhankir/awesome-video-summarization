@@ -4,7 +4,7 @@
 
 [Handbook home](../../README.md) · [Coverage methodology](../15-coverage.md)
 
-54 records. Verification is field-specific; source inspection does not certify runtime reproduction.
+57 records. Verification is field-specific; source inspection does not certify runtime reproduction.
 
 | Paper | Year / venue | Supervision | Code |
 |---|---|---|---|
@@ -53,14 +53,17 @@
 | [Audio for Sports Highlight Detection: A Comparative Empirical Study](#audio-sports-highlight) | 2026 / MMSports at ACM Multimedia | supervised | Not independently verified |
 | [Zero-shot video highlight detection based on text descriptions and synthetic images](#byra-zero-shot-highlight) | 2026 / arXiv preprint | training-free; zero-shot | Not independently verified |
 | [Cut to the Chase: Training-free Multimodal Summarization via Chain-of-Events](#coe) | 2026 / CVPR | training-free; few-shot | [source](https://github.com/youxiaoxing/CoE) |
+| [EviDETR: Preserving Query-Relevant Temporal Evidence for Moment Retrieval and Highlight Detection](#evidetr) | 2026 / arXiv preprint | supervised | Not reported |
 | [KnowVis: Knowledge-Centric Visual Summarization for Video Lectures](#knowvis) | 2026 / arXiv preprint v2; arXiv metadata reports Findings of EMNLP 2026, but an ACL Anthology entry was not independently verified | training-free | [source](https://github.com/yixu-cityu/KnowVis) |
 | [M2UR: Meta-Guided Multi-Expert with Uncertainty-Aware Refinement Framework for Video Summarization](#m2ur) | 2026 / ICIP | not reported | Not independently verified |
 | [Multimodal Video Summarization Using Vision-Language Embeddings and Hierarchical Temporal Modeling](#multimodal-vl-htm) | 2026 / Applied AI Letters | supervised | Not independently verified |
+| [MultiVENT-Raw: A Benchmark for Retrieval and Reasoning over Raw Videos](#multivent-raw) | 2026 / arXiv preprint | not reported | [source](https://github.com/hltcoe/multivent-raw) |
 | [Semantic Action Graph: A Shared Representation for Agent Grounding and Human Interpretation of Sports Highlights](#semantic-action-graph) | 2026 / IEEE VIS 2026 Workshop on GenAI, Agents, and the Future of VIS | training-free | Not independently verified |
 | [SGWIB: Sliced Gromov–Wasserstein Information Bottleneck for Video Highlight Detection](#sgwib) | 2026 / arXiv preprint | supervised; weakly-supervised | Not independently verified |
 | [Multimodal deep learning framework for soccer video event detection and summarization](#soccer-event-summarization) | 2026 / Discover Artificial Intelligence | supervised | Not independently verified |
 | [TRINITY: A Multi-Perspective Benchmark for Personal-Style Video Highlight Detection](#trinity) | 2026 / arXiv preprint; authors report ECCV 2026 acceptance, but an official proceedings entry was not independently verified | supervised; weakly-supervised | [source](https://github.com/vanilladucky/TRINITY) |
 | [TripleSumm: Adaptive Triple-Modality Fusion for Video Summarization](#triplesumm) | 2026 / ICLR | supervised; weakly-supervised; zero-shot | [source](https://github.com/smkim37/TripleSumm) |
+| [TSMD: Temporal-Stream Modality Dropout for Robust Video Highlight Detection](#tsmd) | 2026 / arXiv preprint | weakly-supervised | [source](https://github.com/boyuan-ch/TSMD) |
 | [Unified Agentic Video Editing Across Levels of Complexity and Creativity](#unified-agentic-video-editing) | 2026 / NeurIPS 2026 (paper header; archival proceedings entry not independently verified) | training-free | Not independently verified |
 
 <a id="vsumm"></a>
@@ -1593,6 +1596,40 @@
 - **Verified on:** 2026-09-19
 - **Sources:** [source 1](https://arxiv.org/html/2603.06213v1) · [source 2](https://github.com/youxiaoxing/CoE/tree/924ed7d67935022e09a371c8114d5f25cc1759a6) · [source 3](https://openaccess.thecvf.com/content/CVPR2026/supplemental/You_Cut_to_the_CVPR_2026_supplemental.pdf)
 
+<a id="evidetr"></a>
+
+## EviDETR: Preserving Query-Relevant Temporal Evidence for Moment Retrieval and Highlight Detection
+
+- **Authors:** Haoran Sun; Yufan Li; Qichen Zhang; Haoran Zhao; Shuqi Wang
+- **Venue:** arXiv preprint
+- **Year:** 2026
+- **Paper url:** [paper url](https://arxiv.org/abs/2609.30724v1)
+- **Project url:** [project url](https://kevin-kas.github.io/Evi-detr-webpage/)
+- **Supervision:** supervised
+- **Tasks:** video moment retrieval; query-conditioned highlight detection
+- **Outputs:** query-relevant temporal segments; clip-level highlight scores
+- **Mechanisms:** semantic-aware feature reweighting; temporal Top-2 mixture-of-experts decoder; moment-retrieval-to-highlight evidence fusion
+- **Encoders:** Pre-extracted CLIP+SlowFast video features and CLIP text-query features.
+- **Sampling:** QVHighlights benchmark feature sequence; exact extraction stride and artifact revision are not independently established in this audit.
+- **Architecture:** Three-stage DETR-style temporal decoder with eight experts/stage and Top-2 routing; 10 temporal queries, 256-D hidden space and 1024-wide expert FFNs.
+- **Fusion:** Semantic-aware query/video reweighting plus confidence-weighted multi-scale moment evidence transferred to clip-level highlight features.
+- **Objective:** Joint DETR moment localization/classification losses and highlight saliency supervision, with auxiliary decoder-stage supervision.
+- **Training data:** QVHighlights training split.
+- **Test data:** QVHighlights validation; Charades-STA and TACoS test splits for cross-dataset moment retrieval.
+- **Split:** Main highlight results use the QVHighlights validation split; split manifest and source-feature identity were not pinned in this audit.
+- **Budget:** No generic summary duration budget; highlight evaluation follows QVHighlights relevance/saliency annotations.
+- **Postprocessing:** DETR moment prediction and query-conditioned clip saliency; not a generic keyshot decoder.
+- **Metrics:** HD-mAP (≥Very Good); HIT@1 (≥Very Good); R1@0.5; R1@0.7; moment retrieval Avg. mAP
+- **Code url:** Not reported
+- **Code status:** Author project page found; no author-affiliated executable code repository was identified in this scan.
+- **Framework:** Not reported.
+- **Weights:** Not reported.
+- **Features:** CLIP+SlowFast video features and CLIP text features; source artifacts were not downloaded.
+- **Reproducibility:** Primary arXiv paper and project page inspected; three-seed results are author-reported. No code execution or independent reproduction.
+- **Limitations:** QVHighlights validation numbers are query-conditioned highlight/moment retrieval, not generic video-summary quality. Evaluator version and feature artifact identity remain unverified; the project page is not an implementation release.
+- **Verified on:** 2026-10-01
+- **Sources:** [source 1](https://arxiv.org/abs/2609.30724v1) · [source 2](https://kevin-kas.github.io/Evi-detr-webpage/) · [source 3](https://proceedings.neurips.cc/paper_files/paper/2021/file/62e0973455fd26eb03e91d5741a4a3bb-Paper.pdf) · [source 4](https://github.com/jayleicn/moment_detr)
+
 <a id="knowvis"></a>
 
 ## KnowVis: Knowledge-Centric Visual Summarization for Video Lectures
@@ -1694,6 +1731,40 @@
 - **Limitations:** The 20% budget and mean-over-annotator aggregation are incompatible with many cited 15% dataset-specific protocols. Headline tuned values differ sharply from controlled canonical concatenation results, while tuning boundaries, splits, runs and uncertainty are unreported. No global-best claim is retained.
 - **Verified on:** 2026-09-19
 - **Sources:** [source 1](https://doi.org/10.1002/ail2.70039) · [source 2](https://drive.google.com/drive/folders/12S_MrV9GpmIv-C2raDdqxJ-UmHZPHu5P?usp=sharing)
+
+<a id="multivent-raw"></a>
+
+## MultiVENT-Raw: A Benchmark for Retrieval and Reasoning over Raw Videos
+
+- **Authors:** Reno Kriz; David Etter; Alexander Martin; Cameron Carpenter; Debashish Chakraborty; Hannah Recknor; Reihaneh Iranmanesh; Matthew Maciejewski; Kenton Murray; Eugene Yang; Benjamin Van Durme; Aaron Steven White; Andrew Yates; William Walden
+- **Venue:** arXiv preprint
+- **Year:** 2026
+- **Paper url:** [paper url](https://arxiv.org/abs/2609.28437v1)
+- **Project url:** [project url](https://github.com/hltcoe/multivent-raw)
+- **Supervision:** not reported
+- **Tasks:** multi-video retrieval; persona-conditioned report generation
+- **Outputs:** ranked video/segment evidence; cited multi-video report
+- **Mechanisms:** event-centric query and persona benchmark; claim-grounded report evaluation; retrieval-augmented generation
+- **Encoders:** Paper evaluates multimodal dense retrieval and reranking baselines; it does not propose one required encoder.
+- **Sampling:** Videos are divided into segments of at most five minutes for retrieval and VLM input.
+- **Architecture:** Benchmark with FULL and CORE variants, video retrieval, and query/persona-conditioned report generation over retrieved evidence.
+- **Fusion:** Not applicable as a single proposed model; baseline systems combine text/video embeddings and report-generation models.
+- **Objective:** Benchmark retrieval with relevance judgments and report generation with evidence-supported claims and sentence-level video citations.
+- **Training data:** Not applicable to a single proposed method; some retrieval baselines use MultiVENT 2.0 training data.
+- **Test data:** MultiVENT-Raw FULL and CORE benchmark collections; MicroVENT is a companion development set.
+- **Split:** FULL contains 118,802 videos across 130 events and 222 queries; paper separately defines a CORE subset. Dataset access is gated.
+- **Budget:** Not applicable to single-video temporal summary length; report generation targets the query/persona and cites source videos.
+- **Postprocessing:** Retrieval ranks videos/segments; generated report sentences carry citations to supporting videos.
+- **Metrics:** nDCG@k; Recall@k; InfoF1; CiteF1
+- **Code url:** [code url](https://github.com/hltcoe/multivent-raw)
+- **Code status:** Repository inspected at commit 0b32135607856a26f8c73ffd52ca59b6b78c054a; it contains documentation and data pointers, not an executable model implementation.
+- **Framework:** Not applicable to the benchmark paper; individual baseline environments vary.
+- **Weights:** No generally released benchmark checkpoint verified.
+- **Features:** Gated raw-video dataset and a separate gated feature dataset are linked by the release; archives were not downloaded.
+- **Reproducibility:** Primary paper and official repository/Hugging Face release descriptions inspected; no large data, feature archive or model was downloaded or executed.
+- **Limitations:** This is a retrieval-conditioned, multi-video report task, not a single-video keyshot summary. Full release is about 4.5 TB and access-gated; original clip rights and feature provenance were not independently checked. Some derived annotation subsets use model judgments.
+- **Verified on:** 2026-10-01
+- **Sources:** [source 1](https://arxiv.org/abs/2609.28437v1) · [source 2](https://github.com/hltcoe/multivent-raw/tree/0b32135607856a26f8c73ffd52ca59b6b78c054a) · [source 3](https://huggingface.co/datasets/hltcoe/multivent-raw) · [source 4](https://huggingface.co/datasets/hltcoe/multivent-raw-features)
 
 <a id="semantic-action-graph"></a>
 
@@ -1864,6 +1935,40 @@
 - **Limitations:** Supervised/weak target regression; zero-shot denotes MoSu-to-long-video transfer only. Main Table 2 and Appendix Table XI agree, but Appendix D prose gives different MoSu rank values. External-dataset captioner is Qwen2.5-VL-7B-Instruct in Section 5.1 versus the Qwen/Qwen2-VL-7B-Instruct link in Appendix B.4; resolve model/cache provenance. The released main evaluator reports correlations and fixed 5-second-shot mAP but does not call the shipped 15%-budget knapsack decoder. Feature extraction is absent, all three modalities are required and reconstructed Mr. HiSum is incomplete.
 - **Verified on:** 2026-09-19
 - **Sources:** [source 1](https://arxiv.org/html/2603.01169v1) · [source 2](https://openreview.net/pdf?id=x74NsHGywD) · [source 3](https://github.com/smkim37/TripleSumm/tree/b7a8e7e873ac3223b0ced40b1852d30b9934ba67) · [source 4](https://sumin-kim.com/TripleSumm-page/) · [source 5](https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu/tree/4afad0af62ae4e8da47968d5bd6f337a99f9b398) · [source 6](https://huggingface.co/datasets/hminjeong/TripleSumm-Mr.HiSum/tree/4f9cd1bdf40178b8586fe2f9c0f39fdb30bf5c19) · [source 7](https://huggingface.co/smkim37/TripleSumm/tree/fbfd318abc4d317a2618a8f9b03bf138a30662c2)
+
+<a id="tsmd"></a>
+
+## TSMD: Temporal-Stream Modality Dropout for Robust Video Highlight Detection
+
+- **Authors:** Bo-Yuan Cheng; Kuan-Yu Chen; Po-Han Huang; Jeng-Lin Li; Jian-Jiun Ding
+- **Venue:** arXiv preprint
+- **Year:** 2026
+- **Paper url:** [paper url](https://arxiv.org/abs/2609.39051v1)
+- **Project url:** [project url](https://github.com/boyuan-ch/TSMD)
+- **Supervision:** weakly-supervised
+- **Tasks:** multimodal highlight detection; robust video highlight detection
+- **Outputs:** frame-level salience scores; ranked five-second segments
+- **Mechanisms:** temporal modality dropout; complete-stream modality dropout; multi-objective salience regression; peak-oriented pairwise ranking
+- **Encoders:** TripleSumm backbone; MoSu uses CLIP ViT-L/14, AST and RoBERTa features; Mr. HiSum uses PCA-reduced InceptionV3 visual features with AST and RoBERTa.
+- **Sampling:** Pre-extracted feature grid at 1 Hz.
+- **Architecture:** Keeps the TripleSumm multimodal temporal and cross-modal architecture unchanged; applies structured feature masks only during training.
+- **Fusion:** TripleSumm timestep-wise multimodal fusion; temporal masking is independent across streams and complete-stream masking zeros one modality.
+- **Objective:** MSE + 0.35(1 − per-video Pearson r) + 0.10 RankNet. RankNet samples 512 frame pairs/video, comparing top-15%-target frames against other frames.
+- **Training data:** MoSu and the accessible trimodal Mr. HiSum subset, trained and evaluated separately with behavior-derived Most Replayed salience labels.
+- **Test data:** MoSu test split and accessible trimodal Mr. HiSum test split.
+- **Split:** MoSu: 42,152/5,263/5,263 train/validation/test. Trimodal Mr. HiSum derivative: 26,639/1,904/1,909 over 30,452 accessible videos; split artifact identity not independently pinned.
+- **Budget:** mAP@15 ranks five-second segments against the top 15% of ground-truth segments; no final duration-constrained keyshot summary is emitted.
+- **Postprocessing:** Non-overlapping five-second segments; mean frame score per segment; no KTS or knapsack for reported mAP.
+- **Metrics:** Kendall tau; Spearman rho; mAP@50; mAP@15
+- **Code url:** [code url](https://github.com/boyuan-ch/TSMD)
+- **Code status:** Official author repository inspected at commit ef42f98c763c1e88b82a1dc3ec25849fd206e9e3; configs and implementation are present. No code or tests were run. Its README BibTeX lists an extra Yu Tsao absent from the arXiv author list.
+- **Framework:** PyTorch; repository documents Python 3.10 and PyTorch 2.5+.
+- **Weights:** No released task checkpoint verified in the inspected repository.
+- **Features:** Paper uses pre-extracted TripleSumm features: MoSu CLIP/AST/RoBERTa, each 768-D; Mr. HiSum InceptionV3 PCA visual 1024-D and AST/RoBERTa 768-D. Large feature archives were not downloaded.
+- **Reproducibility:** Paper and official repository inspected; no model execution, feature download or independent result reproduction.
+- **Limitations:** The robustness benchmark uses zero-masking and does not model realistic sensor, alignment or transcript failures. mAP@15 is segment retrieval, not keyshot F1. Mr. HiSum trimodal coverage is an accessible subset of the original dataset; author metadata differs between paper and repository README.
+- **Verified on:** 2026-10-01
+- **Sources:** [source 1](https://arxiv.org/abs/2609.39051v1) · [source 2](https://github.com/boyuan-ch/TSMD/tree/ef42f98c763c1e88b82a1dc3ec25849fd206e9e3) · [source 3](https://proceedings.neurips.cc/paper_files/paper/2023/hash/7f880e3a325b06e3601af1384a653038-Abstract.html)
 
 <a id="unified-agentic-video-editing"></a>
 

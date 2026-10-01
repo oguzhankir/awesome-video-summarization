@@ -4,7 +4,7 @@
 
 [Handbook home](../../README.md) · [Coverage methodology](../15-coverage.md)
 
-33 records. Verification is field-specific; source inspection does not certify runtime reproduction.
+34 records. Verification is field-specific; source inspection does not certify runtime reproduction.
 
 <a id="clip-it-community"></a>
 
@@ -525,6 +525,26 @@
 - **Limitations:** No feature-extraction/preprocessing source; all three modalities are mandatory. Reconstructed Mr. HiSum contains 30,452 rather than 31,892 videos because sources were unavailable. Artifact existence does not establish checkpoint compatibility or score reproduction.
 - **Verified on:** 2026-09-19
 - **Sources:** [source 1](https://github.com/smkim37/TripleSumm/tree/b7a8e7e873ac3223b0ced40b1852d30b9934ba67) · [source 2](https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu/tree/4afad0af62ae4e8da47968d5bd6f337a99f9b398) · [source 3](https://huggingface.co/datasets/hminjeong/TripleSumm-Mr.HiSum/tree/4f9cd1bdf40178b8586fe2f9c0f39fdb30bf5c19) · [source 4](https://huggingface.co/smkim37/TripleSumm/tree/fbfd318abc4d317a2618a8f9b03bf138a30662c2)
+
+<a id="tsmd-code"></a>
+
+## TSMD official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/boyuan-ch/TSMD)
+- **Provenance:** official
+- **Attribution evidence:** The repository README identifies TSMD, links the corresponding paper and provides the author citation: https://github.com/boyuan-ch/TSMD/blob/ef42f98c763c1e88b82a1dc3ec25849fd206e9e3/README.md
+- **Paper ids:** tsmd
+- **Framework:** PyTorch; repository documents Python 3.10 and PyTorch 2.5+.
+- **Version or commit:** ef42f98c763c1e88b82a1dc3ec25849fd206e9e3
+- **License:** MIT, according to the repository LICENSE.
+- **Artifacts:** Implementation, model/configuration files and smoke-test files are present. No checkpoints or large feature archives were downloaded.
+- **Feature schema:** Consumes pre-extracted MoSu or Mr. HiSum feature arrays described in paper/README; feature archive schema and bytes not independently checked.
+- **Evaluation notes:** Paper evaluator reports Kendall tau, Spearman rho, mAP@50 and mAP@15; mAP uses fixed five-second segments, not KTS/knapsack summaries.
+- **Reproducibility:** Pinned repository metadata and source were inspected; no upstream code, test or model execution was performed.
+- **Limitations:** Repository README citation includes an extra author not listed in arXiv metadata. Published robustness uses synthetic zero masks and author-reported three-seed values.
+- **Verified on:** 2026-10-01
+- **Sources:** [source 1](https://github.com/boyuan-ch/TSMD/tree/ef42f98c763c1e88b82a1dc3ec25849fd206e9e3) · [source 2](https://arxiv.org/abs/2609.39051v1)
 
 <a id="tvsum-official-eval"></a>
 
