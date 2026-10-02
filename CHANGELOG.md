@@ -4,20 +4,27 @@ Record substantive handbook, evidence, implementation-resource and validation ch
 
 ## 2026-10-01
 
-### Added
+### Added in 2026-10-01
 
 - TSMD, EviDETR and MultiVENT-Raw paper records; 16 protocol-isolated TSMD robustness rows and two QVHighlights highlight rows. No generic SumMe/TVSum score was added.
 - Dataset cards for Mr. HiSum, QVHighlights, MultiVENT-Raw and MicroVENT, plus the pinned TSMD implementation record.
 - A dated arXiv/source audit for the 2026-09-20–10-01 delta, with candidate exclusions, gated-access notes and verified publication boundaries.
 
-### Changed
+### Changed in 2026-10-01
 
 - Updated the dataset, foundation-model, task-setting and coverage chapters and README to describe query-conditioned highlights, modality-missingness robustness and multi-video cited reports.
 - Regenerated paper, dataset, result and implementation catalogs from the registries.
 
-### Audit gaps
+### Audit gaps in 2026-10-01 review
 
-- No model, GPU run or large video/feature archive was executed or downloaded. The arXiv identity-centric English version remains deferred because its claimed earlier Spanish journal record and conflicting metric statements were not resolved. No external-link audit was repeated; the prior 370-URL run remains unresolved due to environment DNS failures.
+- No model, GPU run or large video/feature archive was executed or downloaded. The arXiv identity-centric English version remains deferred because its claimed earlier Spanish journal record and conflicting metric statements were not resolved. No external-link audit was repeated during the literature scan; the prior 370-URL run remained unresolved due to environment DNS failures.
+
+## 2026-10-02
+
+### Fixed in 2026-10-02
+
+- Replaced a stale Kingston research-profile URL for VASNet's cited paper with its publisher DOI after the link audit returned 404.
+- Made the 2026-10-01 changelog headings date-specific after the validation workflow flagged duplicate Markdown anchors.
 
 ## 2026-09-19
 

@@ -438,7 +438,7 @@
 - **Outputs:** Frame importance scores; Selected keyshots
 - **Mechanisms:** Self-attention; Importance regression
 - **Metrics:** Temporal-overlap F1; SumMe maximum across users; Temporal-overlap F1; TVSum mean across users
-- **Sources:** [source 1](https://arxiv.org/pdf/1812.01969) · [source 2](https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/README.md) · [source 3](https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/main.py) · [source 4](https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/vasnet_model.py) · [source 5](https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/datasets_models_urls.txt) · [source 6](https://researchinnovation.kingston.ac.uk/en/publications/summarizing-videos-with-attention-4/)
+- **Sources:** [source 1](https://arxiv.org/pdf/1812.01969) · [source 2](https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/README.md) · [source 3](https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/main.py) · [source 4](https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/vasnet_model.py) · [source 5](https://github.com/ok1zjf/VASNet/blob/c3787531486f74789dc5e92758edf51e24f56e6d/datasets_models_urls.txt) · [source 6](https://doi.org/10.1007/978-3-030-21074-8_4)
 
 <a id="acgan"></a>
 
