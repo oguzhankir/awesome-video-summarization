@@ -793,5 +793,29 @@
       "https://github.com/Pravin74/interact_summ_code/tree/b18da63203581c532eb4ad50ad7837fee3f300e6",
       "https://pravin74.github.io/Int-sum/index.html"
     ]
+  },
+  {
+    "id": "tsmd-code",
+    "name": "TSMD official implementation",
+    "kind": "implementation",
+    "url": "https://github.com/boyuan-ch/TSMD",
+    "provenance": "official",
+    "attribution_evidence": "The repository README identifies TSMD, links the corresponding paper and provides the author citation: https://github.com/boyuan-ch/TSMD/blob/ef42f98c763c1e88b82a1dc3ec25849fd206e9e3/README.md",
+    "paper_ids": [
+      "tsmd"
+    ],
+    "framework": "PyTorch; repository documents Python 3.10 and PyTorch 2.5+.",
+    "version_or_commit": "ef42f98c763c1e88b82a1dc3ec25849fd206e9e3",
+    "license": "MIT, according to the repository LICENSE.",
+    "artifacts": "Implementation, model/configuration files and smoke-test files are present. No checkpoints or large feature archives were downloaded.",
+    "feature_schema": "Consumes pre-extracted MoSu or Mr. HiSum feature arrays described in paper/README; feature archive schema and bytes not independently checked.",
+    "evaluation_notes": "Paper evaluator reports Kendall tau, Spearman rho, mAP@50 and mAP@15; mAP uses fixed five-second segments, not KTS/knapsack summaries.",
+    "reproducibility": "Pinned repository metadata and source were inspected; no upstream code, test or model execution was performed.",
+    "limitations": "Repository README citation includes an extra author not listed in arXiv metadata. Published robustness uses synthetic zero masks and author-reported three-seed values.",
+    "verified_on": "2026-10-01",
+    "sources": [
+      "https://github.com/boyuan-ch/TSMD/tree/ef42f98c763c1e88b82a1dc3ec25849fd206e9e3",
+      "https://arxiv.org/abs/2609.39051v1"
+    ]
   }
 ]

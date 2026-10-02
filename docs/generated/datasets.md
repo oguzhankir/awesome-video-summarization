@@ -4,7 +4,7 @@
 
 [Handbook home](../../README.md) · [Coverage methodology](../15-coverage.md)
 
-21 records. Verification is field-specific; source inspection does not certify runtime reproduction.
+25 records. Verification is field-specific; source inspection does not certify runtime reproduction.
 
 <a id="activitynet-qa"></a>
 
@@ -151,6 +151,35 @@
 - **Verified on:** 2026-09-19
 - **Sources:** [source 1](https://arxiv.org/pdf/2609.03742v2) · [source 2](https://huggingface.co/datasets/yixu-cityu/KnowVis/tree/ba4208a250bc60b03d0b4ea48f1c2dc70c2d77cc) · [source 3](https://github.com/yixu-cityu/KnowVis/tree/da14209fd4a7483474fad4fefdde8f0920290976)
 
+<a id="microvent"></a>
+
+## MicroVENT
+
+- **Role:** adjacent
+- **Task:** Compact development set for video retrieval, claim extraction and cited report generation
+- **Domain:** Event-centric video collection; 23 events, including primary and anomaly-event subsets
+- **Videos:** 933
+- **Duration:** 34 hours, as reported with the companion dev-set release.
+- **Annotations:** 31 queries, 279 positive relevance judgments and 730 hard negatives; the paper reports 933 total videos, of which 272 are annotated.
+- **Annotators:** Human relevance and claim annotation; some derived labels are model-assisted.
+- **Granularity:** Video/query relevance with event/persona/query claims and evidence citations.
+- **Summary format:** Retrieved video evidence and query-conditioned cited report; not a single-video temporal skim.
+- **Split:** Development set accompanying MultiVENT-Raw; paper does not establish it as a generic video-summarization train/test benchmark.
+- **Metrics:** Recall@k; nDCG@k; InfoF1; CiteF1
+- **License:** Hugging Face release card declares Apache-2.0; underlying media rights require separate verification.
+- **Availability:** Author Hugging Face page; verify current access approval before retrieval.
+- **Official url:** [official url](https://huggingface.co/datasets/hltcoe/microvent)
+- **Download url:** [download url](https://huggingface.co/datasets/hltcoe/microvent)
+- **Annotation url:** [annotation url](https://huggingface.co/datasets/hltcoe/microvent)
+- **Mirrors:** Included as a companion resource in the MultiVENT-Raw paper/release.
+- **Preprocessing:** Not independently verified; use the release's documented video chunks and annotation fields.
+- **Features:** Not reported in the inspected card; do not assume the full MultiVENT-Raw feature package covers this dev set.
+- **Checksums:** Not independently verified.
+- **Leakage risks:** Use as a development set only; paper notes overlap with some MultiVENT 2.0 event categories. Keep its queries separate from final test evaluation.
+- **Limitations:** Small retrieval/report-development collection, not a generic summary-quality benchmark; full raw-video access and upstream rights were not verified.
+- **Verified on:** 2026-10-01
+- **Sources:** [source 1](https://arxiv.org/abs/2609.28437v1) · [source 2](https://huggingface.co/datasets/hltcoe/microvent)
+
 <a id="mosu"></a>
 
 ## MoSu (Most Replayed Multimodal Video Summarization)
@@ -180,6 +209,35 @@
 - **Metrics:** Kendall tau; Spearman rho; mAP50 and mAP15 under Mr. HiSum 5-second segment protocol
 - **Sources:** [source 1](https://arxiv.org/html/2603.01169v1) · [source 2](https://huggingface.co/datasets/hminjeong/TripleSumm-MoSu) · [source 3](https://github.com/smkim37/TripleSumm)
 
+<a id="mr-hisum"></a>
+
+## Mr. HiSum
+
+- **Role:** adjacent
+- **Task:** Large-scale video highlight detection and behavior-derived summarization
+- **Domain:** YouTube videos across general user-generated content
+- **Videos:** 31892
+- **Duration:** Not reported in the inspected sources; a later trimodal derivative retains 30,452 accessible videos.
+- **Annotations:** Frame-level Most Replayed importance labels aggregated from platform user behavior; paper reports more than 50,000 users per video.
+- **Annotators:** Crowd/platform behavior aggregation; not individually authored reference summaries.
+- **Granularity:** Video frame/feature timeline; later trimodal derivative uses 1 Hz features.
+- **Summary format:** Frame-importance scores and ranked highlight segments; later methods may decode keyshots.
+- **Split:** Original paper/release has its own split; TSMD's trimodal derivative uses 26,639/1,904/1,909 from 30,452 accessible videos. Do not conflate derivative with original 31,892-video corpus.
+- **Metrics:** mAP@15; mAP@50; Temporal-overlap F1
+- **License:** Original paper states CC BY 4.0 for dataset assets subject to YouTube Terms of Service; source video rights remain separate.
+- **Availability:** Author repository and paper-author feature packages are linked; current raw-video availability and full archive integrity were not checked.
+- **Official url:** [official url](https://proceedings.neurips.cc/paper_files/paper/2023/hash/7f880e3a325b06e3601af1384a653038-Abstract.html)
+- **Download url:** [download url](https://github.com/MRHiSum/MR.HiSum)
+- **Annotation url:** [annotation url](https://github.com/MRHiSum/MR.HiSum)
+- **Mirrors:** TripleSumm paper-author trimodal derivative: https://huggingface.co/datasets/hminjeong/TripleSumm-Mr.HiSum
+- **Preprocessing:** Original release provides PCA-reduced InceptionV3 image features (1024-D); TSMD/TripleSumm derivative adds audio and generated-text modalities and uses an accessible 30,452-video subset.
+- **Features:** Original visual features are InceptionV3 PCA 1024-D. TripleSumm derivative provides visual 1024-D plus AST audio 768-D and RoBERTa text 768-D; archive not downloaded.
+- **Checksums:** Not independently verified.
+- **Leakage risks:** Behavior-derived popularity/engagement labels are not human judgments of summary quality; YouTube source overlap and upstream model-pretraining contamination are unknown.
+- **Limitations:** Highlight ranking and behavior-targeted summary outputs; later trimodal feature release has fewer accessible videos than the original corpus. Feature/release manifests were not pinned in this audit.
+- **Verified on:** 2026-10-01
+- **Sources:** [source 1](https://proceedings.neurips.cc/paper_files/paper/2023/hash/7f880e3a325b06e3601af1384a653038-Abstract.html) · [source 2](https://proceedings.neurips.cc/paper_files/paper/2023/file/7f880e3a325b06e3601af1384a653038-Paper-Datasets_and_Benchmarks.pdf) · [source 3](https://arxiv.org/abs/2609.39051v1) · [source 4](https://arxiv.org/abs/2603.01169)
+
 <a id="multi-vidsum"></a>
 
 ## Multi-VidSum
@@ -208,6 +266,35 @@
 - **Limitations:** ActivityNet's original test references are unavailable, so 439 validation videos become the re-captioned test. The dataset card's Apache-2.0 declaration does not override underlying ActivityNet media rights; code/evaluator licensing, split hashes and independent execution remain unresolved.
 - **Verified on:** 2026-09-19
 - **Sources:** [source 1](https://aclanthology.org/2023.emnlp-main.457.pdf) · [source 2](https://huggingface.co/datasets/tohoku-nlp/multi-vidsum/tree/ca03b147ddb4959229b510bde8eacc55933088af) · [source 3](https://github.com/cl-tohoku/Multi-VidSum/tree/23a053970824926c2ae421ab9d5956ce133348b7) · [source 4](https://github.com/cl-tohoku/Multi-VidSum-Eval/tree/d4aa2fd4f1b88b65a14f2c66676fe1529572772a)
+
+<a id="multivent-raw"></a>
+
+## MultiVENT-Raw
+
+- **Role:** adjacent
+- **Task:** Raw-video retrieval and query/persona-conditioned multi-video report generation
+- **Domain:** Raw uploaded and surveillance-style videos across 130 events and eight languages
+- **Videos:** 118802
+- **Duration:** 5,351 hours total in the paper's FULL collection.
+- **Annotations:** 222 event-centric queries and personas; human relevance annotations and claim annotations support retrieval and cited report generation.
+- **Annotators:** Human annotators wrote query-related claims and judged relevance; some derived subsets use model-assisted labels.
+- **Granularity:** Video- and segment-level relevance, event/persona/query claims, and sentence-level report citations.
+- **Summary format:** Retrieved video/segment evidence plus a query-conditioned cited report, not a single-video extractive summary.
+- **Split:** FULL (118,802 videos) and CORE variants; benchmark paper defines its own splits. MicroVENT is a separate development set.
+- **Metrics:** nDCG@k; Recall@k; InfoF1; CiteF1
+- **License:** Hugging Face release card declares Apache-2.0; rights for upstream videos and derived materials remain to be checked separately.
+- **Availability:** Gated Hugging Face access; full collection is about 4.5 TB. A separate gated feature release is available; neither archive was downloaded.
+- **Official url:** [official url](https://github.com/hltcoe/multivent-raw)
+- **Download url:** [download url](https://huggingface.co/datasets/hltcoe/multivent-raw)
+- **Annotation url:** [annotation url](https://huggingface.co/datasets/hltcoe/multivent-raw)
+- **Mirrors:** Feature derivative: https://huggingface.co/datasets/hltcoe/multivent-raw-features
+- **Preprocessing:** Paper chunks videos to segments of at most five minutes for retrieval and report-generation inputs.
+- **Features:** Separate gated feature dataset is linked by the authors; exact backbone/schema and archive integrity were not independently verified.
+- **Checksums:** Not independently verified.
+- **Leakage risks:** Events and query/persona information define test distribution; preserve FULL/CORE and release splits. Some claim subsets include model judgments.
+- **Limitations:** Large, access-gated multi-video retrieval/report benchmark; not directly comparable to single-video highlight/keyshot metrics. Upstream source-video rights and video availability require separate review.
+- **Verified on:** 2026-10-01
+- **Sources:** [source 1](https://arxiv.org/abs/2609.28437v1) · [source 2](https://github.com/hltcoe/multivent-raw/tree/0b32135607856a26f8c73ffd52ca59b6b78c054a) · [source 3](https://huggingface.co/datasets/hltcoe/multivent-raw) · [source 4](https://huggingface.co/datasets/hltcoe/multivent-raw-features)
 
 <a id="ovp"></a>
 
@@ -266,6 +353,35 @@
 - **Limitations:** 46 queries per video, not 46 unique videos; 48 is concept-vocabulary size. Query summaries are distinct from native UTE annotations.
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://arxiv.org/pdf/1707.04960) · [source 2](https://vision.cs.utexas.edu/projects/egocentric_data/UT_Egocentric_Dataset.html)
+
+<a id="qvhighlights"></a>
+
+## QVHighlights
+
+- **Role:** adjacent
+- **Task:** Query-conditioned video moment retrieval and highlight detection
+- **Domain:** YouTube videos with natural-language queries
+- **Videos:** 10148
+- **Duration:** Mean video duration 150 seconds; source clips vary.
+- **Annotations:** 10,310 natural-language queries and 18,367 relevant moments; clips receive query-relevance and five-level saliency judgments.
+- **Annotators:** Three workers provide clip-level saliency ratings in the source benchmark.
+- **Granularity:** Two-second temporal clips with query-relevant moment spans and clip saliency.
+- **Summary format:** Query-conditioned relevant moments and ranked highlight clips; not a generic video skim.
+- **Split:** Official train/validation/test partitions; this audit used published validation scores but did not pin the feature or split manifest.
+- **Metrics:** R1@0.5; R1@0.7; moment retrieval Avg. mAP; HD-mAP (≥Very Good); HIT@1 (≥Very Good)
+- **License:** Video and annotation reuse terms were not independently verified; do not apply repository license to source YouTube videos.
+- **Availability:** Author project/repository provides benchmark instructions and features; raw YouTube availability can change.
+- **Official url:** [official url](https://papers.neurips.cc/paper_files/paper/2021/hash/62e0973455fd26eb03e91d5741a4a3bb-Abstract.html)
+- **Download url:** [download url](https://github.com/jayleicn/moment_detr)
+- **Annotation url:** [annotation url](https://github.com/jayleicn/moment_detr)
+- **Mirrors:** Not reported.
+- **Preprocessing:** Native saliency labels are attached to two-second clips; EviDETR uses the benchmark's CLIP+SlowFast feature setting.
+- **Features:** Author feature package uses CLIP and SlowFast visual features; model/query features use CLIP. Exact release revision and checksums were not inspected.
+- **Checksums:** Not independently verified.
+- **Leakage risks:** Video-language pretraining contamination is unknown; preserve query-level evaluation and do not use validation labels for checkpoint fitting.
+- **Limitations:** Adjacent temporal grounding/highlight task. Query-conditioned ranking, HD-mAP and HIT@1 are not generic keyshot F1; YouTube source-video availability is not guaranteed.
+- **Verified on:** 2026-10-01
+- **Sources:** [source 1](https://papers.neurips.cc/paper_files/paper/2021/file/62e0973455fd26eb03e91d5741a4a3bb-Paper.pdf) · [source 2](https://papers.neurips.cc/paper_files/paper/2021/hash/62e0973455fd26eb03e91d5741a4a3bb-Abstract.html) · [source 3](https://github.com/jayleicn/moment_detr) · [source 4](https://arxiv.org/abs/2609.30724v1)
 
 <a id="summe"></a>
 
