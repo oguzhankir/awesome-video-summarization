@@ -8,7 +8,7 @@ Record substantive handbook, evidence, implementation-resource and validation ch
 
 - Sixteen verified paper records from the 2026-10-01–2026-10-18 literature scan and 2025–2026 core backfill: **SD-MVSum**, **TRIM**, **TRIMMER**, **VASTSum**, **LVSum**, **TR-EduVSum**, **ClipSum**, **Multi-Video Positional Bias**, **HAS**, **PIGEONS**, **FramePack-U**, **AdaFrame**, **QEVA**, **SAFCN**, **CARLSVS**, and **JCDL 2025 historical video archive segmentation/summarization** (bringing the registry from 57 to **73 papers**).
 - Five dataset/benchmark cards: **SM-VideoXum**, **SM-Mr. HiSum**, **LVSum**, **MLVU(VS)-Eval**, and **TR-EduVSum** (bringing the registry from 25 to **30 datasets**).
-- Ten pinned implementation and stub resource cards: **SD-MVSum** (`2c1f8ef9`), **CSTA** (`b070f7d9`), **A2Summ** (`5c7dceac`), **V2Xum-LLM** (`6b7c06d0`), **SummDiff** (`1d4b8ae7`), **SUM-SR** (`fe22076f`), **FramePack-U** (`ac5c0137`), **TRIM stub** (`7e931eb3`), **ClipSum stub** (`020df143`), and **QEVA stub** (`f0854784`) (bringing the registry from 34 to **44 resources**).
+- Ten pinned implementation and stub resource cards: **SD-MVSum** (`e88adbf3`), **CSTA** (`b070f7d9`), **A2Summ** (`5c7dceac`), **V2Xum-LLM** (`6b7c06d0`), **SummDiff** (`1d4b8ae7`), **SUM-SR** (`fe22076f`), **FramePack-U** (`aed28d7d`), **TRIM stub** (`86a6be3e`), **ClipSum stub** (`c3746c1b`), and **QEVA stub** (`657cad6b`) (bringing the registry from 34 to **44 resources**).
 - Twenty-eight protocol-isolated primary-source benchmark rows across **CSTA**, **VASTSum**, **TRIM**, **TRIMMER**, **SD-MVSum**, **QEVA**, and **LVSum** (bringing the registry from 60 to **88 results**).
 
 ### Changed in 2026-10-18

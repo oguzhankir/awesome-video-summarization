@@ -2183,12 +2183,12 @@
 - **Code url:** [code url](https://github.com/IDT-ITI/SD-MVSum)
 - **Code status:** Official repository inspected at commit e88adbf3a947360258cd84839704284c66374c2e; links Zenodo v2 dataset/feature/checkpoint archives.
 - **Framework:** Python 3.12.5, PyTorch 2.4.1 with CUDA 12.1 (environment.yml); trained on Intel i5-11600K and NVIDIA RTX 3090.
-- **Weights:** Official pretrained checkpoints released on Zenodo (https://zenodo.org/records/19183938).
-- **Features:** 512-D CLIP visual, script and transcript HDF5 feature archives and splits released on Zenodo (https://zenodo.org/records/18862583).
+- **Weights:** Official pretrained checkpoints released on Zenodo (https://zenodo.org/records/19919955).
+- **Features:** 512-D CLIP visual, script and transcript HDF5 feature archives and splits released on Zenodo (https://zenodo.org/records/18862583 and https://zenodo.org/records/19919955).
 - **Reproducibility:** Primary arXiv v2 paper and official repository at commit e88adbf3a947360258cd84839704284c66374c2e inspected; Zenodo archives were not downloaded or executed.
 - **Limitations:** Summary scripts are synthetically generated from ground-truth summaries via Qwen3-VL-8B-Instruct, so script-driven evaluation measures alignment with summary-derived descriptions rather than independent pre-viewing user queries. 32.7% of SM-VideoXum and 18.8% of SM-MrHiSum videos lack speech and rely on zero-filled transcript embeddings.
 - **Verified on:** 2026-10-18
-- **Sources:** [source 1](https://arxiv.org/abs/2510.05652v2) · [source 2](https://arxiv.org/pdf/2510.05652v2) · [source 3](https://github.com/IDT-ITI/SD-MVSum/tree/e88adbf3a947360258cd84839704284c66374c2e) · [source 4](https://zenodo.org/records/18862583) · [source 5](https://zenodo.org/records/19183938)
+- **Sources:** [source 1](https://arxiv.org/abs/2510.05652v2) · [source 2](https://arxiv.org/pdf/2510.05652v2) · [source 3](https://github.com/IDT-ITI/SD-MVSum/tree/e88adbf3a947360258cd84839704284c66374c2e) · [source 4](https://zenodo.org/records/18862583) · [source 5](https://zenodo.org/records/19919955)
 
 <a id="semantic-action-graph"></a>
 
@@ -2358,7 +2358,7 @@
 - **Reproducibility:** Primary ICASSP 2026 / arXiv v3 paper (including explicit fold assignments in Appendix Tables 6–7) and official GitHub stub at commit 86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab inspected; executable code is not yet pushed.
 - **Limitations:** Hyperparameters (beta, gamma, nu) are tuned separately for SumMe (beta=0, gamma=0.5, nu=0.0005) and TVSum (beta=5, gamma=0, nu=0.005), which introduces dataset-level hyperparameter selection despite label-free training. Official repository does not yet host the training scripts.
 - **Verified on:** 2026-10-18
-- **Sources:** [source 1](https://arxiv.org/abs/2506.20588v3) · [source 2](https://arxiv.org/pdf/2506.20588v3) · [source 3](https://doi.org/10.1109/ICASSP49660.2026.11660125) · [source 4](https://github.com/pmishra-ai/TRIM/tree/86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab)
+- **Sources:** [source 1](https://arxiv.org/abs/2506.20588v3) · [source 2](https://arxiv.org/pdf/2506.20588v3) · [source 3](https://github.com/pmishra-ai/TRIM/tree/86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab)
 
 <a id="trimmer"></a>
 

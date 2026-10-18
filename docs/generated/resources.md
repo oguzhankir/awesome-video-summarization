@@ -518,13 +518,13 @@
 - **Framework:** Conda environment (environment.yml) with Python 3.12.5, PyTorch 2.4.1 and CUDA 12.1.
 - **Version or commit:** e88adbf3a947360258cd84839704284c66374c2e
 - **License:** Custom academic/non-commercial license (LICENSE.md).
-- **Artifacts:** Full PyTorch training/evaluation code (main.py, solver.py, data_loader.py, model/) plus Zenodo links for SM-VideoXum and SM-MrHiSum HDF5 features/splits (record 18862583) and pretrained checkpoints (record 19183938).
+- **Artifacts:** Full PyTorch training/evaluation code (main.py, solver.py, data_loader.py, model/) plus Zenodo links for SM-VideoXum and SM-MrHiSum HDF5 features/splits (record 18862583) and pretrained checkpoints (record 19919955).
 - **Feature schema:** 1-fps 512-D CLIP embeddings for visual frames, multi-sentence user scripts, and timestamp-repeated audio transcripts in HDF5 format.
 - **Evaluation notes:** Evaluates top-15% frame F-Score on SM-VideoXum (averaged over 10 script-summary pairs per video) and 15%-budget knapsack F-Score plus frame-level Kendall tau and Spearman rho on SM-MrHiSum.
 - **Reproducibility:** Paper, repository source at commit e88adbf3a947360258cd84839704284c66374c2e and Zenodo record metadata inspected; large Zenodo archives were not downloaded or run.
 - **Limitations:** Non-commercial academic license; scripts are generated from ground-truth summaries via Qwen3-VL-8B-Instruct.
 - **Verified on:** 2026-10-18
-- **Sources:** [source 1](https://github.com/IDT-ITI/SD-MVSum/tree/e88adbf3a947360258cd84839704284c66374c2e) · [source 2](https://arxiv.org/abs/2510.05652v2) · [source 3](https://zenodo.org/records/18862583) · [source 4](https://zenodo.org/records/19183938)
+- **Sources:** [source 1](https://github.com/IDT-ITI/SD-MVSum/tree/e88adbf3a947360258cd84839704284c66374c2e) · [source 2](https://arxiv.org/abs/2510.05652v2) · [source 3](https://zenodo.org/records/18862583) · [source 4](https://zenodo.org/records/19919955)
 
 <a id="sd-vsum-code"></a>
 
