@@ -2,7 +2,7 @@
 
 [Back to handbook](../README.md) · [Foundation models](10-foundation-models.md) · [Evaluation](02-evaluation.md) · [Paper records](../data/papers/modern.json)
 
-**Verified: 2026-10-01.** A system's task is defined by its inputs, permitted context, output and evaluation target. Architecture alone cannot tell us whether two results measure the same problem.
+**Verified: 2026-10-18.** A system's task is defined by its inputs, permitted context, output and evaluation target. Architecture alone cannot tell us whether two results measure the same problem.
 
 ## 1. Choose the task before the metric
 
@@ -15,7 +15,7 @@
 | Multimodal textual | Video plus transcript/article | Text | Factual grounding, event coverage and coherence |
 | Online/streaming | Only the prefix available at decision time | Incremental selection | Quality under latency, look-ahead and memory constraints |
 
-These are operational distinctions used by this handbook. Query/script conditioning is exemplified by [SD-VSum](https://arxiv.org/abs/2505.03319); preference-controlled playback by [EdgeVidSum](https://arxiv.org/abs/2506.03171); textual multimodal output by [CoE](https://arxiv.org/abs/2603.06213). The streaming row is an audit requirement, not a claim that these papers implement a causal streaming model.
+These are operational distinctions used by this handbook. Query/script conditioning is exemplified by [SD-VSum](https://arxiv.org/abs/2505.03319) and [SD-MVSum](https://arxiv.org/abs/2610.03000v1); preference-controlled playback by [EdgeVidSum](https://arxiv.org/abs/2506.03171); textual multimodal output by [CoE](https://arxiv.org/abs/2603.06213). The streaming row is an audit requirement, not a claim that these papers implement a causal streaming model.
 
 ## 2. Query-focused is more than finding a matching frame
 
@@ -29,11 +29,17 @@ A useful small study is to vary one query while keeping video, sampling, budget 
 
 [EviDETR](https://arxiv.org/abs/2609.30724v1) is a newer joint moment-retrieval/highlight detector: semantic-aware feature weighting and a Top-2 expert decoder refine candidate spans, then retrieval evidence feeds clip saliency. Its reported QVHighlights validation HD-mAP and HIT@1 use the dataset's query-conditioned Very Good saliency labels. They measure query-relevant clips, not a duration-constrained summary. Keep these results in their own task group in the [benchmark catalog](12-benchmarks.md).
 
-## 3. SD-VSum: a full script changes the reference
+Two 2025 query-focused methods extend the classic QFVS line: [SAFCN (ICME 2025)](https://doi.org/10.1109/ICME59968.2025.11209876) pairs a Semantic-Aware Feature Enhancement Module with a multi-scale dilated Temporal Convolution Network, and [CARLSVS (Journal of Visual Communication and Image Representation 2025)](https://doi.org/10.1016/j.jvcir.2025.104553) combines semantic clustering, CLIP cross-modal query attention, and RL policy optimization on long videos. Both publisher PDFs are access-gated, so their exact shot-matching and split protocols remain recorded as metadata-verified entries pending full-text inspection.
+
+## 3. SD-VSum and SD-MVSum: a full script changes the reference
 
 **SD-VSum: A Method and Dataset for Script-Driven Video Summarization** — **Manolis Mylonas, Evlampios Apostolidis, Vasileios Mezaris**, **ACM Multimedia 2025**. [Paper](https://arxiv.org/abs/2505.03319) · [DOI](https://doi.org/10.1145/3746027.3755821) · [Official PyTorch code, data and checkpoint](https://github.com/IDT-ITI/SD-VSum).
 
+**SD-MVSum: Script-Driven Multi-Modal Video Summarization using Large Vision-Language Models** — **Evlampios Apostolidis, Manolis Mylonas, Vasileios Mezaris**, **arXiv 2026**. [Paper](https://arxiv.org/abs/2610.03000v1) · [Official PyTorch code](https://github.com/IDT-ITI/SD-MVSum/tree/2c1f8ef95763a3da34d4245bc201d9e5948f8225) · [SM-VideoXum Zenodo](https://doi.org/10.5281/zenodo.19402546) · [SM-Mr. HiSum Zenodo](https://doi.org/10.5281/zenodo.19422546).
+
 S-VideoXum pairs each human-selected summary with a machine-generated script describing it. Frozen CLIP representations feed cross-modal attention and a Transformer frame scorer. The script-driven model uses BCE against the matching annotator's binary summary; the generic variant uses MSE against the average reference scores. Inference takes the top 15% of frames. Evaluation averages each script-summary pair's F1, then averages over videos. It must not take the best match among unrelated references. [Sections 3–5](https://arxiv.org/html/2505.03319v2).
+
+SD-MVSum generalizes this paradigm from visual-only step-by-step scripts to **free-form, multi-modal user scripts** specifying desired scenes across visual, audio, and speech modalities. It introduces two Qwen2.5-VL-7B-annotated benchmarks (**SM-VideoXum** with 11,908 videos and **SM-Mr. HiSum** with 9,862 videos) where every summary is paired with both a dense step-by-step script and a condensed free-form user script, and uses sequence-level Attention Pooling plus Sigmoid-weighted Cross-Attention (`SwCA`) before a Transformer encoder. Unlike the earlier SD-VSum repository, the inspected [SD-MVSum commit `2c1f8ef9`](https://github.com/IDT-ITI/SD-MVSum/tree/2c1f8ef95763a3da34d4245bc201d9e5948f8225) cleanly distinguishes `gtsummaries` on SM-VideoXum from `gtscore` + `gtsummary` on SM-Mr. HiSum and publishes MD5-verified Zenodo HDF5 and checkpoint archives.
 
 ```mermaid
 flowchart LR
@@ -47,7 +53,7 @@ flowchart LR
     O --> M
 ```
 
-The [released dataset instructions](https://github.com/IDT-ITI/SD-VSum) include feature H5 files, annotations and split JSON. Reproduction should preserve video-level partitions before expanding videos into multiple script pairs; otherwise different summaries of the same source can appear across development and evaluation. At the inspected commit, however, the loader requests `gtscores` while both the dataset documentation and committed S-NewsVSum HDF5 expose `gtsummaries`; validation/test loading also drops dataset/split arguments. These are concrete blockers, not a claim that the published method is invalid.
+The [released SD-VSum dataset instructions](https://github.com/IDT-ITI/SD-VSum) include feature H5 files, annotations and split JSON. Reproduction should preserve video-level partitions before expanding videos into multiple script pairs; otherwise different summaries of the same source can appear across development and evaluation. At the inspected SD-VSum commit, however, the loader requests `gtscores` while both the dataset documentation and committed S-NewsVSum HDF5 expose `gtsummaries`; validation/test loading also drops dataset/split arguments. These are concrete blockers in SD-VSum that are resolved in the newer SD-MVSum codebase.
 
 ## 4. Personalization and the boundary with online processing
 
@@ -58,6 +64,8 @@ The system analyzes pre-generated thumbnail containers with an EfficientNetV2 ba
 “Real-time” interaction with thumbnails for an already available video does not demonstrate decisions from an incoming stream. Report thumbnail generation, transfer and playback costs separately. Whole-video preprocessing can be useful, but its context advantage must be explicit.
 
 [Generating Personalized Summaries of Day Long Egocentric Videos](https://doi.org/10.1109/TPAMI.2021.3118077) uses actor-critic and related RL policies over 16-frame sub-shots, with reward plug-ins for social interaction, identities and positive/negative user examples. Its variable-length, multi-pass day-long setting is stronger evidence of interactive personalization than a preference filter, but only three Disney videos have three-annotator reference summaries and the user study has ten participants. Its RFS-50 score uses a temporal tolerance and must not be mixed with ordinary 15%-budget F-score. The [author code](https://github.com/Pravin74/interact_summ_code) requires manual C3D feature preparation and a legacy PyTorch/CUDA stack.
+
+In digital-library curation, [Integrating Human-in-the-Loop and LLM Coding for Historical Video Archive Segmentation and Summarization (JCDL 2025)](https://doi.org/10.1109/JCDL67857.2025.00030) pairs human-in-the-loop qualitative coding with LLM-assisted segmentation and personalized archival summarization for historical collections.
 
 TRINITY's phrase “personal-style” has a narrower meaning: the requested style is one of three constructed Event, Emotion or Nature perspectives. It does not learn a particular person's history or adapt from feedback. Treat its per-perspective mAP as a multi-task highlight benchmark, not evidence of individualized recommendation.
 
@@ -80,6 +88,8 @@ Duration alone is insufficient. A long instructional video with tightly aligned 
 | [LfVS-P / LfVS-T](https://arxiv.org/abs/2404.03398) | Pseudo-summary pretraining and a 1,200-video professionally annotated test benchmark | Instructional speech/visual alignment affects how targets are generated |
 | [BLiSS / A2Summ](https://boheumd.github.io/A2Summ/) | Livestream video/transcript pairs with visual and textual summaries | Source videos can be long while released modeling units and context windows are shorter |
 | [TripleSumm long-video test](https://arxiv.org/html/2603.01169v1) | Direct transfer from MoSu to 50 longer unseen videos | Transfer uses an already trained selector; Table 3 target fine-tuning is a separate setting |
+| [LVSum](https://arxiv.org/abs/2610.06808v1) | 82 videos (15–60 min, 45.2 h) with 3,253 scenes and 15–20 human 5-point ratings/scene | Evaluation-only benchmark; 10% key-scene knapsack budget; MLLM performance drops sharply on 30–60 min videos |
+| [TR-EduVSum](https://arxiv.org/abs/2610.12573v1) | 403 English/Turkish lecture videos (up to 40 min, 58.47 h) with slides and transcripts | Reference keyshots and summaries are LLM-synthesized rather than multi-annotator human labels |
 | [CoE](https://arxiv.org/abs/2603.06213) | Text generation across news, lecture, sports, livestream and TV domains | Text metrics and few-shot style references differ from extractive duration-budget protocols |
 | [Personalized day-long egocentric summaries](https://doi.org/10.1109/TPAMI.2021.3118077) | Sliding-window/four-pass RL with variable requested duration | References cover only three Disney videos; UTE/HUJI have different annotation/evaluation roles |
 | [KnowVis](https://arxiv.org/abs/2609.03742v2) | Lecture transcript/slides become concept-level generated visual narratives | No temporal skim, no held-out split, proprietary generators and only ten human-study participants |
@@ -99,7 +109,7 @@ This release provides routes into query/script conditioning, multimodal text gen
 
 The [CoSum release](https://github.com/l2ior/cosum) supplies video URLs, annotations and shot indices; it does not establish a runnable implementation of the full algorithm. Its top-5/top-15 shot mAP should remain separate from temporal summary F1. In a reproduction, preserve the topic-group membership and state which companion videos are visible at inference: changing the collection changes the information used to score each shot. As a proposed diagnostic, remove one companion video and inspect which selected events disappear; this exposes dependence on shared content versus video-specific importance.
 
-[MultiVENT-Raw](https://arxiv.org/abs/2609.28437v1) broadens the multi-video setting from co-occurring shots to query/persona-conditioned retrieval and cited report generation over a large raw-video collection. Its 118,802-video FULL split spans 130 events and 222 queries; the paper also releases MicroVENT as a compact development set. Retrieval and claim/citation report metrics are not keyshot metrics. The full data and feature releases are gated and large; the [dataset cards](generated/datasets.md) record their access and licensing boundaries.
+[MultiVENT-Raw](https://arxiv.org/abs/2609.28437v1) broadens the multi-video setting from co-occurring shots to query/persona-conditioned retrieval and cited report generation over a large raw-video collection. Its 118,802-video FULL split spans 130 events and 222 queries; the paper also releases MicroVENT as a compact development set. Retrieval and claim/citation report metrics are not keyshot metrics. The full data and feature releases are gated and large; the [dataset cards](generated/datasets.md) record their access and licensing boundaries. When evaluating MLLMs across multi-video inputs, [Multi-Video Positional Bias](https://arxiv.org/abs/2610.15915v1) shows that video ordering materially shifts information coverage across positions (`PBI`), so order-permutation stability should be audited explicitly.
 
 ## 8. Historical query-focused summarization: QFVS
 

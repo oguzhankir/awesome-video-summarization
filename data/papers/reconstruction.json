@@ -594,13 +594,13 @@
     "budget": "15% final duration; soft training length target is separate",
     "postprocessing": "KTS, mean shot scores and exact knapsack",
     "code_url": "https://github.com/hanklee97121/SUM-SR-5iter",
-    "code_status": "Official",
+    "code_status": "Official repository inspected at commit fe22076f58f6f06a6dfd826e5429fbbb10e1c321",
     "framework": "Python 3.6 / PyTorch 1.0.1 (author release)",
-    "weights": "Not independently verified",
+    "weights": "No trained checkpoints committed in repository",
     "features": "See source-specific artifact status in chapter and resource catalog",
-    "reproducibility": "Inherited 2026-09-06 narrative audit migrated to structured catalog; no new model execution or full numerical re-audit",
+    "reproducibility": "Inherited 2026-09-06 narrative audit plus repository tree inspection at commit fe22076f58f6f06a6dfd826e5429fbbb10e1c321; no new model execution or full numerical re-audit",
     "limitations": "Technical record retained from 2026-09-06 source audit; see chapter for method-specific protocol and implementation limitations. No independent training or numerical reproduction.",
-    "verified_on": "2026-09-06",
+    "verified_on": "2026-10-18",
     "authors": [
       "Hanqing Li",
       "Diego Klabjan",
@@ -625,7 +625,7 @@
     ],
     "sources": [
       "https://arxiv.org/abs/2311.03745",
-      "https://github.com/hanklee97121/SUM-SR-5iter"
+      "https://github.com/hanklee97121/SUM-SR-5iter/tree/fe22076f58f6f06a6dfd826e5429fbbb10e1c321"
     ],
     "year": 2024
   },
@@ -646,13 +646,13 @@
     "budget": "15% final duration; soft training length target is separate",
     "postprocessing": "Rank evaluation before decoding; paper-specific mAP and summary decoding",
     "code_url": "https://github.com/Kwanseok-K/SummDiff",
-    "code_status": "Official",
+    "code_status": "Official repository inspected at commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a",
     "framework": "Python 3.10 / PyTorch 2.6.0",
-    "weights": "Not independently verified",
+    "weights": "No trained checkpoints committed in repository",
     "features": "See source-specific artifact status in chapter and resource catalog",
-    "reproducibility": "Primary experiment section rechecked on 2026-09-08; code environment and numerical results not reproduced",
-    "limitations": "Human target scores for SumMe/TVSum; behavioral targets for Mr. HiSum. TVT and 5FCV must be kept separate; do not import OVP/YouTube augmentation.",
-    "verified_on": "2026-09-08",
+    "reproducibility": "Primary experiment section and official repository at commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a inspected; code environment and numerical results not reproduced",
+    "limitations": "Human target scores for SumMe/TVSum; behavioral targets for Mr. HiSum. TVT and 5FCV must be kept separate; do not import OVP/YouTube augmentation. Repository README at commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a notes an evaluation-script correction for rank correlations (reporting updated TVT SumMe tau=0.148/rho=0.197, TVSum tau=0.169/rho=0.222, Mr. HiSum tau=0.219/rho=0.312 and 5FCV SumMe tau=0.258/rho=0.343, TVSum tau=0.198/rho=0.259).",
+    "verified_on": "2026-10-18",
     "authors": [
       "Kwanseok Kim",
       "Jaehoon Hahm",
@@ -683,7 +683,7 @@
     ],
     "sources": [
       "https://arxiv.org/abs/2510.08458",
-      "https://github.com/Kwanseok-K/SummDiff",
+      "https://github.com/Kwanseok-K/SummDiff/tree/1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a",
       "https://arxiv.org/html/2510.08458v1#S4.SS1"
     ],
     "year": 2025

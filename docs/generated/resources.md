@@ -4,7 +4,27 @@
 
 [Handbook home](../../README.md) · [Coverage methodology](../15-coverage.md)
 
-34 records. Verification is field-specific; source inspection does not certify runtime reproduction.
+44 records. Verification is field-specific; source inspection does not certify runtime reproduction.
+
+<a id="a2summ-code"></a>
+
+## A2Summ official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/boheumd/A2Summ)
+- **Provenance:** official
+- **Attribution evidence:** Linked from the CVPR 2023 paper and author project page (boheumd.github.io/A2Summ).
+- **Paper ids:** a2summ
+- **Framework:** Python 3.8.13, PyTorch 1.12.0, CUDA 11.3.
+- **Version or commit:** 5c7dceac3e81aca297e28c987f472ac3b9a9dbb6
+- **License:** MIT
+- **Artifacts:** Training and evaluation scripts for SumMe, TVSum, DailyMail/CNN and BLiSS; README links Google Drive feature and checkpoint archives.
+- **Feature schema:** Dataset-specific visual and RoBERTa text feature archives with temporal alignment metadata.
+- **Evaluation notes:** Supervised dual-contrastive training requiring ground-truth summary masks for both focal classification and intra-sample positive contrast.
+- **Reproducibility:** Repository tree and README inspected at commit 5c7dceac3e81aca297e28c987f472ac3b9a9dbb6; external Google Drive archives were not downloaded or run.
+- **Limitations:** BLiSS raw video URLs require contacting authors; Google Drive feature/checkpoint archives are external to the git tree.
+- **Verified on:** 2026-10-18
+- **Sources:** [source 1](https://github.com/boheumd/A2Summ/tree/5c7dceac3e81aca297e28c987f472ac3b9a9dbb6) · [source 2](https://arxiv.org/abs/2303.07284)
 
 <a id="clip-it-community"></a>
 
@@ -66,6 +86,26 @@
 - **Verified on:** 2026-09-19
 - **Sources:** [source 1](https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6)
 
+<a id="clipsum-code-stub"></a>
+
+## ClipSum official repository (stub)
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/aqeeelmirza/clipsum)
+- **Provenance:** official
+- **Attribution evidence:** Linked in the ICPR 2026 / arXiv:2605.11959v1 abstract and owned by contact author Muhammad Aqeel.
+- **Paper ids:** clipsum
+- **Framework:** Not yet pushed; paper reports PyTorch 2.0 on NVIDIA RTX 4090.
+- **Version or commit:** c3746c1b02b9e6473136f09735e9aa32b1df3e5d
+- **License:** MIT
+- **Artifacts:** README.md and LICENSE only; no Python source files, configs, or YouCook2 reference summaries are committed at the inspected revision.
+- **Feature schema:** Paper specifies 50 uniformly sampled frames encoded with frozen CLIP ViT-B/32 (512-D) and procedural text up to 512 BART BPE tokens.
+- **Evaluation notes:** No runnable evaluator in repository; paper uses rouge-score v0.1.2 and nlg-eval on 210 YouCook2 test videos.
+- **Reproducibility:** Pinned repository stub at commit c3746c1b02b9e6473136f09735e9aa32b1df3e5d inspected; no executable code is present.
+- **Limitations:** Placeholder stub only; neither model code nor the GPT-3.5-turbo human-verified YouCook2 reference summaries are uploaded yet.
+- **Verified on:** 2026-10-18
+- **Sources:** [source 1](https://github.com/aqeeelmirza/clipsum/tree/c3746c1b02b9e6473136f09735e9aa32b1df3e5d) · [source 2](https://arxiv.org/abs/2605.11959v1)
+
 <a id="coe-code"></a>
 
 ## Chain-of-Events official implementation
@@ -85,6 +125,26 @@
 - **Limitations:** The documented pip command cannot install the conda-export requirements as written. Configs contain placeholder hosts/paths, evaluator dependencies are missing, refinement is disabled by default, no unified import exists and no license is supplied.
 - **Verified on:** 2026-09-19
 - **Sources:** [source 1](https://github.com/youxiaoxing/CoE/tree/924ed7d67935022e09a371c8114d5f25cc1759a6)
+
+<a id="csta-code"></a>
+
+## CSTA official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/thswodnjs3/CSTA)
+- **Provenance:** official
+- **Attribution evidence:** Linked in the CVPR 2024 paper abstract and owned by first author Jaewon Son.
+- **Paper ids:** csta
+- **Framework:** Python / PyTorch; requirements.txt lists torch, torchvision, numpy, h5py, scipy, ortools and tqdm.
+- **Version or commit:** b070f7d910b227e040dad66ec9f18b60dac5ea3d
+- **License:** MIT
+- **Artifacts:** Model definitions (GoogleNet_Plus.py, MobileNet_Plus.py, ResNet_Plus.py, EfficientNet_Plus.py), training/evaluation scripts, KTS/knapsack helpers and 5-fold split files; no trained CSTA checkpoints are committed.
+- **Feature schema:** Standard eccv16_dataset_summe_google_pool5.h5 and eccv16_dataset_tvsum_google_pool5.h5 HDF5 files with 2-fps 1024-D GoogLeNet features, picks, n_frames, change_points, user_summary and gtscore.
+- **Evaluation notes:** evaluation_metrics.py and config.py confirm that SumMe Kendall tau and Spearman rho are computed between the binary 15%-budget KTS+knapsack summary video and ground-truth user summary videos, whereas TVSum tau and rho are computed on 2-fps subsampled frame scores expanded to full frames against 20 user annotations.
+- **Reproducibility:** Pinned repository commit b070f7d910b227e040dad66ec9f18b60dac5ea3d and CVPR supplementary material inspected; no training run was executed.
+- **Limitations:** Selects the best epoch per split on test-set rank correlation during 100-epoch training (Appendix A.1). SumMe and TVSum use different correlation targets (binary summary masks vs. frame-expanded importance scores).
+- **Verified on:** 2026-10-18
+- **Sources:** [source 1](https://github.com/thswodnjs3/CSTA/tree/b070f7d910b227e040dad66ec9f18b60dac5ea3d) · [source 2](https://arxiv.org/abs/2405.11905)
 
 <a id="dppy-guide"></a>
 
@@ -185,6 +245,26 @@
 - **Limitations:** Changing frame rate or timestamps can change benchmark alignment; commands must fit the input time base.
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://ffmpeg.org/ffmpeg-filters.html)
+
+<a id="framepack-u-code"></a>
+
+## FramePack-U official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/ZelD0n/framepack-U)
+- **Provenance:** official
+- **Attribution evidence:** Linked in the NeurIPS 2026 paper header and owned by first author Shuo Gao.
+- **Paper ids:** framepack-u
+- **Framework:** Python / PyTorch / HuggingFace Transformers / OpenAI CLIP.
+- **Version or commit:** aed28d7d61f0a8fa1d601442816ea8c5be48be8b
+- **License:** No LICENSE file found at the inspected commit.
+- **Artifacts:** Standalone frame-packing algorithms (`standalone/`), Qwen3-VL monkey-patch integration, and evaluation scripts for LongVideoBench, MLVU and Video-MME; links HuggingFace (`ZelD0n/FramePack-U`) and ModelScope feature datasets.
+- **Feature schema:** CLIP ViT-B/32 frame and query embeddings; outputs multi-resolution frame sequences under fixed 128-, 256-, or 512-frame-equivalent token budgets.
+- **Evaluation notes:** Evaluates long-video VQA accuracy, peak GPU memory (GiB) and end-to-end latency (s) across LongVideoBench, MLVU and Video-MME.
+- **Reproducibility:** Paper and repository source at commit aed28d7d61f0a8fa1d601442816ea8c5be48be8b inspected; no VLM evaluation was executed.
+- **Limitations:** Designed for VLMs that encode frames independently; no repository license file present at the inspected commit.
+- **Verified on:** 2026-10-18
+- **Sources:** [source 1](https://github.com/ZelD0n/framepack-U/tree/aed28d7d61f0a8fa1d601442816ea8c5be48be8b) · [source 2](https://arxiv.org/abs/2610.16118v1) · [source 3](https://huggingface.co/datasets/ZelD0n/FramePack-U)
 
 <a id="h5py-quickstart"></a>
 
@@ -386,6 +466,26 @@
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://docs.pytorch.org/tutorials/beginner/introyt/introyt1_tutorial.html)
 
+<a id="qeva-code-stub"></a>
+
+## QEVA official repository (stub)
+
+- **Kind:** tool
+- **Url:** [url](https://github.com/jungnerd/QEVA)
+- **Provenance:** official
+- **Attribution evidence:** Linked in the Findings of EMNLP 2025 / arXiv:2604.24052v1 paper footnote 1 and owned by first author Woojun Jung.
+- **Paper ids:** qeva
+- **Framework:** Not yet pushed; paper uses Gemini-1.5-Pro and GPT-4o (or Qwen2.5-VL/InternVL3 + LLaMA-3.1/Gemma-3).
+- **Version or commit:** 657cad6bff56e3cb25bf41610c020ce68787abd3
+- **License:** No LICENSE file found at the inspected commit.
+- **Artifacts:** Placeholder README.md only (`# QEVA`); complete prompt templates for Coverage, Factuality and Chronology QA generation are published in paper Appendix A.
+- **Feature schema:** Operates on raw source videos and candidate textual summaries; no pre-extracted feature files.
+- **Evaluation notes:** No runnable scripts in repository; paper evaluates Kendall tau_b, tau_c and Spearman rho against 20-annotator human judgments on MLVU(VS)-Eval (800 summaries across 200 videos).
+- **Reproducibility:** Pinned repository stub at commit 657cad6bff56e3cb25bf41610c020ce68787abd3 inspected; no executable code or MLVU(VS)-Eval dataset files are committed.
+- **Limitations:** Empty placeholder repository; resolves the deferred repository audit noted in earlier coverage logs.
+- **Verified on:** 2026-10-18
+- **Sources:** [source 1](https://github.com/jungnerd/QEVA/tree/657cad6bff56e3cb25bf41610c020ce68787abd3) · [source 2](https://aclanthology.org/2025.findings-emnlp.1340/) · [source 3](https://arxiv.org/abs/2604.24052v1)
+
 <a id="rethinking-evs"></a>
 
 ## Rethinking the Evaluation of Video Summaries
@@ -405,6 +505,26 @@
 - **Limitations:** README explicitly marks old KTS data unavailable and links PoR-Summarization-Measure alternative; replacing segmentation changes the experiment. Conda export contains legacy build pins.
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://github.com/mayu-ot/rethinking-evs/blob/7a3b05e63ba531c89ac022e3a98bfd37d22d60a2/README.md) · [source 2](https://github.com/mayu-ot/rethinking-evs/blob/7a3b05e63ba531c89ac022e3a98bfd37d22d60a2/environment.yml) · [source 3](https://github.com/mayu-ot/rethinking-evs/blob/7a3b05e63ba531c89ac022e3a98bfd37d22d60a2/src/summe_eval.py)
+
+<a id="sd-mvsum-code"></a>
+
+## SD-MVSum official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/IDT-ITI/SD-MVSum)
+- **Provenance:** official
+- **Attribution evidence:** Linked in the arXiv:2510.05652v2 abstract and maintained by the CERTH-ITI authors.
+- **Paper ids:** sd-mvsum
+- **Framework:** Conda environment (environment.yml) with Python 3.12.5, PyTorch 2.4.1 and CUDA 12.1.
+- **Version or commit:** e88adbf3a947360258cd84839704284c66374c2e
+- **License:** Custom academic/non-commercial license (LICENSE.md).
+- **Artifacts:** Full PyTorch training/evaluation code (main.py, solver.py, data_loader.py, model/) plus Zenodo links for SM-VideoXum and SM-MrHiSum HDF5 features/splits (record 18862583) and pretrained checkpoints (record 19183938).
+- **Feature schema:** 1-fps 512-D CLIP embeddings for visual frames, multi-sentence user scripts, and timestamp-repeated audio transcripts in HDF5 format.
+- **Evaluation notes:** Evaluates top-15% frame F-Score on SM-VideoXum (averaged over 10 script-summary pairs per video) and 15%-budget knapsack F-Score plus frame-level Kendall tau and Spearman rho on SM-MrHiSum.
+- **Reproducibility:** Paper, repository source at commit e88adbf3a947360258cd84839704284c66374c2e and Zenodo record metadata inspected; large Zenodo archives were not downloaded or run.
+- **Limitations:** Non-commercial academic license; scripts are generated from ground-truth summaries via Qwen3-VL-8B-Instruct.
+- **Verified on:** 2026-10-18
+- **Sources:** [source 1](https://github.com/IDT-ITI/SD-MVSum/tree/e88adbf3a947360258cd84839704284c66374c2e) · [source 2](https://arxiv.org/abs/2510.05652v2) · [source 3](https://zenodo.org/records/18862583) · [source 4](https://zenodo.org/records/19183938)
 
 <a id="sd-vsum-code"></a>
 
@@ -485,6 +605,66 @@
 - **Limitations:** README documents changed backbone, reduced discriminator learning rate, and frozen discriminator updates; no ready end-to-end benchmark evaluator found in inspected tree.
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/README.md) · [source 2](https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/feature_extraction.py) · [source 3](https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/configs.py) · [source 4](https://github.com/j-min/Adversarial_Video_Summary/blob/fb6d5bf70479373f96f2d944c672af8286c9bc89/solver.py)
+
+<a id="sum-sr-code"></a>
+
+## SUM-SR official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/hanklee97121/SUM-SR-5iter)
+- **Provenance:** official
+- **Attribution evidence:** Linked in the ACCV 2024 paper and owned by first author Hanqing Li.
+- **Paper ids:** sum-sr
+- **Framework:** Python 3.6 / PyTorch 1.0.1.
+- **Version or commit:** fe22076f58f6f06a6dfd826e5429fbbb10e1c321
+- **License:** No LICENSE file found at the inspected commit.
+- **Artifacts:** 5-iteration unsupervised selector/reconstructor training and evaluation source for SumMe and TVSum.
+- **Feature schema:** 2-fps 1024-D GoogLeNet pool5 HDF5 features.
+- **Evaluation notes:** Unsupervised iterative reconstruction without adversarial discriminator; KTS + mean shot score + 0/1 knapsack under 15% budget.
+- **Reproducibility:** Repository tree inspected at commit fe22076f58f6f06a6dfd826e5429fbbb10e1c321; legacy PyTorch 1.0.1 environment was not executed.
+- **Limitations:** Legacy Python 3.6 / PyTorch 1.0.1 environment and no explicit open-source license file.
+- **Verified on:** 2026-10-18
+- **Sources:** [source 1](https://github.com/hanklee97121/SUM-SR-5iter/tree/fe22076f58f6f06a6dfd826e5429fbbb10e1c321) · [source 2](https://arxiv.org/abs/2311.03745)
+
+<a id="summdiff-code"></a>
+
+## SummDiff official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/Kwanseok-K/SummDiff)
+- **Provenance:** official
+- **Attribution evidence:** Linked in the ICCV 2025 paper and owned by first author Kwanseok Kim.
+- **Paper ids:** summdiff
+- **Framework:** Python 3.10 / PyTorch 2.6.0.
+- **Version or commit:** 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a
+- **License:** MIT
+- **Artifacts:** Diffusion training, sampling and evaluation scripts for SumMe, TVSum and Mr. HiSum under TVT and 5FCV protocols; no checkpoints committed.
+- **Feature schema:** 1024-D GoogLeNet pool5 features for SumMe/TVSum and 1024-D PCA-reduced Inception-v3 features for Mr. HiSum.
+- **Evaluation notes:** README at commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a documents an evaluation-script correction for Kendall tau and Spearman rho, reporting updated TVT and 5FCV correlation tables alongside the ICCV paper values.
+- **Reproducibility:** Pinned repository commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a and ICCV paper inspected; no diffusion training or sampling was executed.
+- **Limitations:** Keep original ICCV paper table values and repository-corrected evaluation values explicitly distinguished by protocol.
+- **Verified on:** 2026-10-18
+- **Sources:** [source 1](https://github.com/Kwanseok-K/SummDiff/tree/1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a) · [source 2](https://arxiv.org/abs/2510.08458)
+
+<a id="trim-code-stub"></a>
+
+## TRIM official repository (stub)
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/pmishra-ai/TRIM)
+- **Provenance:** official
+- **Attribution evidence:** Linked in the ICASSP 2026 / arXiv:2506.20588v3 paper footnote and owned by first author Pritam Mishra.
+- **Paper ids:** trim
+- **Framework:** Not yet pushed; paper reports PyTorch on NVIDIA TITAN RTX.
+- **Version or commit:** 86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab
+- **License:** No LICENSE file found at the inspected commit.
+- **Artifacts:** README.md and architecture figure (`model.jpg`) only; source code and pretrained models are marked as coming soon.
+- **Feature schema:** Not released in repository; paper specifies 2048-D ResNet-50 features with 256->224 center-crop preprocessing.
+- **Evaluation notes:** No runnable evaluator in repository; paper reports 10-run 5-fold cross-validation Kendall tau, Spearman rho and F1 on SumMe and TVSum.
+- **Reproducibility:** Pinned repository stub at commit 86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab inspected; no executable code is present.
+- **Limitations:** Placeholder stub only; do not count as an executable code release until training and evaluation scripts are pushed.
+- **Verified on:** 2026-10-18
+- **Sources:** [source 1](https://github.com/pmishra-ai/TRIM/tree/86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab) · [source 2](https://arxiv.org/abs/2506.20588v3)
 
 <a id="trinity-code"></a>
 
@@ -585,6 +765,26 @@
 - **Limitations:** Explicit .cuda() operations, Slurm-oriented scripts, commented config template, and large environment requirements. inference_qfvs.py trims video4 feature/tag length mismatch; original timeline needs audit.
 - **Verified on:** 2026-09-08
 - **Sources:** [source 1](https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/README.md) · [source 2](https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/install.md) · [source 3](https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/model.md) · [source 4](https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/requirements.txt) · [source 5](https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/eval/qfvs.py) · [source 6](https://github.com/showlab/UniVTG/blob/32659ac7aeba21742a63274f30eba785fc57e247/main/inference_qfvs.py)
+
+<a id="v2xum-llm-code"></a>
+
+## V2Xum-LLM official implementation
+
+- **Kind:** implementation
+- **Url:** [url](https://github.com/hanghuacs/V2Xum-LLM)
+- **Provenance:** official
+- **Attribution evidence:** Linked from the AAAI 2025 paper and official project page (hanghuacs.github.io/v2xum).
+- **Paper ids:** v2xum-llm
+- **Framework:** Python 3.9 / PyTorch.
+- **Version or commit:** 6b7c06d02faeff0c31ea8cfaa916219244abe5c8
+- **License:** Apache-2.0
+- **Artifacts:** Instruction-tuning, inference and evaluation scripts for V2V, V2T and V2VT summarization; links HuggingFace checkpoints and Instruct-V2Xum annotations.
+- **Feature schema:** 100-frame downsampled visual tokens interleaved with temporal index tokens and Vicuna-v1.5 text prompts.
+- **Evaluation notes:** Reports F1, Kendall tau, Spearman rho, BLEU-4, METEOR, ROUGE-L, CIDEr, F_CLIP and Cross-F_CLIP.
+- **Reproducibility:** Repository tree and README inspected at commit 6b7c06d02faeff0c31ea8cfaa916219244abe5c8; model checkpoints were not downloaded or executed.
+- **Limitations:** Requires large Vicuna/CLIP checkpoints and external dataset downloads.
+- **Verified on:** 2026-10-18
+- **Sources:** [source 1](https://github.com/hanghuacs/V2Xum-LLM/tree/6b7c06d02faeff0c31ea8cfaa916219244abe5c8) · [source 2](https://arxiv.org/abs/2404.12353)
 
 <a id="vasnet-code"></a>
 

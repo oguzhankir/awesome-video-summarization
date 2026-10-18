@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Paper catalog](generated/papers.md) · [Implementation sources](generated/resources.md) · [Latest audit](audits/2026-10-01-weekly.md) · [Overhaul audit](audits/2026-09-08-overhaul.md)
 
-**Literature/source review: 2026-10-01.** This is a selective, evidence-backed handbook, not a systematic review with a completed census of every proceedings volume. A registry can have complete fields while experiment details remain explicitly unverified. Neither a verification date nor a reachable repository establishes successful ML reproduction.
+**Literature/source review: 2026-10-18.** This is a selective, evidence-backed handbook, not a systematic review with a completed census of every proceedings volume. A registry can have complete fields while experiment details remain explicitly unverified. Neither a verification date nor a reachable repository establishes successful ML reproduction.
 
 ## 1. Inclusion and verification
 
@@ -14,21 +14,21 @@ Inherited reconstruction cards retain their earlier 2026-09-06 technical-audit d
 
 ## 2. Executed search matrix
 
-The previous pass covered 2026-08-09 through 2026-09-19 and screened 11,568 records across `cs.CV`, `cs.MM`, `cs.CL`, `cs.AI` and `cs.HC`. The latest incremental pass covers 2026-09-20 through 2026-10-01; its query, result count and source follow-up are recorded in the [2026-10-01 audit](audits/2026-10-01-weekly.md). This table states actual depth rather than suggesting every venue was exhaustively searched.
+The previous passes covered 2026-08-09 through 2026-09-19 (11,568 records across `cs.CV`, `cs.MM`, `cs.CL`, `cs.AI` and `cs.HC`) and 2026-09-20 through 2026-10-01 ([2026-10-01 audit](audits/2026-10-01-weekly.md)). The latest pass covers **2026-10-01 through 2026-10-18** across `cs.CV`, `cs.MM`, `cs.CL`, `cs.AI`, and `cs.HC` (screening 3,907 video/multimodal preprints in that window), plus targeted 2025–2026 publisher/DOI and deferred-item follow-up (`QEVA`, `SAFCN`, `CARLSVS`, `JCDL 2025`, and primary-source verification of `CSTA`, `CSUM`, `SELF-VS`, `SummDiff`, `SUM-SR`, `A2Summ`, `V2Xum-LLM`, `Prompts to Summaries`, and `Context-Aware Pseudo-Label Scoring`). This table states actual depth rather than suggesting every venue was exhaustively searched.
 
 | Venue/source family | Work performed | Limits |
 |---|---|---|
-| CVPR, ICCV, ECCV / CVF and ECVA | Landmark supervised/reconstruction methods; CSTA, A2Summ, LfVS, LLMVS, SummDiff, CoE, TRINITY and task-specific sources | Selected papers and citation trails; TRINITY's author acceptance claim lacks an independently indexed proceedings entry |
-| NeurIPS | seqDPP and DPP/representation-learning foundations; targeted summarization queries | No complete year-by-year summarization census |
-| AAAI | Cycle-SUM, CSNet, DR-DSN and V2Xum-LLM primary sources | Selected primary records |
+| CVPR, ICCV, ECCV / CVF and ECVA | Landmark supervised/reconstruction methods; full primary-source/repo verification of CSTA, CSUM, SELF-VS, A2Summ, LfVS, LLMVS, SummDiff, CoE, TRINITY and task-specific sources | Selected papers and citation trails; TRINITY's author acceptance claim lacks an independently indexed proceedings entry |
+| NeurIPS | seqDPP, Mr. HiSum, QVHighlights and DPP/representation-learning foundations; targeted summarization queries | No complete year-by-year summarization census |
+| AAAI | Cycle-SUM, CSNet, DR-DSN and V2Xum-LLM primary sources and pinned V2Xum-LLM repository | Selected primary records |
 | ICLR | Exact TripleSumm identity, main/appendix protocols, official artifacts and pinned implementation | Focused 2026 check |
-| ACM Multimedia and associated workshops | ACGAN, stepwise adversarial methods, SD-VSum; author code and project evidence | Publisher restrictions on some pages; accepted manuscripts used |
-| TIP, TCSVT, TMM, Pattern Recognition | DSNet, AC-SUM-GAN, VideoXum, CAAN and sparse-reconstruction discovery | Paper-level coverage; no journal-wide census |
-| TPAMI, WACV, BMVC, ICIP | SSPVS, personalized day-long egocentric summaries, causal streaming and official M2UR metadata | M2UR full text was restricted; no complete venue census |
-| ACL, EACL, EMNLP | SummScreen, Multi-VidSum, KnowVis and video-to-text/reference-free candidates | KnowVis proceedings entry is not independently indexed; textual metrics remain separate from keyshot overlap |
-| arXiv and author projects | Full five-category date-window scan plus training-free, zero/few-shot, long-form, query, online, personalized, sports and multimodal terms | Preprints remain labeled; indexing delay, later revisions and non-arXiv papers require publisher follow-up |
-| Crossref, Wiley, Springer, IEEE and ACM | In-window DOI/publisher discovery for multimodal generic and sports summarizers | Publisher security gates and first-online/issue-date differences are recorded explicitly |
-| GitHub and artifact owners | Official/community attribution, pinned source files, features, checkpoint listings and learner resources | Source inspection only; no upstream model execution or large binary download |
+| ACM Multimedia and associated workshops | ACGAN, stepwise adversarial methods, SD-VSum, and follow-up multi-modal script-driven SD-MVSum | Publisher restrictions on some pages; accepted manuscripts and Zenodo releases used |
+| TIP, TCSVT, TMM, Pattern Recognition, JVCIR | DSNet, AC-SUM-GAN, VideoXum, CAAN, CARLSVS and sparse-reconstruction discovery | Paper-level coverage; CARLSVS Elsevier full text is paywalled |
+| TPAMI, WACV, BMVC, ICIP, ICME, JCDL | SSPVS, personalized day-long egocentric summaries, causal streaming, SAFCN (ICME 2025), JCDL 2025 archival summarization and M2UR metadata | SAFCN, JCDL 2025 and M2UR full PDFs are publisher-gated; no complete venue census |
+| ACL, EACL, EMNLP | SummScreen, Multi-VidSum, KnowVis and completed QEVA (Findings of EMNLP 2025) primary-source and metric audit | KnowVis proceedings entry is not independently indexed; textual metrics remain separate from keyshot overlap |
+| arXiv and author projects | Full five-category date-window scan (`2026-10-01` to `2026-10-18`: SD-MVSum, TRIM, TRIMMER, VASTSum, LVSum, TR-EduVSum, ClipSum, Multi-Video Positional Bias, HAS, PIGEONS, FramePack-U, AdaFrame) | Preprints remain labeled; indexing delay, later revisions and non-arXiv papers require publisher follow-up |
+| Crossref, Wiley, Springer, IEEE, Elsevier and ACM | In-window and 2025–2026 DOI/publisher discovery for query-focused, archival, generic and sports summarizers | Publisher security gates and first-online/issue-date differences are recorded explicitly |
+| GitHub and artifact owners | Official/community attribution, pinned source commits (`CSTA`, `A2Summ`, `V2Xum-LLM`, `SummDiff`, `SUM-SR`, `SD-MVSum`, `FramePack-U`, `TRIM`, `ClipSum`, `QEVA`, `Prompts to Summaries`, `Context-Pseudo-Label`), features and checkpoints | Source inspection only; no upstream model execution or large binary download |
 
 Representative root queries actually issued include:
 
@@ -55,23 +55,37 @@ video highlight detection audio sports 2026; video summary visual narrative agen
 video summarization personalized multi-video causal streaming online 2026
 all:video AND submittedDate:[202609200000 TO 202610012359] AND (cat:cs.CV OR cat:cs.MM OR cat:cs.CL OR cat:cs.AI OR cat:cs.HC)
 video summarization site:doi.org 2026 CLIP BLIP-2 hierarchical temporal soccer
+all:(video AND (summarization OR summary OR keyframe OR keyshot OR highlight)) AND submittedDate:[202610010000 TO 202610182359]
+query-focused video summarization 2025 2026 site:doi.org
 ```
 
-The deliberately broad DSNet query initially suggested AAAI; the verified archival venue is TIP. Search terms are hypotheses, not evidence. GitHub lookups included exact title/author/identifier searches for every admitted recent paper plus historical source leads. [The 2026-09-08 source ledger](audits/2026-09-08-sources.md) preserves overhaul provenance; [the 2026-09-19 audit](audits/2026-09-19-weekly.md) and [2026-10-01 audit](audits/2026-10-01-weekly.md) record the incremental searches and dispositions.
+The deliberately broad DSNet query initially suggested AAAI; the verified archival venue is TIP. Search terms are hypotheses, not evidence. GitHub lookups included exact title/author/identifier searches for every admitted recent paper plus historical source leads. [The 2026-09-08 source ledger](audits/2026-09-08-sources.md) preserves overhaul provenance; [the 2026-09-19 audit](audits/2026-09-19-weekly.md) and [2026-10-01 audit](audits/2026-10-01-weekly.md) record earlier incremental searches, and Section 3 below records the 2026-10-18 dispositions.
 
 ## 3. Candidates and disposition
 
 | Candidate | Decision and reason |
 |---|---|
 | Triple-Sum / Triple Sum / Triplet-Sum | Resolved to [TripleSumm](https://arxiv.org/abs/2603.01169); no separate paper established for spelling variants |
-| SummDiff | Included as supervised/behavior-supervised diffusion; no longer excluded by the former unsupervised-only scope |
-| Context-Aware Pseudo-Label Scoring | Included with label-assisted rubric-calibration caveat; headline comparison numbers withheld because protocol/citation issues remain |
+| SummDiff | Included as supervised/behavior-supervised diffusion; pinned official repo (`1d4b8ae7`) and documented its updated rank-correlation script note |
+| Context-Aware Pseudo-Label Scoring | Included with label-assisted rubric-calibration caveat and pinned commit (`03ba6972`); headline comparison numbers withheld because protocol/citation issues remain |
 | CoE / Cut to the Chase | Included as text summarization; training-free with five training-set style examples |
 | EdgeVidSum | Included as demo/report and personalized playback; not established as a causal streaming benchmark |
 | [SSPVS, WACV 2023](https://openaccess.thecvf.com/content/WACV2023/html/Li_Progressive_Video_Summarization_via_Multimodal_Self-Supervised_Learning_WACV_2023_paper.html) | Included after paper/source audit; self-supervision is pretraining and released epoch selection is test-influenced |
 | [Multi-VidSum, EMNLP 2023](https://aclanthology.org/2023.emnlp-main.457/) | Included with dataset, official code and separate evaluator; keyframe-caption alignment metrics stay isolated |
 | [CLIP-It!, NeurIPS 2021](https://proceedings.neurips.cc/paper/2021/hash/7503cfacd12053d309b6bed5c89de212-Abstract.html) | Included; official repository is a stub and the community source is only a forward-pass sketch |
-| [QEVA, EMNLP Findings 2025](https://aclanthology.org/2025.findings-emnlp.1340/) | Primary evaluation contribution found; judge/metric and artifact audit deferred |
+| [QEVA, EMNLP Findings 2025](https://aclanthology.org/2025.findings-emnlp.1340/) | **Completed in 2026-10-18:** full paper (`2604.20545v1`) and official stub (`f0854784`) audited; added `qeva` paper, `mlvu-vs-eval` meta-evaluation dataset, `qeva-code-stub` resource, and Table 1 correlation rows |
+| [SD-MVSum, arXiv 2026](https://arxiv.org/abs/2610.03000v1) | Included with full paper/code/Zenodo audit (`2c1f8ef9`), `sm-videoxum` and `sm-mrhisum` dataset cards, and six protocol-isolated Table 1/2 result rows |
+| [TRIM, arXiv 2026](https://arxiv.org/abs/2610.04462v1) | Included as training-free VLM/CLIP summarizer with official stub (`7e931eb3`) and six Table 1/2 SumMe/TVSum 5FCV F1 and rank-correlation rows |
+| [TRIMMER, arXiv 2026](https://arxiv.org/abs/2610.06423v1) | Included as zero-human-label VLM pseudo-summary distillation into a per-video MLP, with four Table 2 SumMe/TVSum rank-correlation rows |
+| [VASTSum, arXiv 2026](https://arxiv.org/abs/2610.04930v1) | Included with self-supervised alignment-consistency pretraining + supervised MSE fine-tuning and eight Table 1 TVT/5FCV SumMe/TVSum rank-correlation rows |
+| [LVSum, arXiv 2026](https://arxiv.org/abs/2610.06808v1) | Included with long-form (15–60 min) `lvsum` dataset card and four Table 4 1-fps MLLM rank-correlation rows |
+| [TR-EduVSum, arXiv 2026](https://arxiv.org/abs/2610.12573v1) | Included with bilingual English/Turkish `tr-eduvsum` dataset card; LLM-synthesized ground-truth caveat recorded |
+| [ClipSum, arXiv 2026](https://arxiv.org/abs/2610.14628v1) | Included with full paper audit and official placeholder stub (`020df143`) |
+| [Multi-Video Positional Bias, arXiv 2026](https://arxiv.org/abs/2610.15915v1) | Included as multi-video MLLM summarization evaluation/bias analysis (`PC` and `PBI` metrics) |
+| [HAS, arXiv 2026](https://arxiv.org/abs/2610.16035v1), [FramePack-U, arXiv 2026](https://arxiv.org/abs/2610.18120v1), [AdaFrame, arXiv 2026](https://arxiv.org/abs/2610.19127v1) | Included as training-free keyframe/token selection and deduplication pipelines for MLLM/VLM video understanding and advertisement analysis; downstream QA/classification metrics kept separate from keyshot F1 |
+| [PIGEONS, arXiv 2026](https://arxiv.org/abs/2610.17538v1) | Included as unsupervised dual-prompting video-to-text summarization via pseudo-triplets |
+| [SAFCN, ICME 2025](https://doi.org/10.1109/ICME59968.2025.11209876), [CARLSVS, JVCIR 2025](https://doi.org/10.1016/j.jvcir.2025.104553), [JCDL 2025 archival summarization](https://doi.org/10.1109/JCDL67857.2025.00030) | Included as DOI/abstract-verified specialized records for query-focused and historical-archive summarization; paywalled full-text fields explicitly marked |
+| [CSTA, CVPR 2024](https://openaccess.thecvf.com/content/CVPR2024/html/Son_CSTA_CNN-based_Spatiotemporal_Attention_for_Video_Summarization_CVPR_2024_paper.html), [CSUM, ICCV 2023](https://arxiv.org/abs/2301.05213), [SELF-VS, CVPRW 2023](https://arxiv.org/abs/2303.15993) | **Resolved in 2026-10-18:** replaced all `"Not independently verified"` protocol fields via full primary-source PDF and repository inspection; added CSTA's pinned code (`b070f7d9`) and four Table 2 rank-correlation rows |
 | [Personalized day-long egocentric summaries, TPAMI](https://doi.org/10.1109/TPAMI.2021.3118077) | Included with protocol-separated long-form/RL/personalization caveats and pinned author code |
 | [Diversity Promoting Online Sampling, ICIP 2016](https://doi.org/10.1109/ICIP.2016.7532976) | Included as genuinely causal streaming; altered-video/oracle-budget metric remains isolated |
 | [M2UR, ICIP 2026](https://doi.org/10.1109/ICIP61757.2026.11630213) | Metadata-only record; PDF security challenge left all unavailable protocol fields unknown |
@@ -84,12 +98,12 @@ The deliberately broad DSNet query initially suggested AAAI; the verified archiv
 
 ## 4. Access and reproducibility gaps
 
-Selected publisher/CVF/author pages rejected automated requests or lacked usable HTML; primary PDFs, arXiv versions or author source were used where available. M2UR's IEEE PDF returned a security challenge and remains a metadata-only record. The old QFVS project could not be retrieved. Legacy VASNet Box artifacts return 404 and remain documented as [known link issues](../.github/known-link-issues.json); they are rechecked, not silently ignored. The last full link-audit run, on 2026-09-19, saw environment-level DNS failure for all 370 URLs and classified every endpoint as unresolved; this incremental scan did not repeat that audit. The differentiated 2026-09-08 snapshot remains the latest useful network observation. Access restrictions, unresolved hosts and missing artifacts are different statuses.
+Selected publisher/CVF/author pages rejected automated requests or lacked usable HTML; primary PDFs, arXiv versions or author source were used where available. M2UR's IEEE PDF, SAFCN's ICME 2025 PDF, JCDL 2025's IEEE PDF, and CARLSVS's Elsevier PDF remain publisher-gated and are documented with explicit metadata boundaries. The old QFVS project could not be retrieved. Legacy VASNet Box artifacts return 404 and remain documented as [known link issues](../.github/known-link-issues.json); they are rechecked, not silently ignored. The last full link-audit run, on 2026-09-19, saw environment-level DNS failure for all 370 URLs and classified every endpoint as unresolved; this incremental scan did not repeat that audit. The differentiated 2026-09-08 snapshot remains the latest useful network observation. Access restrictions, unresolved hosts and missing artifacts are different statuses.
 
 No GPU environments were rebuilt. No datasets, checkpoints or feature archives were downloaded or rehashed. Modern repositories may need large models, a model-serving stack or API access. Dependency and evaluator source were inspected, which supports concrete caveats but not a claim of complete reproduction.
 
 ## 5. Next audit priorities
 
-Complete QEVA/reference-free evaluation, FastPerson/QA-FastPerson and HABSS preprocessing audits. Expand multilingual, multi-camera/cross-video, medical/procedural and preference-learning coverage. Resolve TRINITY and SGWIB source conflicts, M2UR's restricted protocol, and TripleSumm's appendix number/captioner inconsistencies. Reproduce a controlled supervised baseline and a reward-based baseline using one public split manifest, fixed checkpoint rule and fully specified decoder. Confirm or replace unavailable artifacts without erasing their provenance.
+Monitor public code and dataset uploads for LVSum, VASTSum, TRIMMER, TR-EduVSum, Multi-Video Positional Bias, HAS, PIGEONS, AdaFrame, and the stub repositories for TRIM, ClipSum, and QEVA. Complete FastPerson/QA-FastPerson and HABSS preprocessing audits, and obtain full texts for publisher-gated SAFCN, CARLSVS, JCDL 2025, and M2UR records. Expand medical/procedural and preference-learning coverage. Resolve TRINITY and SGWIB source conflicts and TripleSumm's appendix number/captioner inconsistencies. Reproduce a controlled supervised baseline and a reward-based baseline using one public split manifest, fixed checkpoint rule and fully specified decoder. Confirm or replace unavailable artifacts without erasing their provenance.
 
 On each meaningful run, update this ledger or add a dated linked audit, update the changelog, preserve old verification dates for untouched claims, and regenerate catalogs. Record exclusions and negative search outcomes as well as additions.

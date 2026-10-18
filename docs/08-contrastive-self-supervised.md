@@ -6,7 +6,7 @@ Self-supervision describes a learning signal, not proof of label-free deployment
 
 ## Contrastive selection
 
-[CSUM: Learning to Summarize Videos by Contrasting Clips](https://arxiv.org/abs/2301.05213) uses a differentiable top-k selector to contrast selected features; its unsupervised route and optional personalized labels are separate settings. It is distinct from **CSNet**, which retains adversarial reconstruction.
+[CSUM: Learning to Summarize Videos by Contrasting Clips](https://arxiv.org/abs/2301.05213) uses a two-layer bidirectional Transformer and a perturbed differentiable Top-$`K`$ operator ($`K=\max(\lfloor rT\rfloor,1)`$) to select representative subsets of 1,024-D GoogLeNet features (`pool5`) and maximize cross-video InfoNCE mutual information ($`\tau=0.07`$), regularized by uniqueness, continuity, diversity, and budget-rate losses. In addition to unsupervised canonical, augmented, and transfer benchmarks on SumMe and TVSum, it evaluates a weakly supervised personalized two-branch extension on the 4-video UTE EgoSum dataset using leave-one-out training and bipartite set-matching F1. It is distinct from **CSNet**, which retains adversarial reconstruction.
 
 For a query representation $`z`$, positive $`z^+`$ and candidate keys $`z_j`$, the following **canonical InfoNCE abstraction** illustrates the mechanism:
 
@@ -20,7 +20,9 @@ The positive appears in the denominator. Positive/negative construction determin
 
 ## Distillation and representation learning
 
-[SELF-VS](https://arxiv.org/abs/2303.15993) pretrains a Transformer through representation matching to a video-classification CNN. The teacher's classification supervision is part of feature provenance. Its paper must be consulted for downstream training and rank evaluation; a self-supervised encoder does not make a supervised selector unsupervised.
+[SELF-VS](https://arxiv.org/abs/2303.15993) pretrains a video sequence encoder (two-layer ResNet-18 temporal-convolution trunk plus eight-head Transformer encoder) by matching mean-pooled sequence embeddings to a frozen 3D ResNet-50 teacher pretrained on Kinetics-400 ($`\mathcal{L}_{\mathrm{cos}}=1-\cos(\phi_v,\theta_v)`$). Downstream evaluation adds a single linear layer trained with binary cross-entropy on 5-fold SumMe/TVSum partitions (both canonical and OVP+YouTube-augmented) and evaluates rank correlations ($`\tau=0.184, \rho=0.219`$ on TVSum; $`\tau=0.141, \rho=0.158`$ on SumMe). The teacher's classification supervision is part of feature provenance, and the linear probe remains a supervised downstream stage.
+
+[VASTSum](https://arxiv.org/abs/2610.04930v1) aligns vision, audio, OCR subtitles, and ASR transcripts through an Anchor-Guided Multimodal Alignment module before applying Multimodal Alignment Consistency Learning ($`\mathcal{L}_{\mathrm{MAC}}`$) to regularize intra-frame modality agreement on unlabeled videos, followed by supervised MSE fine-tuning on TVSum, SumMe, and Mr. HiSum.
 
 [A2Summ](https://openaccess.thecvf.com/content/CVPR2023/html/He_Align_and_Attend_Multimodal_Summarization_With_Dual_Contrastive_Losses_CVPR_2023_paper.html) combines multimodal alignment and supervised summarization. Contrastive losses are secondary mechanisms when human importance targets also train the selector.
 
