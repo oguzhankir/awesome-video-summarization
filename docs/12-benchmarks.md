@@ -4,9 +4,183 @@
 
 [Handbook home](../README.md) · [Metric definitions](02-evaluation.md) · [Paper catalog](generated/papers.md)
 
-56 primary-source result records; 44 exact protocol groups. All values retain author/reproduction status.
+88 primary-source result records; 76 exact protocol groups. All values retain author/reproduction status.
 
 Groups require equality of the full recorded protocol tuple. Unknown metadata isolates a record. A missing split identity isolates a record even when prose such as “random 80/20” matches. An identity must name a verified shared split artifact, fixed official partition, or primary experiment configuration; comparison notes remain binding. No global SOTA ranking is asserted; the highest value within a multi-row group is only the best value in this catalog under that recorded protocol, not a verified field-wide best.
+
+## LVSum — Video + Transcript (V+T) timestamp-aware long-video summarization. — Kendall tau (107e6ab5)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [Gemini-2.5-Pro (Video + Transcript)](generated/papers.md#lvsum) | 0.08902 correlation coefficient | Single evaluation pass over 72 videos.; Not reported | [Table 2, PDF page 8; Table 3, PDF page 10.](https://arxiv.org/pdf/2604.10024v2) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** lvsum
+- **Split identity:** LVSum 72-video benchmark
+- **Split:** Full 72-video LVSum evaluation benchmark.
+- **Training regime:** Zero-shot MLLM prompting with 96 uniformly sampled video frames and Gemini-2.5-Pro timestamped transcript.
+- **Setting:** Video + Transcript (V+T) timestamp-aware long-video summarization.
+- **Features:** 96 uniformly sampled video frames + full timestamped transcript.
+- **Sampling:** 96 input frames; predicted segment scores evaluated at 1-fps (second-level) granularity.
+- **Segmentation:** Model-predicted HH:MM:SS - HH:MM:SS intervals.
+- **Shot aggregation:** Model-assigned 0–3 relevance score mapped to 1-fps timestamps within each predicted interval.
+- **Budget:** Prompted <=15% duration budget (realized average summary length ~12% in Table 2).
+- **Solver:** Direct MLLM autoregressive generation.
+- **Reference aggregation:** Evaluated against up to 10 human interval-level importance annotations per video (human leave-one-out upper bound tau=0.13388, rho=0.13635).
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** Single evaluation pass over 72 videos.
+- **Reproduction:** author-reported
+- **lvsum-gemini25pro-vt-kendall (2026-10-18):** Adheres closely to the 15% length constraint (~12% realized length) and achieves CR=3.28, MC=4.32 under Gemini-2.5-Pro judge.
+
+</details>
+
+## LVSum — Video + Transcript (V+T) timestamp-aware long-video summarization. — Spearman rho (dfc01a25)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [Gemini-2.5-Pro (Video + Transcript)](generated/papers.md#lvsum) | 0.09071 correlation coefficient | Single evaluation pass over 72 videos.; Not reported | [Table 2, PDF page 8; Table 3, PDF page 10.](https://arxiv.org/pdf/2604.10024v2) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** lvsum
+- **Split identity:** LVSum 72-video benchmark
+- **Split:** Full 72-video LVSum evaluation benchmark.
+- **Training regime:** Zero-shot MLLM prompting with 96 uniformly sampled video frames and Gemini-2.5-Pro timestamped transcript.
+- **Setting:** Video + Transcript (V+T) timestamp-aware long-video summarization.
+- **Features:** 96 uniformly sampled video frames + full timestamped transcript.
+- **Sampling:** 96 input frames; predicted segment scores evaluated at 1-fps (second-level) granularity.
+- **Segmentation:** Model-predicted HH:MM:SS - HH:MM:SS intervals.
+- **Shot aggregation:** Model-assigned 0–3 relevance score mapped to 1-fps timestamps within each predicted interval.
+- **Budget:** Prompted <=15% duration budget (realized average summary length ~12% in Table 2).
+- **Solver:** Direct MLLM autoregressive generation.
+- **Reference aggregation:** Evaluated against up to 10 human interval-level importance annotations per video (human leave-one-out upper bound tau=0.13388, rho=0.13635).
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** Single evaluation pass over 72 videos.
+- **Reproduction:** author-reported
+- **lvsum-gemini25pro-vt-spearman (2026-10-18):** Adheres closely to the 15% length constraint (~12% realized length) and achieves CR=3.28, MC=4.32 under Gemini-2.5-Pro judge.
+
+</details>
+
+## LVSum — Video + Transcript (V+T) timestamp-aware long-video summarization. — Kendall tau (c3e94ce6)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [Opus-4.5 (Video + Transcript)](generated/papers.md#lvsum) | 0.10093 correlation coefficient | Single evaluation pass over 72 videos.; Not reported | [Table 2, PDF page 8; Table 3, PDF page 10.](https://arxiv.org/pdf/2604.10024v2) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** lvsum
+- **Split identity:** LVSum 72-video benchmark
+- **Split:** Full 72-video LVSum evaluation benchmark.
+- **Training regime:** Zero-shot MLLM prompting with 96 uniformly sampled video frames and Gemini-2.5-Pro timestamped transcript.
+- **Setting:** Video + Transcript (V+T) timestamp-aware long-video summarization.
+- **Features:** 96 uniformly sampled video frames + full timestamped transcript.
+- **Sampling:** 96 input frames; predicted segment scores evaluated at 1-fps (second-level) granularity.
+- **Segmentation:** Model-predicted HH:MM:SS - HH:MM:SS intervals.
+- **Shot aggregation:** Model-assigned 0–3 relevance score mapped to 1-fps timestamps within each predicted interval.
+- **Budget:** Prompted <=15% duration budget (realized average summary length ~30% in Table 2).
+- **Solver:** Direct MLLM autoregressive generation.
+- **Reference aggregation:** Evaluated against up to 10 human interval-level importance annotations per video (human leave-one-out upper bound tau=0.13388, rho=0.13635).
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** Single evaluation pass over 72 videos.
+- **Reproduction:** author-reported
+- **lvsum-opus45-vt-kendall (2026-10-18):** 1-fps second-level Kendall tau on LVSum (human leave-one-out upper bound is 0.13388; Gemini-2.5-Pro V+T is 0.08902; Qwen3-VL-235B V+T is 0.06389). Opus-4.5 exceeds the 15% prompt constraint (~30% average summary length).
+
+</details>
+
+## LVSum — Video + Transcript (V+T) timestamp-aware long-video summarization. — Spearman rho (bbe48707)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [Opus-4.5 (Video + Transcript)](generated/papers.md#lvsum) | 0.10513 correlation coefficient | Single evaluation pass over 72 videos.; Not reported | [Table 2, PDF page 8; Table 3, PDF page 10.](https://arxiv.org/pdf/2604.10024v2) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** lvsum
+- **Split identity:** LVSum 72-video benchmark
+- **Split:** Full 72-video LVSum evaluation benchmark.
+- **Training regime:** Zero-shot MLLM prompting with 96 uniformly sampled video frames and Gemini-2.5-Pro timestamped transcript.
+- **Setting:** Video + Transcript (V+T) timestamp-aware long-video summarization.
+- **Features:** 96 uniformly sampled video frames + full timestamped transcript.
+- **Sampling:** 96 input frames; predicted segment scores evaluated at 1-fps (second-level) granularity.
+- **Segmentation:** Model-predicted HH:MM:SS - HH:MM:SS intervals.
+- **Shot aggregation:** Model-assigned 0–3 relevance score mapped to 1-fps timestamps within each predicted interval.
+- **Budget:** Prompted <=15% duration budget (realized average summary length ~30% in Table 2).
+- **Solver:** Direct MLLM autoregressive generation.
+- **Reference aggregation:** Evaluated against up to 10 human interval-level importance annotations per video (human leave-one-out upper bound tau=0.13388, rho=0.13635).
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** Single evaluation pass over 72 videos.
+- **Reproduction:** author-reported
+- **lvsum-opus45-vt-spearman (2026-10-18):** 1-fps second-level Spearman rho on LVSum (human leave-one-out upper bound is 0.13635; Gemini-2.5-Pro V+T is 0.09071; Qwen3-VL-235B V+T is 0.06706).
+
+</details>
+
+## MLVU(VS)-Eval — Reference-free multimodal QA meta-evaluation across 800 Video-LMM summaries. — Kendall tau_b (083c181c)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [QEVA (Gemini-1.5-Pro + GPT-4o)](generated/papers.md#qeva) | 0.6465 correlation coefficient | Single benchmark evaluation (p = 0.0000).; p-value 0.0000 | [Table 1, PDF page 6; Table 4, PDF page 7.](https://arxiv.org/pdf/2604.24052v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** mlvu-vs-eval
+- **Split identity:** MLVU(VS)-Eval 200-video / 800-summary benchmark
+- **Split:** Full 200-video / 800-summary evaluation benchmark.
+- **Training regime:** Training-free reference-free QA evaluation.
+- **Setting:** Reference-free multimodal QA meta-evaluation across 800 Video-LMM summaries.
+- **Features:** Gemini-1.5-Pro Video-LMM and GPT-4o LLM QA generation, filtering and answering.
+- **Sampling:** Full MLVU video context (~15 min average).
+- **Segmentation:** Prompted chronological event listing for Chronology QA.
+- **Shot aggregation:** Not applicable; summary-level Coverage, Factuality and Chronology QA accuracies averaged.
+- **Budget:** 10 generated QA pairs per dimension prior to triviality and low-quality filtering.
+- **Solver:** Arithmetic mean of filtered Coverage, Factuality and Chronology QA accuracy scores.
+- **Reference aggregation:** Correlation against human Likert ratings (2 independent annotators per summary out of 20 annotators; Krippendorff's alpha = 0.68).
+- **Metric:** Kendall tau_b
+- **Unit:** correlation coefficient
+- **Runs:** Single benchmark evaluation (p = 0.0000).
+- **Reproduction:** author-reported
+- **qeva-mlvu-vs-eval-kendall-taub (2026-10-18):** Reference-free meta-evaluation correlation with human summary quality judgments (outperforming Video-LMM Judge tau_b=0.5376, MLVU Judge tau_b=0.5284, and METEOR tau_b=0.2663).
+
+</details>
+
+## MLVU(VS)-Eval — Reference-free multimodal QA meta-evaluation across 800 Video-LMM summaries. — Spearman rho (01d1c28f)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [QEVA (Gemini-1.5-Pro + GPT-4o)](generated/papers.md#qeva) | 0.7326 correlation coefficient | Single benchmark evaluation (p = 0.0000).; p-value 0.0000 | [Table 1, PDF page 6; Table 4, PDF page 7.](https://arxiv.org/pdf/2604.24052v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** mlvu-vs-eval
+- **Split identity:** MLVU(VS)-Eval 200-video / 800-summary benchmark
+- **Split:** Full 200-video / 800-summary evaluation benchmark.
+- **Training regime:** Training-free reference-free QA evaluation.
+- **Setting:** Reference-free multimodal QA meta-evaluation across 800 Video-LMM summaries.
+- **Features:** Gemini-1.5-Pro Video-LMM and GPT-4o LLM QA generation, filtering and answering.
+- **Sampling:** Full MLVU video context (~15 min average).
+- **Segmentation:** Prompted chronological event listing for Chronology QA.
+- **Shot aggregation:** Not applicable; summary-level Coverage, Factuality and Chronology QA accuracies averaged.
+- **Budget:** 10 generated QA pairs per dimension prior to triviality and low-quality filtering.
+- **Solver:** Arithmetic mean of filtered Coverage, Factuality and Chronology QA accuracy scores.
+- **Reference aggregation:** Correlation against human Likert ratings (2 independent annotators per summary out of 20 annotators; Krippendorff's alpha = 0.68).
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** Single benchmark evaluation (p = 0.0000).
+- **Reproduction:** author-reported
+- **qeva-mlvu-vs-eval-spearman (2026-10-18):** Reference-free meta-evaluation correlation with human summary quality judgments (outperforming Video-LMM Judge rho=0.6810, MLVU Judge rho=0.6738, and METEOR rho=0.3822).
+
+</details>
 
 ## MoSu — Complete-stream feature removal; one of visual, audio or text is zero-masked, averaged over −V/−A/−T. — mAP@15 (80088e8d)
 
@@ -264,6 +438,238 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 
 </details>
 
+## SM-MrHiSum — Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum. — Kendall tau (4f65ae76)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [SD-MVSum](generated/papers.md#sd-mvsum) | 0.204 correlation coefficient | Single split evaluation with two-tailed paired t-test (alpha=0.05).; Not reported | [Table 4, PDF page 9; Section 5.1–5.2, PDF page 8.](https://arxiv.org/pdf/2510.05652v2) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** sm-mrhisum
+- **Split identity:** Zenodo record 18862583 SM-MrHiSum split JSON
+- **Split:** Official SM-MrHiSum train/validation/test split over 29,917 videos (Zenodo record 18862583); best validation checkpoint over 50 epochs.
+- **Training regime:** Supervised MSE against frame-level importance scores (50 epochs, batch size 64, Adam lr=5e-5, dropout=0.5, L2=1e-4).
+- **Setting:** Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum.
+- **Features:** 512-D HuggingFace clip-ViT-B-32 embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.
+- **Sampling:** 1 fps video frame sampling.
+- **Segmentation:** Not applied to frame-level rank correlation.
+- **Shot aggregation:** Not applied to frame-level rank correlation.
+- **Budget:** Not applied to frame-level rank correlation.
+- **Solver:** None; continuous predicted frame scores ranked directly against ground-truth frame-level scores.
+- **Reference aggregation:** Per-video correlation against ground-truth frame-level importance scores, averaged across all test videos (Section 5.1).
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** Single split evaluation with two-tailed paired t-test (alpha=0.05).
+- **Reproduction:** author-reported
+- **sd-mvsum-sm-mrhisum-kendall (2026-10-18):** Statistically significant improvement over SD-VSum (0.175), CLIP-It (0.120), A2Summ (0.169), CSTA (0.193) and PGL-SUM (0.168).
+
+</details>
+
+## SM-MrHiSum — Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum. — Spearman rho (1f0e9c43)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [SD-MVSum](generated/papers.md#sd-mvsum) | 0.273 correlation coefficient | Single split evaluation with two-tailed paired t-test (alpha=0.05).; Not reported | [Table 4, PDF page 9; Section 5.1–5.2, PDF page 8.](https://arxiv.org/pdf/2510.05652v2) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** sm-mrhisum
+- **Split identity:** Zenodo record 18862583 SM-MrHiSum split JSON
+- **Split:** Official SM-MrHiSum train/validation/test split over 29,917 videos (Zenodo record 18862583); best validation checkpoint over 50 epochs.
+- **Training regime:** Supervised MSE against frame-level importance scores (50 epochs, batch size 64, Adam lr=5e-5, dropout=0.5, L2=1e-4).
+- **Setting:** Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum.
+- **Features:** 512-D HuggingFace clip-ViT-B-32 embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.
+- **Sampling:** 1 fps video frame sampling.
+- **Segmentation:** Not applied to frame-level rank correlation.
+- **Shot aggregation:** Not applied to frame-level rank correlation.
+- **Budget:** Not applied to frame-level rank correlation.
+- **Solver:** None; continuous predicted frame scores ranked directly against ground-truth frame-level scores.
+- **Reference aggregation:** Per-video correlation against ground-truth frame-level importance scores, averaged across all test videos (Section 5.1).
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** Single split evaluation with two-tailed paired t-test (alpha=0.05).
+- **Reproduction:** author-reported
+- **sd-mvsum-sm-mrhisum-spearman (2026-10-18):** Performs comparably with CSTA (0.274, difference not statistically significant at alpha=0.05) while outperforming SD-VSum (0.236) and A2Summ (0.239).
+
+</details>
+
+## SM-MrHiSum — Script-driven multimodal video summarization (script + visual + audio transcript) on SM-MrHiSum. — F1 (254b6096)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [SD-MVSum](generated/papers.md#sd-mvsum) | 59.3 percent | Single split evaluation with two-tailed paired t-test (alpha=0.05).; Not reported | [Table 4, PDF page 9; Section 5.1–5.2, PDF page 8.](https://arxiv.org/pdf/2510.05652v2) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** sm-mrhisum
+- **Split identity:** Zenodo record 18862583 SM-MrHiSum split JSON
+- **Split:** Official SM-MrHiSum train/validation/test split over 29,917 videos (Zenodo record 18862583); best validation checkpoint over 50 epochs.
+- **Training regime:** Supervised MSE against frame-level importance scores (50 epochs, batch size 64, Adam lr=5e-5, dropout=0.5, L2=1e-4).
+- **Setting:** Script-driven multimodal video summarization (script + visual + audio transcript) on SM-MrHiSum.
+- **Features:** 512-D HuggingFace clip-ViT-B-32 embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.
+- **Sampling:** 1 fps video frame sampling; transcript sentence embeddings repeated across spanned frames.
+- **Segmentation:** Predefined Mr. HiSum temporal segmentation.
+- **Shot aggregation:** Mean frame-level importance score per segment.
+- **Budget:** <=15% summary duration budget.
+- **Solver:** 0/1 knapsack problem following Mr. HiSum protocol (Section 5.1).
+- **Reference aggregation:** Single ground-truth knapsack summary per video; F-Score averaged across all test videos.
+- **Metric:** F1
+- **Unit:** percent
+- **Runs:** Single split evaluation with two-tailed paired t-test (alpha=0.05).
+- **Reproduction:** author-reported
+- **sd-mvsum-sm-mrhisum-f1 (2026-10-18):** Outperforms SD-VSum (57.9 F1), CLIP-It (56.3 F1), A2Summ (58.0 F1), CSTA (57.7 F1) and PGL-SUM (57.4 F1) on the SM-MrHiSum test set.
+
+</details>
+
+## SM-VideoXum — Script-driven multimodal video summarization (script + visual + audio transcript). — F1 (26622891)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [SD-MVSum](generated/papers.md#sd-mvsum) | 27.3 percent | Single split evaluation with two-tailed paired t-test (alpha=0.05) against baselines.; Not reported | [Table 4, PDF page 9; Section 5.1–5.2, PDF page 8.](https://arxiv.org/pdf/2510.05652v2) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** sm-videoxum
+- **Split identity:** Zenodo record 18862583 SM-VideoXum split JSON
+- **Split:** Official SM-VideoXum train/validation/test split (Zenodo record 18862583); best validation checkpoint over 50 epochs.
+- **Training regime:** Supervised binary cross-entropy (BCE) against per-script binary human summary masks (50 epochs, batch size 4 videos / 40 video-script pairs, Adam lr=5e-5, dropout=0.5, L2=1e-4).
+- **Setting:** Script-driven multimodal video summarization (script + visual + audio transcript).
+- **Features:** 512-D VideoXum-finetuned CLIP embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.
+- **Sampling:** 1 fps video frame sampling; transcript sentence embeddings repeated across spanned frames.
+- **Segmentation:** Frame-level selection without shot segmentation.
+- **Shot aggregation:** Not applicable; frame-level importance scores.
+- **Budget:** Top 15% highest-scoring frames per video-script pair.
+- **Solver:** Top-15% frame ranking.
+- **Reference aggregation:** F-Score computed between each script-conditioned prediction and its corresponding ground-truth human summary, averaged over the 10 scripts per video and then over all test videos (Section 5.1).
+- **Metric:** F1
+- **Unit:** percent
+- **Runs:** Single split evaluation with two-tailed paired t-test (alpha=0.05) against baselines.
+- **Reproduction:** author-reported
+- **sd-mvsum-sm-videoxum-f1 (2026-10-18):** Outperforms SD-VSum (24.4 F1) and CLIP-It (22.8 F1) on the same split with statistically significant paired t-test difference.
+
+</details>
+
+## SumMe — 5FCV canonical supervised setting; SumMe correlation is evaluated on binary 15%-budget KTS+knapsack summary videos against human summary videos (Appendix D). — Kendall tau (2af49006)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [CSTA (GoogLeNet)](generated/papers.md#csta) | 0.246 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Not reported | [Table 1, PDF page 7; Appendix A.1 (PDF page 11) and Appendix D (PDF page 13).](https://arxiv.org/pdf/2405.11905v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** CSTA repository 5-fold split files at commit b070f7d910b227e040dad66ec9f18b60dac5ea3d
+- **Split:** Non-overlapping 5-fold cross-validation (80% train / 20% test) repeated 10 times; best epoch per split selected on test rank correlation (Appendix A.1).
+- **Training regime:** Supervised MSE on averaged human ground-truth scores (100 epochs, batch size 1, Adam lr=1e-3, weight decay=1e-7, dropout=0.6).
+- **Setting:** 5FCV canonical supervised setting; SumMe correlation is evaluated on binary 15%-budget KTS+knapsack summary videos against human summary videos (Appendix D).
+- **Features:** GoogLeNet pool5 (1024-D) frame features replicated to 3 channels with 3x1024 CLS token.
+- **Sampling:** 2-fps subsampled frame sequence expanded to full frames for KTS+knapsack summary generation.
+- **Segmentation:** Kernel Temporal Segmentation (KTS) change points from standard SumMe HDF5 package.
+- **Shot aggregation:** Mean predicted frame importance score within each KTS shot.
+- **Budget:** 15% summary duration budget enforced via 0/1 knapsack.
+- **Solver:** 0/1 knapsack dynamic programming producing binary frame-level summary mask (1 for selected frames, 0 otherwise).
+- **Reference aggregation:** Per-annotator correlation between predicted binary summary video and each human ground-truth binary summary video, averaged across annotators and test videos (Appendix A.1 and Appendix D).
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **csta-summe-5fcv-kendall (2026-10-18):** Appendix D and repository evaluation_metrics.py confirm that on SumMe, CSTA computes Kendall tau and Spearman rho on the discretized 0/1 binary summary video rather than continuous pre-knapsack frame scores, and selects the best epoch per split on test correlation (Appendix A.1).
+
+</details>
+
+## SumMe — 5FCV canonical supervised setting; SumMe correlation is evaluated on binary 15%-budget KTS+knapsack summary videos against human summary videos (Appendix D). — Spearman rho (c574cbf2)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [CSTA (GoogLeNet)](generated/papers.md#csta) | 0.274 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Not reported | [Table 1, PDF page 7; Appendix A.1 (PDF page 11) and Appendix D (PDF page 13).](https://arxiv.org/pdf/2405.11905v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** CSTA repository 5-fold split files at commit b070f7d910b227e040dad66ec9f18b60dac5ea3d
+- **Split:** Non-overlapping 5-fold cross-validation (80% train / 20% test) repeated 10 times; best epoch per split selected on test rank correlation (Appendix A.1).
+- **Training regime:** Supervised MSE on averaged human ground-truth scores (100 epochs, batch size 1, Adam lr=1e-3, weight decay=1e-7, dropout=0.6).
+- **Setting:** 5FCV canonical supervised setting; SumMe correlation is evaluated on binary 15%-budget KTS+knapsack summary videos against human summary videos (Appendix D).
+- **Features:** GoogLeNet pool5 (1024-D) frame features replicated to 3 channels with 3x1024 CLS token.
+- **Sampling:** 2-fps subsampled frame sequence expanded to full frames for KTS+knapsack summary generation.
+- **Segmentation:** Kernel Temporal Segmentation (KTS) change points from standard SumMe HDF5 package.
+- **Shot aggregation:** Mean predicted frame importance score within each KTS shot.
+- **Budget:** 15% summary duration budget enforced via 0/1 knapsack.
+- **Solver:** 0/1 knapsack dynamic programming producing binary frame-level summary mask (1 for selected frames, 0 otherwise).
+- **Reference aggregation:** Per-annotator correlation between predicted binary summary video and each human ground-truth binary summary video, averaged across annotators and test videos (Appendix A.1 and Appendix D).
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **csta-summe-5fcv-spearman (2026-10-18):** Appendix D and repository evaluation_metrics.py confirm that on SumMe, CSTA computes Kendall tau and Spearman rho on the discretized 0/1 binary summary video rather than continuous pre-knapsack frame scores, and selects the best epoch per split on test correlation (Appendix A.1).
+
+</details>
+
+## SumMe — 5FCV five-fold cross-validation protocol on SumMe. — Kendall tau (cc4840a0)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [VASTSum](generated/papers.md#vastsum) | 0.253 correlation coefficient | Average across 5 splits (Table III per-split tau: 0.298, 0.313, 0.318, 0.182, 0.156).; Per-split range 0.156 to 0.318 across Splits 0–4 (Table III). | [Table II and Table III, PDF page 6.](https://arxiv.org/pdf/2605.09507v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** Standard five-split 5FCV protocol; per-split values reported in Table III (Splits 0–4)
+- **Split:** Five-fold cross-validation (5FCV) protocol matching CSTA/SummDiff.
+- **Training regime:** Supervised soft-min multi-annotator BCE + pairwise hinge ranking + variational KL + knapsack stability margin loss.
+- **Setting:** 5FCV five-fold cross-validation protocol on SumMe.
+- **Features:** Pre-extracted GoogLeNet pool5 (1024-D) visual features.
+- **Sampling:** 2-fps sampled feature sequence using posterior mean z_t = mu_{z,t} at inference.
+- **Segmentation:** KTS change-point partition.
+- **Shot aggregation:** Mean frame score within each KTS segment.
+- **Budget:** 15% summary duration budget.
+- **Solver:** Deterministic posterior-mean importance ranking.
+- **Reference aggregation:** Correlations computed against the mean user summary derived from multiple user annotations (Section V-C).
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** Average across 5 splits (Table III per-split tau: 0.298, 0.313, 0.318, 0.182, 0.156).
+- **Reproduction:** author-reported
+- **vastsum-summe-5fcv-kendall (2026-10-18):** 5FCV protocol; Table III documents pronounced split sensitivity (Split 2 tau=0.318 vs. Split 4 tau=0.156).
+
+</details>
+
+## SumMe — 5FCV five-fold cross-validation protocol on SumMe. — Spearman rho (2999532d)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [VASTSum](generated/papers.md#vastsum) | 0.281 correlation coefficient | Average across 5 splits (Table III per-split rho: 0.332, 0.347, 0.357, 0.201, 0.176).; Per-split range 0.176 to 0.357 across Splits 0–4 (Table III). | [Table II and Table III, PDF page 6.](https://arxiv.org/pdf/2605.09507v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** Standard five-split 5FCV protocol; per-split values reported in Table III (Splits 0–4)
+- **Split:** Five-fold cross-validation (5FCV) protocol matching CSTA/SummDiff.
+- **Training regime:** Supervised soft-min multi-annotator BCE + pairwise hinge ranking + variational KL + knapsack stability margin loss.
+- **Setting:** 5FCV five-fold cross-validation protocol on SumMe.
+- **Features:** Pre-extracted GoogLeNet pool5 (1024-D) visual features.
+- **Sampling:** 2-fps sampled feature sequence using posterior mean z_t = mu_{z,t} at inference.
+- **Segmentation:** KTS change-point partition.
+- **Shot aggregation:** Mean frame score within each KTS segment.
+- **Budget:** 15% summary duration budget.
+- **Solver:** Deterministic posterior-mean importance ranking.
+- **Reference aggregation:** Correlations computed against the mean user summary derived from multiple user annotations (Section V-C).
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** Average across 5 splits (Table III per-split rho: 0.332, 0.347, 0.357, 0.201, 0.176).
+- **Reproduction:** author-reported
+- **vastsum-summe-5fcv-spearman (2026-10-18):** 5FCV protocol; Table III documents pronounced split sensitivity (Split 2 rho=0.357 vs. Split 4 rho=0.176).
+
+</details>
+
 ## SumMe — Auxiliary bootstrapped-metadata protocol; text descriptors only, using generic titles plus a Qwen2.5-VL-inferred category because SumMe has no native category metadata. — Kendall tau (7f016a50)
 
 | Method | Value | Runs / uncertainty | Source |
@@ -435,6 +841,209 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Runs:** Five folds; independent seed repetitions not reported.
 - **Reproduction:** author-reported
 - **triplesumm-summe-mosu-finetuned-tvt-tau (2026-09-08):** Dedicated validation/test protocol; do not mix with the larger TV values in adjacent columns. Additional text/audio inputs differ from visual-only historical baselines. Unknown reference aggregation and feature-remapping fields prevent exact protocol-equivalence claims. No independent rerun.
+
+</details>
+
+## SumMe — Self-supervised 10-run 5-fold cross-validation keyshot F1 on SumMe. — F1 (7d6114fd)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TRIM (Two-stage SSL + Unsupervised)](generated/papers.md#trim) | 43.67 percent | 10 independent runs of 5-fold cross-validation.; Not reported | [Appendix A.1, Table 3, PDF page 13.](https://arxiv.org/pdf/2506.20588v3) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** TRIM published non-overlapping 5-fold split (Appendix Table 6 and Figure 8 of arXiv:2506.20588v3)
+- **Split:** Non-overlapping 5-fold cross-validation repeated 10 times; fixed 60 SSL + 90 fine-tuning epochs across all folds (Appendix Table 6 and Figure 8).
+- **Training regime:** Two-stage self-supervised / unsupervised training without human labels (alpha=1, beta=0, gamma=0.5, nu=0.0005 on SumMe).
+- **Setting:** Self-supervised 10-run 5-fold cross-validation keyshot F1 on SumMe.
+- **Features:** Frozen ImageNet-pretrained ResNet-50 (2048-D) features with 256x256 resize and 224x224 center crop.
+- **Sampling:** Benchmark frame feature sequence.
+- **Segmentation:** KTS shot segmentation.
+- **Shot aggregation:** Mean predicted importance probability per KTS shot.
+- **Budget:** 15% summary duration budget.
+- **Solver:** 0/1 knapsack dynamic programming.
+- **Reference aggregation:** Mean F1 across 10 runs of 5-fold cross-validation; exact max vs. mean multi-user SumMe aggregation rule is not restated in Appendix A.1.
+- **Metric:** F1
+- **Unit:** percent
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **trim-summe-5fcv-f1 (2026-10-18):** Reported as the mean across 10 full 5-fold runs rather than a single-split maximum; ResNet-50 features.
+
+</details>
+
+## SumMe — Self-supervised 10-run 5-fold cross-validation on SumMe. — Kendall tau (09d21f45)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TRIM (Two-stage SSL + Unsupervised)](generated/papers.md#trim) | 0.127 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Low standard deviation across 10 runs plotted in Figure 6 (exact numeric std not tabulated). | [Table 1, PDF page 7; Table 2, PDF page 9; Table 4, PDF page 14.](https://arxiv.org/pdf/2506.20588v3) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** TRIM published non-overlapping 5-fold split (Appendix Table 6 and Figure 8 of arXiv:2506.20588v3)
+- **Split:** Non-overlapping 5-fold cross-validation repeated 10 times; fixed 60 SSL + 90 fine-tuning epochs across all folds (Appendix Tables 6 and Figure 8).
+- **Training regime:** Two-stage self-supervised / unsupervised training without human labels (alpha=1, beta=0, gamma=0.5, nu=0.0005 on SumMe).
+- **Setting:** Self-supervised 10-run 5-fold cross-validation on SumMe.
+- **Features:** Frozen ImageNet-pretrained ResNet-50 (2048-D) features with 256x256 resize and 224x224 center crop.
+- **Sampling:** Benchmark frame feature sequence.
+- **Segmentation:** KTS shot segmentation used for summary generation.
+- **Shot aggregation:** Mean predicted importance probability per KTS shot.
+- **Budget:** 15% summary duration budget via 0/1 knapsack.
+- **Solver:** 0/1 knapsack following CSTA evaluation methodology (Section 4.2).
+- **Reference aggregation:** Multi-annotator rank correlation following CSTA/MAAM protocol.
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **trim-summe-5fcv-kendall (2026-10-18):** Uses ResNet-50 (2048-D) features with 256->224 center crop (Table 4 shows 224x224 direct resize gets tau=0.125) and dataset-specific hyperparameters (beta=0, gamma=0.5, nu=0.0005).
+
+</details>
+
+## SumMe — Self-supervised 10-run 5-fold cross-validation on SumMe. — Spearman rho (0a7b468b)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TRIM (Two-stage SSL + Unsupervised)](generated/papers.md#trim) | 0.14 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Low standard deviation across 10 runs plotted in Figure 6 (exact numeric std not tabulated). | [Table 1, PDF page 7; Table 2, PDF page 9; Table 4, PDF page 14.](https://arxiv.org/pdf/2506.20588v3) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** TRIM published non-overlapping 5-fold split (Appendix Table 6 and Figure 8 of arXiv:2506.20588v3)
+- **Split:** Non-overlapping 5-fold cross-validation repeated 10 times; fixed 60 SSL + 90 fine-tuning epochs across all folds (Appendix Tables 6 and Figure 8).
+- **Training regime:** Two-stage self-supervised / unsupervised training without human labels (alpha=1, beta=0, gamma=0.5, nu=0.0005 on SumMe).
+- **Setting:** Self-supervised 10-run 5-fold cross-validation on SumMe.
+- **Features:** Frozen ImageNet-pretrained ResNet-50 (2048-D) features with 256x256 resize and 224x224 center crop.
+- **Sampling:** Benchmark frame feature sequence.
+- **Segmentation:** KTS shot segmentation used for summary generation.
+- **Shot aggregation:** Mean predicted importance probability per KTS shot.
+- **Budget:** 15% summary duration budget via 0/1 knapsack.
+- **Solver:** 0/1 knapsack following CSTA evaluation methodology (Section 4.2).
+- **Reference aggregation:** Multi-annotator rank correlation following CSTA/MAAM protocol.
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **trim-summe-5fcv-spearman (2026-10-18):** Uses ResNet-50 (2048-D) features with 256->224 center crop (Table 4 shows 224x224 direct resize gets rho=0.136) and dataset-specific hyperparameters (beta=0, gamma=0.5, nu=0.0005).
+
+</details>
+
+## SumMe — Self-supervised RL 10-run 5-fold cross-validation on SumMe. — Kendall tau (782da290)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TRIMMER (SSL + RL)](generated/papers.md#trimmer) | 0.135 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Not reported | [Table 1 and Table 2, PDF page 8.](https://arxiv.org/pdf/2605.01659v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** TRIM/TRIMMER non-overlapping 5-fold split
+- **Split:** Non-overlapping 5-fold cross-validation repeated 10 times (following CSTA/MAAM/TRIM).
+- **Training regime:** Stage 1 SSL pretraining (90 epochs, mask ratio m=0.4, nu=0.1) + Stage 2 REINFORCE RL (60 epochs, lambda=0.85, T=5 episodes, epsilon=0.5, beta=0.01) without human labels.
+- **Setting:** Self-supervised RL 10-run 5-fold cross-validation on SumMe.
+- **Features:** Frozen 2048-D CNN frame features.
+- **Sampling:** Benchmark frame feature sequence.
+- **Segmentation:** KTS shot segmentation.
+- **Shot aggregation:** Mean predicted importance score per KTS shot.
+- **Budget:** 15% summary duration budget via 0/1 knapsack.
+- **Solver:** 0/1 knapsack dynamic programming (Section 3.8).
+- **Reference aggregation:** Multi-annotator rank correlation following CSTA/TRIM protocol.
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **trimmer-summe-5fcv-kendall (2026-10-18):** Stage-1 hyperparameters (m=0.4, nu=0.1) are selected via a 40-experiment grid search on SumMe (Section 4.3).
+
+</details>
+
+## SumMe — Self-supervised RL 10-run 5-fold cross-validation on SumMe. — Spearman rho (ac4d8296)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TRIMMER (SSL + RL)](generated/papers.md#trimmer) | 0.151 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Not reported | [Table 1 and Table 2, PDF page 8.](https://arxiv.org/pdf/2605.01659v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** TRIM/TRIMMER non-overlapping 5-fold split
+- **Split:** Non-overlapping 5-fold cross-validation repeated 10 times (following CSTA/MAAM/TRIM).
+- **Training regime:** Stage 1 SSL pretraining (90 epochs, mask ratio m=0.4, nu=0.1) + Stage 2 REINFORCE RL (60 epochs, lambda=0.85, T=5 episodes, epsilon=0.5, beta=0.01) without human labels.
+- **Setting:** Self-supervised RL 10-run 5-fold cross-validation on SumMe.
+- **Features:** Frozen 2048-D CNN frame features.
+- **Sampling:** Benchmark frame feature sequence.
+- **Segmentation:** KTS shot segmentation.
+- **Shot aggregation:** Mean predicted importance score per KTS shot.
+- **Budget:** 15% summary duration budget via 0/1 knapsack.
+- **Solver:** 0/1 knapsack dynamic programming (Section 3.8).
+- **Reference aggregation:** Multi-annotator rank correlation following CSTA/TRIM protocol.
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **trimmer-summe-5fcv-spearman (2026-10-18):** Stage-1 hyperparameters (m=0.4, nu=0.1) are selected via a 40-experiment grid search on SumMe (Section 4.3).
+
+</details>
+
+## SumMe — TVT protocol (validation-selected checkpoint per split) on SumMe. — Kendall tau (216674ae)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [VASTSum](generated/papers.md#vastsum) | 0.157 correlation coefficient | Average across five TVT splits.; Not reported for TVT | [Table I, PDF page 6; Section V-B/C/E, PDF pages 5–6.](https://arxiv.org/pdf/2605.09507v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** SummDiff-aligned five TVT splits; exact split file hash not published in VASTSum paper
+- **Split:** Five train/validation/test (TVT) splits following SummDiff; final checkpoint selected on validation performance within each split.
+- **Training regime:** Supervised soft-min multi-annotator BCE + pairwise hinge ranking + variational KL + knapsack stability margin loss.
+- **Setting:** TVT protocol (validation-selected checkpoint per split) on SumMe.
+- **Features:** Pre-extracted GoogLeNet pool5 (1024-D) visual features.
+- **Sampling:** 2-fps sampled feature sequence using posterior mean z_t = mu_{z,t} at inference.
+- **Segmentation:** KTS change-point partition used for hierarchical segment tokens and stability margin loss.
+- **Shot aggregation:** Mean frame score within each KTS segment for decoder alignment.
+- **Budget:** 15% summary duration budget in decoder-aligned stability regularization.
+- **Solver:** Deterministic posterior-mean importance ranking evaluated against mean user summary (Section V-C).
+- **Reference aggregation:** Correlations computed against the mean user summary derived from multiple user annotations (Section V-C).
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** Average across five TVT splits.
+- **Reproduction:** author-reported
+- **vastsum-summe-tvt-kendall (2026-10-18):** Validation-selected TVT protocol; keep strictly separate from 5FCV results.
+
+</details>
+
+## SumMe — TVT protocol (validation-selected checkpoint per split) on SumMe. — Spearman rho (0bcb103b)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [VASTSum](generated/papers.md#vastsum) | 0.161 correlation coefficient | Average across five TVT splits.; Not reported for TVT | [Table I, PDF page 6; Section V-B/C/E, PDF pages 5–6.](https://arxiv.org/pdf/2605.09507v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** summe
+- **Split identity:** SummDiff-aligned five TVT splits; exact split file hash not published in VASTSum paper
+- **Split:** Five train/validation/test (TVT) splits following SummDiff; final checkpoint selected on validation performance within each split.
+- **Training regime:** Supervised soft-min multi-annotator BCE + pairwise hinge ranking + variational KL + knapsack stability margin loss.
+- **Setting:** TVT protocol (validation-selected checkpoint per split) on SumMe.
+- **Features:** Pre-extracted GoogLeNet pool5 (1024-D) visual features.
+- **Sampling:** 2-fps sampled feature sequence using posterior mean z_t = mu_{z,t} at inference.
+- **Segmentation:** KTS change-point partition used for hierarchical segment tokens and stability margin loss.
+- **Shot aggregation:** Mean frame score within each KTS segment for decoder alignment.
+- **Budget:** 15% summary duration budget in decoder-aligned stability regularization.
+- **Solver:** Deterministic posterior-mean importance ranking evaluated against mean user summary (Section V-C).
+- **Reference aggregation:** Correlations computed against the mean user summary derived from multiple user annotations (Section V-C).
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** Average across five TVT splits.
+- **Reproduction:** author-reported
+- **vastsum-summe-tvt-spearman (2026-10-18):** Validation-selected TVT protocol; keep strictly separate from 5FCV results.
 
 </details>
 
@@ -1076,6 +1685,122 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 
 </details>
 
+## TVSum / TVSum50 — 5FCV canonical supervised setting; TVSum correlation is evaluated on 2-fps subsampled frame scores expanded to full frames against 20 user annotations (Appendix D). — Kendall tau (6d04973f)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [CSTA (GoogLeNet)](generated/papers.md#csta) | 0.194 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Not reported | [Table 1, PDF page 7; Appendix A.1 (PDF page 11) and Appendix D (PDF page 13).](https://arxiv.org/pdf/2405.11905v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** CSTA repository 5-fold split files at commit b070f7d910b227e040dad66ec9f18b60dac5ea3d
+- **Split:** Non-overlapping 5-fold cross-validation (80% train / 20% test) repeated 10 times; best epoch per split selected on test rank correlation (Appendix A.1).
+- **Training regime:** Supervised MSE on averaged human ground-truth scores (100 epochs, batch size 1, Adam lr=1e-3, weight decay=1e-7, dropout=0.6).
+- **Setting:** 5FCV canonical supervised setting; TVSum correlation is evaluated on 2-fps subsampled frame scores expanded to full frames against 20 user annotations (Appendix D).
+- **Features:** GoogLeNet pool5 (1024-D) frame features replicated to 3 channels with 3x1024 CLS token.
+- **Sampling:** 2-fps subsampled frame scores assigned to nearby frames across the full video timeline.
+- **Segmentation:** Not applied to TVSum rank correlation evaluation.
+- **Shot aggregation:** Not applied to TVSum rank correlation evaluation.
+- **Budget:** Not applied to TVSum rank correlation evaluation.
+- **Solver:** None; continuous frame-expanded importance scores ranked directly.
+- **Reference aggregation:** Per-annotator correlation against each of the 20 human shot-level importance annotations, averaged over annotators and test videos (Appendix A.1 and Appendix D).
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **csta-tvsum-5fcv-kendall (2026-10-18):** Best epoch per split is selected on test correlation during training (Appendix A.1); do not mix with validation-selected TVT results.
+
+</details>
+
+## TVSum / TVSum50 — 5FCV canonical supervised setting; TVSum correlation is evaluated on 2-fps subsampled frame scores expanded to full frames against 20 user annotations (Appendix D). — Spearman rho (305c0139)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [CSTA (GoogLeNet)](generated/papers.md#csta) | 0.255 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Not reported | [Table 1, PDF page 7; Appendix A.1 (PDF page 11) and Appendix D (PDF page 13).](https://arxiv.org/pdf/2405.11905v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** CSTA repository 5-fold split files at commit b070f7d910b227e040dad66ec9f18b60dac5ea3d
+- **Split:** Non-overlapping 5-fold cross-validation (80% train / 20% test) repeated 10 times; best epoch per split selected on test rank correlation (Appendix A.1).
+- **Training regime:** Supervised MSE on averaged human ground-truth scores (100 epochs, batch size 1, Adam lr=1e-3, weight decay=1e-7, dropout=0.6).
+- **Setting:** 5FCV canonical supervised setting; TVSum correlation is evaluated on 2-fps subsampled frame scores expanded to full frames against 20 user annotations (Appendix D).
+- **Features:** GoogLeNet pool5 (1024-D) frame features replicated to 3 channels with 3x1024 CLS token.
+- **Sampling:** 2-fps subsampled frame scores assigned to nearby frames across the full video timeline.
+- **Segmentation:** Not applied to TVSum rank correlation evaluation.
+- **Shot aggregation:** Not applied to TVSum rank correlation evaluation.
+- **Budget:** Not applied to TVSum rank correlation evaluation.
+- **Solver:** None; continuous frame-expanded importance scores ranked directly.
+- **Reference aggregation:** Per-annotator correlation against each of the 20 human shot-level importance annotations, averaged over annotators and test videos (Appendix A.1 and Appendix D).
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **csta-tvsum-5fcv-spearman (2026-10-18):** Best epoch per split is selected on test correlation during training (Appendix A.1); do not mix with validation-selected TVT results.
+
+</details>
+
+## TVSum / TVSum50 — 5FCV five-fold cross-validation protocol on TVSum. — Kendall tau (21a7d2f4)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [VASTSum](generated/papers.md#vastsum) | 0.229 correlation coefficient | Average across 5 splits (Table III per-split tau: 0.264, 0.263, 0.219, 0.253, 0.145).; Per-split range 0.145 to 0.264 across Splits 0–4 (Table III). | [Table II and Table III, PDF page 6.](https://arxiv.org/pdf/2605.09507v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** Standard five-split 5FCV protocol; per-split values reported in Table III (Splits 0–4)
+- **Split:** Five-fold cross-validation (5FCV) protocol matching CSTA/SummDiff.
+- **Training regime:** Supervised multi-annotator heteroscedastic Gaussian NLL + pairwise hinge ranking + variational KL + knapsack stability margin loss.
+- **Setting:** 5FCV five-fold cross-validation protocol on TVSum.
+- **Features:** Pre-extracted GoogLeNet pool5 (1024-D) visual features.
+- **Sampling:** 2-fps sampled feature sequence using posterior mean z_t = mu_{z,t} at inference.
+- **Segmentation:** KTS change-point partition.
+- **Shot aggregation:** Mean frame score within each KTS segment.
+- **Budget:** 15% summary duration budget.
+- **Solver:** Deterministic posterior-mean importance ranking.
+- **Reference aggregation:** Correlations computed per video by averaging over the 20 human annotators, then averaged across test videos (Section V-C).
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** Average across 5 splits (Table III per-split tau: 0.264, 0.263, 0.219, 0.253, 0.145).
+- **Reproduction:** author-reported
+- **vastsum-tvsum-5fcv-kendall (2026-10-18):** 5FCV protocol; Table III reports per-split scores showing strong performance on Splits 0–3 and lower correlation on Split 4 (tau=0.145).
+
+</details>
+
+## TVSum / TVSum50 — 5FCV five-fold cross-validation protocol on TVSum. — Spearman rho (71edb2bd)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [VASTSum](generated/papers.md#vastsum) | 0.298 correlation coefficient | Average across 5 splits (Table III per-split rho: 0.344, 0.340, 0.286, 0.329, 0.191).; Per-split range 0.191 to 0.344 across Splits 0–4 (Table III). | [Table II and Table III, PDF page 6.](https://arxiv.org/pdf/2605.09507v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** Standard five-split 5FCV protocol; per-split values reported in Table III (Splits 0–4)
+- **Split:** Five-fold cross-validation (5FCV) protocol matching CSTA/SummDiff.
+- **Training regime:** Supervised multi-annotator heteroscedastic Gaussian NLL + pairwise hinge ranking + variational KL + knapsack stability margin loss.
+- **Setting:** 5FCV five-fold cross-validation protocol on TVSum.
+- **Features:** Pre-extracted GoogLeNet pool5 (1024-D) visual features.
+- **Sampling:** 2-fps sampled feature sequence using posterior mean z_t = mu_{z,t} at inference.
+- **Segmentation:** KTS change-point partition.
+- **Shot aggregation:** Mean frame score within each KTS segment.
+- **Budget:** 15% summary duration budget.
+- **Solver:** Deterministic posterior-mean importance ranking.
+- **Reference aggregation:** Correlations computed per video by averaging over the 20 human annotators, then averaged across test videos (Section V-C).
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** Average across 5 splits (Table III per-split rho: 0.344, 0.340, 0.286, 0.329, 0.191).
+- **Reproduction:** author-reported
+- **vastsum-tvsum-5fcv-spearman (2026-10-18):** 5FCV protocol; Table III reports per-split scores showing strong performance on Splits 0–3 and lower correlation on Split 4 (rho=0.191).
+
+</details>
+
 ## TVSum / TVSum50 — Native title/category metadata; text plus synthetic-image descriptors with reference-frame style transfer at image-conditioning scale 0.7. — Kendall tau (b17bb813)
 
 | Method | Value | Runs / uncertainty | Source |
@@ -1131,6 +1856,209 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Runs:** Generation/evaluation repetition count not reported; Table 1 shows one point estimate per variant.
 - **Reproduction:** author-reported
 - **byra-zero-shot-tvsum-spearman (2026-09-19):** This is TVSum's dataset-specific best variant, not the same configuration as SumMe's best. No code, prompt manifest, evaluated-video manifest, seeds, model/API revisions or uncertainty were released. Table 2's shared 'best variant' label must not merge these protocols.
+
+</details>
+
+## TVSum / TVSum50 — Self-supervised 10-run 5-fold cross-validation keyshot F1 on TVSum. — F1 (1182ae59)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TRIM (Two-stage SSL + Unsupervised)](generated/papers.md#trim) | 59.61 percent | 10 independent runs of 5-fold cross-validation.; Not reported | [Appendix A.1, Table 3, PDF page 13.](https://arxiv.org/pdf/2506.20588v3) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** TRIM published non-overlapping 5-fold split (Appendix Table 7 and Figure 7 of arXiv:2506.20588v3)
+- **Split:** Non-overlapping 5-fold cross-validation repeated 10 times; fixed 60 SSL + 90 fine-tuning epochs across all folds (Appendix Table 7 and Figure 7).
+- **Training regime:** Two-stage self-supervised / unsupervised training without human labels (alpha=1, beta=5, gamma=0, nu=0.005 on TVSum).
+- **Setting:** Self-supervised 10-run 5-fold cross-validation keyshot F1 on TVSum.
+- **Features:** Frozen ImageNet-pretrained ResNet-50 (2048-D) features with 256x256 resize and 224x224 center crop.
+- **Sampling:** Benchmark frame feature sequence.
+- **Segmentation:** KTS shot segmentation.
+- **Shot aggregation:** Mean predicted importance probability per KTS shot.
+- **Budget:** 15% summary duration budget.
+- **Solver:** 0/1 knapsack dynamic programming.
+- **Reference aggregation:** Mean F1 across 20 annotators and 10 runs of 5-fold cross-validation.
+- **Metric:** F1
+- **Unit:** percent
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **trim-tvsum-5fcv-f1 (2026-10-18):** Reported as the mean across 10 full 5-fold runs; ResNet-50 features.
+
+</details>
+
+## TVSum / TVSum50 — Self-supervised 10-run 5-fold cross-validation on TVSum. — Kendall tau (2cf54592)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TRIM (Two-stage SSL + Unsupervised)](generated/papers.md#trim) | 0.181 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Low standard deviation across 10 runs plotted in Figure 6 (exact numeric std not tabulated). | [Table 1, PDF page 7; Table 2, PDF page 9; Table 4, PDF page 14.](https://arxiv.org/pdf/2506.20588v3) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** TRIM published non-overlapping 5-fold split (Appendix Table 7 and Figure 7 of arXiv:2506.20588v3)
+- **Split:** Non-overlapping 5-fold cross-validation repeated 10 times; fixed 60 SSL + 90 fine-tuning epochs across all folds (Appendix Table 7 and Figure 7).
+- **Training regime:** Two-stage self-supervised / unsupervised training without human labels (alpha=1, beta=5, gamma=0, nu=0.005 on TVSum).
+- **Setting:** Self-supervised 10-run 5-fold cross-validation on TVSum.
+- **Features:** Frozen ImageNet-pretrained ResNet-50 (2048-D) features with 256x256 resize and 224x224 center crop.
+- **Sampling:** Benchmark frame feature sequence.
+- **Segmentation:** KTS shot segmentation.
+- **Shot aggregation:** Mean predicted importance probability per KTS shot.
+- **Budget:** 15% summary duration budget via 0/1 knapsack.
+- **Solver:** Follows CSTA evaluation methodology (Section 4.2).
+- **Reference aggregation:** Averaged across 20 human ground-truth annotators per video and across 10 5-fold runs.
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **trim-tvsum-5fcv-kendall (2026-10-18):** Uses ResNet-50 (2048-D) features with 256->224 center crop (Table 4 shows 224x224 direct resize gets tau=0.174; Stage-2-only unsupervised gets tau=0.110/0.146).
+
+</details>
+
+## TVSum / TVSum50 — Self-supervised 10-run 5-fold cross-validation on TVSum. — Spearman rho (7f26dc44)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TRIM (Two-stage SSL + Unsupervised)](generated/papers.md#trim) | 0.228 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Low standard deviation across 10 runs plotted in Figure 6 (exact numeric std not tabulated). | [Table 1, PDF page 7; Table 2, PDF page 9; Table 4, PDF page 14.](https://arxiv.org/pdf/2506.20588v3) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** TRIM published non-overlapping 5-fold split (Appendix Table 7 and Figure 7 of arXiv:2506.20588v3)
+- **Split:** Non-overlapping 5-fold cross-validation repeated 10 times; fixed 60 SSL + 90 fine-tuning epochs across all folds (Appendix Table 7 and Figure 7).
+- **Training regime:** Two-stage self-supervised / unsupervised training without human labels (alpha=1, beta=5, gamma=0, nu=0.005 on TVSum).
+- **Setting:** Self-supervised 10-run 5-fold cross-validation on TVSum.
+- **Features:** Frozen ImageNet-pretrained ResNet-50 (2048-D) features with 256x256 resize and 224x224 center crop.
+- **Sampling:** Benchmark frame feature sequence.
+- **Segmentation:** KTS shot segmentation.
+- **Shot aggregation:** Mean predicted importance probability per KTS shot.
+- **Budget:** 15% summary duration budget via 0/1 knapsack.
+- **Solver:** Follows CSTA evaluation methodology (Section 4.2).
+- **Reference aggregation:** Averaged across 20 human ground-truth annotators per video and across 10 5-fold runs.
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **trim-tvsum-5fcv-spearman (2026-10-18):** Uses ResNet-50 (2048-D) features with 256->224 center crop (Table 4 shows 224x224 direct resize gets rho=0.222; Stage-2-only unsupervised gets rho=0.145/0.192).
+
+</details>
+
+## TVSum / TVSum50 — Self-supervised RL 10-run 5-fold cross-validation on TVSum. — Kendall tau (9630fff7)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TRIMMER (SSL + RL)](generated/papers.md#trimmer) | 0.195 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Not reported | [Table 1 and Table 2, PDF page 8.](https://arxiv.org/pdf/2605.01659v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** TRIM/TRIMMER non-overlapping 5-fold split
+- **Split:** Non-overlapping 5-fold cross-validation repeated 10 times (following CSTA/MAAM/TRIM).
+- **Training regime:** Stage 1 SSL pretraining (90 epochs, mask ratio m=0.3, nu=0.005) + Stage 2 REINFORCE RL (60 epochs, lambda=0.85, T=5 episodes, epsilon=0.5, beta=0.01) without human labels.
+- **Setting:** Self-supervised RL 10-run 5-fold cross-validation on TVSum.
+- **Features:** Frozen 2048-D CNN frame features.
+- **Sampling:** Benchmark frame feature sequence.
+- **Segmentation:** KTS shot segmentation.
+- **Shot aggregation:** Mean predicted importance score per KTS shot.
+- **Budget:** 15% summary duration budget via 0/1 knapsack.
+- **Solver:** 0/1 knapsack dynamic programming (Section 3.8).
+- **Reference aggregation:** Averaged across 20 human ground-truth annotators per video and across 10 5-fold runs.
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **trimmer-tvsum-5fcv-kendall (2026-10-18):** Stage-1 hyperparameters (m=0.3, nu=0.005) selected via 40-experiment grid search on TVSum (Section 4.3).
+
+</details>
+
+## TVSum / TVSum50 — Self-supervised RL 10-run 5-fold cross-validation on TVSum. — Spearman rho (5de215e6)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [TRIMMER (SSL + RL)](generated/papers.md#trimmer) | 0.255 correlation coefficient | 10 independent runs of 5-fold cross-validation.; Not reported | [Table 1 and Table 2, PDF page 8.](https://arxiv.org/pdf/2605.01659v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** TRIM/TRIMMER non-overlapping 5-fold split
+- **Split:** Non-overlapping 5-fold cross-validation repeated 10 times (following CSTA/MAAM/TRIM).
+- **Training regime:** Stage 1 SSL pretraining (90 epochs, mask ratio m=0.3, nu=0.005) + Stage 2 REINFORCE RL (60 epochs, lambda=0.85, T=5 episodes, epsilon=0.5, beta=0.01) without human labels.
+- **Setting:** Self-supervised RL 10-run 5-fold cross-validation on TVSum.
+- **Features:** Frozen 2048-D CNN frame features.
+- **Sampling:** Benchmark frame feature sequence.
+- **Segmentation:** KTS shot segmentation.
+- **Shot aggregation:** Mean predicted importance score per KTS shot.
+- **Budget:** 15% summary duration budget via 0/1 knapsack.
+- **Solver:** 0/1 knapsack dynamic programming (Section 3.8).
+- **Reference aggregation:** Averaged across 20 human ground-truth annotators per video and across 10 5-fold runs.
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** 10 independent runs of 5-fold cross-validation.
+- **Reproduction:** author-reported
+- **trimmer-tvsum-5fcv-spearman (2026-10-18):** Stage-1 hyperparameters (m=0.3, nu=0.005) selected via 40-experiment grid search on TVSum (Section 4.3).
+
+</details>
+
+## TVSum / TVSum50 — TVT protocol (validation-selected checkpoint per split) on TVSum. — Kendall tau (79ce048c)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [VASTSum](generated/papers.md#vastsum) | 0.179 correlation coefficient | Average across five TVT splits.; Not reported for TVT | [Table I, PDF page 6; Section V-B/C/E, PDF pages 5–6.](https://arxiv.org/pdf/2605.09507v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** SummDiff-aligned five TVT splits; exact split file hash not published in VASTSum paper
+- **Split:** Five train/validation/test (TVT) splits following SummDiff; final checkpoint selected on validation performance within each split.
+- **Training regime:** Supervised multi-annotator heteroscedastic Gaussian NLL + pairwise hinge ranking + variational KL + knapsack stability margin loss.
+- **Setting:** TVT protocol (validation-selected checkpoint per split) on TVSum.
+- **Features:** Pre-extracted GoogLeNet pool5 (1024-D) visual features.
+- **Sampling:** 2-fps sampled feature sequence using posterior mean z_t = mu_{z,t} at inference.
+- **Segmentation:** KTS change-point partition used for hierarchical segment tokens and stability margin loss.
+- **Shot aggregation:** Mean frame score within each KTS segment for decoder alignment.
+- **Budget:** 15% summary duration budget in decoder-aligned stability regularization.
+- **Solver:** Deterministic posterior-mean importance ranking.
+- **Reference aggregation:** Correlations computed per video by averaging over the 20 human annotators, then averaged across test videos (Section V-C).
+- **Metric:** Kendall tau
+- **Unit:** correlation coefficient
+- **Runs:** Average across five TVT splits.
+- **Reproduction:** author-reported
+- **vastsum-tvsum-tvt-kendall (2026-10-18):** Validation-selected TVT protocol; keep strictly separate from 5FCV results.
+
+</details>
+
+## TVSum / TVSum50 — TVT protocol (validation-selected checkpoint per split) on TVSum. — Spearman rho (c19a1a2d)
+
+| Method | Value | Runs / uncertainty | Source |
+|---|---:|---|---|
+| [VASTSum](generated/papers.md#vastsum) | 0.27 correlation coefficient | Average across five TVT splits.; Not reported for TVT | [Table I, PDF page 6; Section V-B/C/E, PDF pages 5–6.](https://arxiv.org/pdf/2605.09507v1) |
+
+<details>
+<summary>Full protocol and comparison limits</summary>
+
+- **Dataset id:** tvsum
+- **Split identity:** SummDiff-aligned five TVT splits; exact split file hash not published in VASTSum paper
+- **Split:** Five train/validation/test (TVT) splits following SummDiff; final checkpoint selected on validation performance within each split.
+- **Training regime:** Supervised multi-annotator heteroscedastic Gaussian NLL + pairwise hinge ranking + variational KL + knapsack stability margin loss.
+- **Setting:** TVT protocol (validation-selected checkpoint per split) on TVSum.
+- **Features:** Pre-extracted GoogLeNet pool5 (1024-D) visual features.
+- **Sampling:** 2-fps sampled feature sequence using posterior mean z_t = mu_{z,t} at inference.
+- **Segmentation:** KTS change-point partition used for hierarchical segment tokens and stability margin loss.
+- **Shot aggregation:** Mean frame score within each KTS segment for decoder alignment.
+- **Budget:** 15% summary duration budget in decoder-aligned stability regularization.
+- **Solver:** Deterministic posterior-mean importance ranking.
+- **Reference aggregation:** Correlations computed per video by averaging over the 20 human annotators, then averaged across test videos (Section V-C).
+- **Metric:** Spearman rho
+- **Unit:** correlation coefficient
+- **Runs:** Average across five TVT splits.
+- **Reproduction:** author-reported
+- **vastsum-tvsum-tvt-spearman (2026-10-18):** Validation-selected TVT protocol; keep strictly separate from 5FCV results.
 
 </details>
 

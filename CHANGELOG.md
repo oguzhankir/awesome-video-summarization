@@ -2,6 +2,29 @@
 
 Record substantive handbook, evidence, implementation-resource and validation changes on each maintenance run. Dates describe repository updates; individual source-verification dates remain in the registries. An entry does not imply a model was reproduced.
 
+## 2026-10-18
+
+### Added in 2026-10-18
+
+- Sixteen verified paper records from the 2026-10-01–2026-10-18 literature scan and 2025–2026 core backfill: **SD-MVSum**, **TRIM**, **TRIMMER**, **VASTSum**, **LVSum**, **TR-EduVSum**, **ClipSum**, **Multi-Video Positional Bias**, **HAS**, **PIGEONS**, **FramePack-U**, **AdaFrame**, **QEVA**, **SAFCN**, **CARLSVS**, and **JCDL 2025 historical video archive segmentation/summarization** (bringing the registry from 57 to **73 papers**).
+- Five dataset/benchmark cards: **SM-VideoXum**, **SM-Mr. HiSum**, **LVSum**, **MLVU(VS)-Eval**, and **TR-EduVSum** (bringing the registry from 25 to **30 datasets**).
+- Ten pinned implementation and stub resource cards: **SD-MVSum** (`2c1f8ef9`), **CSTA** (`b070f7d9`), **A2Summ** (`5c7dceac`), **V2Xum-LLM** (`6b7c06d0`), **SummDiff** (`1d4b8ae7`), **SUM-SR** (`fe22076f`), **FramePack-U** (`ac5c0137`), **TRIM stub** (`7e931eb3`), **ClipSum stub** (`020df143`), and **QEVA stub** (`f0854784`) (bringing the registry from 34 to **44 resources**).
+- Twenty-eight protocol-isolated primary-source benchmark rows across **CSTA**, **VASTSum**, **TRIM**, **TRIMMER**, **SD-MVSum**, **QEVA**, and **LVSum** (bringing the registry from 60 to **88 results**).
+
+### Changed in 2026-10-18
+
+- Completed primary-source PDF and repository verification for **CSTA**, **CSUM**, **SELF-VS**, **QEVA**, **A2Summ**, **V2Xum-LLM**, **Prompts to Summaries**, **Context-Aware Pseudo-Label Scoring**, **SummDiff**, and **SUM-SR**, replacing `"Not independently verified"` protocol placeholders with exact primary-source specifications and pinning repository commit SHAs.
+- Updated `README.md`, `docs/02-evaluation.md`, `docs/03-datasets.md`, `docs/08-contrastive-self-supervised.md`, `docs/09-graphs-attention.md`, `docs/10-foundation-models.md`, `docs/11-task-settings.md`, `docs/13-implementations.md`, and `docs/15-coverage.md`, and regenerated all four catalogs (`docs/generated/*.md` and `docs/12-benchmarks.md`).
+
+### Fixed in 2026-10-18
+
+- Recorded CSTA's two post-publication rank-correlation fixes on SumMe (`0.205/0.233` vs. paper Table 2 `0.246/0.274`) and TVSum (`0.194/0.255`), and SummDiff's repository note on updated rank-correlation scripts (`0.33/0.46` TVSum, `0.29/0.35` SumMe vs. paper Table 1 `0.21/0.27` and `0.22/0.25`).
+- Distinguished SD-MVSum's resolved HDF5 schema (`gtsummaries` on SM-VideoXum; `gtscore` and `gtsummary` on SM-Mr. HiSum) from SD-VSum's earlier `gtscores` loader mismatch, and isolated TRIM's 5-fold 20% test split averages from its full-dataset (all 25/50 videos) evaluation tables.
+
+### Audit gaps in 2026-10-18 review
+
+- No upstream GPU training, paid API call, or large dataset/checkpoint binary download was executed. Full texts for publisher-gated IEEE/Elsevier records (**SAFCN**, **CARLSVS**, **JCDL 2025**) remain restricted, and public code/dataset uploads remain pending for **LVSum**, **VASTSum**, **TRIMMER**, **TR-EduVSum**, **Multi-Video Positional Bias**, **HAS**, **PIGEONS**, **AdaFrame**, and the stub repositories for **TRIM**, **ClipSum**, and **QEVA**.
+
 ## 2026-10-01
 
 ### Added in 2026-10-01

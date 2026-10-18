@@ -242,6 +242,11 @@ This credits semantic similarity without exact temporal overlap. It also permits
 
 The equations assume nonempty $`P`$ and $`G`$ and a nonzero harmonic-mean denominator. A reusable implementation must define empty-set behavior explicitly.
 
+### 7.2 Reference-free narrative QA evaluation and multi-video positional bias
+
+- **QEVA** ([Jung & Kim, Findings of EMNLP 2025](https://aclanthology.org/2025.findings-emnlp.1340/)) evaluates narrative video-to-text summaries without human reference texts by decomposing assessment into three multimodal QA branches—**Coverage** ($`S_{\mathrm{Cov}}`$), **Factuality** ($`S_{\mathrm{Fac}}`$), and **Chronology** ($`S_{\mathrm{Chr}}`$)—filtered for trivial or low-quality questions and combined as $`S_{\mathrm{QEVA}}=(S_{\mathrm{Cov}}+S_{\mathrm{Fac}}+S_{\mathrm{Chr}})/3`$. On **MLVU(VS)-Eval** (1,500 perturbed summaries across 100 videos), QEVA reaches $`\tau_b=0.733`$ and $`\rho=0.818`$ against human ratings. Because scores depend on the underlying Video-LMM/LLM pair (e.g., Gemini-1.5-Pro + GPT-4o), model snapshots and prompt templates are part of the metric definition.
+- **Multi-Video Positional Bias** ([Nian et al., 2026](https://arxiv.org/abs/2610.15915v1)) demonstrates that MLLMs summarizing multi-video collections exhibit non-uniform positional sensitivity across video order permutations ($`\mathrm{PC}=\frac{1}{P(P-1)}\sum_{p\ne q}\mathrm{Sim}(S_p,S_q)`$ and $`\mathrm{PBI}=2\sqrt{\frac{1}{P}\sum_p(s_p-\bar s)^2}`$), driven by inter-video token distance decay and cross-video semantic bleed. Multi-video summarization evaluations should report order-permutation variance alongside single-order quality scores.
+
 ## 8. Protocol divergence matrix
 
 | Choice | Variant A | Variant B | Consequence |
