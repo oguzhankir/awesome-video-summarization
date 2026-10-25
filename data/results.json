@@ -2189,8 +2189,8 @@
     "method": "SD-MVSum",
     "dataset_id": "sm-videoxum",
     "dataset": "SM-VideoXum",
-    "split": "Official SM-VideoXum train/validation/test split (Zenodo record 18862583); best validation checkpoint over 50 epochs.",
-    "split_identity": "Zenodo record 18862583 SM-VideoXum split JSON",
+    "split": "Official SM-VideoXum train/validation/test split (author release now links Zenodo 19919955; exact archive-to-paper split match not verified); best validation checkpoint over 50 epochs.",
+    "split_identity": "Not independently verified",
     "training_regime": "Supervised binary cross-entropy (BCE) against per-script binary human summary masks (50 epochs, batch size 4 videos / 40 video-script pairs, Adam lr=5e-5, dropout=0.5, L2=1e-4).",
     "setting": "Script-driven multimodal video summarization (script + visual + audio transcript).",
     "features": "512-D VideoXum-finetuned CLIP embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.",
@@ -2208,8 +2208,8 @@
     "source_url": "https://arxiv.org/pdf/2510.05652v2",
     "source_location": "Table 4, PDF page 9; Section 5.1–5.2, PDF page 8.",
     "reproduction": "author-reported",
-    "comparability_notes": "Outperforms SD-VSum (24.4 F1) and CLIP-It (22.8 F1) on the same split with statistically significant paired t-test difference.",
-    "verified_on": "2026-10-18"
+    "comparability_notes": "Outperforms SD-VSum (24.4 F1) and CLIP-It (22.8 F1) on the same split with statistically significant paired t-test difference. Split provenance corrected on 2026-10-25; archive contents were not parsed. Numerical values retain the earlier paper-audit boundary and were not revalidated in this pass.",
+    "verified_on": "2026-10-25"
   },
   {
     "id": "sd-mvsum-sm-mrhisum-f1",
@@ -2217,8 +2217,8 @@
     "method": "SD-MVSum",
     "dataset_id": "sm-mrhisum",
     "dataset": "SM-MrHiSum",
-    "split": "Official SM-MrHiSum train/validation/test split over 29,917 videos (Zenodo record 18862583); best validation checkpoint over 50 epochs.",
-    "split_identity": "Zenodo record 18862583 SM-MrHiSum split JSON",
+    "split": "Official SM-MrHiSum train/validation/test split over 29,917 videos (author release now links Zenodo 19919955; exact archive-to-paper split match not verified); best validation checkpoint over 50 epochs.",
+    "split_identity": "Not independently verified",
     "training_regime": "Supervised MSE against frame-level importance scores (50 epochs, batch size 64, Adam lr=5e-5, dropout=0.5, L2=1e-4).",
     "setting": "Script-driven multimodal video summarization (script + visual + audio transcript) on SM-MrHiSum.",
     "features": "512-D HuggingFace clip-ViT-B-32 embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.",
@@ -2236,8 +2236,8 @@
     "source_url": "https://arxiv.org/pdf/2510.05652v2",
     "source_location": "Table 4, PDF page 9; Section 5.1–5.2, PDF page 8.",
     "reproduction": "author-reported",
-    "comparability_notes": "Outperforms SD-VSum (57.9 F1), CLIP-It (56.3 F1), A2Summ (58.0 F1), CSTA (57.7 F1) and PGL-SUM (57.4 F1) on the SM-MrHiSum test set.",
-    "verified_on": "2026-10-18"
+    "comparability_notes": "Outperforms SD-VSum (57.9 F1), CLIP-It (56.3 F1), A2Summ (58.0 F1), CSTA (57.7 F1) and PGL-SUM (57.4 F1) on the SM-MrHiSum test set. Split provenance corrected on 2026-10-25; archive contents were not parsed. Numerical values retain the earlier paper-audit boundary and were not revalidated in this pass.",
+    "verified_on": "2026-10-25"
   },
   {
     "id": "sd-mvsum-sm-mrhisum-kendall",
@@ -2245,8 +2245,8 @@
     "method": "SD-MVSum",
     "dataset_id": "sm-mrhisum",
     "dataset": "SM-MrHiSum",
-    "split": "Official SM-MrHiSum train/validation/test split over 29,917 videos (Zenodo record 18862583); best validation checkpoint over 50 epochs.",
-    "split_identity": "Zenodo record 18862583 SM-MrHiSum split JSON",
+    "split": "Official SM-MrHiSum train/validation/test split over 29,917 videos (author release now links Zenodo 19919955; exact archive-to-paper split match not verified); best validation checkpoint over 50 epochs.",
+    "split_identity": "Not independently verified",
     "training_regime": "Supervised MSE against frame-level importance scores (50 epochs, batch size 64, Adam lr=5e-5, dropout=0.5, L2=1e-4).",
     "setting": "Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum.",
     "features": "512-D HuggingFace clip-ViT-B-32 embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.",
@@ -2264,8 +2264,8 @@
     "source_url": "https://arxiv.org/pdf/2510.05652v2",
     "source_location": "Table 4, PDF page 9; Section 5.1–5.2, PDF page 8.",
     "reproduction": "author-reported",
-    "comparability_notes": "Statistically significant improvement over SD-VSum (0.175), CLIP-It (0.120), A2Summ (0.169), CSTA (0.193) and PGL-SUM (0.168).",
-    "verified_on": "2026-10-18"
+    "comparability_notes": "Statistically significant improvement over SD-VSum (0.175), CLIP-It (0.120), A2Summ (0.169), CSTA (0.193) and PGL-SUM (0.168). Split provenance corrected on 2026-10-25; archive contents were not parsed. Numerical values retain the earlier paper-audit boundary and were not revalidated in this pass.",
+    "verified_on": "2026-10-25"
   },
   {
     "id": "sd-mvsum-sm-mrhisum-spearman",
@@ -2273,8 +2273,8 @@
     "method": "SD-MVSum",
     "dataset_id": "sm-mrhisum",
     "dataset": "SM-MrHiSum",
-    "split": "Official SM-MrHiSum train/validation/test split over 29,917 videos (Zenodo record 18862583); best validation checkpoint over 50 epochs.",
-    "split_identity": "Zenodo record 18862583 SM-MrHiSum split JSON",
+    "split": "Official SM-MrHiSum train/validation/test split over 29,917 videos (author release now links Zenodo 19919955; exact archive-to-paper split match not verified); best validation checkpoint over 50 epochs.",
+    "split_identity": "Not independently verified",
     "training_regime": "Supervised MSE against frame-level importance scores (50 epochs, batch size 64, Adam lr=5e-5, dropout=0.5, L2=1e-4).",
     "setting": "Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum.",
     "features": "512-D HuggingFace clip-ViT-B-32 embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.",
@@ -2292,8 +2292,8 @@
     "source_url": "https://arxiv.org/pdf/2510.05652v2",
     "source_location": "Table 4, PDF page 9; Section 5.1–5.2, PDF page 8.",
     "reproduction": "author-reported",
-    "comparability_notes": "Performs comparably with CSTA (0.274, difference not statistically significant at alpha=0.05) while outperforming SD-VSum (0.236) and A2Summ (0.239).",
-    "verified_on": "2026-10-18"
+    "comparability_notes": "Performs comparably with CSTA (0.274, difference not statistically significant at alpha=0.05) while outperforming SD-VSum (0.236) and A2Summ (0.239). Split provenance corrected on 2026-10-25; archive contents were not parsed. Numerical values retain the earlier paper-audit boundary and were not revalidated in this pass.",
+    "verified_on": "2026-10-25"
   },
   {
     "id": "qeva-mlvu-vs-eval-kendall-taub",

@@ -128,7 +128,7 @@ npm run check:render
 
 Then choose one source-readiness comparison:
 
-- **TRINITY versus KnowVis:** confirm that one repository has substantial source but paper/default mismatches, while the other is a release stub. Write down the minimum evidence needed before calling either runnable.
+- **TRINITY versus KnowVis:** inspect the pinned source for paper/default mismatches, external artifacts and provider dependencies. KnowVis now includes a CLI and generation pipeline; source presence still does not establish successful reproduction. Write down what an execution check would need.
 - **TripleSumm versus LLMVS:** trace checkpoint selection and identify whether the final test labels influence model choice.
 - **SD-VSum versus Multi-VidSum:** trace the first data key the loader/evaluator expects and explain whether the published artifact schema satisfies it.
 

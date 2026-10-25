@@ -4,7 +4,7 @@
 
 [Handbook home](../../README.md) · [Coverage methodology](../15-coverage.md)
 
-73 records. Verification is field-specific; source inspection does not certify runtime reproduction.
+76 records. Verification is field-specific; source inspection does not certify runtime reproduction.
 
 | Paper | Year / venue | Supervision | Code |
 |---|---|---|---|
@@ -47,8 +47,9 @@
 | [EdgeVidSum: Real-Time Personalized Video Summarization at the Edge](#edgevidsum) | 2025 / CVPR 2025 Demo; arXiv report (not a main-track benchmark paper) | supervised | Not independently verified |
 | [Video Summarization with Large Language Models](#llmvs) | 2025 / CVPR | supervised | [source](https://github.com/mlee47/LLMVS) |
 | [Prompts to Summaries: Zero-Shot Language-Guided Video Summarization with Large Language and Video Models](#prompts-to-summaries) | 2025 / arXiv preprint; initial 2025, inspected revision 2026-02-17 | training-free; zero-shot | [source](https://github.com/mario998-hash/ZeroShotVideoSummary) |
-| [QEVA: A Reference-Free Evaluation Metric for Narrative Video Summarization with Multimodal Question Answering](#qeva) | 2025 / Findings of EMNLP 2025 (pp. 24632–24642); arXiv mirror posted 2026-04-27 | training-free | [source](https://github.com/jungnerd/QEVA) |
+| [QEVA: A Reference-Free Evaluation Metric for Narrative Video Summarization with Multimodal Question Answering](#qeva) | 2025 / Findings of EMNLP 2025 (pp. 24632–24642); arXiv mirror posted 2026-04-27 | training-free | [source](https://github.com/wo0jun/QEVA) |
 | [SD-VSum: A Method and Dataset for Script-Driven Video Summarization](#sd-vsum) | 2025 / ACM Multimedia | supervised | [source](https://github.com/IDT-ITI/SD-VSum) |
+| [SoccerHigh: A Benchmark Dataset for Automatic Soccer Video Summarization](#soccerhigh) | 2025 / ACM MMSports 2025, 121–130; arXiv:2509.01439v1 (2025-09-01) | supervised | [source](https://github.com/IPCV/SoccerHigh) |
 | [SummDiff: Generative Modeling of Video Summarization with Diffusion](#summdiff) | 2025 / ICCV | supervised; weakly-supervised | [source](https://github.com/Kwanseok-K/SummDiff) |
 | [V2Xum-LLM: Cross-Modal Video Summarization with Temporal Prompt Instruction Tuning](#v2xum-llm) | 2025 / AAAI | supervised; weakly-supervised | [source](https://github.com/hanghuacs/V2Xum-LLM) |
 | [AdaFrame: Hierarchical Multimodal Deduplication with Adaptive Information Budgeting for Cost-Efficient Video Advertisement Analysis](#adaframe) | 2026 / arXiv preprint | training-free | Not yet released (abstract states code and evaluation framework will be released upon publication) |
@@ -62,15 +63,17 @@
 | [HAS: Highlight-guided Attention Steering for Multimodal LLM Video Summarization](#has-mllm) | 2026 / arXiv preprint | supervised; training-free | Not reported |
 | [Segmentation-then-Summarization for Long-Form Audiovisual Archives: A Comparative Study of Three Pipelines](#jcdl-archive-seg-sum) | 2026 / ACM/IEEE Joint Conference on Digital Libraries (JCDL 2026, pp. 1–10; published 2026-10-12) | training-free | Not independently verified |
 | [KnowVis: Knowledge-Centric Visual Summarization for Video Lectures](#knowvis) | 2026 / arXiv preprint v2; arXiv metadata reports Findings of EMNLP 2026, but an ACL Anthology entry was not independently verified | training-free | [source](https://github.com/yixu-cityu/KnowVis) |
-| [LVSum: A Benchmark for Timestamp-Aware Long Video Summarization](#lvsum) | 2026 / arXiv preprint (v2) | training-free; zero-shot | Not yet released (paper footnote 1 states dataset and code will be released upon acceptance) |
+| [LVSum: A Benchmark for Timestamp-Aware Long Video Summarization](#lvsum) | 2026 / arXiv preprint (v2) | training-free; zero-shot | [source](https://github.com/apple-aiml-research/ml-lvsum-video-summarization) |
 | [M2UR: Meta-Guided Multi-Expert with Uncertainty-Aware Refinement Framework for Video Summarization](#m2ur) | 2026 / ICIP | not reported | Not independently verified |
 | [A Systematic Evaluation of Positional Bias in Multi-Video Summarization with MLLMs](#multi-video-positional-bias) | 2026 / arXiv preprint | training-free; zero-shot | [source](https://anonymous.4open.science/r/annoym07) |
 | [Multimodal Video Summarization Using Vision-Language Embeddings and Hierarchical Temporal Modeling](#multimodal-vl-htm) | 2026 / Applied AI Letters | supervised | Not independently verified |
 | [MultiVENT-Raw: A Benchmark for Retrieval and Reasoning over Raw Videos](#multivent-raw) | 2026 / arXiv preprint | not reported | [source](https://github.com/hltcoe/multivent-raw) |
 | [PIGEONS: Incremental Long-Video Captioning with Persistent Identity Gallery and Evolving Overarching Narrative Summary](#pigeons) | 2026 / arXiv preprint | supervised | [source](https://pigeons-captioner.github.io/) |
+| [Long-form Video-to-Text Summarization using Recursive Language Models](#rvlsm) | 2026 / arXiv preprint v1, submitted 2026-10-19 (under review) | training-free; zero-shot | Not independently verified |
 | [Text Query-Guided Video Summarization with Self-Attentive Fully Convolutional Network](#safcn-qfvs) | 2026 / ACM Transactions on Asian and Low-Resource Language Information Processing (TALLIP), Just Accepted (2026-10-05) | supervised | Not independently verified |
 | [SD-MVSum: Script-Driven Multimodal Video Summarization Method and Datasets](#sd-mvsum) | 2026 / arXiv preprint (v2) | supervised | [source](https://github.com/IDT-ITI/SD-MVSum) |
 | [Semantic Action Graph: A Shared Representation for Agent Grounding and Human Interpretation of Sports Highlights](#semantic-action-graph) | 2026 / IEEE VIS 2026 Workshop on GenAI, Agents, and the Future of VIS | training-free | Not independently verified |
+| [Semantic-Guided Unsupervised Video Summarization](#semantic-guided-unsupervised) | 2026 / arXiv preprint v1, submitted 2026-01-21 | unsupervised | Not independently verified |
 | [SGWIB: Sliced Gromov–Wasserstein Information Bottleneck for Video Highlight Detection](#sgwib) | 2026 / arXiv preprint | supervised; weakly-supervised | Not independently verified |
 | [Multimodal deep learning framework for soccer video event detection and summarization](#soccer-event-summarization) | 2026 / Discover Artificial Intelligence | supervised | Not independently verified |
 | [TR-EduVSum: A Turkish-Focused Dataset and Consensus Framework for Educational Video Summarization](#tr-eduvsum) | 2026 / SIGTURK Workshop at EACL 2026 | unsupervised; training-free | Not reported |
@@ -1416,7 +1419,7 @@
 - **Venue:** Findings of EMNLP 2025 (pp. 24632–24642); arXiv mirror posted 2026-04-27
 - **Year:** 2025
 - **Paper url:** [paper url](https://aclanthology.org/2025.findings-emnlp.1340/)
-- **Project url:** [project url](https://github.com/jungnerd/QEVA)
+- **Project url:** [project url](https://github.com/wo0jun/QEVA)
 - **Supervision:** training-free
 - **Tasks:** reference-free evaluation of video-to-text summarization; narrative video summarization meta-evaluation
 - **Outputs:** Coverage QA score; Factuality QA score; Chronology QA score; composite QEVA score
@@ -1432,15 +1435,15 @@
 - **Budget:** 10 generated QA pairs per dimension before two-stage filtering; no temporal skim budget.
 - **Postprocessing:** Two-stage filtering removes questions answered correctly without context (trivial) or answered incorrectly even with full context (ambiguous/low-quality) before averaging.
 - **Metrics:** Kendall tau_b; Kendall tau_c; Spearman rho; Krippendorff alpha
-- **Code url:** [code url](https://github.com/jungnerd/QEVA)
+- **Code url:** [code url](https://github.com/wo0jun/QEVA)
 - **Code status:** Official repository inspected at commit 657cad6bff56e3cb25bf41610c020ce68787abd3; currently a placeholder README with no code or dataset files committed.
 - **Framework:** Gemini-1.5-Pro and GPT-4o APIs (or Qwen2.5-VL/InternVL3 + LLaMA-3.1/Gemma-3); full prompt templates are provided in paper Appendix A.
 - **Weights:** Proprietary API or off-the-shelf open-weight Video-LMM/LLM checkpoints.
 - **Features:** LanguageBind used only for the Video-Summary Similarity baseline; QEVA operates on raw video and text summaries.
 - **Reproducibility:** ACL Anthology / arXiv full text and official repository stub at commit 657cad6bff56e3cb25bf41610c020ce68787abd3 inspected; full prompt templates are published in the paper, but evaluation code and MLVU(VS)-Eval annotations are not yet uploaded to the GitHub repository.
 - **Limitations:** Relies on multi-call Video-LMM and LLM inference, incurring API cost and potential LMM hallucinations or self-preference bias. Lower correlation is observed on short, low-quality Video-LLaVA summaries. The linked GitHub repository is still an empty stub.
-- **Verified on:** 2026-10-18
-- **Sources:** [source 1](https://aclanthology.org/2025.findings-emnlp.1340/) · [source 2](https://arxiv.org/abs/2604.24052v1) · [source 3](https://github.com/jungnerd/QEVA/tree/657cad6bff56e3cb25bf41610c020ce68787abd3)
+- **Verified on:** 2026-10-25
+- **Sources:** [source 1](https://aclanthology.org/2025.findings-emnlp.1340/) · [source 2](https://arxiv.org/abs/2604.24052v1) · [source 3](https://github.com/wo0jun/QEVA/tree/657cad6bff56e3cb25bf41610c020ce68787abd3)
 
 <a id="sd-vsum"></a>
 
@@ -1476,6 +1479,40 @@
 - **Verified on:** 2026-09-19
 - **Sources:** [source 1](https://arxiv.org/html/2505.03319v2) · [source 2](https://doi.org/10.1145/3746027.3755821) · [source 3](https://github.com/IDT-ITI/SD-VSum/tree/d57c2be3b05cb13eca3b7a3572c3df204e97c4fb) · [source 4](https://zenodo.org/records/15349075) · [source 5](https://zenodo.org/records/16275302)
 
+<a id="soccerhigh"></a>
+
+## SoccerHigh: A Benchmark Dataset for Automatic Soccer Video Summarization
+
+- **Authors:** Artur Díaz-Juan; Coloma Ballester; Gloria Haro
+- **Year:** 2025
+- **Venue:** ACM MMSports 2025, 121–130; arXiv:2509.01439v1 (2025-09-01)
+- **Paper url:** [paper url](https://arxiv.org/abs/2509.01439v1)
+- **Project url:** [project url](https://ipcv.github.io/SoccerHigh/)
+- **Supervision:** supervised
+- **Tasks:** Soccer broadcast video summarization
+- **Outputs:** Keyshot skim
+- **Mechanisms:** Transformer encoder; Anchor-free boundary regression; Non-maximum suppression
+- **Encoders:** Frozen VideoMAEv2 Giant (1408-D) or distilled Small (384-D).
+- **Sampling:** Released train/test configurations use 2 fps and 60-second windows.
+- **Architecture:** Feature projection, temporal Transformer, classification and boundary-regression heads.
+- **Fusion:** Visual features only; no audio/text fusion in the released baseline.
+- **Objective:** Binary classification and SmoothL1 boundary regression from summary intervals.
+- **Training data:** SoccerHigh training matches with aligned official-highlight annotations.
+- **Test data:** SoccerHigh held-out test matches.
+- **Split:** 141 train / 51 validation / 45 test; counts checked against pinned split files.
+- **Budget:** Variable-length predictions; separate @T evaluation uses the reference-summary duration.
+- **Postprocessing:** Confidence filtering and non-maximum suppression; @T selection ranks shots.
+- **Metrics:** Precision; Recall; F1; Precision@T; Recall@T; F1@T
+- **Code url:** [code url](https://github.com/IPCV/SoccerHigh)
+- **Code status:** Official source inspected at a0d9bfa588a58ed66f4511e303d010c21fc2dd34; not executed.
+- **Framework:** Python, PyTorch Lightning and Hydra.
+- **Weights:** Giant and Small baseline checkpoints are present in code/weights/.
+- **Features:** VideoMAEv2 features linked on the author Hugging Face dataset page; archive not downloaded.
+- **Reproducibility:** Paper, source, configuration and split-file inspection only; no reproduction or numerical result rows added.
+- **Limitations:** Sports-specific professional highlights. Annotation alignment and editorial choices differ from generic importance-score benchmarks; @T uses reference duration. Train and test defaults use different feature sizes.
+- **Verified on:** 2026-10-25
+- **Sources:** [source 1](https://arxiv.org/abs/2509.01439v1) · [source 2](https://doi.org/10.1145/3728423.3759410) · [source 3](https://ipcv.github.io/SoccerHigh/) · [source 4](https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/README.md) · [source 5](https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/configs/train.yaml) · [source 6](https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/configs/test.yaml) · [source 7](https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/dataset/README.md)
+
 <a id="summdiff"></a>
 
 ## SummDiff: Generative Modeling of Video Summarization with Diffusion
@@ -1499,8 +1536,8 @@
 - **Weights:** No trained checkpoints committed in repository
 - **Features:** See source-specific artifact status in chapter and resource catalog
 - **Reproducibility:** Primary experiment section and official repository at commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a inspected; code environment and numerical results not reproduced
-- **Limitations:** Human target scores for SumMe/TVSum; behavioral targets for Mr. HiSum. TVT and 5FCV must be kept separate; do not import OVP/YouTube augmentation. Repository README at commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a notes an evaluation-script correction for rank correlations (reporting updated TVT SumMe tau=0.148/rho=0.197, TVSum tau=0.169/rho=0.222, Mr. HiSum tau=0.219/rho=0.312 and 5FCV SumMe tau=0.258/rho=0.343, TVSum tau=0.198/rho=0.259).
-- **Verified on:** 2026-10-18
+- **Limitations:** Human targets on SumMe/TVSum; behavioral targets on Mr. HiSum. TVT and 5FCV remain separate. Reinspection of the pinned README did not substantiate the earlier evaluation-script correction claim; that claim is withdrawn without replacing primary result rows.
+- **Verified on:** 2026-10-25
 - **Authors:** Kwanseok Kim; Jaehoon Hahm; Sumin Kim; Jinhwan Sul; Byunghak Kim; Joonseok Lee
 - **Supervision:** supervised; weakly-supervised
 - **Tasks:** generic single-video
@@ -1705,13 +1742,13 @@
 - **Postprocessing:** Evaluated with rouge-score (v0.1.2) for ROUGE-1/2/L F1 and nlg-eval for BLEU-4 precision and METEOR F1.
 - **Metrics:** ROUGE-1; ROUGE-2; ROUGE-L; BLEU-4; METEOR
 - **Code url:** [code url](https://github.com/aqeeelmirza/clipsum)
-- **Code status:** Official repository inspected at commit c3746c1b02b9e6473136f09735e9aa32b1df3e5d (MIT license); contains README documentation only, with source code not yet pushed.
+- **Code status:** Official MIT implementation contains model, preprocessing, feature-extraction and train/test code at c3746c1b02b9e6473136f09735e9aa32b1df3e5d; missing imports in the entry point are documented.
 - **Framework:** PyTorch 2.0 on a single NVIDIA RTX 4090 (24 GB).
 - **Weights:** Uses pretrained openai/clip-vit-base-patch32 and facebook/bart-base; no trained ClipSum checkpoint uploaded at inspected commit.
-- **Features:** 50-frame CLIP ViT-B/32 features and verified GPT-3.5-turbo reference summaries on YouCook2; not yet uploaded to the repository.
-- **Reproducibility:** Primary ICPR 2026 / arXiv v1 paper and official GitHub repository at commit c3746c1b02b9e6473136f09735e9aa32b1df3e5d inspected; repository currently hosts only README.md and LICENSE.
-- **Limitations:** Reference summaries on YouCook2 were synthesized from procedural step descriptions using GPT-3.5-turbo and manually corrected, rather than authored from scratch by independent human viewers watching the video. Official repository does not yet contain executable code or the verified reference summaries.
-- **Verified on:** 2026-10-18
+- **Features:** Feature extraction scripts are committed; prepared feature binaries and verified YouCook2 target summary files were not established in the inspected tree.
+- **Reproducibility:** Primary paper previously inspected; tree, README, requirements and entry point rechecked on 2026-10-25. Source presence is established; no training/inference executed.
+- **Limitations:** YouCook2 reference summaries are GPT-3.5-turbo synthesized and manually corrected, not independently authored from scratch. Source is present, but src/run.py unconditionally imports models.bart and models.t5, absent from the pinned tree. README/test script use sum_cv for test paths and checkpoint discovery is not score-based. No trained checkpoint or verified YouCook2 summary-target files were established; end-to-end reproduction remains blocked/unverified.
+- **Verified on:** 2026-10-25
 - **Sources:** [source 1](https://arxiv.org/abs/2605.11959v1) · [source 2](https://arxiv.org/pdf/2605.11959v1) · [source 3](https://github.com/aqeeelmirza/clipsum/tree/c3746c1b02b9e6473136f09735e9aa32b1df3e5d)
 
 <a id="coe"></a>
@@ -1807,13 +1844,13 @@
 - **Postprocessing:** Packed multi-resolution frames are re-sorted into original temporal order and passed to the VLM with standard benchmark prompts.
 - **Metrics:** LongVideoBench accuracy; MLVU M-Avg accuracy; Video-MME accuracy; peak GPU memory (GiB); end-to-end latency (s)
 - **Code url:** [code url](https://github.com/ZelD0n/framepack-U)
-- **Code status:** Official repository inspected at commit aed28d7d61f0a8fa1d601442816ea8c5be48be8b; provides standalone packing scripts, Qwen3-VL monkey-patch integration, and evaluation instructions.
+- **Code status:** Official source at aed28d7d61f0a8fa1d601442816ea8c5be48be8b provides standalone packing and Qwen3.5/Qwen3.6 evaluation flows under Apache-2.0; backend instructions not executed.
 - **Framework:** Python / PyTorch / HuggingFace Transformers / OpenAI CLIP; runtime benchmarked on a single NVIDIA A800 GPU.
 - **Weights:** Off-the-shelf CLIP ViT-B/32 and Qwen3.5/Qwen3.6 VLM checkpoints.
 - **Features:** Pre-extracted or on-the-fly CLIP ViT-B/32 frame embeddings; HuggingFace (`https://huggingface.co/datasets/ZelD0n/FramePack-U`) and ModelScope dataset links provided.
 - **Reproducibility:** Primary NeurIPS 2026 / arXiv v1 paper and official repository at commit aed28d7d61f0a8fa1d601442816ea8c5be48be8b inspected; no multi-GPU VLM benchmark run was executed.
 - **Limitations:** Adjacent long-video VQA compression method rather than standalone keyshot skim generation. Requires VLMs that process frames independently (less plug-and-play for fixed 3D spatiotemporal grid encoders), and smaller 4B/9B VLMs can suffer slight degradation on MLVU/Video-MME under 512-frame budgets due to reasoning capacity limits.
-- **Verified on:** 2026-10-18
+- **Verified on:** 2026-10-25
 - **Sources:** [source 1](https://arxiv.org/abs/2610.16118v1) · [source 2](https://arxiv.org/pdf/2610.16118v1) · [source 3](https://github.com/ZelD0n/framepack-U/tree/aed28d7d61f0a8fa1d601442816ea8c5be48be8b) · [source 4](https://zeld0n.github.io/framepack-U/)
 
 <a id="has-mllm"></a>
@@ -1898,7 +1935,7 @@
 - **Outputs:** generated visual summary; knowledge-unit storyboard
 - **Mechanisms:** concept graph construction; pedagogical concept selection; retrieval-grounded image generation
 - **Encoders:** Proprietary Gemini-3-Flash processes transcripts and slide frames; Gemini-3.1-Flash-Image renders and verifies visual summaries.
-- **Sampling:** Transcript chunks and temporally associated slide frames form knowledge units; executable extraction code and exact sampling settings are not released.
+- **Sampling:** Transcript chunks and temporally associated slide frames form knowledge units; preprocessing source is now committed, but settings were not independently executed.
 - **Architecture:** A prompted pipeline builds a concept graph, selects important/challenging concepts, spreads labels to form knowledge units, generates a storyboard, renders an image and performs one verification pass.
 - **Fusion:** Transcript evidence and slide frames are joined through concept-subgraph retrieval rather than learned end-to-end fusion.
 - **Objective:** No gradient objective; threshold-concept heuristics and proprietary model prompts drive selection and generation.
@@ -1909,14 +1946,14 @@
 - **Postprocessing:** A generated image receives a single automated verification/revision pass.
 - **Metrics:** LLM-judged accuracy; LLM-judged clarity; information density; mental effort; human learning effectiveness; retention; transfer
 - **Code url:** [code url](https://github.com/yixu-cityu/KnowVis)
-- **Code status:** Official release stub only: the inspected commit contains a README and two images, with no executable implementation.
-- **Framework:** Proprietary Gemini APIs; no dependency manifest or runnable source released at the inspected commit.
+- **Code status:** Official implementation at ca3105977043108b09f71ec0bcd8f6ba78f12651 includes preprocessing, prompts/pipeline modules, dependency manifest and CLI; earlier stub description is superseded.
+- **Framework:** Python 3.11/3.12 and google-genai with requirements.txt; provider-hosted Gemini APIs.
 - **Weights:** Provider-hosted proprietary models; no checkpoints released.
 - **Features:** Hugging Face records contain generated images, concepts, concept-subgraph triples, transcripts, slide paths and source-video metadata.
-- **Reproducibility:** Paper, Hugging Face schema/listing and repository commit da14209fd4a7483474fad4fefdde8f0920290976 were inspected; the roughly 803 MB dataset and proprietary pipeline were not downloaded or run.
+- **Reproducibility:** Paper/dataset metadata retain earlier inspection boundaries; repository tree, README, requirements and pipeline rechecked on 2026-10-25. No dataset binary or API execution.
 - **Limitations:** Proprietary model versions, prompts and provider behavior limit repeatability. Automated judges may favor related model families; failed baseline generations change denominators. The human study has ten participants. The live dataset card does not declare the license stated prospectively in the paper.
-- **Verified on:** 2026-09-19
-- **Sources:** [source 1](https://arxiv.org/pdf/2609.03742v2) · [source 2](https://github.com/yixu-cityu/KnowVis/tree/da14209fd4a7483474fad4fefdde8f0920290976) · [source 3](https://huggingface.co/datasets/yixu-cityu/KnowVis/tree/ba4208a250bc60b03d0b4ea48f1c2dc70c2d77cc)
+- **Verified on:** 2026-10-25
+- **Sources:** [source 1](https://arxiv.org/pdf/2609.03742v2) · [source 2](https://github.com/yixu-cityu/KnowVis/tree/ca3105977043108b09f71ec0bcd8f6ba78f12651) · [source 3](https://huggingface.co/datasets/yixu-cityu/KnowVis/tree/ba4208a250bc60b03d0b4ea48f1c2dc70c2d77cc)
 
 <a id="lvsum"></a>
 
@@ -1926,7 +1963,7 @@
 - **Venue:** arXiv preprint (v2)
 - **Year:** 2026
 - **Paper url:** [paper url](https://arxiv.org/abs/2604.10024v2)
-- **Project url:** Not independently verified
+- **Project url:** [project url](https://github.com/apple-aiml-research/ml-lvsum-video-summarization)
 - **Supervision:** training-free; zero-shot
 - **Tasks:** timestamp-aware long-video summarization; video-to-video-text (V2VT) summarization benchmarking
 - **Outputs:** timestamped video intervals; interval importance scores (1–3); segment text descriptions
@@ -1942,15 +1979,15 @@
 - **Budget:** 15% maximum summary duration constraint specified in annotator guidelines and model prompts (human average ~10%; Gemini-2.5-Pro ~12%; Opus-4.5 ~30%; Qwen3-VL-235B ~56%).
 - **Postprocessing:** Predicted segment scores are mapped to a 1-fps timeline for tau/rho; Section 5.2 also evaluates hard length-constrained truncation retaining highest-ranked segments up to 10–30% budgets.
 - **Metrics:** Kendall tau; Spearman rho; Content Relevance (CR); Modality Coherence (MC); summary length ratio
-- **Code url:** Not yet released (paper footnote 1 states dataset and code will be released upon acceptance)
-- **Code status:** No public repository or dataset archive found as of 2026-10-18; full prompts and guidelines are published in Appendices A–D.
+- **Code url:** [code url](https://github.com/apple-aiml-research/ml-lvsum-video-summarization)
+- **Code status:** Public benchmark and evaluation source verified at de21743fef419f09288f452ee8bb20fbbdfe758a; earlier pending-release statement superseded.
 - **Framework:** Proprietary APIs (Opus-4.5, Gemini-2.5-Pro) and open-weight Qwen3-VL-235B-A22B-Instruct.
 - **Weights:** Off-the-shelf foundation models.
 - **Features:** 96 uniformly sampled frames and Gemini-2.5-Pro timestamped transcripts.
-- **Reproducibility:** Primary arXiv v2 paper (including full annotation guidelines and summarization/judge prompts in Appendices A–D) inspected; dataset and code are not yet publicly posted.
-- **Limitations:** Dataset and code are pending publication release. MLLM-as-Judge (Gemini-2.5-Pro) may exhibit self-preference when scoring Gemini-2.5-Pro outputs (which achieve the highest CR=3.28 and MC=4.32). Text in Section 4.1 names Sonnet-4.5 while all tables and discussion report Opus-4.5.
-- **Verified on:** 2026-10-18
-- **Sources:** [source 1](https://arxiv.org/abs/2604.10024v2) · [source 2](https://arxiv.org/pdf/2604.10024v2)
+- **Reproducibility:** Paper metadata/technical claims retain earlier audit boundaries. Public author README, tree, evaluation utilities and separate code/data licenses inspected on 2026-10-25; large annotation JSON was listed but not parsed, and no model executed.
+- **Limitations:** Small long-video benchmark with web-pretraining overlap and model-as-judge caveats. Code uses a custom Apple license; annotations CC-BY-NC-ND-4.0. Raw source-video availability and annotation contents not independently validated in this pass.
+- **Verified on:** 2026-10-25
+- **Sources:** [source 1](https://arxiv.org/abs/2604.10024v2) · [source 2](https://arxiv.org/pdf/2604.10024v2) · [source 3](https://github.com/apple-aiml-research/ml-lvsum-video-summarization/tree/de21743fef419f09288f452ee8bb20fbbdfe758a)
 
 <a id="m2ur"></a>
 
@@ -2122,6 +2159,40 @@
 - **Verified on:** 2026-10-18
 - **Sources:** [source 1](https://arxiv.org/abs/2610.16066v1) · [source 2](https://arxiv.org/pdf/2610.16066v1) · [source 3](https://pigeons-captioner.github.io/)
 
+<a id="rvlsm"></a>
+
+## Long-form Video-to-Text Summarization using Recursive Language Models
+
+- **Authors:** Alessia Intini; Lorenzo Vaiani; Enrico Chen; Luca Cagliero
+- **Venue:** arXiv preprint v1, submitted 2026-10-19 (under review)
+- **Year:** 2026
+- **Paper url:** [paper url](https://arxiv.org/abs/2610.26431v1)
+- **Project url:** Not independently verified
+- **Supervision:** training-free; zero-shot
+- **Tasks:** long-form video-to-text summarization
+- **Outputs:** abstractive text summary
+- **Mechanisms:** recursive Python REPL orchestration; scene-aware temporal decomposition; heuristic adaptive multimodal tool calling
+- **Encoders:** Root: GPT-5.4 or Qwen3-Coder-480B-A35B; sub-models: Molmo2-8B, Qwen3-VL-8B/30B, Qwen3-Omni-30B. Auxiliary YOLOv8, TSN, Whisper-medium and EasyOCR.
+- **Sampling:** PySceneDetect scene-based chunks with minimum duration 30 seconds; sub-model frame sampling not independently verified.
+- **Architecture:** Root LLM stores video externally in a persistent Python REPL, delegates chronological chunks to VideoLLMs, then aggregates their descriptions; experiments use one recursive level.
+- **Fusion:** Tool-derived object, action, speech and OCR evidence enters chunk prompts; previous-summary keyword matching routes subsequent calls.
+- **Objective:** Inference-time scaffold without task-specific training.
+- **Training data:** None for RVLSM; pretrained component training remains external.
+- **Test data:** VideoXum videos longer than 230 seconds; MixTyVSum excluding short MSVD videos.
+- **Split:** Filtered evaluation subsets; exact split artifact not independently verified.
+- **Budget:** Chunk-based inference; no temporal skim budget.
+- **Postprocessing:** Chronological global text aggregation from ordered chunk summaries.
+- **Metrics:** ROUGE-1; ROUGE-2; ROUGE-L; SBERT similarity; METEOR; BLEU-4; CIDEr; named-entity precision/recall/F1
+- **Code url:** Not independently verified
+- **Code status:** Paper claims public code under CC BY-NC; a resolvable author-linked repository was not established in the inspected HTML.
+- **Framework:** Python REPL plus pretrained models and external tools.
+- **Weights:** Pretrained components; no task-specific RVLSM weights required.
+- **Features:** Video, audio and optional tool-derived text.
+- **Reproducibility:** Primary v1 method and evaluation sections inspected; no execution or numerical result rows added.
+- **Limitations:** Heuristic routing, scene-boundary errors and reference-style sensitivity; single-level experiments do not establish deeper recursion. Code availability remains unverified.
+- **Verified on:** 2026-10-25
+- **Sources:** [source 1](https://arxiv.org/abs/2610.26431v1) · [source 2](https://arxiv.org/html/2610.26431v1)
+
 <a id="safcn-qfvs"></a>
 
 ## Text Query-Guided Video Summarization with Self-Attentive Fully Convolutional Network
@@ -2183,12 +2254,12 @@
 - **Code url:** [code url](https://github.com/IDT-ITI/SD-MVSum)
 - **Code status:** Official repository inspected at commit e88adbf3a947360258cd84839704284c66374c2e; links Zenodo v2 dataset/feature/checkpoint archives.
 - **Framework:** Python 3.12.5, PyTorch 2.4.1 with CUDA 12.1 (environment.yml); trained on Intel i5-11600K and NVIDIA RTX 3090.
-- **Weights:** Official pretrained checkpoints released on Zenodo (https://zenodo.org/records/19183938).
-- **Features:** 512-D CLIP visual, script and transcript HDF5 feature archives and splits released on Zenodo (https://zenodo.org/records/18862583).
+- **Weights:** Official pretrained model links at https://zenodo.org/records/19919955 (author README); binaries not downloaded.
+- **Features:** 512-D CLIP visual/script/transcript HDF5 and split/annotation archives linked from author README to https://zenodo.org/records/19919955; archive schema not independently verified.
 - **Reproducibility:** Primary arXiv v2 paper and official repository at commit e88adbf3a947360258cd84839704284c66374c2e inspected; Zenodo archives were not downloaded or executed.
 - **Limitations:** Summary scripts are synthetically generated from ground-truth summaries via Qwen3-VL-8B-Instruct, so script-driven evaluation measures alignment with summary-derived descriptions rather than independent pre-viewing user queries. 32.7% of SM-VideoXum and 18.8% of SM-MrHiSum videos lack speech and rely on zero-filled transcript embeddings.
-- **Verified on:** 2026-10-18
-- **Sources:** [source 1](https://arxiv.org/abs/2510.05652v2) · [source 2](https://arxiv.org/pdf/2510.05652v2) · [source 3](https://github.com/IDT-ITI/SD-MVSum/tree/e88adbf3a947360258cd84839704284c66374c2e) · [source 4](https://zenodo.org/records/18862583) · [source 5](https://zenodo.org/records/19183938)
+- **Verified on:** 2026-10-25
+- **Sources:** [source 1](https://arxiv.org/abs/2510.05652v2) · [source 2](https://arxiv.org/pdf/2510.05652v2) · [source 3](https://github.com/IDT-ITI/SD-MVSum/tree/e88adbf3a947360258cd84839704284c66374c2e) · [source 4](https://zenodo.org/records/19919955)
 
 <a id="semantic-action-graph"></a>
 
@@ -2223,6 +2294,40 @@
 - **Limitations:** Evidence comes from one match and small formative/feedback studies, with no standard summary-quality benchmark or uncertainty. The method requires privileged structured feeds, omits spatial/tactical state and does not build graphs from raw video. Satisfaction cannot be attributed uniquely to the graph or agents.
 - **Verified on:** 2026-09-19
 - **Sources:** [source 1](https://arxiv.org/pdf/2609.20768v1)
+
+<a id="semantic-guided-unsupervised"></a>
+
+## Semantic-Guided Unsupervised Video Summarization
+
+- **Authors:** Haizhou Liu; Haodong Jin; Yiming Wang; Hui Yu
+- **Venue:** arXiv preprint v1, submitted 2026-01-21
+- **Year:** 2026
+- **Paper url:** [paper url](https://arxiv.org/abs/2601.14773v1)
+- **Project url:** Not independently verified
+- **Supervision:** unsupervised
+- **Tasks:** generic video summarization
+- **Outputs:** frame importance scores; budget-constrained extractive summary
+- **Mechanisms:** semantic-alignment frame scoring; Transformer reconstruction; incremental adversarial training
+- **Encoders:** CNN visual features and CLIP-derived semantic features; exact backbones, checkpoints and semantic-input construction not independently verified.
+- **Sampling:** Videos downsampled to 2 fps.
+- **Architecture:** A Bi-LSTM frame selector blends learned scores with cross-modal cosine similarity; weighted visual/semantic features enter a Transformer generator and discriminator.
+- **Fusion:** Learned mixture of semantic-alignment similarity and Bi-LSTM importance scoring.
+- **Objective:** Visual/semantic reconstruction and score sparsity, with incremental discriminator, selector and generator updates; no summary-label loss described.
+- **Training data:** SumMe and TVSum training videos; pretrained CNN/CLIP supervision remains external.
+- **Test data:** SumMe and TVSum.
+- **Split:** Random 80/20 train/test partition, averaged over five independent runs; shared split artifact not established.
+- **Budget:** At most 15% of source duration.
+- **Postprocessing:** Knapsack-style budget selection; mean user F1 for TVSum and maximum user F1 for SumMe. A separate single-reference table must remain protocol-separated.
+- **Metrics:** summary-overlap F1
+- **Code url:** Not independently verified
+- **Code status:** No author-linked executable repository established by the inspected paper and exact-title search.
+- **Framework:** PyTorch; NVIDIA GeForce RTX 3090 reported.
+- **Weights:** Not independently verified
+- **Features:** Visual CNN and semantic CLIP-derived frame representations; dimensions and preprocessing not independently verified.
+- **Reproducibility:** Primary v1 metadata, method and experimental settings inspected; no training, reproduction or numerical result rows added.
+- **Limitations:** Semantic feature construction and shared split identity unresolved; multi-user and single-reference results are incompatible evaluation protocols.
+- **Verified on:** 2026-10-25
+- **Sources:** [source 1](https://arxiv.org/abs/2601.14773v1) · [source 2](https://arxiv.org/html/2601.14773v1)
 
 <a id="sgwib"></a>
 
@@ -2351,14 +2456,14 @@
 - **Postprocessing:** Mean frame score per KTS shot decoded with 0/1 knapsack for F1; Kendall tau and Spearman rho evaluated following the CSTA/MAAM 10-run 5-fold protocol.
 - **Metrics:** Kendall tau; Spearman rho; temporal F1
 - **Code url:** [code url](https://github.com/pmishra-ai/TRIM)
-- **Code status:** Official repository inspected at commit 86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab; contains README and architecture diagram only, with source code and checkpoints marked as coming soon.
+- **Code status:** Official executable source, split manifests and checkpoints present at commit 86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab (MIT); earlier stub claim corrected.
 - **Framework:** PyTorch (trained on a single NVIDIA TITAN RTX GPU; Adam lr=1e-5, weight decay=1e-5).
-- **Weights:** Advertised as coming soon in official repository; not yet uploaded at inspected commit.
-- **Features:** ResNet-50 2048-D features with 256->224 center-crop preprocessing; not yet uploaded to repository.
-- **Reproducibility:** Primary ICASSP 2026 / arXiv v3 paper (including explicit fold assignments in Appendix Tables 6–7) and official GitHub stub at commit 86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab inspected; executable code is not yet pushed.
-- **Limitations:** Hyperparameters (beta, gamma, nu) are tuned separately for SumMe (beta=0, gamma=0.5, nu=0.0005) and TVSum (beta=5, gamma=0, nu=0.005), which introduces dataset-level hyperparameter selection despite label-free training. Official repository does not yet host the training scripts.
-- **Verified on:** 2026-10-18
-- **Sources:** [source 1](https://arxiv.org/abs/2506.20588v3) · [source 2](https://arxiv.org/pdf/2506.20588v3) · [source 3](https://doi.org/10.1109/ICASSP49660.2026.11660125) · [source 4](https://github.com/pmishra-ai/TRIM/tree/86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab)
+- **Weights:** SSL and final-stage .pth.tar checkpoints are committed under pre-trained_ssl_models/ and log/; not loaded or independently evaluated.
+- **Features:** README links pre-extracted features on Google Drive; code expects separate ResNet feature HDF5 and standard benchmark metadata HDF5.
+- **Reproducibility:** Primary paper previously inspected; repository tree, README, LICENSE, training and evaluator source rechecked on 2026-10-25. No upstream training or inference executed.
+- **Limitations:** Hyperparameters (beta, gamma, nu) are tuned separately for SumMe (beta=0, gamma=0.5, nu=0.0005) and TVSum (beta=5, gamma=0, nu=0.005), which introduces dataset-level hyperparameter selection despite label-free training. Source inspection only; no environment or checkpoint was executed. Training uses hardcoded ResNet feature HDF5 paths plus a separate CLI metadata HDF5, unconditional CUDA, and geomloss/fvcore imports without a dependency manifest. Code loss coefficients and dataset-specific evaluation require reconciliation with the paper.
+- **Verified on:** 2026-10-25
+- **Sources:** [source 1](https://arxiv.org/abs/2506.20588v3) · [source 2](https://arxiv.org/pdf/2506.20588v3) · [source 3](https://github.com/pmishra-ai/TRIM/tree/86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab)
 
 <a id="trimmer"></a>
 

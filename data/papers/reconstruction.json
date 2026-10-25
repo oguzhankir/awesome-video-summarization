@@ -651,8 +651,8 @@
     "weights": "No trained checkpoints committed in repository",
     "features": "See source-specific artifact status in chapter and resource catalog",
     "reproducibility": "Primary experiment section and official repository at commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a inspected; code environment and numerical results not reproduced",
-    "limitations": "Human target scores for SumMe/TVSum; behavioral targets for Mr. HiSum. TVT and 5FCV must be kept separate; do not import OVP/YouTube augmentation. Repository README at commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a notes an evaluation-script correction for rank correlations (reporting updated TVT SumMe tau=0.148/rho=0.197, TVSum tau=0.169/rho=0.222, Mr. HiSum tau=0.219/rho=0.312 and 5FCV SumMe tau=0.258/rho=0.343, TVSum tau=0.198/rho=0.259).",
-    "verified_on": "2026-10-18",
+    "limitations": "Human targets on SumMe/TVSum; behavioral targets on Mr. HiSum. TVT and 5FCV remain separate. Reinspection of the pinned README did not substantiate the earlier evaluation-script correction claim; that claim is withdrawn without replacing primary result rows.",
+    "verified_on": "2026-10-25",
     "authors": [
       "Kwanseok Kim",
       "Jaehoon Hahm",

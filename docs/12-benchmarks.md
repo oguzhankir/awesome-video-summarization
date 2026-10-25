@@ -438,7 +438,7 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 
 </details>
 
-## SM-MrHiSum — Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum. — Kendall tau (4f65ae76)
+## SM-MrHiSum — Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum. — Kendall tau (87cd4a17)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -448,8 +448,8 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 <summary>Full protocol and comparison limits</summary>
 
 - **Dataset id:** sm-mrhisum
-- **Split identity:** Zenodo record 18862583 SM-MrHiSum split JSON
-- **Split:** Official SM-MrHiSum train/validation/test split over 29,917 videos (Zenodo record 18862583); best validation checkpoint over 50 epochs.
+- **Split identity:** Not independently verified
+- **Split:** Official SM-MrHiSum train/validation/test split over 29,917 videos (author release now links Zenodo 19919955; exact archive-to-paper split match not verified); best validation checkpoint over 50 epochs.
 - **Training regime:** Supervised MSE against frame-level importance scores (50 epochs, batch size 64, Adam lr=5e-5, dropout=0.5, L2=1e-4).
 - **Setting:** Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum.
 - **Features:** 512-D HuggingFace clip-ViT-B-32 embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.
@@ -463,11 +463,11 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Unit:** correlation coefficient
 - **Runs:** Single split evaluation with two-tailed paired t-test (alpha=0.05).
 - **Reproduction:** author-reported
-- **sd-mvsum-sm-mrhisum-kendall (2026-10-18):** Statistically significant improvement over SD-VSum (0.175), CLIP-It (0.120), A2Summ (0.169), CSTA (0.193) and PGL-SUM (0.168).
+- **sd-mvsum-sm-mrhisum-kendall (2026-10-25):** Statistically significant improvement over SD-VSum (0.175), CLIP-It (0.120), A2Summ (0.169), CSTA (0.193) and PGL-SUM (0.168). Split provenance corrected on 2026-10-25; archive contents were not parsed. Numerical values retain the earlier paper-audit boundary and were not revalidated in this pass.
 
 </details>
 
-## SM-MrHiSum — Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum. — Spearman rho (1f0e9c43)
+## SM-MrHiSum — Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum. — Spearman rho (2bb74cb3)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -477,8 +477,8 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 <summary>Full protocol and comparison limits</summary>
 
 - **Dataset id:** sm-mrhisum
-- **Split identity:** Zenodo record 18862583 SM-MrHiSum split JSON
-- **Split:** Official SM-MrHiSum train/validation/test split over 29,917 videos (Zenodo record 18862583); best validation checkpoint over 50 epochs.
+- **Split identity:** Not independently verified
+- **Split:** Official SM-MrHiSum train/validation/test split over 29,917 videos (author release now links Zenodo 19919955; exact archive-to-paper split match not verified); best validation checkpoint over 50 epochs.
 - **Training regime:** Supervised MSE against frame-level importance scores (50 epochs, batch size 64, Adam lr=5e-5, dropout=0.5, L2=1e-4).
 - **Setting:** Script-driven multimodal importance ranking (script + visual + audio transcript) on SM-MrHiSum.
 - **Features:** 512-D HuggingFace clip-ViT-B-32 embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.
@@ -492,11 +492,11 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Unit:** correlation coefficient
 - **Runs:** Single split evaluation with two-tailed paired t-test (alpha=0.05).
 - **Reproduction:** author-reported
-- **sd-mvsum-sm-mrhisum-spearman (2026-10-18):** Performs comparably with CSTA (0.274, difference not statistically significant at alpha=0.05) while outperforming SD-VSum (0.236) and A2Summ (0.239).
+- **sd-mvsum-sm-mrhisum-spearman (2026-10-25):** Performs comparably with CSTA (0.274, difference not statistically significant at alpha=0.05) while outperforming SD-VSum (0.236) and A2Summ (0.239). Split provenance corrected on 2026-10-25; archive contents were not parsed. Numerical values retain the earlier paper-audit boundary and were not revalidated in this pass.
 
 </details>
 
-## SM-MrHiSum — Script-driven multimodal video summarization (script + visual + audio transcript) on SM-MrHiSum. — F1 (254b6096)
+## SM-MrHiSum — Script-driven multimodal video summarization (script + visual + audio transcript) on SM-MrHiSum. — F1 (471a0fe3)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -506,8 +506,8 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 <summary>Full protocol and comparison limits</summary>
 
 - **Dataset id:** sm-mrhisum
-- **Split identity:** Zenodo record 18862583 SM-MrHiSum split JSON
-- **Split:** Official SM-MrHiSum train/validation/test split over 29,917 videos (Zenodo record 18862583); best validation checkpoint over 50 epochs.
+- **Split identity:** Not independently verified
+- **Split:** Official SM-MrHiSum train/validation/test split over 29,917 videos (author release now links Zenodo 19919955; exact archive-to-paper split match not verified); best validation checkpoint over 50 epochs.
 - **Training regime:** Supervised MSE against frame-level importance scores (50 epochs, batch size 64, Adam lr=5e-5, dropout=0.5, L2=1e-4).
 - **Setting:** Script-driven multimodal video summarization (script + visual + audio transcript) on SM-MrHiSum.
 - **Features:** 512-D HuggingFace clip-ViT-B-32 embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.
@@ -521,11 +521,11 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Unit:** percent
 - **Runs:** Single split evaluation with two-tailed paired t-test (alpha=0.05).
 - **Reproduction:** author-reported
-- **sd-mvsum-sm-mrhisum-f1 (2026-10-18):** Outperforms SD-VSum (57.9 F1), CLIP-It (56.3 F1), A2Summ (58.0 F1), CSTA (57.7 F1) and PGL-SUM (57.4 F1) on the SM-MrHiSum test set.
+- **sd-mvsum-sm-mrhisum-f1 (2026-10-25):** Outperforms SD-VSum (57.9 F1), CLIP-It (56.3 F1), A2Summ (58.0 F1), CSTA (57.7 F1) and PGL-SUM (57.4 F1) on the SM-MrHiSum test set. Split provenance corrected on 2026-10-25; archive contents were not parsed. Numerical values retain the earlier paper-audit boundary and were not revalidated in this pass.
 
 </details>
 
-## SM-VideoXum — Script-driven multimodal video summarization (script + visual + audio transcript). — F1 (26622891)
+## SM-VideoXum — Script-driven multimodal video summarization (script + visual + audio transcript). — F1 (bb2d93ef)
 
 | Method | Value | Runs / uncertainty | Source |
 |---|---:|---|---|
@@ -535,8 +535,8 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 <summary>Full protocol and comparison limits</summary>
 
 - **Dataset id:** sm-videoxum
-- **Split identity:** Zenodo record 18862583 SM-VideoXum split JSON
-- **Split:** Official SM-VideoXum train/validation/test split (Zenodo record 18862583); best validation checkpoint over 50 epochs.
+- **Split identity:** Not independently verified
+- **Split:** Official SM-VideoXum train/validation/test split (author release now links Zenodo 19919955; exact archive-to-paper split match not verified); best validation checkpoint over 50 epochs.
 - **Training regime:** Supervised binary cross-entropy (BCE) against per-script binary human summary masks (50 epochs, batch size 4 videos / 40 video-script pairs, Adam lr=5e-5, dropout=0.5, L2=1e-4).
 - **Setting:** Script-driven multimodal video summarization (script + visual + audio transcript).
 - **Features:** 512-D VideoXum-finetuned CLIP embeddings for video frames, Qwen3-VL-8B-Instruct scripts, and Whisper Turbo/NLLB-200 transcripts.
@@ -550,7 +550,7 @@ Groups require equality of the full recorded protocol tuple. Unknown metadata is
 - **Unit:** percent
 - **Runs:** Single split evaluation with two-tailed paired t-test (alpha=0.05) against baselines.
 - **Reproduction:** author-reported
-- **sd-mvsum-sm-videoxum-f1 (2026-10-18):** Outperforms SD-VSum (24.4 F1) and CLIP-It (22.8 F1) on the same split with statistically significant paired t-test difference.
+- **sd-mvsum-sm-videoxum-f1 (2026-10-25):** Outperforms SD-VSum (24.4 F1) and CLIP-It (22.8 F1) on the same split with statistically significant paired t-test difference. Split provenance corrected on 2026-10-25; archive contents were not parsed. Numerical values retain the earlier paper-audit boundary and were not revalidated in this pass.
 
 </details>
 

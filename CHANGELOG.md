@@ -2,13 +2,35 @@
 
 Record substantive handbook, evidence, implementation-resource and validation changes on each maintenance run. Dates describe repository updates; individual source-verification dates remain in the registries. An entry does not imply a model was reproduced.
 
+## 2026-10-25
+
+### Added in 2026-10-25
+
+- **RVLSM**, first posted 2026-10-19, plus **Semantic-Guided Unsupervised Video Summarization** (January 2026) and **SoccerHigh** (MMSports 2025) as explicitly dated backfill: 76 papers in total.
+- SoccerHigh dataset/baseline cards and a pinned LVSum evaluator resource: 31 datasets and 46 resources. No numerical result rows added; the 88 existing rows retain their original numerical evidence boundaries.
+- A [dated source audit](docs/audits/2026-10-25-weekly.md) with actual queries, candidate exclusions, upstream runtime blockers and network limitations.
+
+### Fixed in 2026-10-25
+
+- Corrected inherited paper identities, arXiv links, supervision, architectures and dataset counts throughout the handbook. TRIM/TRIMMER are trained visual methods; VASTSum is supervised uncertainty/decoder-aligned learning; ClipSum generates YouCook2 text; TR-EduVSum uses Turkish human summaries; LVSum has 72 videos.
+- Replaced false TRIM/ClipSum stub claims with source inventories and concrete execution caveats. Updated KnowVis to its released pipeline, LVSum to public annotations/evaluators and separate licenses, QEVA to its canonical README-only repository, and FramePack-U to its Apache-2.0 release.
+- Corrected SD-MVSum's author-linked release to Zenodo 19919955 and its loader key descriptions. Four inherited SD-MVSum result rows now explicitly isolate unverified archive-to-paper split identity; their score values are unchanged.
+- Withdrew unsupported SummDiff evaluation-script correction claims and the unrelated positional-bias formulas. Earlier changelog prose below is historical and is superseded by these source corrections.
+- Regenerated all catalog views and repaired the latest-audit links. Preserved the existing weekly-branch URL-alignment commit while integrating the deeper source corrections.
+
+### Audit gaps in 2026-10-25
+
+- No upstream training, checkpoint execution, paid API call or large media/feature archive download. ClipSum has missing unconditional imports; TRIM has CUDA/path/dependency and evaluation caveats. QEVA remains a stub.
+- The external-link attempt reported retry/unresolved for all 495 discovered URLs; the runner's external DNS failures prevent treating this as link verification. A second final-tree pass is recorded in the dated audit.
+- Search was targeted, not an exhaustive venue census. CVPR 2026 AgenticVS full text was access-restricted; Minimal Clips remains a follow-up candidate. Existing numerical results were not comprehensively re-audited.
+
 ## 2026-10-18
 
 ### Added in 2026-10-18
 
 - Sixteen verified paper records from the 2026-10-01–2026-10-18 literature scan and 2025–2026 core backfill: **SD-MVSum**, **TRIM**, **TRIMMER**, **VASTSum**, **LVSum**, **TR-EduVSum**, **ClipSum**, **Multi-Video Positional Bias**, **HAS**, **PIGEONS**, **FramePack-U**, **AdaFrame**, **QEVA**, **SAFCN**, **CARLSVS**, and **JCDL 2025 historical video archive segmentation/summarization** (bringing the registry from 57 to **73 papers**).
 - Five dataset/benchmark cards: **SM-VideoXum**, **SM-Mr. HiSum**, **LVSum**, **MLVU(VS)-Eval**, and **TR-EduVSum** (bringing the registry from 25 to **30 datasets**).
-- Ten pinned implementation and stub resource cards: **SD-MVSum** (`2c1f8ef9`), **CSTA** (`b070f7d9`), **A2Summ** (`5c7dceac`), **V2Xum-LLM** (`6b7c06d0`), **SummDiff** (`1d4b8ae7`), **SUM-SR** (`fe22076f`), **FramePack-U** (`ac5c0137`), **TRIM stub** (`7e931eb3`), **ClipSum stub** (`020df143`), and **QEVA stub** (`f0854784`) (bringing the registry from 34 to **44 resources**).
+- Ten pinned implementation and stub resource cards: **SD-MVSum** (`e88adbf3`), **CSTA** (`b070f7d9`), **A2Summ** (`5c7dceac`), **V2Xum-LLM** (`6b7c06d0`), **SummDiff** (`1d4b8ae7`), **SUM-SR** (`fe22076f`), **FramePack-U** (`aed28d7d`), **TRIM stub** (`86a6be3e`), **ClipSum stub** (`c3746c1b`), and **QEVA stub** (`657cad6b`) (bringing the registry from 34 to **44 resources**).
 - Twenty-eight protocol-isolated primary-source benchmark rows across **CSTA**, **VASTSum**, **TRIM**, **TRIMMER**, **SD-MVSum**, **QEVA**, and **LVSum** (bringing the registry from 60 to **88 results**).
 
 ### Changed in 2026-10-18
