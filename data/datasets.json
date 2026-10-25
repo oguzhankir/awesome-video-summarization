@@ -903,28 +903,28 @@
     "annotators": "40 human annotators for underlying VideoXum binary summaries (10 per video); Qwen3-VL-8B-Instruct for summary scripts; Silero VAD + Whisper Turbo + NLLB-200 for transcripts (manual WER audit = 0.082 on 25 sampled videos)",
     "granularity": "1-fps frame-level binary inclusion labels aligned with sentence-level script embeddings and timestamp-expanded transcript embeddings",
     "summary_format": "Top-15% selected video frames conditioned on a multi-sentence user script and audio transcript",
-    "split": "Official train/validation/test split JSON released in Zenodo record 18862583",
+    "split": "Official train/validation/test split JSON released in Zenodo record 19919955",
     "metrics": [
       "F-Score (F1)",
       "Kendall tau (generic mode)",
       "Spearman rho (generic mode)"
     ],
     "license": "Custom academic/non-commercial repository and Zenodo terms; underlying ActivityNet/YouTube video rights remain separate",
-    "availability": "Publicly released on Zenodo (record 18862583) and linked from official GitHub repository IDT-ITI/SD-MVSum",
+    "availability": "Publicly released on Zenodo (record 19919955) and linked from official GitHub repository IDT-ITI/SD-MVSum",
     "official_url": "https://github.com/IDT-ITI/SD-MVSum",
-    "download_url": "https://zenodo.org/records/18862583",
-    "annotation_url": "https://zenodo.org/records/18862583",
+    "download_url": "https://zenodo.org/records/19919955",
+    "annotation_url": "https://zenodo.org/records/19919955",
     "mirrors": "Predecessor S-VideoXum v1: https://zenodo.org/records/15349075",
     "preprocessing": "Videos sampled at 1 fps; Qwen3-VL-8B-Instruct prompted with 'describe the scenery and the main persons and activities shown in the video' (up to 200 tokens); Silero VAD + Whisper Turbo ASR + NLLB-200 translation to English; 3,893 of 11,908 videos (32.7%) have no speech and use zero-valued transcript embeddings",
     "features": "512-D VideoXum-finetuned CLIP embeddings for video frames, summary scripts and timestamp-repeated transcripts in HDF5 format",
-    "checksums": "Zenodo record 18862583 hosts the v2 HDF5 feature and JSON split archives; archive bodies were not downloaded locally",
+    "checksums": "Author-linked Zenodo record 19919955; archive bodies were not downloaded or hashed. Loader key expectations are source-inspected, not archive-validated.",
     "leakage_risks": "Summary scripts are generated directly from the ground-truth human video summaries using Qwen3-VL-8B-Instruct, so script-to-summary matching reflects reverse-engineered summary descriptions rather than independent user queries",
     "limitations": "32.7% of videos lack spoken content (1–226 transcript sentences, mean 21.6 +/- 20.1 among videos with speech); synthetic scripts can leak ground-truth summary structure",
-    "verified_on": "2026-10-18",
+    "verified_on": "2026-10-25",
     "sources": [
       "https://arxiv.org/abs/2510.05652v2",
       "https://github.com/IDT-ITI/SD-MVSum/tree/e88adbf3a947360258cd84839704284c66374c2e",
-      "https://zenodo.org/records/18862583"
+      "https://zenodo.org/records/19919955"
     ]
   },
   {
@@ -939,28 +939,28 @@
     "annotators": "Aggregated YouTube Most Replayed viewer behavior (>=50,000 viewers/video in Mr. HiSum) for importance scores; Qwen3-VL-8B-Instruct for summary scripts; Silero VAD + Whisper Turbo + NLLB-200 for transcripts",
     "granularity": "1-fps frame-level importance scores and shot-level knapsack summaries aligned with sentence-level script and transcript embeddings",
     "summary_format": "0/1 knapsack keyshot summary (<=15% duration) and continuous frame-level importance curve",
-    "split": "Official train/validation/test split JSON released in Zenodo record 18862583 over the 29,917 accessible videos (out of 31,892 original Mr. HiSum videos)",
+    "split": "Official train/validation/test split JSON released in Zenodo record 19919955 over the 29,917 accessible videos (out of 31,892 original Mr. HiSum videos)",
     "metrics": [
       "F-Score (F1)",
       "Kendall tau",
       "Spearman rho"
     ],
     "license": "Custom academic/non-commercial repository and Zenodo terms; original Mr. HiSum CC BY 4.0 and YouTube Terms of Service apply",
-    "availability": "Publicly released on Zenodo (record 18862583) and linked from official GitHub repository IDT-ITI/SD-MVSum",
+    "availability": "Publicly released on Zenodo (record 19919955) and linked from official GitHub repository IDT-ITI/SD-MVSum",
     "official_url": "https://github.com/IDT-ITI/SD-MVSum",
-    "download_url": "https://zenodo.org/records/18862583",
-    "annotation_url": "https://zenodo.org/records/18862583",
+    "download_url": "https://zenodo.org/records/19919955",
+    "annotation_url": "https://zenodo.org/records/19919955",
     "mirrors": "Original Mr. HiSum: https://github.com/MRHiSum/MR.HiSum",
     "preprocessing": "1-fps frame sampling; Qwen3-VL-8B-Instruct summary script generation; Silero VAD + Whisper Turbo ASR + NLLB-200 English translation; 5,638 of 29,917 videos (18.8%) have no speech and use zero-valued transcript embeddings (4–310 sentences, mean 45.4 +/- 31.1 among videos with speech)",
     "features": "512-D HuggingFace sentence-transformers/clip-ViT-B-32 embeddings for video frames, summary scripts and timestamp-expanded transcripts in HDF5 format",
-    "checksums": "Zenodo record 18862583 hosts the HDF5 feature and split files; archive bodies were not downloaded locally",
+    "checksums": "Author-linked Zenodo record 19919955; archive bodies were not downloaded or hashed. Loader key expectations are source-inspected, not archive-validated.",
     "leakage_risks": "Scripts are generated from the ground-truth knapsack summaries by Qwen3-VL-8B-Instruct; underlying ground-truth labels reflect crowd replay behavior rather than human-authored editorial summaries",
     "limitations": "1,975 videos from the original 31,892-video Mr. HiSum corpus are absent due to YouTube unavailability; 18.8% of remaining videos lack speech",
-    "verified_on": "2026-10-18",
+    "verified_on": "2026-10-25",
     "sources": [
       "https://arxiv.org/abs/2510.05652v2",
       "https://github.com/IDT-ITI/SD-MVSum/tree/e88adbf3a947360258cd84839704284c66374c2e",
-      "https://zenodo.org/records/18862583"
+      "https://zenodo.org/records/19919955"
     ]
   },
   {
@@ -983,21 +983,23 @@
       "Modality Coherence (MC, 1–5 MLLM-as-Judge)",
       "Predicted Summary Length (%)"
     ],
-    "license": "Not yet specified; paper states dataset and source code will be released upon acceptance",
-    "availability": "Pending public release upon paper acceptance (Apple)",
-    "official_url": "https://arxiv.org/abs/2604.10024v2",
-    "download_url": "Not yet released",
-    "annotation_url": "Not yet released",
+    "license": "Annotations: CC-BY-NC-ND-4.0 (LICENSE_DATA); code: custom Apple license (LICENSE). Raw source videos retain their own rights.",
+    "availability": "Public author repository includes annotations/lvsum_72_dataset.json and download/evaluation scripts; raw videos fetched separately from listed URLs.",
+    "official_url": "https://github.com/apple-aiml-research/ml-lvsum-video-summarization",
+    "download_url": "https://github.com/apple-aiml-research/ml-lvsum-video-summarization/tree/de21743fef419f09288f452ee8bb20fbbdfe758a/annotations",
+    "annotation_url": "https://github.com/apple-aiml-research/ml-lvsum-video-summarization/blob/de21743fef419f09288f452ee8bb20fbbdfe758a/annotations/lvsum_72_dataset.json",
     "mirrors": "Not reported",
     "preprocessing": "96 uniformly sampled frames per video (24–128 ablated) plus timestamped transcripts generated by Gemini-2.5-Pro; evaluation maps segment scores to a 1-fps timeline",
     "features": "Raw video frames and Gemini-2.5-Pro timestamped transcripts",
-    "checksums": "Not applicable; dataset archive not yet publicly posted",
+    "checksums": "Annotation JSON listed at pinned commit but not downloaded/parsed or hashed in this audit.",
     "leakage_risks": "Web videos may overlap with MLLM pretraining corpora; Gemini-2.5-Pro is used both for category clustering/transcription/judging and as an evaluated baseline",
-    "limitations": "72 videos total; public download URL is not yet live; MLLM-as-Judge (CR and MC) relies on Gemini-2.5-Pro",
-    "verified_on": "2026-10-18",
+    "limitations": "72-video count from author README and paper; actual large JSON could not be retrieved through file API, so record-level content and video URL availability remain unverified. Model-as-judge scores depend on proprietary APIs.",
+    "verified_on": "2026-10-25",
     "sources": [
       "https://arxiv.org/abs/2604.10024v2",
-      "https://arxiv.org/pdf/2604.10024v2"
+      "https://arxiv.org/pdf/2604.10024v2",
+      "https://github.com/apple-aiml-research/ml-lvsum-video-summarization/tree/de21743fef419f09288f452ee8bb20fbbdfe758a",
+      "https://github.com/apple-aiml-research/ml-lvsum-video-summarization/blob/de21743fef419f09288f452ee8bb20fbbdfe758a/LICENSE_DATA"
     ]
   },
   {
@@ -1020,21 +1022,21 @@
       "Krippendorff alpha"
     ],
     "license": "Not specified in paper or placeholder repository",
-    "availability": "Paper states benchmark and scripts will be released at https://github.com/jungnerd/QEVA; inspected commit 657cad6bff56e3cb25bf41610c020ce68787abd3 is currently a README stub",
-    "official_url": "https://github.com/jungnerd/QEVA",
-    "download_url": "https://github.com/jungnerd/QEVA",
-    "annotation_url": "https://github.com/jungnerd/QEVA",
+    "availability": "Paper states benchmark and scripts will be released at https://github.com/wo0jun/QEVA; inspected commit 657cad6bff56e3cb25bf41610c020ce68787abd3 is currently a README stub",
+    "official_url": "https://github.com/wo0jun/QEVA",
+    "download_url": "https://github.com/wo0jun/QEVA",
+    "annotation_url": "https://github.com/wo0jun/QEVA",
     "mirrors": "Upstream MLVU benchmark: https://arxiv.org/abs/2406.04264",
     "preprocessing": "Candidate summaries generated by GPT-4o, InternVL3-8B, Qwen2.5-VL-7B and Video-LLaVA-7B on 200 MLVU videos",
     "features": "Source videos, candidate text summaries, human reference summaries and 5-point human ratings",
     "checksums": "Not available; files not yet uploaded to the official GitHub repository",
     "leakage_risks": "Evaluating LLM-based metrics on summaries generated by GPT-4o and Qwen2.5-VL can introduce same-family judge preference bias",
     "limitations": "Annotation files are not yet committed to the public GitHub repository as of 2026-10-18",
-    "verified_on": "2026-10-18",
+    "verified_on": "2026-10-25",
     "sources": [
       "https://aclanthology.org/2025.findings-emnlp.1340/",
       "https://arxiv.org/abs/2604.24052v1",
-      "https://github.com/jungnerd/QEVA/tree/657cad6bff56e3cb25bf41610c020ce68787abd3"
+      "https://github.com/wo0jun/QEVA/tree/657cad6bff56e3cb25bf41610c020ce68787abd3"
     ]
   },
   {
@@ -1073,6 +1075,47 @@
     "sources": [
       "https://arxiv.org/abs/2604.07553v1",
       "https://arxiv.org/pdf/2604.07553v1"
+    ]
+  },
+  {
+    "id": "soccerhigh",
+    "name": "SoccerHigh",
+    "role": "core",
+    "task": "Soccer broadcast keyshot summarization",
+    "domain": "Spanish, French and Italian league broadcasts from SoccerNet",
+    "videos": 237,
+    "duration": "Full-match broadcasts; individual raw-video durations not independently verified.",
+    "annotations": "Official-highlight intervals aligned to the broadcast; Labels-summary.json, per-half SRT intervals and split files.",
+    "annotators": "Professional league highlight editors; alignments manually refined by the dataset authors.",
+    "granularity": "Temporal shot intervals with millisecond timestamps; first and second halves tracked separately.",
+    "summary_format": "Keyshot skim assembled from selected broadcast intervals.",
+    "split": "141 train / 51 validation / 45 test, counted in the pinned train.txt, validation.txt and test.txt files.",
+    "metrics": [
+      "Precision",
+      "Recall",
+      "F1",
+      "Precision@T",
+      "Recall@T",
+      "F1@T"
+    ],
+    "license": "CC BY-NC-SA 4.0 for the released annotations; source broadcasts retain SoccerNet/rights-holder access conditions.",
+    "availability": "GitHub annotations public; author-linked features hosted on Hugging Face. Raw broadcasts obtained separately from SoccerNet.",
+    "official_url": "https://ipcv.github.io/SoccerHigh/",
+    "download_url": "https://huggingface.co/datasets/SoccerNet/SoccerNet_raw_HQ",
+    "annotation_url": "https://github.com/IPCV/SoccerHigh/tree/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/dataset",
+    "mirrors": "Not independently verified.",
+    "preprocessing": "Timestamps reference SoccerNet HQ videos; other versions require offsets from video.ini.",
+    "features": "Author dataset README links VideoMAEv2 Giant K710 (1408-D) and SmallFromGiant K710 (384-D) NPY features at https://huggingface.co/datasets/imva-upf/SoccerHigh; dtype/normalization not independently verified.",
+    "checksums": "No downloaded archive checksums verified.",
+    "leakage_risks": "Preserve game-level splits and prevent overlap through the parent SoccerNet corpus. Reference summary length is evaluation-only information in @T.",
+    "limitations": "Single sport and editorially selected highlights; raw footage is separate from annotations. Hugging Face feature page was inaccessible to the browsing tool; files were not downloaded.",
+    "verified_on": "2026-10-25",
+    "sources": [
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/dataset/README.md",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/dataset/train.txt",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/dataset/validation.txt",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/dataset/test.txt",
+      "https://arxiv.org/abs/2509.01439v1"
     ]
   }
 ]

@@ -628,7 +628,7 @@
   },
   {
     "id": "knowvis-release",
-    "name": "KnowVis release repository (stub)",
+    "name": "KnowVis official implementation",
     "kind": "implementation",
     "url": "https://github.com/yixu-cityu/KnowVis",
     "provenance": "official",
@@ -636,17 +636,19 @@
     "paper_ids": [
       "knowvis"
     ],
-    "framework": "Not released; paper describes proprietary Gemini APIs.",
-    "version_or_commit": "da14209fd4a7483474fad4fefdde8f0920290976",
+    "framework": "Python 3.11/3.12; google-genai, NumPy, NetworkX, scikit-learn, Pillow, ImageHash, OpenCV and yt-dlp via requirements.txt.",
+    "version_or_commit": "ca3105977043108b09f71ec0bcd8f6ba78f12651",
     "license": "No LICENSE found at the inspected commit",
-    "artifacts": "README plus two PNG diagrams only, roughly 2.61 MB total. How-to-run headings are empty; no source, dependency manifest, prompts, evaluator, checkpoint, configuration, test or notebook is present.",
-    "feature_schema": "No loader/schema in the repository. The separate Hugging Face dataset stores generated images, text, graph triples, slide paths and source metadata.",
-    "evaluation_notes": "Generation and GPT-5.4/Claude evaluation cannot be executed from this repository.",
-    "reproducibility": "Repository tree and README inspected at the pinned commit; no executable code exists to run. Dataset metadata was inspected separately without downloading bodies.",
-    "limitations": "Repository existence is not working code. The paper says code is available while README says the full codebase and usage will be updated. Proprietary APIs may change silently, and no license/version lock is present.",
-    "verified_on": "2026-09-19",
+    "artifacts": "run.py, config.json, requirements.txt and src/ preprocessing/concept extraction/scoring/clustering/visual generation pipeline; README documents local MP4 or YouTube URL input and GEMINI_API_KEY.",
+    "feature_schema": "Pipeline joins transcript chunks with extracted slide PNGs and caches concept graphs, knowledge-unit JSON, storyboards and generated PNG summaries. Separate Hugging Face dataset retains its own schema.",
+    "evaluation_notes": "Generation entry point exists. No complete reproduction of the paper automated/human evaluation was established.",
+    "reproducibility": "Pinned tree, README, requirements.txt and src/pipeline.py inspected; no paid API call, video download or upstream execution.",
+    "limitations": "No LICENSE file in inspected tree; dependencies use ranges and proprietary Gemini versions/provider behavior affect repeatability. Source presence is not a successful reproduction.",
+    "verified_on": "2026-10-25",
     "sources": [
-      "https://github.com/yixu-cityu/KnowVis/tree/da14209fd4a7483474fad4fefdde8f0920290976",
+      "https://github.com/yixu-cityu/KnowVis/tree/ca3105977043108b09f71ec0bcd8f6ba78f12651",
+      "https://github.com/yixu-cityu/KnowVis/blob/ca3105977043108b09f71ec0bcd8f6ba78f12651/README.md",
+      "https://github.com/yixu-cityu/KnowVis/blob/ca3105977043108b09f71ec0bcd8f6ba78f12651/src/pipeline.py",
       "https://huggingface.co/datasets/yixu-cityu/KnowVis/tree/ba4208a250bc60b03d0b4ea48f1c2dc70c2d77cc"
     ]
   },
@@ -905,10 +907,10 @@
     "license": "MIT",
     "artifacts": "Diffusion training, sampling and evaluation scripts for SumMe, TVSum and Mr. HiSum under TVT and 5FCV protocols; no checkpoints committed.",
     "feature_schema": "1024-D GoogLeNet pool5 features for SumMe/TVSum and 1024-D PCA-reduced Inception-v3 features for Mr. HiSum.",
-    "evaluation_notes": "README at commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a documents an evaluation-script correction for Kendall tau and Spearman rho, reporting updated TVT and 5FCV correlation tables alongside the ICCV paper values.",
+    "evaluation_notes": "Pinned README reports SumMe/TVSum/MrHiSum correlations but does not document the previously claimed evaluation-script correction or paired TVT/5FCV correction tables. Do not attribute those unverified correction values to this README.",
     "reproducibility": "Pinned repository commit 1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a and ICCV paper inspected; no diffusion training or sampling was executed.",
-    "limitations": "Keep original ICCV paper table values and repository-corrected evaluation values explicitly distinguished by protocol.",
-    "verified_on": "2026-10-18",
+    "limitations": "Preserve paper and repository-reported values as distinct, protocol-specific evidence; no corrected score or reproduction was established in this pass.",
+    "verified_on": "2026-10-25",
     "sources": [
       "https://github.com/Kwanseok-K/SummDiff/tree/1d4b8ae7b69a8c8e536712af70c9bf168d8fd77a",
       "https://arxiv.org/abs/2510.08458"
@@ -951,16 +953,15 @@
     "framework": "Conda environment (environment.yml) with Python 3.12.5, PyTorch 2.4.1 and CUDA 12.1.",
     "version_or_commit": "e88adbf3a947360258cd84839704284c66374c2e",
     "license": "Custom academic/non-commercial license (LICENSE.md).",
-    "artifacts": "Full PyTorch training/evaluation code (main.py, solver.py, data_loader.py, model/) plus Zenodo links for SM-VideoXum and SM-MrHiSum HDF5 features/splits (record 18862583) and pretrained checkpoints (record 19919955).",
-    "feature_schema": "1-fps 512-D CLIP embeddings for visual frames, multi-sentence user scripts, and timestamp-repeated audio transcripts in HDF5 format.",
+    "artifacts": "Full training/evaluation source under sm-videoxum/ and sm-mrhisum/ plus Zenodo record 19919955 for HDF5 data, splits, scripts/transcripts and pretrained models.",
+    "feature_schema": "1-fps 512-D CLIP: video_embeddings, script_embeddings and aligned_transcripts; VideoXum loader expects gtscores, MrHiSum loader expects gtscores and gt_summary plus change_points. Archive keys not independently checked.",
     "evaluation_notes": "Evaluates top-15% frame F-Score on SM-VideoXum (averaged over 10 script-summary pairs per video) and 15%-budget knapsack F-Score plus frame-level Kendall tau and Spearman rho on SM-MrHiSum.",
     "reproducibility": "Paper, repository source at commit e88adbf3a947360258cd84839704284c66374c2e and Zenodo record metadata inspected; large Zenodo archives were not downloaded or run.",
     "limitations": "Non-commercial academic license; scripts are generated from ground-truth summaries via Qwen3-VL-8B-Instruct.",
-    "verified_on": "2026-10-18",
+    "verified_on": "2026-10-25",
     "sources": [
       "https://github.com/IDT-ITI/SD-MVSum/tree/e88adbf3a947360258cd84839704284c66374c2e",
       "https://arxiv.org/abs/2510.05652v2",
-      "https://zenodo.org/records/18862583",
       "https://zenodo.org/records/19919955"
     ]
   },
@@ -976,13 +977,13 @@
     ],
     "framework": "Python / PyTorch / HuggingFace Transformers / OpenAI CLIP.",
     "version_or_commit": "aed28d7d61f0a8fa1d601442816ea8c5be48be8b",
-    "license": "No LICENSE file found at the inspected commit.",
-    "artifacts": "Standalone frame-packing algorithms (`standalone/`), Qwen3-VL monkey-patch integration, and evaluation scripts for LongVideoBench, MLVU and Video-MME; links HuggingFace (`ZelD0n/FramePack-U`) and ModelScope feature datasets.",
+    "license": "Apache-2.0 (LICENSE at the pinned commit; includes VLMEvalKit notices).",
+    "artifacts": "Standalone frame-packing, Qwen3.5/Qwen3.6 evaluation integration and vLLM/Transformers instructions; links Hugging Face and ModelScope feature datasets.",
     "feature_schema": "CLIP ViT-B/32 frame and query embeddings; outputs multi-resolution frame sequences under fixed 128-, 256-, or 512-frame-equivalent token budgets.",
     "evaluation_notes": "Evaluates long-video VQA accuracy, peak GPU memory (GiB) and end-to-end latency (s) across LongVideoBench, MLVU and Video-MME.",
     "reproducibility": "Paper and repository source at commit aed28d7d61f0a8fa1d601442816ea8c5be48be8b inspected; no VLM evaluation was executed.",
-    "limitations": "Designed for VLMs that encode frames independently; no repository license file present at the inspected commit.",
-    "verified_on": "2026-10-18",
+    "limitations": "Adjacent long-video VQA compression rather than standalone keyshot summary generation. Source inspection only; backend compatibility and model evaluation were not executed.",
+    "verified_on": "2026-10-25",
     "sources": [
       "https://github.com/ZelD0n/framepack-U/tree/aed28d7d61f0a8fa1d601442816ea8c5be48be8b",
       "https://arxiv.org/abs/2610.16118v1",
@@ -991,7 +992,7 @@
   },
   {
     "id": "trim-code-stub",
-    "name": "TRIM official repository (stub)",
+    "name": "TRIM official implementation",
     "kind": "implementation",
     "url": "https://github.com/pmishra-ai/TRIM",
     "provenance": "official",
@@ -999,23 +1000,25 @@
     "paper_ids": [
       "trim"
     ],
-    "framework": "Not yet pushed; paper reports PyTorch on NVIDIA TITAN RTX.",
+    "framework": "Python / PyTorch, h5py, NumPy, SciPy, geomloss, fvcore and tabulate; no version-pinned dependency manifest.",
     "version_or_commit": "86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab",
-    "license": "No LICENSE file found at the inspected commit.",
-    "artifacts": "README.md and architecture figure (`model.jpg`) only; source code and pretrained models are marked as coming soon.",
-    "feature_schema": "Not released in repository; paper specifies 2048-D ResNet-50 features with 256->224 center-crop preprocessing.",
-    "evaluation_notes": "No runnable evaluator in repository; paper reports 10-run 5-fold cross-validation Kendall tau, Spearman rho and F1 on SumMe and TVSum.",
-    "reproducibility": "Pinned repository stub at commit 86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab inspected; no executable code is present.",
-    "limitations": "Placeholder stub only; do not count as an executable code release until training and evaluation scripts are pushed.",
-    "verified_on": "2026-10-18",
+    "license": "MIT",
+    "artifacts": "trim_ssl.py and trim_main.py training stages, models.py, info_losses.py, evaluation/knapsack utilities, JSON split manifests, SSL checkpoints and two final model checkpoints. README links a separate Google Drive feature archive.",
+    "feature_schema": "2048-D ResNet-50 feature HDF5 loaded from hardcoded dataset-specific paths; separate standard benchmark HDF5 provides boundaries, picks and human references. Archive bytes not downloaded.",
+    "evaluation_notes": "Final-epoch evaluation; TVSum averages correlations against individual users, whereas SumMe correlates the decoded binary machine summary with the mean user summary. F1 uses mean-user TVSum and max-user SumMe aggregation.",
+    "reproducibility": "Tree, README, LICENSE, trim_main.py and eval_metrics.py inspected at the pinned commit; code and checkpoint presence established, successful execution not tested.",
+    "limitations": "Source inspection only; no environment or checkpoint was executed. Training uses hardcoded ResNet feature HDF5 paths plus a separate CLI metadata HDF5, unconditional CUDA, and geomloss/fvcore imports without a dependency manifest. Code loss coefficients and dataset-specific evaluation require reconciliation with the paper.",
+    "verified_on": "2026-10-25",
     "sources": [
       "https://github.com/pmishra-ai/TRIM/tree/86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab",
+      "https://github.com/pmishra-ai/TRIM/blob/86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab/trim_main.py",
+      "https://github.com/pmishra-ai/TRIM/blob/86a6be3e5b16e7c5116a22a21ed9d4fecd12e6ab/eval_metrics.py",
       "https://arxiv.org/abs/2506.20588v3"
     ]
   },
   {
     "id": "clipsum-code-stub",
-    "name": "ClipSum official repository (stub)",
+    "name": "ClipSum official implementation",
     "kind": "implementation",
     "url": "https://github.com/aqeeelmirza/clipsum",
     "provenance": "official",
@@ -1023,17 +1026,19 @@
     "paper_ids": [
       "clipsum"
     ],
-    "framework": "Not yet pushed; paper reports PyTorch 2.0 on NVIDIA RTX 4090.",
+    "framework": "PyTorch >=2.0, Lightning >=1.9, Transformers >=4.26 and OpenAI CLIP; requirements.txt uses lower bounds rather than a locked environment.",
     "version_or_commit": "c3746c1b02b9e6473136f09735e9aa32b1df3e5d",
     "license": "MIT",
-    "artifacts": "README.md and LICENSE only; no Python source files, configs, or YouCook2 reference summaries are committed at the inspected revision.",
-    "feature_schema": "Paper specifies 50 uniformly sampled frames encoded with frozen CLIP ViT-B/32 (512-D) and procedural text up to 512 BART BPE tokens.",
-    "evaluation_notes": "No runnable evaluator in repository; paper uses rouge-score v0.1.2 and nlg-eval on 210 YouCook2 test videos.",
-    "reproducibility": "Pinned repository stub at commit c3746c1b02b9e6473136f09735e9aa32b1df3e5d inspected; no executable code is present.",
-    "limitations": "Placeholder stub only; neither model code nor the GPT-3.5-turbo human-verified YouCook2 reference summaries are uploaded yet.",
-    "verified_on": "2026-10-18",
+    "artifacts": "src/run.py, BART multimodal/visual models, data preprocessing, CLIP/ResNet feature-extraction scripts, train/test shell scripts and saved metric JSON files; no trained checkpoint committed.",
+    "feature_schema": "README specifies 50 uniformly sampled frozen CLIP ViT-B/32 frame embeddings (512-D) plus BART-tokenized procedural text. Features and target summaries must be prepared separately.",
+    "evaluation_notes": "Training/evaluation and ROUGE source exists. Test/validation separation and checkpoint selection require repair/audit before comparing any reported result.",
+    "reproducibility": "Pinned tree, README, requirements.txt and src/run.py inspected; source exists but missing unconditional model imports prevent treating the documented entry point as verified runnable.",
+    "limitations": "Source is present, but src/run.py unconditionally imports models.bart and models.t5, absent from the pinned tree. README/test script use sum_cv for test paths and checkpoint discovery is not score-based. No trained checkpoint or verified YouCook2 summary-target files were established; end-to-end reproduction remains blocked/unverified.",
+    "verified_on": "2026-10-25",
     "sources": [
       "https://github.com/aqeeelmirza/clipsum/tree/c3746c1b02b9e6473136f09735e9aa32b1df3e5d",
+      "https://github.com/aqeeelmirza/clipsum/blob/c3746c1b02b9e6473136f09735e9aa32b1df3e5d/src/run.py",
+      "https://github.com/aqeeelmirza/clipsum/blob/c3746c1b02b9e6473136f09735e9aa32b1df3e5d/scripts/test_all_models.sh",
       "https://arxiv.org/abs/2605.11959v1"
     ]
   },
@@ -1041,7 +1046,7 @@
     "id": "qeva-code-stub",
     "name": "QEVA official repository (stub)",
     "kind": "tool",
-    "url": "https://github.com/jungnerd/QEVA",
+    "url": "https://github.com/wo0jun/QEVA",
     "provenance": "official",
     "attribution_evidence": "Linked in the Findings of EMNLP 2025 / arXiv:2604.24052v1 paper footnote 1 and owned by first author Woojun Jung.",
     "paper_ids": [
@@ -1055,11 +1060,66 @@
     "evaluation_notes": "No runnable scripts in repository; paper evaluates Kendall tau_b, tau_c and Spearman rho against 20-annotator human judgments on MLVU(VS)-Eval (800 summaries across 200 videos).",
     "reproducibility": "Pinned repository stub at commit 657cad6bff56e3cb25bf41610c020ce68787abd3 inspected; no executable code or MLVU(VS)-Eval dataset files are committed.",
     "limitations": "Empty placeholder repository; resolves the deferred repository audit noted in earlier coverage logs.",
-    "verified_on": "2026-10-18",
+    "verified_on": "2026-10-25",
     "sources": [
-      "https://github.com/jungnerd/QEVA/tree/657cad6bff56e3cb25bf41610c020ce68787abd3",
+      "https://github.com/wo0jun/QEVA/tree/657cad6bff56e3cb25bf41610c020ce68787abd3",
       "https://aclanthology.org/2025.findings-emnlp.1340/",
       "https://arxiv.org/abs/2604.24052v1"
+    ]
+  },
+  {
+    "id": "soccerhigh-code",
+    "name": "SoccerHigh official baseline and evaluator",
+    "kind": "implementation",
+    "url": "https://github.com/IPCV/SoccerHigh",
+    "provenance": "official",
+    "attribution_evidence": "The author project page links IPCV/SoccerHigh; the repository cites the SoccerHigh paper.",
+    "paper_ids": [
+      "soccerhigh"
+    ],
+    "framework": "Python 3.8.20, PyTorch 2.4.1, PyTorch Lightning 2.4.0 and Hydra 1.3.2 in code/environment.yml.",
+    "version_or_commit": "a0d9bfa588a58ed66f4511e303d010c21fc2dd34",
+    "license": "CC BY-NC-SA 4.0, explicitly stated in code/README.md.",
+    "artifacts": "Training, testing and inference source; Hydra configurations; Giant/Small baseline checkpoints; annotations and split files. Feature files were moved to Hugging Face.",
+    "feature_schema": "Per-half VideoMAEv2 NPY features: 384-D distilled Small or 1408-D Giant. Train/test defaults use 2 fps and 60-second windows; archive dtype and normalization not independently verified.",
+    "evaluation_notes": "code/evaluation/evaluate.py computes temporal-overlap metrics and separate GT-duration-conditioned @T selection. No scores reproduced.",
+    "reproducibility": "Pinned README, dependencies, train/test configurations, evaluator and split files inspected; no environment installation, checkpoint load or model execution.",
+    "limitations": "Train default is Small/384-D while test default is Giant/1408-D; align checkpoint and feature configuration explicitly. Raw videos and feature archives were not downloaded.",
+    "verified_on": "2026-10-25",
+    "sources": [
+      "https://ipcv.github.io/SoccerHigh/",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/README.md",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/environment.yml",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/configs/train.yaml",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/configs/test.yaml",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/evaluation/evaluate.py",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/dataset/README.md"
+    ]
+  },
+  {
+    "id": "lvsum-code",
+    "name": "LVSum official benchmark and evaluation tools",
+    "kind": "tool",
+    "url": "https://github.com/apple-aiml-research/ml-lvsum-video-summarization",
+    "provenance": "official",
+    "attribution_evidence": "Apple author repository cites the exact LVSum paper and includes the benchmark annotations and evaluation scripts.",
+    "paper_ids": [
+      "lvsum"
+    ],
+    "framework": "Python / PyTorch / SciPy plus OpenAI, google-genai and Anthropic clients; pinned requirements.txt.",
+    "version_or_commit": "de21743fef419f09288f452ee8bb20fbbdfe758a",
+    "license": "Custom Apple code license; annotations separately CC-BY-NC-ND-4.0.",
+    "artifacts": "Video downloader, transcript generation, multimodal/transcript-only evaluation scripts, metric utilities and annotations/lvsum_72_dataset.json.",
+    "feature_schema": "Timestamped scored intervals and textual descriptions; sampled raw frames and external transcripts. Large annotation JSON listed but not parsed.",
+    "evaluation_notes": "Source implements temporal IoU/F1 and Kendall/Spearman statistics with user-reference aggregation and a length penalty above 15%; not interchangeable with generic SumMe/TVSum protocol.",
+    "reproducibility": "Author README, tree, licenses and evaluator source inspected; no raw video, paid API call or model execution.",
+    "limitations": "API/local model services and external video URLs needed; README video count was not independently recomputed from annotation JSON.",
+    "verified_on": "2026-10-25",
+    "sources": [
+      "https://github.com/apple-aiml-research/ml-lvsum-video-summarization/tree/de21743fef419f09288f452ee8bb20fbbdfe758a",
+      "https://github.com/apple-aiml-research/ml-lvsum-video-summarization/blob/de21743fef419f09288f452ee8bb20fbbdfe758a/README.md",
+      "https://github.com/apple-aiml-research/ml-lvsum-video-summarization/blob/de21743fef419f09288f452ee8bb20fbbdfe758a/LICENSE",
+      "https://github.com/apple-aiml-research/ml-lvsum-video-summarization/blob/de21743fef419f09288f452ee8bb20fbbdfe758a/LICENSE_DATA"
     ]
   }
 ]

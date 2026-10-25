@@ -218,5 +218,67 @@
       "https://aclanthology.org/2023.findings-eacl.96.pdf",
       "https://github.com/ppapalampidi/long_video_summarization"
     ]
+  },
+  {
+    "id": "soccerhigh",
+    "title": "SoccerHigh: A Benchmark Dataset for Automatic Soccer Video Summarization",
+    "authors": [
+      "Artur Díaz-Juan",
+      "Coloma Ballester",
+      "Gloria Haro"
+    ],
+    "year": 2025,
+    "venue": "ACM MMSports 2025, 121–130; arXiv:2509.01439v1 (2025-09-01)",
+    "paper_url": "https://arxiv.org/abs/2509.01439v1",
+    "project_url": "https://ipcv.github.io/SoccerHigh/",
+    "supervision": [
+      "supervised"
+    ],
+    "tasks": [
+      "Soccer broadcast video summarization"
+    ],
+    "outputs": [
+      "Keyshot skim"
+    ],
+    "mechanisms": [
+      "Transformer encoder",
+      "Anchor-free boundary regression",
+      "Non-maximum suppression"
+    ],
+    "encoders": "Frozen VideoMAEv2 Giant (1408-D) or distilled Small (384-D).",
+    "sampling": "Released train/test configurations use 2 fps and 60-second windows.",
+    "architecture": "Feature projection, temporal Transformer, classification and boundary-regression heads.",
+    "fusion": "Visual features only; no audio/text fusion in the released baseline.",
+    "objective": "Binary classification and SmoothL1 boundary regression from summary intervals.",
+    "training_data": "SoccerHigh training matches with aligned official-highlight annotations.",
+    "test_data": "SoccerHigh held-out test matches.",
+    "split": "141 train / 51 validation / 45 test; counts checked against pinned split files.",
+    "budget": "Variable-length predictions; separate @T evaluation uses the reference-summary duration.",
+    "postprocessing": "Confidence filtering and non-maximum suppression; @T selection ranks shots.",
+    "metrics": [
+      "Precision",
+      "Recall",
+      "F1",
+      "Precision@T",
+      "Recall@T",
+      "F1@T"
+    ],
+    "code_url": "https://github.com/IPCV/SoccerHigh",
+    "code_status": "Official source inspected at a0d9bfa588a58ed66f4511e303d010c21fc2dd34; not executed.",
+    "framework": "Python, PyTorch Lightning and Hydra.",
+    "weights": "Giant and Small baseline checkpoints are present in code/weights/.",
+    "features": "VideoMAEv2 features linked on the author Hugging Face dataset page; archive not downloaded.",
+    "reproducibility": "Paper, source, configuration and split-file inspection only; no reproduction or numerical result rows added.",
+    "limitations": "Sports-specific professional highlights. Annotation alignment and editorial choices differ from generic importance-score benchmarks; @T uses reference duration. Train and test defaults use different feature sizes.",
+    "verified_on": "2026-10-25",
+    "sources": [
+      "https://arxiv.org/abs/2509.01439v1",
+      "https://doi.org/10.1145/3728423.3759410",
+      "https://ipcv.github.io/SoccerHigh/",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/README.md",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/configs/train.yaml",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/code/configs/test.yaml",
+      "https://github.com/IPCV/SoccerHigh/blob/a0d9bfa588a58ed66f4511e303d010c21fc2dd34/dataset/README.md"
+    ]
   }
 ]
