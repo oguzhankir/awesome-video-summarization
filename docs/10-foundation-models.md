@@ -50,8 +50,8 @@ For implementations, keep raw timestamps, sampled-frame indices and model tokens
 The VTSUM-BLIP baseline shares video representations between a visual-summary head and a text decoder. Section IV-B uses binary cross-entropy for frame inclusion and autoregressive negative log likelihood for the textual summary. A useful mathematical shorthand is
 
 ```math
-\mathcal L_{\mathrm{visual}}=\mathrm{BCE}(\hat y,y),\qquad
-\mathcal L_{\mathrm{text}}=-\sum_i\log p(w_i\mid w_{<i},V).
+\mathcal{L}_{\mathrm{visual}}=\mathrm{BCE}(\hat{y},y),\qquad
+\mathcal{L}_{\mathrm{text}}=-\sum_i\log p(w_i\mid w_{1:i-1},V).
 ```
 
 The paper describes selecting the top 15% of frames. The inspected [F1 helper](https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/utils.py#L275-L281) instead includes every score at or above the zero-based threshold `floor(0.15*N)`: it selects `floor(0.15*N)+1` frames when scores are distinct, and potentially more with ties. Preserve this difference between the intended budget and released evaluation behavior. The [evaluation script](https://github.com/jylins/videoxum/blob/11bd4fe3fb51b7dc804dd1519a4914f67bff60df/eval_v2vt_sum.py#L60-L68) computes F1 separately against each human mask, but computes rank correlations against the mean of ten masks. See the [implementation audit](13-implementations.md#multimodal-and-query-focused-code) before comparing this frame protocol with KTS keyshot evaluation.
